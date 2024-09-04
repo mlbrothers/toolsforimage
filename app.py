@@ -155,7 +155,7 @@ def convert_url_to_image():
         # Convert URL to image directly into BytesIO using Html2Image
         hti = Html2Image(
             output_path='.',  # You can keep the path here as '.' to store in current directory temporarily
-            browser_executable='/opt/render/project/.render/chrome/opt/google/chrome'  # Use your Chrome path
+            browser_executable='/opt/render/project/.render/chrome/opt/google/chrome/google-chrome'  # Use your Chrome path
         )
         
         # Adding headless Chrome options to avoid dbus and GPU errors
