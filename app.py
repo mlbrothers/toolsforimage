@@ -161,18 +161,7 @@ def convert_url_to_image():
         # Adding headless Chrome options to avoid dbus and GPU errors
         hti.screenshot(
             url=url, 
-            save_as=unique_filename, 
-            browser_args=[
-                "--no-sandbox", 
-                "--disable-setuid-sandbox", 
-                "--disable-dev-shm-usage", 
-                "--disable-software-rasterizer", 
-                "--disable-dev-tools", 
-                "--disable-gpu",
-                "--headless",
-                "--no-zygote",
-                "--single-process"
-            ]
+            save_as=unique_filename
         )
         
         # Write the generated image file to BytesIO
