@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Add watermark to your images easily with ToolsForImage. Customize text, position, and preview in real-time.">
+    <title>Add Watermark - ToolsForImage</title>
+    <style>
+        :root {
+            --font-family: "Arial", monospace;
+            --primary-color: #ede4fb;
+            --secondary-color: #000000;
+            --tertiary-color: #ae6bff;
+            --background-color: #ffffff;
+            --link-color: #000000;
+            --link-hover-color: #4d198d;
+            --box-color: #ffffff;
+            --box-hover-color: #000000;
+            --box-hover-text-color: #4d198d;
+            --footer-hover-text-color: #e0e0e0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--secondary-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: var(--secondary-color);
+            font-family: var(--font-family);
+            text-align: center;
+        }
+
+        nav {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 2em;
+            text-align: center;
+            flex-grow: 1;
+            margin-bottom: 60px;
+        }
+
+        .upload-button {
+            background-color: var(--tertiary-color);
+            color: var(--background-color);
+            padding: 20px 40px;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .upload-button:hover {
+            transform: scale(1.1);
+        }
+
+        .watermark-button {
+            background-color: var(--background-color);
+            color: var(--box-hover-color);
+            border: 2px solid var(--box-hover-color);
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: transform 0.3s;
+            margin-top: 10px;
+        }
+
+        .image-preview-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            max-height: 600px;
+            margin: 20px auto;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #image-preview {
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+            object-fit: contain;
+        }
+
+        #watermark-text {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 24px;
+            font-weight: bold;
+            user-select: none;
+            cursor: move;
+        }
+
+        .watermark-controls {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .watermark-controls input, .watermark-controls select {
+            width: 100%;
+            max-width: 300px;
+            padding: 5px;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 1em;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1em;
+        }
+
+        footer ul li {
+            display: inline;
+        }
+
+        footer ul li a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer ul li a:hover {
+            color: var(--link-hover-color);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            footer ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .image-preview-container {
+                max-width: 100%;
+                max-height: 400px;
+            }
+        }
+    </style>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PR74FHGP0L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PR74FHGP0L');
+</script>
+<body>
+    <nav>
+        <div class="nav-logo">ToolsForImage</div>
+        <ul>
+            <li><a href="/image-compression">Compress Image</a></li>
+            <li><a href="/image-resize">Resize Image</a></li>
+            <li><a href="/convert-image-format">Convert Image</a></li>
+            <li><a href="/image-rotate">Rotate Image</a></li>
+            <li><a href="/image-watermarking">Watermark</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Image Watermark Tool</h1>
+        <p>Add a custom text watermark to your image. Preview and adjust in real-time.</p>
+        <form id="watermark-form" action="/watermark-image" method="post" enctype="multipart/form-data">
+            <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
+            <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload Image</button>
+            <br>
+            <div class="image-preview-container">
+                <img id="image-preview" src="#" alt="Image Preview">
+                <div id="watermark-text"></div>
+            </div>
+            <div class="watermark-controls">
+                <input type="text" id="watermark-input" placeholder="Enter watermark text" oninput="updateWatermark()">
+                <input type="color" id="watermark-color" value="#ffffff" onchange="updateWatermark()">
+                <input type="range" id="watermark-opacity" min="0" max="1" step="0.1" value="0.5" onchange="updateWatermark()">
+                <select id="watermark-font-size" onchange="updateWatermark()">
+                    <option value="8px">8px</option>
+                    <option value="10px">10px</option>
+                    <option value="12px">12px</option>
+                    <option value="14px">14px</option>
+                    <option value="16px">16px</option>
+                    <option value="18px">18px</option>
+                    <option value="20px">20px</option>
+                    <option value="24px" selected>24px</option>
+                    <option value="28px">28px</option>
+                    <option value="32px">32px</option>
+                    <option value="36px">36px</option>
+                    <option value="40px">40px</option>
+                    <option value="48px">48px</option>
+                    <option value="56px">56px</option>
+                    <option value="64px">64px</option>
+                </select>
+                <select id="watermark-font-family" onchange="updateWatermark()">
+                    <option value="Arial, sans-serif">Arial</option>
+                    <option value="'Times New Roman', serif">Times New Roman</option>
+                    <option value="'Courier New', monospace">Courier New</option>
+                    <option value="Georgia, serif">Georgia</option>
+                    <option value="Verdana, sans-serif">Verdana</option>
+                </select>
+                <input type="hidden" id="watermark-data" name="watermark-data">
+            </div>
+            <button type="submit" class="watermark-button" onclick="return validateImageSelection();">Add Watermark</button>
+        </form>
+    </main>
+
+    <script>
+        function validateImageSelection() {
+            const imageUpload = document.getElementById('image-upload');
+            if (!imageUpload.value) {
+                alert('Please select an image to upload.');
+                return false;
+            }
+            return true;
+        }
+
+        function previewImage(event) {
+            const imagePreview = document.getElementById('image-preview');
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                    updateWatermark();
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function updateWatermark() {
+            const watermarkText = document.getElementById('watermark-text');
+            const watermarkInput = document.getElementById('watermark-input');
+            const watermarkColor = document.getElementById('watermark-color');
+            const watermarkOpacity = document.getElementById('watermark-opacity');
+            const watermarkFontSize = parseInt(document.getElementById('watermark-font-size').value.split('px')[0]);
+            const watermarkFontFamily = document.getElementById('watermark-font-family');
+            const imagePreview = document.getElementById('image-preview');
+
+            watermarkText.textContent = watermarkInput.value;
+            watermarkText.style.color = watermarkColor.value;
+            watermarkText.style.opacity = watermarkOpacity.value;
+            watermarkText.style.fontSize = watermarkFontSize;
+            watermarkText.style.fontFamily = watermarkFontFamily.value;
+
+            // Set initial position to center top
+            watermarkText.style.top = '10px';
+            watermarkText.style.left = '50%';
+            watermarkText.style.transform = 'translateX(-50%)';
+
+            // Update hidden input with watermark data
+            updateWatermarkData();
+        }
+
+        function updateWatermarkData() {
+            const watermarkText = document.getElementById('watermark-text');
+            const watermarkInput = document.getElementById('watermark-input');
+            const watermarkColor = document.getElementById('watermark-color');
+            const watermarkOpacity = document.getElementById('watermark-opacity');
+            const watermarkFontSize = parseInt(document.getElementById('watermark-font-size').value.split('px')[0]);
+            const watermarkFontFamily = document.getElementById('watermark-font-family');
+
+            const watermarkData = {
+                text: watermarkInput.value,
+                color: watermarkColor.value,
+                opacity: watermarkOpacity.value,
+                fontSize: watermarkFontSize,
+                fontFamily: watermarkFontFamily.value,
+                x: watermarkText.offsetLeft,
+                y: watermarkText.offsetTop
+            };
+            document.getElementById('watermark-data').value = JSON.stringify(watermarkData);
+        }
+
+        // Make the watermark text draggable
+        const watermarkText = document.getElementById('watermark-text');
+        let isDragging = false;
+        let startX, startY;
+
+        watermarkText.addEventListener('mousedown', startDragging);
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', stopDragging);
+
+        function startDragging(e) {
+            isDragging = true;
+            startX = e.clientX - watermarkText.offsetLeft;
+            startY = e.clientY - watermarkText.offsetTop;
+        }
+
+        function drag(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            watermarkText.style.left = (e.clientX - startX) + 'px';
+            watermarkText.style.top = (e.clientY - startY) + 'px';
+            watermarkText.style.transform = 'none';
+            updateWatermarkData();
+        }
+
+        function stopDragging() {
+            isDragging = false;
+        }
+    </script>
+
+    <footer>
+        <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact-us">Contact Us</a></li>
+            <li><a href="/help">Help</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/media">Media</a></li>
+            <li><a href="/legal">Legal</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+            <li><a href="/our-story">Our Story</a></li>
+            <li><a href="/team">Team</a></li>
+            <li><a href="/features">Features</a></li>
+            <li><a href="/pricing">Pricing</a></li>
+            <li><a href="/languages">Languages</a></li>
+            <li><a href="/tools">Tools</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

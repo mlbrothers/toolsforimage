@@ -1,4 +1,6 @@
 Flask
 Pillow
 uuid
+html2image
+numpy
 gunicorn
