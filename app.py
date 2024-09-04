@@ -146,24 +146,53 @@ def convert_url_to_image():
         return "No URL provided", 400
 
     try:
-        # Generate a unique filename
+        # Generate a unique filename for download purposes
         unique_filename = f"webpage_{uuid.uuid4().hex}_{int(time.time())}.png"
-        # Create a BytesIO object to store the image
+
+        # Create a BytesIO object to store the image in memory
         img_io = io.BytesIO()
-        # Convert URL to image and save to BytesIO
-        hti = Html2Image()
-        hti.screenshot(url=url, save_as=unique_filename)
+
+        # Convert URL to image directly into BytesIO using Html2Image
+        hti = Html2Image(
+            output_path='.',  # You can keep the path here as '.' to store in current directory temporarily
+            browser_executable='/opt/render/project/.render/chrome/opt/google/chrome'  # Use your Chrome path
+        )
+        
+        # Adding headless Chrome options to avoid dbus and GPU errors
+        hti.screenshot(
+            url=url, 
+            save_as=unique_filename, 
+            browser_args=[
+                "--no-sandbox", 
+                "--disable-setuid-sandbox", 
+                "--disable-dev-shm-usage", 
+                "--disable-software-rasterizer", 
+                "--disable-dev-tools", 
+                "--disable-gpu",
+                "--headless",
+                "--no-zygote",
+                "--single-process"
+            ]
+        )
+        
+        # Write the generated image file to BytesIO
         with open(unique_filename, 'rb') as f:
             img_io.write(f.read())
+        
+        # Remove the temporary file after reading it
         os.remove(unique_filename)
 
-        # Seek to the beginning of the BytesIO object
+        # Reset the pointer to the start of the BytesIO object
         img_io.seek(0)
         
-        # Send the file from BytesIO
-        response = send_file(img_io, mimetype='image/png', as_attachment=True, download_name=unique_filename)
-        
-        return response
+        # Send the image directly from BytesIO
+        return send_file(
+            img_io,
+            mimetype='image/png',
+            as_attachment=True,
+            download_name=unique_filename
+        )
+
     except Exception as e:
         return str(e), 500
 
