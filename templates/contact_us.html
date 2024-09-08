@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Compress your images effortlessly with ToolsForImage. Reduce file size without compromising quality for faster web loading times.">
-    <title>Compress Image - ToolsForImage</title>
+    <meta name="description" content="Contact ToolsForImage - Get in touch with us for any questions, feedback, or support regarding our image processing tools. We're here to help you with image compression, resizing, format conversion, and more.">
+    <title>Contact Us - ToolsForImage</title>
     <style>
         :root {
             --font-family: "Arial", monospace;
             --primary-color: #ede4fb;
             --secondary-color: #000000;
-            --tertiary-color: #ae6bff;
+            --tertiary-color: #CDDC39;
             --background-color: #ffffff;
             --link-color: #000000;
             --link-hover-color: #4d198d;
@@ -26,12 +26,6 @@
             padding: 0;
             background-color: var(--background-color);
             color: var(--secondary-color);
-        }
-
-        h1 {
-            color: var(--secondary-color);
-            font-family: var(--font-family);
-            text-align: center;
         }
 
         nav {
@@ -153,7 +147,25 @@
 
         main {
             padding: 2em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
             text-align: center;
+            margin-bottom: 1em;
+        }
+
+        .contact-section {
+            margin-bottom: 2em;
+            padding: 1em;
+            background-color: var(--box-color);
+            border: 1px solid var(--secondary-color);
+            border-radius: 5px;
+        }
+
+        .contact-section h2 {
+            color: var(--link-hover-color);
         }
 
         footer {
@@ -161,7 +173,7 @@
             color: var(--secondary-color);
             padding: 1em;
             text-align: center;
-            position: fixed;
+            position: sticky;
             bottom: 0;
             width: 100%;
         }
@@ -173,6 +185,7 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 1em;
+            margin: 0;
         }
 
         footer ul li {
@@ -189,37 +202,6 @@
             color: var(--link-hover-color);
             text-decoration: underline;
         }
-        .upload-button {
-            background-color: var(--tertiary-color);
-            color: var(--background-color);
-            padding: 20px 40px;
-            border: none;
-            cursor: pointer;
-            font-size: 20px;
-            transition: transform 0.3s;
-        }
-        .upload-button:hover {
-            transform: scale(1.1);
-        }
-        .compress-button {
-            background-color: var(--background-color);
-            color: var(--box-hover-color);
-            border: 2px solid var(--box-hover-color);
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 20px;
-            transition: transform 0.3s;
-            margin-top: 10px;
-        }
-        .image-preview {
-            margin-top: 20px;
-            max-width: 100%;
-            max-height: 300px;
-            display: none;
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-        }
     </style>
 </head>
 <!-- Google tag (gtag.js) -->
@@ -233,7 +215,7 @@
 </script>
 <body>
     <nav>
-        <div class="nav-logo"><a href="/" style="text-decoration: none; color: inherit;">ToolsForImage</a></div>
+        <div class="nav-logo">ToolsForImage</div>
         <div class="hamburger" onclick="toggleMenu()">
             <div></div>
             <div></div>
@@ -249,6 +231,7 @@
                 <div class="more-menu-content">
                     <a href="/image-watermarking">Watermark</a>
                     <a href="/image-effects">Image Effects</a>
+                    <a href="/html-to-image">HTML to Image</a>
                     <a href="/image-crop">Crop Image</a>
                     <a href="/blur-face">Blur Face</a>
                 </div>
@@ -257,48 +240,20 @@
     </nav>
 
     <main>
-        <h1>Image Compression Tool</h1>
-        <p>Effortlessly compress a single <strong>JPG/JPEG</strong>, <strong>PNG</strong>, <strong>HEIC</strong>, or <strong>WEBP</strong> image with top-notch quality and optimal compression.</p>
-        <p>Upload your image file and compress it instantly. Choose your image:</p>
-        <form id="compression-form" action="/compress-image" method="post" enctype="multipart/form-data">
-            <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
-            <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload from Computer</button>
-            <br>
-            <img id="image-preview" class="image-preview" src="#" alt="Image Preview">
-            <br>
-            <button type="submit" class="compress-button" onclick="return validateImageSelection();">Compress!</button>
-        </form>
-        <p>Your image will be compressed to achieve the best quality and smallest file size.</p>
+        <h1>Contact Us</h1>
+
+        <div class="contact-section">
+            <h2>Get in Touch</h2>
+            <p>We'd love to hear from you! Whether you have a question about our tools, need technical support, or want to provide feedback, please don't hesitate to reach out.</p>
+            
+            <p>Email us at: <a href="mailto:mlbrothers2024@gmail.com">mlbrothers2024@gmail.com</a></p>
+        </div>
+
+        <div class="contact-section">
+            <h2>Other Ways to Reach Us</h2>
+            <p>For faster responses, please check our <a href="/faq">FAQ page</a> first. Many common questions are answered there.</p>
+        </div>
     </main>
-
-    <script>
-        function validateImageSelection() {
-            const imageUpload = document.getElementById('image-upload');
-            if (!imageUpload.value) {
-                alert('Please select an image to upload.');
-                return false;
-            }
-            return true;
-        }
-
-        function previewImage(event) {
-            const imagePreview = document.getElementById('image-preview');
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    imagePreview.src = e.target.result;
-                    imagePreview.style.display = 'block';
-                }
-                reader.readAsDataURL(file);
-            }
-        }
-
-        function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
-        }
-    </script>
 
     <footer>
         <ul>
@@ -326,4 +281,3 @@
     </script>
 </body>
 </html>
-

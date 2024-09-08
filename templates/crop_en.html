@@ -73,6 +73,82 @@
             text-decoration: underline;
         }
 
+        .more-menu {
+            position: relative;
+            display: inline-block;
+        }
+
+        .more-menu-content {
+            display: none;
+            position: absolute;
+            background-color: var(--primary-color);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            right: 0;
+        }
+
+        .more-menu-content a {
+            color: var(--secondary-color);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .more-menu-content a:hover {
+            background-color: var(--box-color);
+            color: var(--link-hover-color);
+            text-decoration: underline;
+        }
+
+        .more-menu:hover .more-menu-content {
+            display: block;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 4px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1em;
+        }
+
+        .nav-links.active {
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
         main {
             padding: 2em;
             text-align: center;
@@ -207,12 +283,25 @@
 <body>
     <nav>
         <div class="nav-logo"><a href="/" style="text-decoration: none; color: inherit;">ToolsForImage</a></div>
-        <ul>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul class="nav-links">
             <li><a href="/image-compression">Compress Image</a></li>
             <li><a href="/image-resize">Resize Image</a></li>
             <li><a href="/convert-image-format">Convert Image</a></li>
             <li><a href="/image-rotate">Rotate Image</a></li>
-            <li><a href="/image-crop">Crop Image</a></li>
+            <li class="more-menu">
+                <a href="javascript:void(0)">More</a>
+                <div class="more-menu-content">
+                    <a href="/image-watermarking">Watermark</a>
+                    <a href="/image-effects">Image Effects</a>
+                    <a href="/image-crop">Crop Image</a>
+                    <a href="/blur-face">Blur Face</a>
+                </div>
+            </li>
         </ul>
     </nav>
 
@@ -246,6 +335,7 @@
         let isResizing = false;
         let startX, startY, startLeft, startTop, startWidth, startHeight;
         let currentHandle;
+        let imageOffset = { x: 0, y: 0 };
 
         function validateImageSelection() {
             const imageUpload = document.getElementById('image-upload');
@@ -282,13 +372,17 @@
             const scaledWidth = imageRect.width * scale;
             const scaledHeight = imageRect.height * scale;
 
+            // Calculate image offset
+            imageOffset.x = (containerRect.width - scaledWidth) / 2;
+            imageOffset.y = (containerRect.height - scaledHeight) / 2;
+
             // Adjust initial crop size for small images
-            const initialCropSize = Math.min(200, scaledWidth * 0.8, scaledHeight * 0.8);
+            const initialCropSize = Math.min(scaledWidth, scaledHeight, 200);
             
             cropArea.style.width = `${initialCropSize}px`;
             cropArea.style.height = `${initialCropSize}px`;
-            cropArea.style.left = `${(scaledWidth - initialCropSize) / 2}px`;
-            cropArea.style.top = `${(scaledHeight - initialCropSize) / 2}px`;
+            cropArea.style.left = `${imageOffset.x + (scaledWidth - initialCropSize) / 2}px`;
+            cropArea.style.top = `${imageOffset.y + (scaledHeight - initialCropSize) / 2}px`;
 
             cropArea.addEventListener('mousedown', startDragging);
             document.addEventListener('mousemove', drag);
@@ -322,9 +416,9 @@
             let newTop = startTop + dy;
             
             // Constrain crop area within image bounds
-            const containerRect = imagePreview.getBoundingClientRect();
-            newLeft = Math.max(0, Math.min(newLeft, containerRect.width - cropArea.offsetWidth));
-            newTop = Math.max(0, Math.min(newTop, containerRect.height - cropArea.offsetHeight));
+            const imageRect = imagePreview.getBoundingClientRect();
+            newLeft = Math.max(imageOffset.x, Math.min(newLeft, imageOffset.x + imageRect.width - cropArea.offsetWidth));
+            newTop = Math.max(imageOffset.y, Math.min(newTop, imageOffset.y + imageRect.height - cropArea.offsetHeight));
 
             cropArea.style.left = newLeft + 'px';
             cropArea.style.top = newTop + 'px';
@@ -357,25 +451,25 @@
             const dx = e.clientX - startX;
             const dy = e.clientY - startY;
 
-            const containerRect = imagePreview.getBoundingClientRect();
+            const imageRect = imagePreview.getBoundingClientRect();
             let newWidth, newHeight, newLeft, newTop;
 
             if (currentHandle.classList.contains('se')) {
-                newWidth = Math.min(startWidth + dx, containerRect.width - startLeft);
-                newHeight = Math.min(startHeight + dy, containerRect.height - startTop);
+                newWidth = Math.min(startWidth + dx, imageRect.width + imageOffset.x - startLeft);
+                newHeight = Math.min(startHeight + dy, imageRect.height + imageOffset.y - startTop);
             } else if (currentHandle.classList.contains('sw')) {
-                newWidth = Math.min(startWidth - dx, startLeft + startWidth);
-                newHeight = Math.min(startHeight + dy, containerRect.height - startTop);
-                newLeft = Math.max(0, startLeft + dx);
+                newWidth = Math.min(startWidth - dx, startLeft + startWidth - imageOffset.x);
+                newHeight = Math.min(startHeight + dy, imageRect.height + imageOffset.y - startTop);
+                newLeft = Math.max(imageOffset.x, startLeft + dx);
             } else if (currentHandle.classList.contains('ne')) {
-                newWidth = Math.min(startWidth + dx, containerRect.width - startLeft);
-                newHeight = Math.min(startHeight - dy, startTop + startHeight);
-                newTop = Math.max(0, startTop + dy);
+                newWidth = Math.min(startWidth + dx, imageRect.width + imageOffset.x - startLeft);
+                newHeight = Math.min(startHeight - dy, startTop + startHeight - imageOffset.y);
+                newTop = Math.max(imageOffset.y, startTop + dy);
             } else if (currentHandle.classList.contains('nw')) {
-                newWidth = Math.min(startWidth - dx, startLeft + startWidth);
-                newHeight = Math.min(startHeight - dy, startTop + startHeight);
-                newLeft = Math.max(0, startLeft + dx);
-                newTop = Math.max(0, startTop + dy);
+                newWidth = Math.min(startWidth - dx, startLeft + startWidth - imageOffset.x);
+                newHeight = Math.min(startHeight - dy, startTop + startHeight - imageOffset.y);
+                newLeft = Math.max(imageOffset.x, startLeft + dx);
+                newTop = Math.max(imageOffset.y, startTop + dy);
             }
 
             // Ensure minimum size for crop area
@@ -398,14 +492,25 @@
         }
 
         function updateCropValues() {
-            const containerRect = imagePreview.getBoundingClientRect();
-            const scaleX = imagePreview.naturalWidth / containerRect.width;
-            const scaleY = imagePreview.naturalHeight / containerRect.height;
+            const containerRect = imagePreviewContainer.getBoundingClientRect();
+            const imageRect = imagePreview.getBoundingClientRect();
+            
+            const scaleX = imagePreview.naturalWidth / imageRect.width;
+            const scaleY = imagePreview.naturalHeight / imageRect.height;
 
-            document.getElementById('crop-x').value = Math.round(cropArea.offsetLeft * scaleX);
-            document.getElementById('crop-y').value = Math.round(cropArea.offsetTop * scaleY);
-            document.getElementById('crop-width').value = Math.round(cropArea.offsetWidth * scaleX);
-            document.getElementById('crop-height').value = Math.round(cropArea.offsetHeight * scaleY);
+            const cropLeft = cropArea.offsetLeft - imageOffset.x;
+            const cropTop = cropArea.offsetTop - imageOffset.y;
+
+            document.getElementById('crop-x').value = Math.max(0, Math.round(cropLeft * scaleX));
+            document.getElementById('crop-y').value = Math.max(0, Math.round(cropTop * scaleY));
+            document.getElementById('crop-width').value = Math.min(
+                imagePreview.naturalWidth,
+                Math.round(cropArea.offsetWidth * scaleX)
+            );
+            document.getElementById('crop-height').value = Math.min(
+                imagePreview.naturalHeight,
+                Math.round(cropArea.offsetHeight * scaleY)
+            );
         }
     </script>
 

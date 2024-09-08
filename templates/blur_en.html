@@ -90,10 +90,12 @@
             height: 10px;
             background-color: white;
             position: absolute;
-            right: -5px;
-            bottom: -5px;
-            cursor: se-resize;
         }
+
+        .resize-handle.nw { top: -5px; left: -5px; cursor: nw-resize; }
+        .resize-handle.ne { top: -5px; right: -5px; cursor: ne-resize; }
+        .resize-handle.sw { bottom: -5px; left: -5px; cursor: sw-resize; }
+        .resize-handle.se { bottom: -5px; right: -5px; cursor: se-resize; }
 
         #apply-blur {
             background-color: var(--tertiary-color);
@@ -228,7 +230,6 @@
                 <div class="more-menu-content">
                     <a href="/image-watermarking">Watermark</a>
                     <a href="/image-effects">Image Effects</a>
-                    <a href="/html-to-image">HTML to Image</a>
                     <a href="/image-crop">Crop Image</a>
                     <a href="/blur-face">Blur Face</a>
                 </div>
@@ -244,7 +245,10 @@
         <div id="canvas-container">
             <canvas id="canvas"></canvas>
             <div id="blur-box">
-                <div class="resize-handle"></div>
+                <div class="resize-handle nw"></div>
+                <div class="resize-handle ne"></div>
+                <div class="resize-handle sw"></div>
+                <div class="resize-handle se"></div>
             </div>
         </div>
         <button id="apply-blur">Apply Blur</button>
@@ -302,35 +306,70 @@
 
         let isDragging = false;
         let isResizing = false;
-        let startX, startY, startWidth, startHeight;
+        let startX, startY, startLeft, startTop, startWidth, startHeight;
+        let currentHandle;
 
         blurBox.addEventListener('mousedown', function(e) {
-            if (e.target.className === 'resize-handle') {
+            if (e.target.classList.contains('resize-handle')) {
                 isResizing = true;
+                currentHandle = e.target;
             } else {
                 isDragging = true;
             }
-            startX = e.clientX - blurBox.offsetLeft;
-            startY = e.clientY - blurBox.offsetTop;
-            startWidth = parseInt(document.defaultView.getComputedStyle(blurBox).width, 10);
-            startHeight = parseInt(document.defaultView.getComputedStyle(blurBox).height, 10);
+            startX = e.clientX;
+            startY = e.clientY;
+            startLeft = blurBox.offsetLeft;
+            startTop = blurBox.offsetTop;
+            startWidth = parseInt(getComputedStyle(blurBox).width, 10);
+            startHeight = parseInt(getComputedStyle(blurBox).height, 10);
         });
 
         document.addEventListener('mousemove', function(e) {
             if (isDragging) {
-                const newX = e.clientX - canvas.offsetLeft - startX;
-                const newY = e.clientY - canvas.offsetTop - startY;
-                const maxX = canvas.width - blurBox.offsetWidth;
-                const maxY = canvas.height - blurBox.offsetHeight;
-                blurBox.style.left = `${Math.max(0, Math.min(newX, maxX))}px`;
-                blurBox.style.top = `${Math.max(0, Math.min(newY, maxY))}px`;
+                const dx = e.clientX - startX;
+                const dy = e.clientY - startY;
+                
+                let newLeft = startLeft + dx;
+                let newTop = startTop + dy;
+                
+                newLeft = Math.max(0, Math.min(newLeft, canvas.width - blurBox.offsetWidth));
+                newTop = Math.max(0, Math.min(newTop, canvas.height - blurBox.offsetHeight));
+
+                blurBox.style.left = newLeft + 'px';
+                blurBox.style.top = newTop + 'px';
             } else if (isResizing) {
-                const newWidth = startWidth + e.clientX - startX - canvas.offsetLeft;
-                const newHeight = startHeight + e.clientY - startY - canvas.offsetTop;
-                const maxWidth = canvas.width - blurBox.offsetLeft;
-                const maxHeight = canvas.height - blurBox.offsetTop;
-                blurBox.style.width = `${Math.max(10, Math.min(newWidth, maxWidth))}px`;
-                blurBox.style.height = `${Math.max(10, Math.min(newHeight, maxHeight))}px`;
+                const dx = e.clientX - startX;
+                const dy = e.clientY - startY;
+
+                let newWidth, newHeight, newLeft, newTop;
+
+                if (currentHandle.classList.contains('se')) {
+                    newWidth = Math.min(startWidth + dx, canvas.width - startLeft);
+                    newHeight = Math.min(startHeight + dy, canvas.height - startTop);
+                } else if (currentHandle.classList.contains('sw')) {
+                    newWidth = Math.min(startWidth - dx, startLeft + startWidth);
+                    newHeight = Math.min(startHeight + dy, canvas.height - startTop);
+                    newLeft = Math.max(0, startLeft + dx);
+                } else if (currentHandle.classList.contains('ne')) {
+                    newWidth = Math.min(startWidth + dx, canvas.width - startLeft);
+                    newHeight = Math.min(startHeight - dy, startTop + startHeight);
+                    newTop = Math.max(0, startTop + dy);
+                } else if (currentHandle.classList.contains('nw')) {
+                    newWidth = Math.min(startWidth - dx, startLeft + startWidth);
+                    newHeight = Math.min(startHeight - dy, startTop + startHeight);
+                    newLeft = Math.max(0, startLeft + dx);
+                    newTop = Math.max(0, startTop + dy);
+                }
+
+                // Ensure minimum size for blur box
+                const minSize = 20;
+                newWidth = Math.max(newWidth, minSize);
+                newHeight = Math.max(newHeight, minSize);
+
+                blurBox.style.width = `${newWidth}px`;
+                blurBox.style.height = `${newHeight}px`;
+                if (newLeft !== undefined) blurBox.style.left = `${newLeft}px`;
+                if (newTop !== undefined) blurBox.style.top = `${newTop}px`;
             }
         });
 
