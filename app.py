@@ -138,9 +138,6 @@ def crop_image():
     except Exception as e:
         return render_template('error.html', error=str(e)), 500
 
-@app.route('/html-to-image')
-def url_to_image():
-    return render_template('html_to_image_en.html')
 
 @app.route('/convert-url-to-image', methods=['POST'])
 def convert_url_to_image():

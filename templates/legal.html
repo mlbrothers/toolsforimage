@@ -64,6 +64,87 @@
             text-decoration: underline;
         }
 
+        .more-menu {
+            position: relative;
+            display: inline-block;
+        }
+
+        .more-menu-content {
+            display: none;
+            position: absolute;
+            background-color: var(--primary-color);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            right: 0;
+        }
+
+        .more-menu-content a {
+            color: var(--secondary-color);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .more-menu-content a:hover {
+            background-color: var(--box-color);
+            color: var(--link-hover-color);
+            text-decoration: underline;
+        }
+
+        .more-menu:hover .more-menu-content {
+            display: block;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 4px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1em;
+        }
+
+        .nav-links.active {
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            footer ul {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
         main {
             padding: 2em;
             max-width: 800px;
@@ -135,15 +216,25 @@
 <body>
     <nav>
         <div class="nav-logo"><a href="/" style="text-decoration: none; color: inherit;">ToolsForImage</a></div>
-        <ul>
-            <li><a href="/image-compression">Compress</a></li>
-            <li><a href="/image-resize">Resize</a></li>
-            <li><a href="/convert-image-format">Convert</a></li>
-            <li><a href="/image-rotate">Rotate</a></li>
-            <li><a href="/image-watermarking">Watermark</a></li>
-            <li><a href="/image-effects">Effects</a></li>
-            <li><a href="/image-crop">Crop</a></li>
-            <li><a href="/blur-face">Blur Face</a></li>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/image-compression">Compress Image</a></li>
+            <li><a href="/image-resize">Resize Image</a></li>
+            <li><a href="/convert-image-format">Convert Image</a></li>
+            <li><a href="/image-rotate">Rotate Image</a></li>
+            <li class="more-menu">
+                <a href="javascript:void(0)">More</a>
+                <div class="more-menu-content">
+                    <a href="/image-watermarking">Watermark</a>
+                    <a href="/image-effects">Image Effects</a>
+                    <a href="/image-crop">Crop Image</a>
+                    <a href="/blur-face">Blur Face</a>
+                </div>
+            </li>
         </ul>
     </nav>
 
@@ -197,5 +288,12 @@
             <li><a href="/tools">Tools</a></li>
         </ul>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
