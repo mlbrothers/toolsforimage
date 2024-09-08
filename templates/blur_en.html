@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blur faces or specific areas in your images with ToolsForImage. Protect privacy by selectively blurring parts of your photos.">
+    <title>Blur Face - ToolsForImage</title>
+    <style>
+        :root {
+            --font-family: "Arial", monospace;
+            --primary-color: #ede4fb;
+            --secondary-color: #000000;
+            --tertiary-color: #ae6bff;
+            --background-color: #ffffff;
+            --link-color: #000000;
+            --link-hover-color: #4d198d;
+            --box-color: #ffffff;
+            --box-hover-color: #000000;
+            --box-hover-text-color: #4d198d;
+            --footer-hover-text-color: #e0e0e0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--secondary-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: var(--secondary-color);
+            font-family: var(--font-family);
+            text-align: center;
+        }
+
+        main {
+            padding: 2em;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .upload-button {
+            background-color: var(--tertiary-color);
+            color: var(--background-color);
+            padding: 20px 40px;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .upload-button:hover {
+            transform: scale(1.1);
+        }
+
+        #canvas-container {
+            position: relative;
+            margin: 20px auto;
+            display: inline-block;
+            max-width: 100%;
+            max-height: 80vh;
+        }
+
+        #canvas {
+            display: none;
+            max-width: 100%;
+            max-height: 80vh;
+        }
+
+        #blur-box {
+            position: absolute;
+            border: 2px dashed #fff;
+            background-color: rgba(174, 107, 255, 0.3);
+            cursor: move;
+            display: none;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .resize-handle {
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            position: absolute;
+            right: -5px;
+            bottom: -5px;
+            cursor: se-resize;
+        }
+
+        #apply-blur {
+            background-color: var(--tertiary-color);
+            color: var(--background-color);
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        #error-message {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Blur Face Tool</h1>
+        <p>Protect privacy by blurring specific areas in your images. Upload an image, select the area to blur, and download the result.</p>
+        <input type="file" id="image-upload" accept="image/*" style="display: none;">
+        <button class="upload-button" onclick="document.getElementById('image-upload').click();">Upload Image</button>
+        <div id="canvas-container">
+            <canvas id="canvas"></canvas>
+            <div id="blur-box">
+                <div class="resize-handle"></div>
+            </div>
+        </div>
+        <button id="apply-blur">Apply Blur</button>
+        <div id="error-message"></div>
+    </main>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const blurBox = document.getElementById('blur-box');
+        const applyBlurButton = document.getElementById('apply-blur');
+        const errorMessage = document.getElementById('error-message');
+        let img;
+        let scale = 1;
+
+        document.getElementById('image-upload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                img = new Image();
+                img.onload = function() {
+                    const maxWidth = window.innerWidth * 0.8;
+                    const maxHeight = window.innerHeight * 0.8;
+                    scale = Math.min(1, maxWidth / img.width, maxHeight / img.height);
+                    
+                    canvas.width = img.width * scale;
+                    canvas.height = img.height * scale;
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    canvas.style.display = 'block';
+                    blurBox.style.display = 'block';
+                    applyBlurButton.style.display = 'block';
+                    errorMessage.style.display = 'none';
+                    resetBlurBox();
+                }
+                img.src = URL.createObjectURL(file);
+            }
+        });
+
+        let isDragging = false;
+        let isResizing = false;
+        let startX, startY, startWidth, startHeight;
+
+        blurBox.addEventListener('mousedown', function(e) {
+            if (e.target.className === 'resize-handle') {
+                isResizing = true;
+            } else {
+                isDragging = true;
+            }
+            startX = e.clientX - blurBox.offsetLeft;
+            startY = e.clientY - blurBox.offsetTop;
+            startWidth = parseInt(document.defaultView.getComputedStyle(blurBox).width, 10);
+            startHeight = parseInt(document.defaultView.getComputedStyle(blurBox).height, 10);
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (isDragging) {
+                const newX = e.clientX - canvas.offsetLeft - startX;
+                const newY = e.clientY - canvas.offsetTop - startY;
+                const maxX = canvas.width - blurBox.offsetWidth;
+                const maxY = canvas.height - blurBox.offsetHeight;
+                blurBox.style.left = `${Math.max(0, Math.min(newX, maxX))}px`;
+                blurBox.style.top = `${Math.max(0, Math.min(newY, maxY))}px`;
+            } else if (isResizing) {
+                const newWidth = startWidth + e.clientX - startX - canvas.offsetLeft;
+                const newHeight = startHeight + e.clientY - startY - canvas.offsetTop;
+                const maxWidth = canvas.width - blurBox.offsetLeft;
+                const maxHeight = canvas.height - blurBox.offsetTop;
+                blurBox.style.width = `${Math.max(10, Math.min(newWidth, maxWidth))}px`;
+                blurBox.style.height = `${Math.max(10, Math.min(newHeight, maxHeight))}px`;
+            }
+        });
+
+        document.addEventListener('mouseup', function() {
+            isDragging = false;
+            isResizing = false;
+        });
+
+        function resetBlurBox() {
+            const initialSize = Math.min(100, canvas.width / 2, canvas.height / 2);
+            blurBox.style.width = `${initialSize}px`;
+            blurBox.style.height = `${initialSize}px`;
+            blurBox.style.left = '0px';
+            blurBox.style.top = '0px';
+        }
+
+        applyBlurButton.addEventListener('click', function() {
+            const blurData = {
+                x: blurBox.offsetLeft / canvas.width,
+                y: blurBox.offsetTop / canvas.height,
+                width: blurBox.offsetWidth / canvas.width,
+                height: blurBox.offsetHeight / canvas.height
+            };
+
+            // Ensure blur region is valid
+            if (blurData.width <= 0 || blurData.height <= 0) {
+                errorMessage.textContent = 'Invalid blur region. Please select a larger area.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            // Convert canvas to base64 image
+            const imageData = canvas.toDataURL('image/png');
+
+            fetch('/apply-blur', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    image: imageData,
+                    ...blurData
+                }),
+            })
+            .then(response => response.blob())
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'blurred_image.png';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                
+                // Reload the page after download
+                setTimeout(() => {
+                    window.location.reload();
+                }, 100);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                errorMessage.textContent = 'An error occurred while processing the image.';
+                errorMessage.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

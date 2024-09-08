@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, send_file, jsonify, session
 from PIL import Image, ImageEnhance, ImageFilter, ImageOps, ImageDraw, ImageFont
 from html2image import Html2Image
 import io
@@ -8,6 +8,8 @@ import os
 import tempfile
 import numpy as np
 import json
+import cv2
+import base64
 
 app = Flask(__name__)
 hti = Html2Image()
@@ -154,8 +156,7 @@ def convert_url_to_image():
 
         # Convert URL to image directly into BytesIO using Html2Image
         hti = Html2Image(
-            output_path='.',  # You can keep the path here as '.' to store in current directory temporarily
-            browser_executable='/opt/render/project/.render/chrome/opt/google/chrome/google-chrome'  # Use your Chrome path
+            output_path='.'
         )
         
         # Adding headless Chrome options to avoid dbus and GPU errors
@@ -417,6 +418,68 @@ def watermark_image():
 
         return send_file(img_io, mimetype=f'image/{img_format.lower()}', as_attachment=True, download_name=unique_filename)
     except Exception as e:
+        return str(e), 500
+
+@app.route('/blur-face')
+def image_blur():
+    return render_template('blur_en.html')
+
+@app.route('/apply-blur', methods=['POST'])
+def apply_blur():
+    try:
+        # Get blur data from the request
+        blur_data = request.json
+        # Get the image data from the request
+        image_data = blur_data.get('image')
+        if not image_data:
+            return "No image data provided", 400
+
+        # Strip base64 prefix if present and decode
+        try:
+            base64_data = image_data.split(',')[1] if ',' in image_data else image_data
+            image = Image.open(io.BytesIO(base64.b64decode(base64_data)))
+        except Exception as decode_err:
+            return f"Error decoding base64 image data: {str(decode_err)}", 500
+        
+        # Check the format of the image
+        img_format = image.format or 'PNG'  # Default to PNG if format is not detected
+
+        # Calculate blur coordinates
+        x = int(blur_data['x'] * image.width)
+        y = int(blur_data['y'] * image.height)
+        width = int(blur_data['width'] * image.width)
+        height = int(blur_data['height'] * image.height)
+
+        # Ensure the region to blur is within the image boundaries
+        x = max(0, min(x, image.width - 1))
+        y = max(0, min(y, image.height - 1))
+        width = max(1, min(width, image.width - x))
+        height = max(1, min(height, image.height - y))
+
+        # Convert PIL Image to OpenCV format
+        cv_image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+
+        # Apply blur to the specified region
+        roi = cv_image[y:y+height, x:x+width]
+        if roi.size == 0:
+            return "Invalid blur region", 400
+        blurred_roi = cv2.GaussianBlur(roi, (157, 157), 0)
+        cv_image[y:y+height, x:x+width] = blurred_roi
+
+        # Convert back to PIL Image
+        blurred_image = Image.fromarray(cv2.cvtColor(cv_image, cv2.COLOR_BGR2RGB))
+
+        # Save the image to a BytesIO stream
+        img_io = io.BytesIO()
+        blurred_image.save(img_io, format=img_format)
+        img_io.seek(0)
+
+        # Generate a unique filename
+        unique_filename = f"blurred_{uuid.uuid4().hex}_{int(time.time())}.{img_format.lower()}"
+
+        return send_file(img_io, mimetype=f'image/{img_format.lower()}', as_attachment=True, download_name=unique_filename)
+    except Exception as e:
+        print(f"Error in apply_blur function: {str(e)}")
         return str(e), 500
 
 # Consolidate static page routes

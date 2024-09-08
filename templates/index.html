@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Welcome to ToolsForImage - Your one-stop solution for image compression, resizing, cropping, format conversion, rotation, watermarking, and more. Enhance your images effortlessly with our easy-to-use tools.">
+    <meta name="description" content="Welcome to ToolsForImage - Your one-stop solution for image compression, resizing, cropping, format conversion, rotation, watermarking, face blurring, and more. Enhance your images effortlessly with our easy-to-use tools.">
     <title>Image Tools</title>
     <style>
         :root {
@@ -245,6 +245,7 @@
                     <a href="/image-watermarking">Watermark</a>
                     <a href="/image-effects">Image Effects</a>
                     <a href="/image-crop">Crop Image</a>
+                    <a href="/blur-face">Blur Face</a>
                 </div>
             </li>
         </ul>
@@ -302,12 +303,19 @@
                 </div>
             </a>
 
-
             <a href="/image-watermarking" style="text-decoration: none; color: inherit;">
                 <div class="grid-item">
                     <img src="{{ url_for('static', filename='stamp.svg') }}" alt="Watermark Image Icon" style="width: 50px; height: 50px;">
                     <h2>Watermark</h2>
                     <p>Protect your work by adding watermarks to your images. Ideal for photographers and digital artists.</p>
+                </div>
+            </a>
+
+            <a href="/blur-face" style="text-decoration: none; color: inherit;">
+                <div class="grid-item">
+                    <img src="{{ url_for('static', filename='blur.svg') }}" alt="Blur Face Icon" style="width: 50px; height: 50px;">
+                    <h2>Blur Face</h2>
+                    <p>Protect privacy by automatically blurring faces in your images. Perfect for maintaining anonymity in photos.</p>
                 </div>
             </a>
         </div>
