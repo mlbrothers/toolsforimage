@@ -1,3 +1,4 @@
+# Author: Siddharth1India
 import base64
 from flask import Flask, render_template, request, send_file, send_from_directory
 from PIL import Image, ImageEnhance, ImageFilter, ImageOps, ImageDraw, ImageFont
