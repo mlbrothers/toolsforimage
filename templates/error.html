@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <style>
+        :root {
+            --font-family: "Arial", monospace;
+            --primary-color: #ede4fb;
+            --secondary-color: #000000;
+            --background-color: #ffffff;
+            --link-color: #000000;
+            --link-hover-color: #4d198d;
+        }
+
+        body {
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--secondary-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        nav {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2em;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 1em;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--link-hover-color);
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 1em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-logo"><a href="/" style="text-decoration: none; color: inherit;">ToolsForImage</a></div>
+    </nav>
+
+    <main>
+        <div>
+            <h1>404 - Page Not Found</h1>
+            <p>Oops! The page you're looking for doesn't exist.</p>
+            <p>Let's get you back on track:</p>
+            <p><a href="/">Return to Homepage</a></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 ToolsForImage. All rights reserved.</p>
+    </footer>
+</body>
+</html>

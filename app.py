@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file, jsonify, session
+from flask import Flask, render_template, request, send_file, jsonify, session, abort
 from PIL import Image, ImageEnhance, ImageFilter, ImageOps, ImageDraw, ImageFont
 from html2image import Html2Image
 import io
@@ -50,17 +50,17 @@ def image_compression():
 @app.route('/compress-image', methods=['POST'])
 def compress_image():
     if 'image' not in request.files:
-        return "No image file provided", 400
+        return render_template('error.html', error="No image file provided"), 400
 
     image_file = request.files['image']
     if image_file.filename == '':
-        return "No selected file", 400
+        return render_template('error.html', error="No selected file"), 400
 
     try:
         img_io, img_format, unique_filename = process_image(image_file)
         return send_file(img_io, mimetype=f'image/{img_format.lower()}', as_attachment=True, download_name=unique_filename)
     except Exception as e:
-        return str(e), 500
+        return render_template('error.html', error=str(e)), 500
 
 @app.route('/image-rotate')
 def image_rotate():
@@ -69,11 +69,11 @@ def image_rotate():
 @app.route('/rotate-image', methods=['POST'])
 def rotate_image():
     if 'image' not in request.files:
-        return "No image file provided", 400
+        return render_template('error.html', error="No image file provided"), 400
 
     image_file = request.files['image']
     if image_file.filename == '':
-        return "No selected file", 400
+        return render_template('error.html', error="No selected file"), 400
 
     try:
         # Open the image file
@@ -96,7 +96,7 @@ def rotate_image():
 
         return send_file(img_io, mimetype=f'image/{img_format.lower()}', as_attachment=True, download_name=unique_filename)
     except Exception as e:
-        return str(e), 500
+        return render_template('error.html', error=str(e)), 500
 
 @app.route('/image-crop')
 def image_crop():
@@ -105,11 +105,11 @@ def image_crop():
 @app.route('/crop-image', methods=['POST'])
 def crop_image():
     if 'image' not in request.files:
-        return "No image file provided", 400
+        return render_template('error.html', error="No image file provided"), 400
 
     image_file = request.files['image']
     if image_file.filename == '':
-        return "No selected file", 400
+        return render_template('error.html', error="No selected file"), 400
 
     try:
         # Open the image file
@@ -135,7 +135,7 @@ def crop_image():
 
         return send_file(img_io, mimetype=f'image/{img_format.lower()}', as_attachment=True, download_name=unique_filename)
     except Exception as e:
-        return str(e), 500
+        return render_template('error.html', error=str(e)), 500
 
 @app.route('/html-to-image')
 def url_to_image():
@@ -145,7 +145,7 @@ def url_to_image():
 def convert_url_to_image():
     url = request.form.get('url')
     if not url:
-        return "No URL provided", 400
+        return render_template('error.html', error="No URL provided"), 400
 
     try:
         # Generate a unique filename for download purposes
@@ -184,7 +184,7 @@ def convert_url_to_image():
         )
 
     except Exception as e:
-        return str(e), 500
+        return render_template('error.html', error=str(e)), 500
 
 @app.route('/image-resize')
 def image_resize():
@@ -193,11 +193,11 @@ def image_resize():
 @app.route('/resize-image', methods=['POST'])
 def resize_image():
     if 'image' not in request.files:
-        return "No image file provided", 400
+        return render_template('error.html', error="No image file provided"), 400
 
     image_file = request.files['image']
     if image_file.filename == '':
-        return "No selected file", 400
+        return render_template('error.html', error="No selected file"), 400
 
     try:
         # Open the image file
@@ -226,7 +226,7 @@ def resize_image():
 
         return send_file(img_io, mimetype=f'image/{img_format.lower()}', as_attachment=True, download_name=unique_filename)
     except Exception as e:
-        return str(e), 500
+        return render_template('error.html', error=str(e)), 500
 
 @app.route('/image-effects')
 def image_effects():
@@ -235,11 +235,11 @@ def image_effects():
 @app.route('/apply-effects', methods=['POST'])
 def apply_effects():
     if 'image' not in request.files:
-        return "No image file provided", 400
+        return render_template('error.html', error="No image file provided"), 400
 
     image_file = request.files['image']
     if image_file.filename == '':
-        return "No selected file", 400
+        return render_template('error.html', error="No selected file"), 400
 
     try:
         # Open the image file
@@ -301,7 +301,7 @@ def apply_effects():
 
         return send_file(img_io, mimetype=f'image/{img_format.lower()}', as_attachment=True, download_name=unique_filename)
     except Exception as e:
-        return str(e), 500
+        return render_template('error.html', error=str(e)), 500
 
 @app.route('/convert-image-format')
 def convert_image_format():
@@ -310,11 +310,11 @@ def convert_image_format():
 @app.route('/convert-image', methods=['POST'])
 def convert_image():
     if 'image' not in request.files:
-        return "No image file provided", 400
+        return render_template('error.html', error="No image file provided"), 400
 
     image_file = request.files['image']
     if image_file.filename == '':
-        return "No selected file", 400
+        return render_template('error.html', error="No selected file"), 400
 
     output_format = request.form.get('output_format', 'png').lower()
 
@@ -332,7 +332,7 @@ def convert_image():
 
         return send_file(img_io, mimetype=f'image/{output_format}', as_attachment=True, download_name=unique_filename)
     except Exception as e:
-        return str(e), 500
+        return render_template('error.html', error=str(e)), 500
 
 @app.route('/image-watermarking')
 def image_watermarking():
@@ -341,11 +341,11 @@ def image_watermarking():
 @app.route('/watermark-image', methods=['POST'])
 def watermark_image():
     if 'image' not in request.files:
-        return "No image file provided", 400
+        return render_template('error.html', error="No image file provided"), 400
 
     image_file = request.files['image']
     if image_file.filename == '':
-        return "No selected file", 400
+        return render_template('error.html', error="No selected file"), 400
 
     try:
         # Open the image file
@@ -418,7 +418,7 @@ def watermark_image():
 
         return send_file(img_io, mimetype=f'image/{img_format.lower()}', as_attachment=True, download_name=unique_filename)
     except Exception as e:
-        return str(e), 500
+        return render_template('error.html', error=str(e)), 500
 
 @app.route('/blur-face')
 def image_blur():
@@ -432,14 +432,14 @@ def apply_blur():
         # Get the image data from the request
         image_data = blur_data.get('image')
         if not image_data:
-            return "No image data provided", 400
+            return render_template('error.html', error="No image data provided"), 400
 
         # Strip base64 prefix if present and decode
         try:
             base64_data = image_data.split(',')[1] if ',' in image_data else image_data
             image = Image.open(io.BytesIO(base64.b64decode(base64_data)))
         except Exception as decode_err:
-            return f"Error decoding base64 image data: {str(decode_err)}", 500
+            return render_template('error.html', error=f"Error decoding base64 image data: {str(decode_err)}"), 500
         
         # Check the format of the image
         img_format = image.format or 'PNG'  # Default to PNG if format is not detected
@@ -462,7 +462,7 @@ def apply_blur():
         # Apply blur to the specified region
         roi = cv_image[y:y+height, x:x+width]
         if roi.size == 0:
-            return "Invalid blur region", 400
+            return render_template('error.html', error="Invalid blur region"), 400
         blurred_roi = cv2.GaussianBlur(roi, (157, 157), 0)
         cv_image[y:y+height, x:x+width] = blurred_roi
 
@@ -480,16 +480,64 @@ def apply_blur():
         return send_file(img_io, mimetype=f'image/{img_format.lower()}', as_attachment=True, download_name=unique_filename)
     except Exception as e:
         print(f"Error in apply_blur function: {str(e)}")
-        return str(e), 500
+        return render_template('error.html', error=str(e)), 500
 
 # Consolidate static page routes
-static_pages = [
-    'image-upscale', 'about', 'contact-us', 'help',
-    'faq', 'media', 'legal', 'blogs', 'our-story', 'team', 'features', 'pricing', 'languages', 'tools'
-]
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
-for page in static_pages:
-    app.add_url_rule(f'/{page}', page, lambda page=page: render_template('index.html'))
+@app.route('/contact-us')
+def contact_us():
+    return render_template('contact_us.html')
+
+@app.route('/help')
+def help():
+    return render_template('help.html')
+
+@app.route('/faq')
+def faq():
+    return render_template('faq.html')
+
+@app.route('/media')
+def media():
+    return render_template('media.html')
+
+@app.route('/legal')
+def legal():
+    return render_template('legal.html')
+
+@app.route('/blogs')
+def blogs():
+    return render_template('blogs.html')
+
+@app.route('/our-story')
+def our_story():
+    return render_template('our_story.html')
+
+@app.route('/team')
+def team():
+    return render_template('team.html')
+
+@app.route('/features')
+def features():
+    return render_template('features.html')
+
+@app.route('/pricing')
+def pricing():
+    return render_template('pricing.html')
+
+@app.route('/languages')
+def languages():
+    return render_template('languages.html')
+
+@app.route('/tools')
+def tools():
+    return render_template('tools.html')
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('error.html', error="404 - Page Not Found"), 404
 
 if __name__ == '__main__':
     app.run(debug=True)
