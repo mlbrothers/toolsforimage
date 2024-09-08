@@ -1,16 +1,14 @@
-from flask import Flask, render_template, request, send_file, jsonify, session, abort
+import base64
+from flask import Flask, render_template, request, send_file, send_from_directory
 from PIL import Image, ImageEnhance, ImageFilter, ImageOps, ImageDraw, ImageFont
 from html2image import Html2Image
 import io
 import time
 import uuid
 import os
-import tempfile
 import numpy as np
 import json
 import cv2
-import base64
-import subprocess
 
 app = Flask(__name__)
 hti = Html2Image()
@@ -538,6 +536,14 @@ def languages():
 @app.route('/tools')
 def tools():
     return render_template('index.html')
+
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory('static', 'sitemap.xml')
+
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory('static', 'robots.txt')
 
 @app.errorhandler(404)
 def page_not_found(e):
