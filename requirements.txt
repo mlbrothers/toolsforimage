@@ -3,4 +3,5 @@ Pillow
 uuid
 html2image
 numpy
+opencv-python
 gunicorn
