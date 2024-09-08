@@ -10,6 +10,7 @@ import numpy as np
 import json
 import cv2
 import base64
+import subprocess
 
 app = Flask(__name__)
 hti = Html2Image()
@@ -324,7 +325,13 @@ def convert_image():
 
         # Convert the image
         img_io = io.BytesIO()
-        image.save(img_io, format=output_format)
+        if output_format == 'jpg' or output_format == 'jpeg':
+            # Convert to RGB mode if necessary
+            if image.mode in ('RGBA', 'LA') or (image.mode == 'P' and 'transparency' in image.info):
+                image = image.convert('RGB')
+            image.save(img_io, format='JPEG', quality=95)
+        else:
+            image.save(img_io, format=output_format)
         img_io.seek(0)
 
         # Generate a unique filename
