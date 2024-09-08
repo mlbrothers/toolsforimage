@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Welcome to ToolsForImage - Your one-stop solution for image compression, resizing, cropping, format conversion, rotation, watermarking, face blurring, and more. Enhance your images effortlessly with our easy-to-use tools.">
+    <meta name="description" content="Meet the talented team behind ToolsForImage - experts in image compression, resizing, format conversion, and more. Learn about our developers and visionaries who make our free online image editing tools possible.">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <title>Image Tools</title>
+    <title>Our Team - ToolsForImage</title>
     <style>
         :root {
             --font-family: "Arial", monospace;
@@ -150,36 +150,31 @@
             padding: 2em;
         }
 
-        .grid-container {
+        .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1em;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2em;
+            margin-top: 2em;
         }
 
-        .grid-item {
+        .team-member {
             background-color: var(--box-color);
-            color: var (--secondary-color);
             border: 1px solid var(--secondary-color);
-            padding: 2em;
-            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+            padding: 1.5em;
             text-align: center;
-            height: 200px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .grid-item:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            color: var(--box-hover-text-color);
-            background-color: #e0e0e0;;
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .grid-item h2 {
-            margin-top: 0;
-        }
-
-        .grid-item svg {
-            width: 50px;
-            height: 50px;
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 1em;
         }
 
         footer {
@@ -200,10 +195,6 @@
             justify-content: center;
             gap: 1em;
             margin: 0;
-        }
-
-        footer ul li {
-            display: inline;
         }
 
         footer ul li a {
@@ -253,72 +244,37 @@
     </nav>
 
     <main>
-        <h1>Welcome to Image Tools</h1>
+        <h1>Meet Our Team</h1>
+        <p>At ToolsForImage, we're passionate about providing the best free online image editing tools. Our team of experts works tirelessly to bring you top-notch solutions for image compression, resizing, format conversion, and more.</p>
 
-        <div class="grid-container">
-            <a href="/image-compression" style="text-decoration: none; color: inherit;">
-                <div class="grid-item">
-                    <img src="{{ url_for('static', filename='compress.svg') }}" alt="Compress Image Icon" style="width: 50px; height: 50px;">
-                    <h2>Compress Image</h2>
-                    <p>Reduce the file size of your images without compromising quality. Ideal for faster web loading times.</p>
-                </div>
-            </a>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='sid.svg') }}" alt="Siddharth">
+                <h2>Siddharth</h2>
+                <p>Lead Developer</p>
+                <p>Siddharth is our coding wizard, specializing in image processing algorithms and optimization techniques. He's the brains behind our powerful image compression and resizing tools.</p>
+            </div>
 
-            <a href="/image-resize" style="text-decoration: none; color: inherit;">
-                <div class="grid-item">
-                    <img src="{{ url_for('static', filename='resize.svg') }}" alt="Resize Image Icon" style="width: 50px; height: 50px;">
-                    <h2>Resize Image</h2>
-                    <p>Adjust the dimensions of your images to fit any requirement. Perfect for social media, web design, and print.</p>
-                </div>
-            </a>
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='nandan.svg') }}" alt="Nandan">
+                <h2>Nandan</h2>
+                <p>Frontend Developer</p>
+                <p>Nandan crafts our user-friendly interfaces, ensuring that our image editing tools are accessible and easy to use for everyone, from beginners to professionals.</p>
+            </div>
 
-            <a href="/image-crop" style="text-decoration: none; color: inherit;">
-                <div class="grid-item">
-                    <img src="{{ url_for('static', filename='crop.svg') }}" alt="Crop Image Icon" style="width: 50px; height: 50px;">
-                    <h2>Crop Image</h2>
-                    <p>Remove unwanted areas from your images to highlight the essential parts. Great for profile pictures and thumbnails.</p>
-                </div>
-            </a>
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='jeni.svg') }}" alt="Jenish">
+                <h2>Jenish</h2>
+                <p>Product Visionary</p>
+                <p>Jenish is our idea generator, constantly exploring new ways to enhance our image editing suite. From watermarking to face blurring, he's always pushing the boundaries of what's possible.</p>
+            </div>
 
-            <a href="/convert-image-format" style="text-decoration: none; color: inherit;">
-                <div class="grid-item">
-                    <img src="{{ url_for('static', filename='convert.svg') }}" alt="Convert Image Icon" style="width: 50px; height: 50px;">
-                    <h2>Convert Image</h2>
-                    <p>Change your image formats to JPEG, PNG, GIF, and more. Ensure compatibility across different platforms.</p>
-                </div>
-            </a>
-
-            <a href="/image-rotate" style="text-decoration: none; color: inherit;">
-                <div class="grid-item">
-                    <img src="{{ url_for('static', filename='rotate.svg') }}" alt="Rotate Image Icon" style="width: 50px; height: 50px;">
-                    <h2>Rotate Image</h2>
-                    <p>Correct the orientation of your images. Easily fix sideways or upside-down photos.</p>
-                </div>
-            </a>
-
-            <a href="/image-effects" style="text-decoration: none; color: inherit;">
-                <div class="grid-item">
-                    <img src="{{ url_for('static', filename='edit.svg') }}" alt="Image Effects Icon" style="width: 50px; height: 50px;">
-                    <h2>Image Effects</h2>
-                    <p>Apply creative effects to your images, such as filters and color adjustments. Enhance your photos artistically.</p>
-                </div>
-            </a>
-
-            <a href="/image-watermarking" style="text-decoration: none; color: inherit;">
-                <div class="grid-item">
-                    <img src="{{ url_for('static', filename='stamp.svg') }}" alt="Watermark Image Icon" style="width: 50px; height: 50px;">
-                    <h2>Watermark</h2>
-                    <p>Protect your work by adding watermarks to your images. Ideal for photographers and digital artists.</p>
-                </div>
-            </a>
-
-            <a href="/blur-face" style="text-decoration: none; color: inherit;">
-                <div class="grid-item">
-                    <img src="{{ url_for('static', filename='blur.svg') }}" alt="Blur Face Icon" style="width: 50px; height: 50px;">
-                    <h2>Blur Face</h2>
-                    <p>Protect privacy by automatically blurring faces in your images. Perfect for maintaining anonymity in photos.</p>
-                </div>
-            </a>
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='viraj.svg') }}" alt="Viraj">
+                <h2>Viraj</h2>
+                <p>Quality Assurance</p>
+                <p>Viraj ensures that all our image tools, from format conversion to rotation, meet the highest standards of quality and reliability. He's the guardian of your image editing experience.</p>
+            </div>
         </div>
     </main>
 

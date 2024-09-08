@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Welcome to ToolsForImage - Your one-stop solution for image compression, resizing, cropping, format conversion, rotation, watermarking, face blurring, and more. Enhance your images effortlessly with our easy-to-use tools.">
+    <meta name="description" content="Discover the journey of ToolsForImage - From a simple idea to a comprehensive suite of free online image editing tools. Learn about our mission, values, and commitment to providing accessible image processing solutions.">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <title>Image Tools</title>
+
+    <title>Our Story - ToolsForImage</title>
     <style>
         :root {
             --font-family: "Arial", monospace;
@@ -148,38 +149,12 @@
 
         main {
             padding: 2em;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1em;
-        }
-
-        .grid-item {
-            background-color: var(--box-color);
-            color: var (--secondary-color);
-            border: 1px solid var(--secondary-color);
-            padding: 2em;
-            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
-            text-align: center;
-            height: 200px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .grid-item:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            color: var(--box-hover-text-color);
-            background-color: #e0e0e0;;
-        }
-
-        .grid-item h2 {
-            margin-top: 0;
-        }
-
-        .grid-item svg {
-            width: 50px;
-            height: 50px;
+        h1, h2 {
+            color: var(--secondary-color);
         }
 
         footer {
@@ -253,73 +228,34 @@
     </nav>
 
     <main>
-        <h1>Welcome to Image Tools</h1>
+        <h1>Our Story</h1>
+        <p>Welcome to the story of ToolsForImage, a journey that began with a simple idea and has grown into a comprehensive suite of free online image editing tools.</p>
 
-        <div class="grid-container">
-            <a href="/image-compression" style="text-decoration: none; color: inherit;">
-                <div class="grid-item">
-                    <img src="{{ url_for('static', filename='compress.svg') }}" alt="Compress Image Icon" style="width: 50px; height: 50px;">
-                    <h2>Compress Image</h2>
-                    <p>Reduce the file size of your images without compromising quality. Ideal for faster web loading times.</p>
-                </div>
-            </a>
+        <h2>The Beginning</h2>
+        <p>ToolsForImage was born out of a need for accessible, user-friendly image editing tools. Our founders, a group of passionate developers and designers, recognized the growing demand for quick and efficient image processing solutions in the digital age.</p>
 
-            <a href="/image-resize" style="text-decoration: none; color: inherit;">
-                <div class="grid-item">
-                    <img src="{{ url_for('static', filename='resize.svg') }}" alt="Resize Image Icon" style="width: 50px; height: 50px;">
-                    <h2>Resize Image</h2>
-                    <p>Adjust the dimensions of your images to fit any requirement. Perfect for social media, web design, and print.</p>
-                </div>
-            </a>
+        <h2>Our Mission</h2>
+        <p>From the start, our mission has been clear: to make professional-grade image editing accessible to everyone, regardless of their technical expertise or budget. We believe that powerful image tools should be available to all, from professional photographers to casual social media users.</p>
 
-            <a href="/image-crop" style="text-decoration: none; color: inherit;">
-                <div class="grid-item">
-                    <img src="{{ url_for('static', filename='crop.svg') }}" alt="Crop Image Icon" style="width: 50px; height: 50px;">
-                    <h2>Crop Image</h2>
-                    <p>Remove unwanted areas from your images to highlight the essential parts. Great for profile pictures and thumbnails.</p>
-                </div>
-            </a>
+        <h2>Growth and Evolution</h2>
+        <p>What started as a simple image compression tool has evolved into a comprehensive platform offering a wide range of services. Today, ToolsForImage provides solutions for image compression, resizing, format conversion, rotation, watermarking, and more.</p>
 
-            <a href="/convert-image-format" style="text-decoration: none; color: inherit;">
-                <div class="grid-item">
-                    <img src="{{ url_for('static', filename='convert.svg') }}" alt="Convert Image Icon" style="width: 50px; height: 50px;">
-                    <h2>Convert Image</h2>
-                    <p>Change your image formats to JPEG, PNG, GIF, and more. Ensure compatibility across different platforms.</p>
-                </div>
-            </a>
+        <h2>Our Values</h2>
+        <p>Throughout our journey, we've remained committed to our core values:</p>
+        <ul>
+            <li>Accessibility: Keeping our tools free and easy to use</li>
+            <li>Quality: Delivering professional-grade results</li>
+            <li>Privacy: Respecting user data and maintaining security</li>
+            <li>Innovation: Continuously improving and expanding our offerings</li>
+        </ul>
 
-            <a href="/image-rotate" style="text-decoration: none; color: inherit;">
-                <div class="grid-item">
-                    <img src="{{ url_for('static', filename='rotate.svg') }}" alt="Rotate Image Icon" style="width: 50px; height: 50px;">
-                    <h2>Rotate Image</h2>
-                    <p>Correct the orientation of your images. Easily fix sideways or upside-down photos.</p>
-                </div>
-            </a>
+        <h2>Looking to the Future</h2>
+        <p>As we continue to grow, we're excited about the future of ToolsForImage. We're constantly working on new features and improvements, always with our users' needs in mind. From enhancing our existing tools to developing cutting-edge image processing technologies, we're committed to staying at the forefront of online image editing.</p>
 
-            <a href="/image-effects" style="text-decoration: none; color: inherit;">
-                <div class="grid-item">
-                    <img src="{{ url_for('static', filename='edit.svg') }}" alt="Image Effects Icon" style="width: 50px; height: 50px;">
-                    <h2>Image Effects</h2>
-                    <p>Apply creative effects to your images, such as filters and color adjustments. Enhance your photos artistically.</p>
-                </div>
-            </a>
+        <h2>Join Our Journey</h2>
+        <p>We invite you to be part of our story. Whether you're compressing images for faster web loading, resizing photos for social media, or applying creative effects to your work, ToolsForImage is here to support your image editing needs.</p>
 
-            <a href="/image-watermarking" style="text-decoration: none; color: inherit;">
-                <div class="grid-item">
-                    <img src="{{ url_for('static', filename='stamp.svg') }}" alt="Watermark Image Icon" style="width: 50px; height: 50px;">
-                    <h2>Watermark</h2>
-                    <p>Protect your work by adding watermarks to your images. Ideal for photographers and digital artists.</p>
-                </div>
-            </a>
-
-            <a href="/blur-face" style="text-decoration: none; color: inherit;">
-                <div class="grid-item">
-                    <img src="{{ url_for('static', filename='blur.svg') }}" alt="Blur Face Icon" style="width: 50px; height: 50px;">
-                    <h2>Blur Face</h2>
-                    <p>Protect privacy by automatically blurring faces in your images. Perfect for maintaining anonymity in photos.</p>
-                </div>
-            </a>
-        </div>
+        <p>Thank you for choosing ToolsForImage. We're excited to continue this journey with you, making image editing accessible, efficient, and enjoyable for everyone.</p>
     </main>
 
     <footer>
