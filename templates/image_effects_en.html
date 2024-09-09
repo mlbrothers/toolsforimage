@@ -388,7 +388,36 @@
             }
 
             if (activeEffects.includes('blur')) {
-                boxBlur(imageData, canvas.width, canvas.height, 5);
+                // Apply a simplified blur effect
+                const blurRadius = 3;
+                const width = canvas.width;
+                const height = canvas.height;
+                
+                for (let y = 0; y < height; y++) {
+                    for (let x = 0; x < width; x++) {
+                        let r = 0, g = 0, b = 0, count = 0;
+                        
+                        for (let dy = -blurRadius; dy <= blurRadius; dy++) {
+                            for (let dx = -blurRadius; dx <= blurRadius; dx++) {
+                                const nx = x + dx;
+                                const ny = y + dy;
+                                
+                                if (nx >= 0 && nx < width && ny >= 0 && ny < height) {
+                                    const i = (ny * width + nx) * 4;
+                                    r += data[i];
+                                    g += data[i + 1];
+                                    b += data[i + 2];
+                                    count++;
+                                }
+                            }
+                        }
+                        
+                        const i = (y * width + x) * 4;
+                        data[i] = r / count;
+                        data[i + 1] = g / count;
+                        data[i + 2] = b / count;
+                    }
+                }
             }
 
             if (activeEffects.includes('sharpen')) {
