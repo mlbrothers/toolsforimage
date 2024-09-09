@@ -216,14 +216,20 @@
             transition: transform 0.3s;
             margin-top: 10px;
         }
-        .image-preview {
+        .image-preview-container {
             margin-top: 20px;
             max-width: 100%;
             max-height: 300px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .image-preview {
+            max-width: 100%;
+            max-height: 300px;
             display: none;
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
+            transition: transform 0.3s ease;
         }
         .rotate-controls {
             margin-top: 20px;
@@ -272,7 +278,9 @@
             <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
             <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload from Computer</button>
             <br>
-            <img id="image-preview" class="image-preview" src="#" alt="Image Preview">
+            <div class="image-preview-container">
+                <img id="image-preview" class="image-preview" src="#" alt="Image Preview">
+            </div>
             <br>
             <div class="rotate-controls">
                 <button type="button" class="rotate-button" onclick="rotateImage(-90)">
@@ -316,6 +324,7 @@
                 reader.onload = function(e) {
                     imagePreview.src = e.target.result;
                     imagePreview.style.display = 'block';
+                    resetRotation();
                 }
                 reader.readAsDataURL(file);
             }
@@ -326,6 +335,22 @@
             rotation = (rotation + degrees) % 360;
             imagePreview.style.transform = `rotate(${rotation}deg)`;
             document.getElementById('rotation-angle').value = rotation;
+            
+            // Adjust container size based on rotation
+            const container = document.querySelector('.image-preview-container');
+            if (rotation % 180 !== 0) {
+                container.style.height = imagePreview.offsetWidth + 'px';
+            } else {
+                container.style.height = 'auto';
+            }
+        }
+
+        function resetRotation() {
+            rotation = 0;
+            const imagePreview = document.getElementById('image-preview');
+            imagePreview.style.transform = 'rotate(0deg)';
+            document.getElementById('rotation-angle').value = 0;
+            document.querySelector('.image-preview-container').style.height = 'auto';
         }
 
         function toggleMenu() {
