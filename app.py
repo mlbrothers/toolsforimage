@@ -1,7 +1,7 @@
 # Author: Siddharth1India
 import base64
-from flask import Flask, render_template, request, send_file, send_from_directory
-from PIL import Image, ImageEnhance, ImageFilter, ImageOps, ImageDraw, ImageFont
+from flask import Flask, jsonify, render_template, request, send_file, send_from_directory
+from PIL import Image, ImageEnhance, ImageFilter, ImageOps, ImageDraw, ImageFont, ImageColor
 from html2image import Html2Image
 import io
 import time
@@ -344,84 +344,82 @@ def image_watermarking():
 @app.route('/watermark-image', methods=['POST'])
 def watermark_image():
     if 'image' not in request.files:
-        return render_template('error.html', error="No image file provided"), 400
+        return jsonify({'error': 'No image file provided'}), 400
 
     image_file = request.files['image']
     if image_file.filename == '':
-        return render_template('error.html', error="No selected file"), 400
+        return jsonify({'error': 'No selected file'}), 400
+
+    watermark_text = request.form.get('watermarkText', '')
+    watermark_color = request.form.get('watermarkColor', '#000000')
+    watermark_opacity = float(request.form.get('watermarkOpacity', 0.5))
+    watermark_font_size = int(request.form.get('watermarkFontSize', 20))
+    watermark_position = request.form.get('watermarkPosition', 'bottom-right')
+    watermark_font_style = request.form.get('watermarkFontStyle', 'normal')
 
     try:
         # Open the image file
-        image = Image.open(image_file).convert('RGBA')
-        img_format = image.format or 'PNG'  # Default to PNG if format is not detected
+        image = Image.open(image_file)
 
-        # Get watermark data from form with default values
-        watermark_data = json.loads(request.form.get('watermark-data', '{}'))
-        print(watermark_data)
-        default_data = {
-            'text': 'Watermark',
-            'fontSize': 24,
-            'fontFamily': 'arial.ttf',
-            'color': '#000000',
-            'opacity': 0.5,
-            'x': '50%',
-            'y': '50%'
-        }
-        watermark_data = {**default_data, **watermark_data}
-        print(watermark_data)
-        # Create a transparent overlay image
-        overlay = Image.new('RGBA', image.size, (255, 255, 255, 0))
+        # Create a drawing context
+        draw = ImageDraw.Draw(image)
 
-        # Set font
-        try:
-            font = ImageFont.truetype(watermark_data['fontFamily'], watermark_data['fontSize'])
-        except IOError:
-            font = ImageFont.load_default()
-
-        # Create drawing object
-        draw = ImageDraw.Draw(overlay)
-
-        # Convert color from hex to RGBA
-        color = tuple(int(watermark_data['color'].lstrip('#')[i:i+2], 16) for i in (0, 2, 4))
-        opacity = int(float(watermark_data['opacity']) * 255)
-        color_with_alpha = color + (opacity,)
+        # Set up the font
+        font = ImageFont.load_default()
+        font = font.font_variant(size=watermark_font_size)
 
         # Calculate text size
-        text_bbox = draw.textbbox((0, 0), watermark_data['text'], font=font)
+        text_bbox = draw.textbbox((0, 0), watermark_text, font=font)
         text_width = text_bbox[2] - text_bbox[0]
         text_height = text_bbox[3] - text_bbox[1]
 
         # Calculate position
-        x = watermark_data['x']
-        y = watermark_data['y']
-        
-        if isinstance(x, str) and x.endswith('%'):
-            x = int(image.width * float(x.rstrip('%')) / 100) - text_width // 2
-        else:
-            x = int(x)
+        if watermark_position == 'top-left':
+            x, y = 10, 10
+        elif watermark_position == 'top-right':
+            x, y = image.width - text_width - 10, 10
+        elif watermark_position == 'bottom-left':
+            x, y = 10, image.height - text_height - 10
+        elif watermark_position == 'bottom-right':
+            x, y = image.width - text_width - 10, image.height - text_height - 10
+        else:  # center
+            x, y = (image.width - text_width) // 2, (image.height - text_height) // 2
 
-        if isinstance(y, str) and y.endswith('%'):
-            y = int(image.height * float(y.rstrip('%')) / 100) - text_height // 2
-        else:
-            y = int(y)
+        # Apply watermark
+        color = ImageColor.getrgb(watermark_color)
+        opacity = int(255 * watermark_opacity)
 
-        # Draw watermark on the overlay
-        draw.text((x, y), watermark_data['text'], font=font, fill=color_with_alpha)
+        # Create a new image for the watermark text
+        txt = Image.new('RGBA', image.size, (255, 255, 255, 0))
+        d = ImageDraw.Draw(txt)
 
-        # Combine the original image with the overlay
-        watermarked_image = Image.alpha_composite(image, overlay)
+        # Draw the text
+        d.text((x, y), watermark_text, font=font, fill=color + (opacity,))
 
-        # Save the watermarked image
+        # Applying font style effects
+        if watermark_font_style == 'bold':
+            d.text((x-1, y), watermark_text, font=font, fill=color + (opacity,))
+            d.text((x+1, y), watermark_text, font=font, fill=color + (opacity,))
+        elif watermark_font_style == 'italic':
+            # Simulate italic by shearing the text
+            txt = txt.transform(txt.size, Image.AFFINE, (1, 0.2, 0, 0, 1, 0), resample=Image.BICUBIC)
+        elif watermark_font_style == 'bold-italic':
+            d.text((x-1, y), watermark_text, font=font, fill=color + (opacity,))
+            d.text((x+1, y), watermark_text, font=font, fill=color + (opacity,))
+            txt = txt.transform(txt.size, Image.AFFINE, (1, 0.2, 0, 0, 1, 0), resample=Image.BICUBIC)
+
+        # Combine the original image with the watermark text
+        watermarked = Image.alpha_composite(image.convert('RGBA'), txt)
+
+        # Save the image to a BytesIO object
         img_io = io.BytesIO()
-        watermarked_image.convert('RGB').save(img_io, format=img_format)
+        watermarked.convert('RGB').save(img_io, format='PNG')
         img_io.seek(0)
 
-        # Generate a unique filename
-        unique_filename = f"watermarked_{uuid.uuid4().hex}_{int(time.time())}.{img_format.lower()}"
-
-        return send_file(img_io, mimetype=f'image/{img_format.lower()}', as_attachment=True, download_name=unique_filename)
+        return send_file(img_io, mimetype='image/png')
     except Exception as e:
-        return render_template('error.html', error=str(e)), 500
+        return jsonify({'error': str(e)}), 500
+
 
 @app.route('/blur-face')
 def image_blur():
