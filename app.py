@@ -26,6 +26,8 @@ def before_request():
     else:
         g.lang = 'en'  # Default to English
 
+from werkzeug.exceptions import NotFound
+
 @app.route('/<lang>/<path:subpath>')
 def localized_route(lang, subpath):
     if lang not in supported_languages:
@@ -35,19 +37,22 @@ def localized_route(lang, subpath):
     # Set the language for this request
     g.lang = lang
     
-    # Try to find a matching route for the subpath
-    for rule in app.url_map.iter_rules():
-        if rule.endpoint != 'static' and rule.match(f"/{subpath}"):
-            return app.view_functions[rule.endpoint]()
+    # Create a MapAdapter bound to the current host
+    url_adapter = app.url_map.bind(request.host)
     
-    # If no matching route found, try to render a template
-    template_path = f'{lang}/{subpath}.html'
-    if os.path.exists(os.path.join(app.template_folder, template_path)):
-        return render_template(template_path)
-    elif os.path.exists(os.path.join(app.template_folder, f'en/{subpath}.html')):
-        return render_template(f'en/{subpath}.html')
-    else:
-        abort(404)
+    try:
+        # Try to match the subpath to a route
+        endpoint, arguments = url_adapter.match('/' + subpath)
+        return app.view_functions[endpoint](**arguments)
+    except NotFound:
+        # If no matching route found, try to render a template
+        template_path = f'{lang}/{subpath}.html'
+        if os.path.exists(os.path.join(app.template_folder, template_path)):
+            return render_template(template_path)
+        elif os.path.exists(os.path.join(app.template_folder, f'en/{subpath}.html')):
+            return render_template(f'en/{subpath}.html')
+        else:
+            abort(404)
 
 def process_image(image_file):
     try:
@@ -421,6 +426,34 @@ def convert_image(lang='en'):
     except Exception as e:
         return render_template(f'{lang}/error.html', error=str(e)), 500
 
+@app.route('/convert/<from_format>-to-<to_format>')
+@app.route('/<lang>/convert/<from_format>-to-<to_format>')
+def convert_image_format_route(lang='en', from_format='', to_format=''):
+    if lang not in supported_languages:
+        return redirect(f'/en/convert/{from_format}-to-{to_format}')
+    
+    supported_formats = ['png', 'jpg', 'jpeg', 'bmp', 'tiff', 'webp']
+    
+    # Normalize formats
+    from_format = from_format.lower()
+    to_format = to_format.lower()
+    
+    # Validate formats
+    if from_format not in supported_formats or to_format not in supported_formats:
+        return render_template(f'{lang}/error.html', error="Unsupported image format"), 400
+    
+    # Prevent unnecessary conversions
+    if from_format == to_format:
+        return render_template(f'{lang}/error.html', error="Source and target formats are the same"), 400
+    
+    template_name = f'{from_format}-to-{to_format}.html'
+    
+    # Check if a specific template exists, otherwise use a generic template
+    if os.path.exists(os.path.join(app.template_folder, f'{lang}/{template_name}')):
+        return render_template(f'{lang}/{template_name}')
+    else:
+        return render_template(f'{lang}/generic_convert.html', from_format=from_format, to_format=to_format)
+
 @app.route('/image-watermarking')
 @app.route('/<lang>/image-watermarking')
 def image_watermarking(lang='en'):
@@ -664,14 +697,14 @@ def pricing(lang='en'):
 def languages(lang='en'):
     if lang not in supported_languages:
         return redirect('/en/languages')
-    return render_template(f'{lang}/index.html')
+    return render_template(f'{lang}/languages.html')
 
 @app.route('/tools')
 @app.route('/<lang>/tools')
 def tools(lang='en'):
     if lang not in supported_languages:
         return redirect('/en/tools')
-    return render_template(f'{lang}/index.html')
+    return render_template(f'{lang}/tools.html')
 
 @app.route('/sitemap.xml')
 def sitemap():
