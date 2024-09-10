@@ -1,6 +1,6 @@
 # Author: Siddharth1India
 import base64
-from flask import Flask, jsonify, render_template, request, send_file, send_from_directory
+from flask import Flask, abort, g, jsonify, redirect, render_template, request, send_file, send_from_directory
 from PIL import Image, ImageEnhance, ImageFilter, ImageOps, ImageDraw, ImageFont, ImageColor
 from html2image import Html2Image
 import io
@@ -13,6 +13,41 @@ import cv2
 
 app = Flask(__name__)
 hti = Html2Image()
+
+# At the top of your file, add:
+supported_languages = ['en', 'hi', 'es', 'fr', 'de']  # Add more as needed
+
+@app.before_request
+def before_request():
+    # Extract language from URL if present
+    parts = request.path.split('/')
+    if len(parts) > 1 and parts[1] in supported_languages:
+        g.lang = parts[1]
+    else:
+        g.lang = 'en'  # Default to English
+
+@app.route('/<lang>/<path:subpath>')
+def localized_route(lang, subpath):
+    if lang not in supported_languages:
+        # If language is not supported, redirect to English version
+        return redirect(f'/en/{subpath}')
+    
+    # Set the language for this request
+    g.lang = lang
+    
+    # Try to find a matching route for the subpath
+    for rule in app.url_map.iter_rules():
+        if rule.endpoint != 'static' and rule.match(f"/{subpath}"):
+            return app.view_functions[rule.endpoint]()
+    
+    # If no matching route found, try to render a template
+    template_path = f'{lang}/{subpath}.html'
+    if os.path.exists(os.path.join(app.template_folder, template_path)):
+        return render_template(template_path)
+    elif os.path.exists(os.path.join(app.template_folder, f'en/{subpath}.html')):
+        return render_template(f'en/{subpath}.html')
+    else:
+        abort(404)
 
 def process_image(image_file):
     try:
@@ -40,40 +75,57 @@ def process_image(image_file):
         raise e
 
 @app.route('/')
-def index():
-    return render_template('index.html')
+@app.route('/<lang>/')
+def index(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/')
+    return render_template(f'{lang}/index.html')
 
 @app.route('/image-compression')
-def image_compression():
-    return render_template('compress_en.html')
+@app.route('/<lang>/image-compression')
+def image_compression(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/image-compression')
+    return render_template(f'{lang}/compress_en.html')
 
 @app.route('/compress-image', methods=['POST'])
-def compress_image():
+@app.route('/<lang>/compress-image', methods=['POST'])
+def compress_image(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/compress-image')
+
     if 'image' not in request.files:
-        return render_template('error.html', error="No image file provided"), 400
+        return render_template(f'{lang}/error.html', error="No image file provided"), 400
 
     image_file = request.files['image']
     if image_file.filename == '':
-        return render_template('error.html', error="No selected file"), 400
+        return render_template(f'{lang}/error.html', error="No selected file"), 400
 
     try:
         img_io, img_format, unique_filename = process_image(image_file)
         return send_file(img_io, mimetype=f'image/{img_format.lower()}', as_attachment=True, download_name=unique_filename)
     except Exception as e:
-        return render_template('error.html', error=str(e)), 500
+        return render_template(f'{lang}/error.html', error=str(e)), 500
 
 @app.route('/image-rotate')
-def image_rotate():
-    return render_template('rotate_en.html')
+@app.route('/<lang>/image-rotate')
+def image_rotate(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/image-rotate')
+    return render_template(f'{lang}/rotate_en.html')
 
 @app.route('/rotate-image', methods=['POST'])
-def rotate_image():
+@app.route('/<lang>/rotate-image', methods=['POST'])
+def rotate_image(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/rotate-image')
+
     if 'image' not in request.files:
-        return render_template('error.html', error="No image file provided"), 400
+        return render_template(f'{lang}/error.html', error="No image file provided"), 400
 
     image_file = request.files['image']
     if image_file.filename == '':
-        return render_template('error.html', error="No selected file"), 400
+        return render_template(f'{lang}/error.html', error="No selected file"), 400
 
     try:
         # Open the image file
@@ -96,20 +148,27 @@ def rotate_image():
 
         return send_file(img_io, mimetype=f'image/{img_format.lower()}', as_attachment=True, download_name=unique_filename)
     except Exception as e:
-        return render_template('error.html', error=str(e)), 500
+        return render_template(f'{lang}/error.html', error=str(e)), 500
 
 @app.route('/image-crop')
-def image_crop():
-    return render_template('crop_en.html')
+@app.route('/<lang>/image-crop')
+def image_crop(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/image-crop')
+    return render_template(f'{lang}/crop_en.html')
 
 @app.route('/crop-image', methods=['POST'])
-def crop_image():
+@app.route('/<lang>/crop-image', methods=['POST'])
+def crop_image(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/crop-image')
+
     if 'image' not in request.files:
-        return render_template('error.html', error="No image file provided"), 400
+        return render_template(f'{lang}/error.html', error="No image file provided"), 400
 
     image_file = request.files['image']
     if image_file.filename == '':
-        return render_template('error.html', error="No selected file"), 400
+        return render_template(f'{lang}/error.html', error="No selected file"), 400
 
     try:
         # Open the image file
@@ -135,14 +194,18 @@ def crop_image():
 
         return send_file(img_io, mimetype=f'image/{img_format.lower()}', as_attachment=True, download_name=unique_filename)
     except Exception as e:
-        return render_template('error.html', error=str(e)), 500
+        return render_template(f'{lang}/error.html', error=str(e)), 500
 
 
 @app.route('/convert-url-to-image', methods=['POST'])
-def convert_url_to_image():
+@app.route('/<lang>/convert-url-to-image', methods=['POST'])
+def convert_url_to_image(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/convert-url-to-image')
+
     url = request.form.get('url')
     if not url:
-        return render_template('error.html', error="No URL provided"), 400
+        return render_template(f'{lang}/error.html', error="No URL provided"), 400
 
     try:
         # Generate a unique filename for download purposes
@@ -181,20 +244,27 @@ def convert_url_to_image():
         )
 
     except Exception as e:
-        return render_template('error.html', error=str(e)), 500
+        return render_template(f'{lang}/error.html', error=str(e)), 500
 
 @app.route('/image-resize')
-def image_resize():
-    return render_template('resize_en.html')
+@app.route('/<lang>/image-resize')
+def image_resize(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/image-resize')
+    return render_template(f'{lang}/resize_en.html')
 
 @app.route('/resize-image', methods=['POST'])
-def resize_image():
+@app.route('/<lang>/resize-image', methods=['POST'])
+def resize_image(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/resize-image')
+
     if 'image' not in request.files:
-        return render_template('error.html', error="No image file provided"), 400
+        return render_template(f'{lang}/error.html', error="No image file provided"), 400
 
     image_file = request.files['image']
     if image_file.filename == '':
-        return render_template('error.html', error="No selected file"), 400
+        return render_template(f'{lang}/error.html', error="No selected file"), 400
 
     try:
         # Open the image file
@@ -223,20 +293,27 @@ def resize_image():
 
         return send_file(img_io, mimetype=f'image/{img_format.lower()}', as_attachment=True, download_name=unique_filename)
     except Exception as e:
-        return render_template('error.html', error=str(e)), 500
+        return render_template(f'{lang}/error.html', error=str(e)), 500
 
 @app.route('/image-effects')
-def image_effects():
-    return render_template('image_effects_en.html')
+@app.route('/<lang>/image-effects')
+def image_effects(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/image-effects')
+    return render_template(f'{lang}/image_effects_en.html')
 
 @app.route('/apply-effects', methods=['POST'])
-def apply_effects():
+@app.route('/<lang>/apply-effects', methods=['POST'])
+def apply_effects(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/apply-effects')
+
     if 'image' not in request.files:
-        return render_template('error.html', error="No image file provided"), 400
+        return render_template(f'{lang}/error.html', error="No image file provided"), 400
 
     image_file = request.files['image']
     if image_file.filename == '':
-        return render_template('error.html', error="No selected file"), 400
+        return render_template(f'{lang}/error.html', error="No selected file"), 400
 
     try:
         # Open the image file
@@ -298,20 +375,27 @@ def apply_effects():
 
         return send_file(img_io, mimetype=f'image/{img_format.lower()}', as_attachment=True, download_name=unique_filename)
     except Exception as e:
-        return render_template('error.html', error=str(e)), 500
+        return render_template(f'{lang}/error.html', error=str(e)), 500
 
 @app.route('/convert-image-format')
-def convert_image_format():
-    return render_template('convert_en.html')
+@app.route('/<lang>/convert-image-format')
+def convert_image_format(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/convert-image-format')
+    return render_template(f'{lang}/convert_en.html')
 
 @app.route('/convert-image', methods=['POST'])
-def convert_image():
+@app.route('/<lang>/convert-image', methods=['POST'])
+def convert_image(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/convert-image')
+
     if 'image' not in request.files:
-        return render_template('error.html', error="No image file provided"), 400
+        return render_template(f'{lang}/error.html', error="No image file provided"), 400
 
     image_file = request.files['image']
     if image_file.filename == '':
-        return render_template('error.html', error="No selected file"), 400
+        return render_template(f'{lang}/error.html', error="No selected file"), 400
 
     output_format = request.form.get('output_format', 'png').lower()
 
@@ -335,14 +419,21 @@ def convert_image():
 
         return send_file(img_io, mimetype=f'image/{output_format}', as_attachment=True, download_name=unique_filename)
     except Exception as e:
-        return render_template('error.html', error=str(e)), 500
+        return render_template(f'{lang}/error.html', error=str(e)), 500
 
 @app.route('/image-watermarking')
-def image_watermarking():
-    return render_template('watermark_en.html')
+@app.route('/<lang>/image-watermarking')
+def image_watermarking(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/image-watermarking')
+    return render_template(f'{lang}/watermark_en.html')
 
 @app.route('/watermark-image', methods=['POST'])
-def watermark_image():
+@app.route('/<lang>/watermark-image', methods=['POST'])
+def watermark_image(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/watermark-image')
+
     if 'image' not in request.files:
         return jsonify({'error': 'No image file provided'}), 400
 
@@ -422,25 +513,32 @@ def watermark_image():
 
 
 @app.route('/blur-face')
-def image_blur():
-    return render_template('blur_en.html')
+@app.route('/<lang>/blur-face')
+def image_blur(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/blur-face')
+    return render_template(f'{lang}/blur_en.html')
 
 @app.route('/apply-blur', methods=['POST'])
-def apply_blur():
+@app.route('/<lang>/apply-blur', methods=['POST'])
+def apply_blur(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/apply-blur')
+
     try:
         # Get blur data from the request
         blur_data = request.json
         # Get the image data from the request
         image_data = blur_data.get('image')
         if not image_data:
-            return render_template('error.html', error="No image data provided"), 400
+            return render_template(f'{lang}/error.html', error="No image data provided"), 400
 
         # Strip base64 prefix if present and decode
         try:
             base64_data = image_data.split(',')[1] if ',' in image_data else image_data
             image = Image.open(io.BytesIO(base64.b64decode(base64_data)))
         except Exception as decode_err:
-            return render_template('error.html', error=f"Error decoding base64 image data: {str(decode_err)}"), 500
+            return render_template(f'{lang}/error.html', error=f"Error decoding base64 image data: {str(decode_err)}"), 500
         
         # Check the format of the image
         img_format = image.format or 'PNG'  # Default to PNG if format is not detected
@@ -463,7 +561,7 @@ def apply_blur():
         # Apply blur to the specified region
         roi = cv_image[y:y+height, x:x+width]
         if roi.size == 0:
-            return render_template('error.html', error="Invalid blur region"), 400
+            return render_template(f'{lang}/error.html', error="Invalid blur region"), 400
         blurred_roi = cv2.GaussianBlur(roi, (157, 157), 0)
         cv_image[y:y+height, x:x+width] = blurred_roi
 
@@ -481,60 +579,99 @@ def apply_blur():
         return send_file(img_io, mimetype=f'image/{img_format.lower()}', as_attachment=True, download_name=unique_filename)
     except Exception as e:
         print(f"Error in apply_blur function: {str(e)}")
-        return render_template('error.html', error=str(e)), 500
+        return render_template(f'{lang}/error.html', error=str(e)), 500
 
 # Consolidate static page routes
 @app.route('/about')
-def about():
-    return render_template('about.html')
+@app.route('/<lang>/about')
+def about(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/about')
+    return render_template(f'{lang}/about.html')
 
 @app.route('/contact-us')
-def contact_us():
-    return render_template('contact_us.html')
+@app.route('/<lang>/contact-us')
+def contact_us(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/contact-us')
+    return render_template(f'{lang}/contact_us.html')
 
 @app.route('/help')
-def help():
-    return render_template('help.html')
+@app.route('/<lang>/help')
+def help(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/help')
+    return render_template(f'{lang}/help.html')
 
 @app.route('/faq')
-def faq():
-    return render_template('faq.html')
+@app.route('/<lang>/faq')
+def faq(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/faq')
+    return render_template(f'{lang}/faq.html')
 
 @app.route('/media')
-def media():
-    return render_template('media.html')
+@app.route('/<lang>/media')
+def media(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/media')
+    return render_template(f'{lang}/media.html')
 
 @app.route('/legal')
-def legal():
-    return render_template('legal.html')
+@app.route('/<lang>/legal')
+def legal(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/legal')
+    return render_template(f'{lang}/legal.html')
 
 @app.route('/blogs')
-def blogs():
-    return render_template('blogs.html')
+@app.route('/<lang>/blogs')
+def blogs(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/blogs')
+    return render_template(f'{lang}/blogs.html')
 
 @app.route('/our-story')
-def our_story():
-    return render_template('our_story.html')
+@app.route('/<lang>/our-story')
+def our_story(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/our-story')
+    return render_template(f'{lang}/our_story.html')
 
 @app.route('/team')
-def team():
-    return render_template('team.html')
+@app.route('/<lang>/team')
+def team(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/team')
+    return render_template(f'{lang}/team.html')
 
 @app.route('/features')
-def features():
-    return render_template('features.html')
+@app.route('/<lang>/features')
+def features(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/features')
+    return render_template(f'{lang}/features.html')
 
 @app.route('/pricing')
-def pricing():
-    return render_template('pricing.html')
+@app.route('/<lang>/pricing')
+def pricing(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/pricing')
+    return render_template(f'{lang}/pricing.html')
 
 @app.route('/languages')
-def languages():
-    return render_template('index.html')
+@app.route('/<lang>/languages')
+def languages(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/languages')
+    return render_template(f'{lang}/index.html')
 
 @app.route('/tools')
-def tools():
-    return render_template('index.html')
+@app.route('/<lang>/tools')
+def tools(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/tools')
+    return render_template(f'{lang}/index.html')
 
 @app.route('/sitemap.xml')
 def sitemap():
@@ -546,7 +683,7 @@ def robots():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('error.html', error="404 - Page Not Found"), 404
+    return render_template('en/error.html', error="404 - Page Not Found"), 404
 
 if __name__ == '__main__':
     app.run(debug=True)

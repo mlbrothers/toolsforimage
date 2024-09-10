@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ToolsForImage में आपका स्वागत है - इमेज कम्प्रेशन, रिसाइज़िंग, क्रॉपिंग, फॉर्मेट कन्वर्ज़न, रोटेशन, वॉटरमार्किंग, फेस ब्लरिंग और अधिक के लिए आपका एकमात्र समाधान। हमारे आसान उपयोग टूल्स से अपनी छवियों को आसानी से बढ़ाएँ।">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <title>ToolsForImage - इमेज टूल्स</title>
+    <style>
+        :root {
+            --font-family: "Arial", monospace;
+            --primary-color: #ede4fb;
+            --secondary-color: #000000;
+            --tertiary-color: #CDDC39;
+            --background-color: #ffffff;
+            --link-color: #000000;
+            --link-hover-color: #4d198d;
+            --box-color: #ffffff;
+            --box-hover-color: #000000;
+            --box-hover-text-color: #4d198d;
+            --footer-hover-text-color: #e0e0e0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--secondary-color);
+        }
+
+        nav {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .more-menu {
+            position: relative;
+            display: inline-block;
+        }
+
+        .more-menu-content {
+            display: none;
+            position: absolute;
+            background-color: var(--primary-color);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            right: 0;
+        }
+
+        .more-menu-content a {
+            color: var(--secondary-color);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .more-menu-content a:hover {
+            background-color: var(--box-color);
+            color: var(--link-hover-color);
+            text-decoration: underline;
+        }
+
+        .more-menu:hover .more-menu-content {
+            display: block;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 4px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1em;
+        }
+
+        .nav-links.active {
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            footer ul {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        main {
+            padding: 2em;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1em;
+        }
+
+        .grid-item {
+            background-color: var(--box-color);
+            color: var (--secondary-color);
+            border: 1px solid var(--secondary-color);
+            padding: 2em;
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+            text-align: center;
+            height: 200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid-item:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: var(--box-hover-text-color);
+            background-color: #e0e0e0;;
+        }
+
+        .grid-item h2 {
+            margin-top: 0;
+        }
+
+        .grid-item svg {
+            width: 50px;
+            height: 50px;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 1em;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1em;
+            margin: 0;
+        }
+
+        footer ul li {
+            display: inline;
+        }
+
+        footer ul li a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer ul li a:hover {
+            color: var(--link-hover-color);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PR74FHGP0L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PR74FHGP0L');
+</script>
+<body>
+    <nav>
+        <div class="nav-logo"><a href="/" style="text-decoration: none; color: inherit;">ToolsForImage</a></div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/image-compression">इमेज को संपीड़ित करें</a></li>
+            <li><a href="/image-resize">इमेज का आकार बदलें</a></li>
+            <li><a href="/convert-image-format">इमेज को कन्वर्ट करें</a></li>
+            <li><a href="/image-rotate">इमेज को घुमाएं</a></li>
+            <li class="more-menu">
+                <a href="javascript:void(0)">अधिक</a>
+                <div class="more-menu-content">
+                    <a href="/image-watermarking">वॉटरमार्क</a>
+                    <a href="/image-effects">इमेज इफेक्ट्स</a>
+                    <a href="/image-crop">इमेज क्रॉप करें</a>
+                    <a href="/blur-face">चेहरे को धुंधला करें</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>इमेज टूल्स में आपका स्वागत है</h1>
+
+        <div class="grid-container">
+            <a href="/image-compression" style="text-decoration: none; color: inherit;">
+                <div class="grid-item">
+                    <img src="{{ url_for('static', filename='compress.svg') }}" alt="Compress Image Icon" style="width: 50px; height: 50px;">
+                    <h2>इमेज को संपीड़ित करें</h2>
+                    <p>अपनी छवियों के फ़ाइल आकार को गुणवत्ता से समझौता किए बिना कम करें। तेज़ वेब लोडिंग समय के लिए आदर्श।</p>
+                </div>
+            </a>
+
+            <a href="/image-resize" style="text-decoration: none; color: inherit;">
+                <div class="grid-item">
+                    <img src="{{ url_for('static', filename='resize.svg') }}" alt="Resize Image Icon" style="width: 50px; height: 50px;">
+                    <h2>इमेज का आकार बदलें</h2>
+                    <p>अपनी छवियों के आयामों को किसी भी आवश्यकता के अनुरूप समायोजित करें। सोशल मीडिया, वेब डिज़ाइन और प्रिंट के लिए परफेक्ट।</p>
+                </div>
+            </a>
+
+            <a href="/image-crop" style="text-decoration: none; color: inherit;">
+                <div class="grid-item">
+                    <img src="{{ url_for('static', filename='crop.svg') }}" alt="Crop Image Icon" style="width: 50px; height: 50px;">
+                    <h2>इमेज क्रॉप करें</h2>
+                    <p>अपनी छवियों से अवांछित क्षेत्रों को हटाएँ और आवश्यक हिस्सों को उजागर करें। प्रोफ़ाइल चित्रों और थंबनेल के लिए बढ़िया।</p>
+                </div>
+            </a>
+
+            <a href="/convert-image-format" style="text-decoration: none; color: inherit;">
+                <div class="grid-item">
+                    <img src="{{ url_for('static', filename='convert.svg') }}" alt="Convert Image Icon" style="width: 50px; height: 50px;">
+                    <h2>इमेज को कन्वर्ट करें</h2>
+                    <p>अपनी इमेज फ़ॉर्मेट को JPEG, PNG, GIF और अधिक में बदलें। विभिन्न प्लेटफ़ॉर्म पर अनुकूलता सुनिश्चित करें।</p>
+                </div>
+            </a>
+
+            <a href="/image-rotate" style="text-decoration: none; color: inherit;">
+                <div class="grid-item">
+                    <img src="{{ url_for('static', filename='rotate.svg') }}" alt="Rotate Image Icon" style="width: 50px; height: 50px;">
+                    <h2>इमेज को घुमाएं</h2>
+                    <p>अपनी छवियों की अभिविन्यास को सही करें। आसानी से साइडवेज़ या उल्टा तस्वीरें ठीक करें।</p>
+                </div>
+            </a>
+
+            <a href="/image-effects" style="text-decoration: none; color: inherit;">
+                <div class="grid-item">
+                    <img src="{{ url_for('static', filename='edit.svg') }}" alt="Image Effects Icon" style="width: 50px; height: 50px;">
+                    <h2>इमेज इफेक्ट्स</h2>
+                    <p>अपनी छवियों पर रचनात्मक प्रभाव लागू करें, जैसे कि फ़िल्टर और रंग समायोजन। अपनी तस्वीरों को कलात्मक रूप से बढ़ाएँ।</p>
+                </div>
+            </a>
+
+            <a href="/image-watermarking" style="text-decoration: none; color: inherit;">
+                <div class="grid-item">
+                    <img src="{{ url_for('static', filename='stamp.svg') }}" alt="Watermark Image Icon" style="width: 50px; height: 50px;">
+                    <h2>वॉटरमार्क</h2>
+                    <p>अपनी छवियों में वॉटरमार्क जोड़कर अपने कार्य की सुरक्षा करें। फोटोग्राफरों और डिजिटल कलाकारों के लिए आदर्श।</p>
+                </div>
+            </a>
+
+            <a href="/blur-face" style="text-decoration: none; color: inherit;">
+                <div class="grid-item">
+                    <img src="{{ url_for('static', filename='blur.svg') }}" alt="Blur Face Icon" style="width: 50px; height: 50px;">
+                    <h2>चेहरे को धुंधला करें</h2>
+                    <p>अपनी छवियों में चेहरों को स्वचालित रूप से धुंधला करके गोपनीयता की रक्षा करें। तस्वीरों में गुमनामी बनाए रखने के लिए परफेक्ट।</p>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <ul>
+            <li><a href="/about">हमारे बारे में</a></li>
+            <li><a href="/contact-us">संपर्क करें</a></li>
+            <li><a href="/help">मदद</a></li>
+            <li><a href="/faq">अक्सर पूछे जाने वाले प्रश्न</a></li>
+            <li><a href="/media">मीडिया</a></li>
+            <li><a href="/legal">कानूनी</a></li>
+            <li><a href="/blogs">ब्लॉग्स</a></li>
+            <li><a href="/our-story">हमारी कहानी</a></li>
+            <li><a href="/team">टीम</a></li>
+            <li><a href="/features">विशेषताएं</a></li>
+            <li><a href="/pricing">मूल्य निर्धारण</a></li>
+            <li><a href="/languages">भाषाएं</a></li>
+            <li><a href="/tools">उपकरण</a></li>
+        </ul>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

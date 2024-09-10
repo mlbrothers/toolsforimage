@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore ToolsForImage's pricing - All our powerful image editing tools are completely free! Compress, resize, crop, convert, and more at no cost.">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <title>Pricing - ToolsForImage</title>
+    <style>
+        :root {
+            --font-family: "Arial", sans-serif;
+            --primary-color: #ede4fb;
+            --secondary-color: #000000;
+            --tertiary-color: #ae6bff;
+            --background-color: #ffffff;
+            --link-color: #000000;
+            --link-hover-color: #4d198d;
+            --box-color: #ffffff;
+            --box-hover-color: #000000;
+            --box-hover-text-color: #4d198d;
+            --footer-hover-text-color: #e0e0e0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--secondary-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        nav {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .more-menu {
+            position: relative;
+            display: inline-block;
+        }
+
+        .more-menu-content {
+            display: none;
+            position: absolute;
+            background-color: var(--primary-color);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            right: 0;
+        }
+
+        .more-menu-content a {
+            color: var(--secondary-color);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .more-menu-content a:hover {
+            background-color: var(--box-color);
+            color: var(--link-hover-color);
+            text-decoration: underline;
+        }
+
+        .more-menu:hover .more-menu-content {
+            display: block;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 4px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1em;
+        }
+
+        .nav-links.active {
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            footer ul {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 2em;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1, h2 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5em;
+        }
+
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2em;
+        }
+
+        .pricing-box {
+            background-color: var(--box-color);
+            border: 2px solid var(--tertiary-color);
+            border-radius: 10px;
+            padding: 2em;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(174, 107, 255, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .pricing-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(174, 107, 255, 0.3);
+        }
+
+        .price {
+            font-size: 3em;
+            font-weight: bold;
+            color: var(--tertiary-color);
+            margin: 0.5em 0;
+        }
+
+        .price span {
+            font-size: 0.5em;
+            vertical-align: super;
+        }
+
+        .feature-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 1em 0;
+        }
+
+        .feature-list li {
+            margin-bottom: 0.5em;
+            position: relative;
+            padding-left: 1.5em;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            color: var(--tertiary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--tertiary-color);
+            color: var(--box-color);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--link-hover-color);
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 1em;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1em;
+            margin: 0;
+        }
+
+        footer ul li {
+            display: inline;
+        }
+
+        footer ul li a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer ul li a:hover {
+            color: var(--link-hover-color);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PR74FHGP0L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PR74FHGP0L');
+</script>
+<body>
+    <nav>
+        <div class="nav-logo"><a href="/" style="text-decoration: none; color: inherit;">ToolsForImage</a></div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/image-compression">Compress Image</a></li>
+            <li><a href="/image-resize">Resize Image</a></li>
+            <li><a href="/convert-image-format">Convert Image</a></li>
+            <li><a href="/image-rotate">Rotate Image</a></li>
+            <li class="more-menu">
+                <a href="javascript:void(0)">More</a>
+                <div class="more-menu-content">
+                    <a href="/image-watermarking">Watermark</a>
+                    <a href="/image-effects">Image Effects</a>
+                    <a href="/image-crop">Crop Image</a>
+                    <a href="/blur-face">Blur Face</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Pricing</h1>
+        <p>At ToolsForImage, we believe in providing powerful image editing tools accessible to everyone. That's why all our features are completely free!</p>
+
+        <div class="pricing-container">
+            <div class="pricing-box">
+                <h2>Free Plan</h2>
+                <div class="price"><span>$</span>0<span>/month</span></div>
+                <ul class="feature-list">
+                    <li>Image Compression</li>
+                    <li>Image Resizing</li>
+                    <li>Format Conversion</li>
+                    <li>Image Rotation</li>
+                    <li>Image Effects</li>
+                    <li>Watermarking</li>
+                    <li>Face Blurring</li>
+                    <li>HTML to Image</li>
+                    <li>Unlimited Usage</li>
+                </ul>
+                <p>Start using our tools for free today!</p>
+                <a href="/" class="cta-button">Get Started</a>
+            </div>
+        </div>
+
+        <h2>Why Choose ToolsForImage?</h2>
+        <ul>
+            <li>User-friendly interface</li>
+            <li>No registration required</li>
+            <li>Fast processing</li>
+            <li>High-quality results</li>
+            <li>Privacy-focused (we don't store your images)</li>
+            <li>Regular updates and new features</li>
+        </ul>
+
+        <h2>Explore Our Tools</h2>
+        <p>Discover the full range of our image editing capabilities:</p>
+        <ul>
+            <li><a href="/image-compression">Image Compression</a> - Reduce file size without losing quality</li>
+            <li><a href="/image-resize">Image Resizing</a> - Adjust dimensions to your needs</li>
+            <li><a href="/convert-image-format">Format Conversion</a> - Switch between JPEG, PNG, GIF, and more</li>
+            <li><a href="/image-rotate">Image Rotation</a> - Correct image orientation</li>
+            <li><a href="/image-effects">Image Effects</a> - Apply filters and enhancements</li>
+            <li><a href="/image-watermarking">Watermarking</a> - Protect your images</li>
+            <li><a href="/blur-face">Face Blurring</a> - Maintain privacy in photos</li>
+        </ul>
+    </main>
+
+    <footer>
+        <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact-us">Contact Us</a></li>
+            <li><a href="/help">Help</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/media">Media</a></li>
+            <li><a href="/legal">Legal</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+            <li><a href="/our-story">Our Story</a></li>
+            <li><a href="/team">Team</a></li>
+            <li><a href="/features">Features</a></li>
+            <li><a href="/pricing">Pricing</a></li>
+            <li><a href="/languages">Languages</a></li>
+            <li><a href="/tools">Tools</a></li>
+        </ul>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

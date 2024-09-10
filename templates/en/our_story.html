@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover the journey of ToolsForImage - From a simple idea to a comprehensive suite of free online image editing tools. Learn about our mission, values, and commitment to providing accessible image processing solutions.">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <title>Our Story - ToolsForImage</title>
+    <style>
+        :root {
+            --font-family: "Arial", monospace;
+            --primary-color: #ede4fb;
+            --secondary-color: #000000;
+            --tertiary-color: #CDDC39;
+            --background-color: #ffffff;
+            --link-color: #000000;
+            --link-hover-color: #4d198d;
+            --box-color: #ffffff;
+            --box-hover-color: #000000;
+            --box-hover-text-color: #4d198d;
+            --footer-hover-text-color: #e0e0e0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--secondary-color);
+        }
+
+        nav {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .more-menu {
+            position: relative;
+            display: inline-block;
+        }
+
+        .more-menu-content {
+            display: none;
+            position: absolute;
+            background-color: var(--primary-color);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            right: 0;
+        }
+
+        .more-menu-content a {
+            color: var(--secondary-color);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .more-menu-content a:hover {
+            background-color: var(--box-color);
+            color: var(--link-hover-color);
+            text-decoration: underline;
+        }
+
+        .more-menu:hover .more-menu-content {
+            display: block;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 4px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1em;
+        }
+
+        .nav-links.active {
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            footer ul {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        main {
+            padding: 2em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1, h2 {
+            color: var(--secondary-color);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 1em;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1em;
+            margin: 0;
+        }
+
+        footer ul li {
+            display: inline;
+        }
+
+        footer ul li a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer ul li a:hover {
+            color: var(--link-hover-color);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PR74FHGP0L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PR74FHGP0L');
+</script>
+<body>
+    <nav>
+        <div class="nav-logo"><a href="/" style="text-decoration: none; color: inherit;">ToolsForImage</a></div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/image-compression">Compress Image</a></li>
+            <li><a href="/image-resize">Resize Image</a></li>
+            <li><a href="/convert-image-format">Convert Image</a></li>
+            <li><a href="/image-rotate">Rotate Image</a></li>
+            <li class="more-menu">
+                <a href="javascript:void(0)">More</a>
+                <div class="more-menu-content">
+                    <a href="/image-watermarking">Watermark</a>
+                    <a href="/image-effects">Image Effects</a>
+                    <a href="/image-crop">Crop Image</a>
+                    <a href="/blur-face">Blur Face</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Our Story</h1>
+        <p>Welcome to the story of ToolsForImage, a journey that began with a simple idea and has grown into a comprehensive suite of free online image editing tools.</p>
+
+        <h2>The Beginning</h2>
+        <p>ToolsForImage was born out of a need for accessible, user-friendly image editing tools. Our founders, a group of passionate developers and designers, recognized the growing demand for quick and efficient image processing solutions in the digital age.</p>
+
+        <h2>Our Mission</h2>
+        <p>From the start, our mission has been clear: to make professional-grade image editing accessible to everyone, regardless of their technical expertise or budget. We believe that powerful image tools should be available to all, from professional photographers to casual social media users.</p>
+
+        <h2>Growth and Evolution</h2>
+        <p>What started as a simple image compression tool has evolved into a comprehensive platform offering a wide range of services. Today, ToolsForImage provides solutions for image compression, resizing, format conversion, rotation, watermarking, and more.</p>
+
+        <h2>Our Values</h2>
+        <p>Throughout our journey, we've remained committed to our core values:</p>
+        <ul>
+            <li>Accessibility: Keeping our tools free and easy to use</li>
+            <li>Quality: Delivering professional-grade results</li>
+            <li>Privacy: Respecting user data and maintaining security</li>
+            <li>Innovation: Continuously improving and expanding our offerings</li>
+        </ul>
+
+        <h2>Looking to the Future</h2>
+        <p>As we continue to grow, we're excited about the future of ToolsForImage. We're constantly working on new features and improvements, always with our users' needs in mind. From enhancing our existing tools to developing cutting-edge image processing technologies, we're committed to staying at the forefront of online image editing.</p>
+
+        <h2>Join Our Journey</h2>
+        <p>We invite you to be part of our story. Whether you're compressing images for faster web loading, resizing photos for social media, or applying creative effects to your work, ToolsForImage is here to support your image editing needs.</p>
+
+        <p>Thank you for choosing ToolsForImage. We're excited to continue this journey with you, making image editing accessible, efficient, and enjoyable for everyone.</p>
+    </main>
+
+    <footer>
+        <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact-us">Contact Us</a></li>
+            <li><a href="/help">Help</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/media">Media</a></li>
+            <li><a href="/legal">Legal</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+            <li><a href="/our-story">Our Story</a></li>
+            <li><a href="/team">Team</a></li>
+            <li><a href="/features">Features</a></li>
+            <li><a href="/pricing">Pricing</a></li>
+            <li><a href="/languages">Languages</a></li>
+            <li><a href="/tools">Tools</a></li>
+        </ul>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
