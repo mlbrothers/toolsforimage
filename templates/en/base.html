@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block meta_description %}
+    <meta name="description" content="Your default description here.">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>{% block title %}ToolsForImage{% endblock %}</title>
+</head>
+<body>
+    {% include 'en/navbar.html' %}
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    {% include 'en/footer.html' %}
+</body>
+</html>

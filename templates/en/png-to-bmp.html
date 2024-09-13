@@ -1,324 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Convert PNG to BMP images easily with ToolsForImage. Free online PNG to BMP converter.">
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <title>Convert PNG to BMP - ToolsForImage</title>
-    <style>
-        :root {
-            --font-family: "Arial", monospace;
-            --primary-color: #ede4fb;
-            --secondary-color: #000000;
-            --tertiary-color: #ae6bff;
-            --background-color: #ffffff;
-            --link-color: #000000;
-            --link-hover-color: #4d198d;
-            --box-color: #ffffff;
-            --box-hover-color: #000000;
-            --box-hover-text-color: #4d198d;
-            --footer-hover-text-color: #e0e0e0;
-        }
+{% extends "en/base.html" %}
 
-        body {
-            font-family: var(--font-family);
-            margin: 0;
-            padding: 0;
-            background-color: var(--background-color);
-            color: var(--secondary-color);
-            padding-bottom: 100px;
-        }
+{% block meta_description %}
+<meta name="description" content="Convert PNG to BMP images easily with ToolsForImage. Free online PNG to BMP converter.">
+{% endblock %}
 
-        h1 {
-            color: var(--secondary-color);
-            font-family: var(--font-family);
-            text-align: center;
-        }
+{% block title %}Convert PNG to BMP - ToolsForImage{% endblock %}
 
-        nav {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            padding: 1em;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+{% block content %}
+<h1>PNG to BMP Conversion Tool</h1>
+<p>Easily convert your PNG images to BMP format. Upload a PNG image and we'll convert it to BMP for you.</p>
+<form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
+    <input type="file" id="image-upload" name="image" accept="image/png" style="display: none;" onchange="previewImage(event)">
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload PNG Image</button>
+    <br>
+    <img id="image-preview" class="image-preview" src="#" alt="Image Preview">
+    <br>
+    <input type="hidden" name="input_format" value="png">
+    <input type="hidden" name="output_format" value="bmp">
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to BMP</button>
+</form>
 
-        .nav-logo {
-            font-size: 1.5em;
-            font-weight: bold;
-        }
+<style>
+    h1 {
+        color: var(--secondary-color);
+        font-family: var(--font-family);
+        text-align: center;
+    }
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1em;
-        }
+    main {
+        padding: 2em;
+        text-align: center;
+    }
 
-        nav ul li {
-            display: inline;
-        }
+    .upload-button {
+        background-color: var(--tertiary-color);
+        color: var(--background-color);
+        padding: 20px 40px;
+        border: none;
+        cursor: pointer;
+        font-size: 20px;
+        transition: transform 0.3s;
+    }
 
-        nav ul li a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+    .upload-button:hover {
+        transform: scale(1.1);
+    }
 
-        nav ul li a:hover {
-            text-decoration: underline;
-        }
+    .convert-button {
+        background-color: var(--background-color);
+        color: var(--box-hover-color);
+        border: 2px solid var(--box-hover-color);
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 20px;
+        transition: transform 0.3s;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
 
-        .more-menu {
-            position: relative;
-            display: inline-block;
-        }
+    .image-preview {
+        margin-top: 20px;
+        max-width: 100%;
+        max-height: 300px;
+        display: none;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+</style>
 
-        .more-menu-content {
-            display: none;
-            position: absolute;
-            background-color: var(--primary-color);
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-            right: 0;
-        }
-
-        .more-menu-content a {
-            color: var(--secondary-color);
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .more-menu-content a:hover {
-            background-color: var(--box-color);
-            color: var(--link-hover-color);
-            text-decoration: underline;
-        }
-
-        .more-menu:hover .more-menu-content {
-            display: block;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .hamburger div {
-            width: 25px;
-            height: 3px;
-            background-color: var(--secondary-color);
-            margin: 4px 0;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1em;
-        }
-
-        .nav-links.active {
-            display: block;
-        }
-
-        @media (max-width: 600px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                text-align: center;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            footer ul {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-
-        main {
-            padding: 2em;
-            text-align: center;
-        }
-
-        .upload-button {
-            background-color: var(--tertiary-color);
-            color: var(--background-color);
-            padding: 20px 40px;
-            border: none;
-            cursor: pointer;
-            font-size: 20px;
-            transition: transform 0.3s;
-        }
-
-        .upload-button:hover {
-            transform: scale(1.1);
-        }
-
-        .convert-button {
-            background-color: var(--background-color);
-            color: var(--box-hover-color);
-            border: 2px solid var(--box-hover-color);
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 20px;
-            transition: transform 0.3s;
-            margin-top: 10px;
-            margin-bottom: 20px;
-        }
-
-        .image-preview {
-            margin-top: 20px;
-            max-width: 100%;
-            max-height: 300px;
-            display: none;
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-        }
-
-        footer {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            padding: 1em;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        footer ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1em;
-        }
-
-        footer ul li a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        footer ul li a:hover {
-            color: var(--link-hover-color);
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PR74FHGP0L"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    function validateImageSelection() {
+        const imageUpload = document.getElementById('image-upload');
+        if (!imageUpload.value) {
+            alert('Please select a PNG image to upload.');
+            return false;
+        }
+        return true;
+    }
 
-  gtag('config', 'G-PR74FHGP0L');
+    function previewImage(event) {
+        const imagePreview = document.getElementById('image-preview');
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        }
+    }
 </script>
-<body>
-    <nav>
-        <div class="nav-logo"><a href="/" style="text-decoration: none; color: inherit;">ToolsForImage</a></div>
-        <div class="hamburger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <ul class="nav-links">
-            <li><a href="/image-compression">Compress Image</a></li>
-            <li><a href="/image-resize">Resize Image</a></li>
-            <li><a href="/convert-image-format">Convert Image</a></li>
-            <li><a href="/image-rotate">Rotate Image</a></li>
-            <li class="more-menu">
-                <a href="javascript:void(0)">More</a>
-                <div class="more-menu-content">
-                    <a href="/image-watermarking">Watermark</a>
-                    <a href="/image-effects">Image Effects</a>
-                    <a href="/image-crop">Crop Image</a>
-                    <a href="/blur-face">Blur Face</a>
-                </div>
-            </li>
-        </ul>
-    </nav>
-
-    <main>
-        <h1>PNG to BMP Conversion Tool</h1>
-        <p>Easily convert your PNG images to BMP format. Upload a PNG image and we'll convert it to BMP for you.</p>
-        <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
-            <input type="file" id="image-upload" name="image" accept="image/png" style="display: none;" onchange="previewImage(event)">
-            <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload PNG Image</button>
-            <br>
-            <img id="image-preview" class="image-preview" src="#" alt="Image Preview">
-            <br>
-            <input type="hidden" name="input_format" value="png">
-            <input type="hidden" name="output_format" value="bmp">
-            <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to BMP</button>
-        </form>
-    </main>
-
-    <script>
-        function validateImageSelection() {
-            const imageUpload = document.getElementById('image-upload');
-            if (!imageUpload.value) {
-                alert('Please select a PNG image to upload.');
-                return false;
-            }
-            return true;
-        }
-
-        function previewImage(event) {
-            const imagePreview = document.getElementById('image-preview');
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    imagePreview.src = e.target.result;
-                    imagePreview.style.display = 'block';
-                }
-                reader.readAsDataURL(file);
-            }
-        }
-
-        function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
-        }
-    </script>
-
-    <footer>
-        <ul>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact-us">Contact Us</a></li>
-            <li><a href="/help">Help</a></li>
-            <li><a href="/faq">FAQ</a></li>
-            <li><a href="/media">Media</a></li>
-            <li><a href="/legal">Legal</a></li>
-            <li><a href="/blogs">Blogs</a></li>
-            <li><a href="/our-story">Our Story</a></li>
-            <li><a href="/team">Team</a></li>
-            <li><a href="/features">Features</a></li>
-            <li><a href="/pricing">Pricing</a></li>
-            <li><a href="/languages">Languages</a></li>
-            <li><a href="/tools">Tools</a></li>
-        </ul>
-    </footer>
-</body>
-</html>
+{% endblock %}
