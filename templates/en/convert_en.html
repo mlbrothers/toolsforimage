@@ -54,7 +54,7 @@
 
 <style>
     .upload-button {
-        background-color: var(--tertiary-color);
+        background-color: var(--link-hover-color);
         color: var(--background-color);
         padding: 20px 40px;
         border: none;
@@ -90,5 +90,20 @@
         padding: 10px;
         font-size: 16px;
     }
+        form, h1, p {
+        text-align: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .upload-button, .convert-button, .format-select {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
 </style>
 {% endblock %}

@@ -8,7 +8,7 @@
 
 {% block content %}
 <h1>Image Compression Tool</h1>
-<p>Effortlessly compress a single <strong>JPG/JPEG</strong>, <strong>PNG</strong>, <strong>HEIC</strong>, or <strong>WEBP</strong> image with top-notch quality and optimal compression.</p>
+<p>Effortlessly compress a single <strong>JPG/JPEG</strong>, <strong>PNG</strong> or <strong>WEBP</strong> image with top-notch quality and optimal compression.</p>
 <p>Upload your image file and compress it instantly. Choose your image:</p>
 <form id="compression-form" action="/compress-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
@@ -46,7 +46,7 @@
 
 <style>
     .upload-button {
-        background-color: var(--tertiary-color);
+        background-color: var(--link-hover-color);
         color: var(--background-color);
         padding: 20px 40px;
         border: none;
@@ -76,6 +76,21 @@
         margin-right: auto;
         display: block;
     }
+    form, h1, p {
+        text-align: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .upload-button, .convert-button, .format-select {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
 </style>
 {% endblock %}
 
