@@ -1,8 +1,10 @@
-{% extends "base.html" %}
+{% extends "en/base.html" %}
 
 {% block title %}Image Effects - ToolsForImage{% endblock %}
 
-{% block meta_description %}Apply various effects to your images with ToolsForImage. Enhance your photos with filters like grayscale, blur, sharpen, and more.{% endblock %}
+{% block meta_description %}
+<meta name="description" content="Apply various effects to your images with ToolsForImage. Enhance your photos with filters like grayscale, blur, sharpen, and more.">
+{% endblock %}
 
 {% block content %}
 <h1>Image Effects Tool</h1>
@@ -29,6 +31,68 @@
     <button type="submit" class="effect-button" onclick="return validateImageSelection();">Download Edited Image</button>
 </form>
 {% endblock %}
+
+<style>
+    h1 {
+        color: var(--secondary-color);
+        font-family: var(--font-family);
+        text-align: center;
+    }
+
+    main {
+        padding: 2em;
+        text-align: center;
+    }
+
+    .upload-button {
+        background-color: var(--link-hover-color);
+        color: var(--background-color);
+        padding: 20px 40px;
+        border: none;
+        cursor: pointer;
+        font-size: 20px;
+        transition: transform 0.3s;
+    }
+
+    .upload-button:hover {
+        transform: scale(1.1);
+    }
+
+    .effect-button {
+        background-color: var(--link-hover-color) !important; 
+        color: var(--box-hover-color);
+        border: 2px solid var(--box-hover-color);
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 18px;
+        margin: 10px;
+        transition: transform 0.3s;
+    }
+
+    .effect-button.active {
+        background-color: var(--box-hover-color);
+        color: var(--background-color);
+    }
+
+    .effect-button:hover {
+        transform: scale(1.1);
+    }
+
+    canvas {
+        max-width: 100%;
+        margin: 20px auto;
+        display: none;
+        border: 2px solid var(--box-hover-color);
+    }
+
+    .effects-container {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+</style>
+
 
 {% block scripts %}
 <script>

@@ -11,11 +11,22 @@
 
 <div class="watermark-editor">
     <div class="watermark-controls">
+        <label for="imageUpload">Upload Image:</label>
         <input type="file" id="imageUpload" accept="image/*">
+        
+        <label for="watermarkText">Watermark Text:</label>
         <input type="text" id="watermarkText" placeholder="Enter watermark text">
+        
+        <label for="watermarkColor">Watermark Color:</label>
         <input type="color" id="watermarkColor" value="#000000">
+        
+        <label for="watermarkOpacity">Watermark Opacity:</label>
         <input type="range" id="watermarkOpacity" min="0" max="1" step="0.1" value="0.5">
+        
+        <label for="watermarkFontSize">Watermark Font Size:</label>
         <input type="number" id="watermarkFontSize" min="8" value="20" placeholder="Font size">
+        
+        <label for="watermarkPosition">Watermark Position:</label>
         <select id="watermarkPosition">
             <option value="top-left">Top Left</option>
             <option value="top-right">Top Right</option>
@@ -23,6 +34,8 @@
             <option value="bottom-right">Bottom Right</option>
             <option value="center">Center</option>
         </select>
+        
+        <label for="watermarkFontStyle">Watermark Font Style:</label>
         <select id="watermarkFontStyle">
             <option value="normal">Normal</option>
             <option value="bold">Bold</option>
@@ -35,7 +48,6 @@
         <img id="previewImage" src="" alt="Preview">
     </div>
 
-    <button class="button" id="applyWatermark">Apply Watermark</button>
     <button class="button" id="downloadImage">Download Watermarked Image</button>
 </div>
 
@@ -108,7 +120,6 @@
     const watermarkPosition = document.getElementById('watermarkPosition');
     const watermarkFontStyle = document.getElementById('watermarkFontStyle');
     const previewImage = document.getElementById('previewImage');
-    const applyWatermarkButton = document.getElementById('applyWatermark');
     const downloadButton = document.getElementById('downloadImage');
 
     let originalImage = null;
@@ -121,6 +132,7 @@
             originalImage = new Image();
             originalImage.onload = () => {
                 previewImage.src = originalImage.src;
+                applyWatermark(); // Apply watermark when the image is loaded
             };
             originalImage.src = event.target.result;
         };
@@ -128,34 +140,114 @@
         reader.readAsDataURL(file);
     });
 
-    applyWatermarkButton.addEventListener('click', applyWatermark);
+    // Debounce function to limit the rate of applying watermark
+    function debounce(func, delay) {
+        let timeout;
+        return function(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), delay);
+        };
+    }
+
+    // Add event listeners for real-time updates with debouncing
+    const debouncedApplyWatermark = debounce(applyWatermark, 200); // 200ms delay
+    watermarkText.addEventListener('input', debouncedApplyWatermark);
+    watermarkColor.addEventListener('input', debouncedApplyWatermark);
+    watermarkOpacity.addEventListener('input', debouncedApplyWatermark);
+    watermarkFontSize.addEventListener('input', debouncedApplyWatermark);
+    watermarkPosition.addEventListener('change', debouncedApplyWatermark);
+    watermarkFontStyle.addEventListener('change', debouncedApplyWatermark);
+
     downloadButton.addEventListener('click', downloadWatermarkedImage);
 
     function applyWatermark() {
         if (!originalImage) {
-            alert('Please upload an image first.');
             return;
         }
 
-        const formData = new FormData();
-        formData.append('image', imageUpload.files[0]);
-        formData.append('watermarkText', watermarkText.value);
-        formData.append('watermarkColor', watermarkColor.value);
-        formData.append('watermarkOpacity', watermarkOpacity.value);
-        formData.append('watermarkFontSize', watermarkFontSize.value);
-        formData.append('watermarkPosition', watermarkPosition.value);
-        formData.append('watermarkFontStyle', watermarkFontStyle.value);
+        // Create an offscreen canvas to apply watermark
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
 
-        fetch('/watermark-image', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.blob())
-        .then(blob => {
-            const url = window.URL.createObjectURL(blob);
-            previewImage.src = url;
-        })
-        .catch(error => console.error('Error:', error));
+        // Set canvas size to match the image size
+        canvas.width = originalImage.width;
+        canvas.height = originalImage.height;
+
+        // Draw the original image onto the canvas
+        ctx.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
+
+        // Set the watermark text style
+        const fontSize = parseInt(watermarkFontSize.value);
+        const fontStyle = watermarkFontStyle.value;
+
+        // Check if the font style includes both bold and italic
+        let fullFontStyle = '';
+        if (fontStyle === 'bold-italic') {
+            fullFontStyle = 'bold italic';
+        } else if (fontStyle === 'bold') {
+            fullFontStyle = 'bold';
+        } else if (fontStyle === 'italic') {
+            fullFontStyle = 'italic';
+        } else {
+            fullFontStyle = 'normal';
+        }
+
+        // Apply the font settings to the canvas context
+        ctx.font = `${fullFontStyle} ${fontSize}px Arial`;
+
+        ctx.fillStyle = watermarkColor.value;
+        ctx.globalAlpha = watermarkOpacity.value;
+
+        // Get text dimensions
+        const text = watermarkText.value;
+        const textMetrics = ctx.measureText(text);
+        const textWidth = textMetrics.width;
+        const textHeight = fontSize; // Approximate height based on font size
+
+        // Adjust for italic and bold font style
+        let italicAdjustment = 0;
+        if (fullFontStyle.includes('italic')) {
+            italicAdjustment = fontSize * 0.2; // Adjust this factor as needed
+        }
+
+        // Calculate text position based on the selected alignment
+        let x, y;
+        const position = watermarkPosition.value;
+
+        switch (position) {
+            case 'top-left':
+                x = 10 + italicAdjustment; // Add some padding
+                y = textHeight + 10;
+                break;
+            case 'top-right':
+                x = canvas.width - textWidth - 10 + italicAdjustment; // Right padding with italic adjustment
+                y = textHeight + 10;
+                break;
+            case 'bottom-left':
+                x = 10 + italicAdjustment; // Left padding
+                y = canvas.height - 10; // Bottom padding
+                break;
+            case 'bottom-right':
+                x = canvas.width - textWidth - 10 + italicAdjustment; // Right padding with italic adjustment
+                y = canvas.height - 10; // Bottom padding
+                break;
+            case 'center':
+                x = (canvas.width - textWidth) / 2 + italicAdjustment / 2;
+                y = (canvas.height + textHeight) / 2;
+                break;
+            default:
+                x = 10 + italicAdjustment;
+                y = textHeight + 10;
+        }
+
+        // Debug: Log the font style to ensure it's set correctly
+        console.log('Font style applied:', ctx.font);
+
+        // Draw the watermark text on the canvas
+        ctx.fillText(text, x, y);
+
+        // Update the preview image with the canvas content
+        previewImage.src = canvas.toDataURL();
     }
 
     function downloadWatermarkedImage() {

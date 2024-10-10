@@ -28,6 +28,44 @@
     <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert!</button>
 </form>
 
+<div class="info-container">
+    <div class="info-section">
+        <h2>What is Image Conversion?</h2>
+        <p>Image conversion is the process of changing an image file from one format to another. For example, you might want to convert a PNG file to a JPG file. Different formats have different uses, and choosing the right format can significantly impact your image quality and compatibility. By converting your images, you can ensure they are compatible with various devices, applications, and online platforms.</p>
+    </div>
+    <div class="info-section">
+        <h2>Why Convert Images?</h2>
+        <p>There are many reasons to convert images. Some formats, like PNG, are great for high-quality graphics, while others, like JPG, are better for photographs. Converting images can help reduce file sizes, making them load faster on websites, which is crucial for user experience and SEO. Additionally, smaller file sizes help save storage space. It also ensures your images look their best, whether you're sharing them online or preparing them for print. By converting images, you can also make them suitable for different applications, such as social media, email, or web design.</p>
+    </div>
+    <div class="info-section">
+        <h2>How to Use Our Image Conversion Tool</h2>
+        <p>Using our image conversion tool is simple and straightforward. Just upload your image, choose the format you want, and click "Convert!" You can convert images to popular formats like PNG, JPG, JPEG, BMP, TIFF, and WEBP. Our tool ensures your images maintain their quality during conversion, so you don't have to worry about losing important details.</p>
+        <p>In addition, our image conversion tool is designed with user-friendliness in mind. Whether you are a professional photographer needing to convert a batch of images or a casual user wanting to change a single photo, our tool caters to all needs. Plus, it works across all devices, making it accessible anywhere, anytime.</p>
+    </div>
+    <div class="info-section">
+        <h2>Benefits of Using Our Image Conversion Tool</h2>
+        <p>Our image conversion tool offers numerous benefits:</p>
+        <ul>
+            <li><strong>Fast and Efficient:</strong> Convert images quickly without compromising quality.</li>
+            <li><strong>Multiple Formats Supported:</strong> Easily switch between various formats to suit your needs.</li>
+            <li><strong>Online Accessibility:</strong> No software installation required. Access the tool directly from your web browser.</li>
+            <li><strong>User-Friendly Interface:</strong> Intuitive design that makes converting images easy for everyone.</li>
+            <li><strong>High-Quality Output:</strong> Ensure your images look sharp and vibrant after conversion.</li>
+        </ul>
+    </div>
+    <div class="info-section">
+        <h2>Common Use Cases for Image Conversion</h2>
+        <p>Image conversion is essential for various scenarios:</p>
+        <ul>
+            <li><strong>Web Optimization:</strong> Convert images to formats that load quickly and improve website performance.</li>
+            <li><strong>Social Media Sharing:</strong> Adjust image sizes and formats to meet platform requirements.</li>
+            <li><strong>Professional Printing:</strong> Prepare images in high-quality formats for print projects.</li>
+            <li><strong>Digital Marketing:</strong> Enhance your visual content for ads and campaigns by using the right formats.</li>
+        </ul>
+    </div>
+</div>
+
+
 <script>
     function validateImageSelection() {
         const imageUpload = document.getElementById('image-upload');
@@ -61,6 +99,7 @@
         cursor: pointer;
         font-size: 20px;
         transition: transform 0.3s;
+        border-radius: 5px;
     }
     .upload-button:hover {
         transform: scale(1.1);
@@ -75,6 +114,7 @@
         transition: transform 0.3s;
         margin-top: 10px;
         margin-bottom: 20px;
+        border-radius: 5px;
     }
     .image-preview {
         margin-top: 20px;
@@ -84,6 +124,7 @@
         margin-left: auto;
         margin-right: auto;
         display: block;
+        border-radius: 5px;
     }
     .format-select {
         margin-top: 20px;
@@ -91,6 +132,9 @@
         font-size: 16px;
     }
         form, h1, p {
+        text-align: center;
+    }
+    h1, h2 {
         text-align: center;
     }
 
@@ -103,6 +147,41 @@
     .upload-button, .convert-button, .format-select {
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .info-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Create three equal columns */
+        gap: 20px; /* Space between the grid items */
+        margin: 20px auto; /* Center the container */
+    }
+
+    /* Center the last row when it has fewer than three items */
+    .info-container > :nth-last-child(-n+3) {
+        justify-self: center; /* Center the items in the last row */
+    }
+
+    /* Ensuring each section maintains its styling */
+    .info-section {
+        padding: 20px; /* Padding for each section */
+        border: 1px solid var(--secondary-color);
+        border-radius: 5px;
+        background-color: var(--light-background-color);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    }
+
+    p {
+        margin: 10px 20px;
+        line-height: 1.6;
+    }
+    form, h1, p {
+        text-align: center;
+    }
+    
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
 </style>

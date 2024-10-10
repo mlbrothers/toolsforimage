@@ -39,6 +39,53 @@
     <button type="submit" class="rotate-button" onclick="return validateImageSelection();">Download Rotated Image</button>
 </form>
 
+<div class="info-container">
+    <div class="info-section">
+        <h2>What is Image Rotation?</h2>
+        <p>Image rotation is the process of changing the orientation of an image by rotating it either clockwise or counterclockwise. This feature is useful when your photo or graphic is incorrectly oriented, such as when it was taken upside down or sideways. By rotating images, you can quickly adjust them to the correct angle, ensuring they are properly aligned for viewing or sharing.</p>
+    </div>
+
+    <div class="info-section">
+        <h2>Why Rotate Your Images?</h2>
+        <p>There are many reasons to rotate images. Sometimes, photos taken on smartphones or cameras don’t capture the image in the desired orientation. Rotating the image helps you achieve the perfect alignment, making your photos look professional. Additionally, rotating images can help with design layouts, giving you more flexibility in how the image fits with other elements on websites, social media posts, or print projects. Properly rotated images also enhance the user experience, especially on web pages where the correct orientation ensures better visual appeal.</p>
+    </div>
+
+    <div class="info-section">
+        <h2>How to Use Our Image Rotation Tool</h2>
+        <p>Our image rotation tool is designed to be quick and user-friendly. Here's how it works:</p>
+        <ul>
+            <li>First, upload the image you want to rotate by clicking the "Upload from Computer" button.</li>
+            <li>After the image is uploaded, you will see a preview.</li>
+            <li>Use the "Rotate Left" or "Rotate Right" buttons to rotate the image in 90-degree increments until the orientation is as desired.</li>
+            <li>Once you're satisfied with the rotation, click "Download Rotated Image" to save the adjusted image to your device.</li>
+        </ul>
+        <p>Our tool allows you to rotate images in multiple formats, including PNG, JPG, JPEG, BMP, and more. The best part? It maintains the original quality of your image, so you won’t have to worry about any degradation.</p>
+    </div>
+
+    <div class="info-section">
+        <h2>Benefits of Using Our Image Rotation Tool</h2>
+        <p>Our image rotation tool offers several advantages:</p>
+        <ul>
+            <li><strong>Fast and Easy:</strong> Rotate images in just a few clicks, without needing any special software.</li>
+            <li><strong>Supports All Formats:</strong> Whether you're working with PNGs, JPGs, or other popular formats, our tool has you covered.</li>
+            <li><strong>No Loss of Quality:</strong> Rotate your images without compromising their resolution or clarity.</li>
+            <li><strong>Free and Accessible:</strong> Use our tool online for free, without any downloads or installations.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Common Use Cases for Image Rotation</h2>
+        <p>Here are a few common situations where you might need to rotate images:</p>
+        <ul>
+            <li><strong>Photography:</strong> Adjust photos taken in the wrong orientation.</li>
+            <li><strong>Design Layout:</strong> Rotate images to fit into design projects or presentations properly.</li>
+            <li><strong>Social Media:</strong> Ensure that your photos and graphics appear in the correct orientation when sharing on social platforms like Instagram or Facebook.</li>
+            <li><strong>Web Content:</strong> Enhance the visual appeal of your website by making sure images are aligned correctly.</li>
+            <li><strong>Personal Use:</strong> Quickly rotate family photos, vacation images, or any personal pictures to ensure they're displayed as intended.</li>
+        </ul>
+    </div>
+</div>
+
 <style>
     h1 {
         color: var(--secondary-color);
@@ -95,6 +142,32 @@
 
     .rotate-controls {
         margin-top: 20px;
+    }
+
+    .info-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Create three equal columns */
+        gap: 20px; /* Space between the grid items */
+        margin: 20px auto; /* Center the container */
+    }
+
+    /* Center the last row when it has fewer than three items */
+    .info-container > :nth-last-child(-n+3) {
+        justify-self: center; /* Center the items in the last row */
+    }
+
+    /* Ensuring each section maintains its styling */
+    .info-section {
+        padding: 20px; /* Padding for each section */
+        border: 1px solid var(--secondary-color);
+        border-radius: 5px;
+        background-color: var(--light-background-color);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    }
+
+    p {
+        margin: 10px 20px;
+        line-height: 1.6;
     }
 </style>
 
