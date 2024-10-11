@@ -1,7 +1,8 @@
 {% extends "en/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Rotate your images effortlessly with ToolsForImage. Adjust image orientation quickly and easily.">
+<meta name="description"
+    content="Rotate your images effortlessly with ToolsForImage. Adjust image orientation quickly and easily.">
 {% endblock %}
 
 {% block title %}Rotate Image - ToolsForImage{% endblock %}
@@ -11,8 +12,10 @@
 <p>Easily rotate your images with ToolsForImage. Upload an image, preview the rotation, and download the result.</p>
 <p>Upload your image file and rotate it instantly. Choose your image:</p>
 <form id="rotation-form" action="/rotate-image" method="post" enctype="multipart/form-data">
-    <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload from Computer</button>
+    <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;"
+        onchange="previewImage(event)">
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload from
+        Computer</button>
     <br>
     <div class="image-preview-container">
         <img id="image-preview" class="image-preview" src="#" alt="Image Preview">
@@ -21,14 +24,18 @@
     <div class="rotate-controls">
         <button type="button" class="rotate-button" onclick="rotateImage(-90)">
             Rotate Left
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -4px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                style="vertical-align: -4px;">
                 <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
                 <path d="M3 3v5h5"></path>
             </svg>
         </button>
         <button type="button" class="rotate-button" onclick="rotateImage(90)">
             Rotate Right
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -4px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                style="vertical-align: -4px;">
                 <path d="M21 12a9 9 0 1 1-9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
                 <path d="M21 3v5h-5"></path>
             </svg>
@@ -36,18 +43,27 @@
     </div>
     <br>
     <input type="hidden" id="rotation-angle" name="rotation" value="0">
-    <button type="submit" class="rotate-button" onclick="return validateImageSelection();">Download Rotated Image</button>
+    <button type="submit" class="rotate-button" onclick="return validateImageSelection();">Download Rotated
+        Image</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
         <h2>What is Image Rotation?</h2>
-        <p>Image rotation is the process of changing the orientation of an image by rotating it either clockwise or counterclockwise. This feature is useful when your photo or graphic is incorrectly oriented, such as when it was taken upside down or sideways. By rotating images, you can quickly adjust them to the correct angle, ensuring they are properly aligned for viewing or sharing.</p>
+        <p>Image rotation is the process of changing the orientation of an image by rotating it either clockwise or
+            counterclockwise. This feature is useful when your photo or graphic is incorrectly oriented, such as when it
+            was taken upside down or sideways. By rotating images, you can quickly adjust them to the correct angle,
+            ensuring they are properly aligned for viewing or sharing.</p>
     </div>
 
     <div class="info-section">
         <h2>Why Rotate Your Images?</h2>
-        <p>There are many reasons to rotate images. Sometimes, photos taken on smartphones or cameras don’t capture the image in the desired orientation. Rotating the image helps you achieve the perfect alignment, making your photos look professional. Additionally, rotating images can help with design layouts, giving you more flexibility in how the image fits with other elements on websites, social media posts, or print projects. Properly rotated images also enhance the user experience, especially on web pages where the correct orientation ensures better visual appeal.</p>
+        <p>There are many reasons to rotate images. Sometimes, photos taken on smartphones or cameras don't capture the
+            image in the desired orientation. Rotating the image helps you achieve the perfect alignment, making your
+            photos look professional. Additionally, rotating images can help with design layouts, giving you more
+            flexibility in how the image fits with other elements on websites, social media posts, or print projects.
+            Properly rotated images also enhance the user experience, especially on web pages where the correct
+            orientation ensures better visual appeal.</p>
     </div>
 
     <div class="info-section">
@@ -56,20 +72,27 @@
         <ul>
             <li>First, upload the image you want to rotate by clicking the "Upload from Computer" button.</li>
             <li>After the image is uploaded, you will see a preview.</li>
-            <li>Use the "Rotate Left" or "Rotate Right" buttons to rotate the image in 90-degree increments until the orientation is as desired.</li>
-            <li>Once you're satisfied with the rotation, click "Download Rotated Image" to save the adjusted image to your device.</li>
+            <li>Use the "Rotate Left" or "Rotate Right" buttons to rotate the image in 90-degree increments until the
+                orientation is as desired.</li>
+            <li>Once you're satisfied with the rotation, click "Download Rotated Image" to save the adjusted image to
+                your device.</li>
         </ul>
-        <p>Our tool allows you to rotate images in multiple formats, including PNG, JPG, JPEG, BMP, and more. The best part? It maintains the original quality of your image, so you won’t have to worry about any degradation.</p>
+        <p>Our tool allows you to rotate images in multiple formats, including PNG, JPG, JPEG, BMP, and more. The best
+            part? It maintains the original quality of your image, so you won't have to worry about any degradation.</p>
     </div>
 
     <div class="info-section">
         <h2>Benefits of Using Our Image Rotation Tool</h2>
         <p>Our image rotation tool offers several advantages:</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Rotate images in just a few clicks, without needing any special software.</li>
-            <li><strong>Supports All Formats:</strong> Whether you're working with PNGs, JPGs, or other popular formats, our tool has you covered.</li>
-            <li><strong>No Loss of Quality:</strong> Rotate your images without compromising their resolution or clarity.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, without any downloads or installations.</li>
+            <li><strong>Fast and Easy:</strong> Rotate images in just a few clicks, without needing any special
+                software.</li>
+            <li><strong>Supports All Formats:</strong> Whether you're working with PNGs, JPGs, or other popular formats,
+                our tool has you covered.</li>
+            <li><strong>No Loss of Quality:</strong> Rotate your images without compromising their resolution or
+                clarity.</li>
+            <li><strong>Free and Accessible:</strong> Use our tool online for free, without any downloads or
+                installations.</li>
         </ul>
     </div>
 
@@ -78,12 +101,74 @@
         <p>Here are a few common situations where you might need to rotate images:</p>
         <ul>
             <li><strong>Photography:</strong> Adjust photos taken in the wrong orientation.</li>
-            <li><strong>Design Layout:</strong> Rotate images to fit into design projects or presentations properly.</li>
-            <li><strong>Social Media:</strong> Ensure that your photos and graphics appear in the correct orientation when sharing on social platforms like Instagram or Facebook.</li>
-            <li><strong>Web Content:</strong> Enhance the visual appeal of your website by making sure images are aligned correctly.</li>
-            <li><strong>Personal Use:</strong> Quickly rotate family photos, vacation images, or any personal pictures to ensure they're displayed as intended.</li>
+            <li><strong>Design Layout:</strong> Rotate images to fit into design projects or presentations properly.
+            </li>
+            <li><strong>Social Media:</strong> Ensure that your photos and graphics appear in the correct orientation
+                when sharing on social platforms like Instagram or Facebook.</li>
+            <li><strong>Web Content:</strong> Enhance the visual appeal of your website by making sure images are
+                aligned correctly.</li>
+            <li><strong>Personal Use:</strong> Quickly rotate family photos, vacation images, or any personal pictures
+                to ensure they're displayed as intended.</li>
         </ul>
     </div>
+    <div class="info-section">
+        <h2>How Rotating Images Can Be Helpful</h2>
+        <p>Rotating images can significantly enhance their usability and appearance. Here are some ways rotating images can be beneficial:</p>
+        <ul>
+            <li><strong>Correcting Orientation:</strong> Many photos taken with smartphones or cameras end up with the wrong orientation. Rotating these images ensures they are displayed correctly, improving overall viewing experience.</li>
+            <li><strong>Improving Visual Appeal:</strong> Rotated images can create a more balanced and aesthetically pleasing look, making your photos more attractive and engaging to viewers.</li>
+            <li><strong>Better Social Media Sharing:</strong> Social media platforms often prefer images in certain orientations. Rotating your images can help ensure they appear as intended, increasing engagement and shares.</li>
+        </ul>
+    </div>
+    
+</div>
+
+<div>
+    <h1>Our other Image Tools</h1>
+    <ul class="tools-list">
+        <li><a href="/image-compression">Image Compression</a></li>
+        <li><a href="/image-resize">Image Resize</a></li>
+        <li><a href="/convert-image-format">Convert Image Format</a></li>
+        <li><a href="/image-rotate">Image Rotate</a></li>
+        <li><a href="/image-watermarking">Image Watermarking</a></li>
+        <li><a href="/image-effects">Image Effects</a></li>
+        <li><a href="/image-crop">Image Crop</a></li>
+        <li><a href="/blur-face">Blur Face</a></li>
+    </ul>
+    <br>
+    <h2 style="text-align: center;">Image Format Conversion Tools</h2>
+    <ul class="tools-list">
+        <li><a href="/convert/png-to-jpg">Convert PNG to JPG</a></li>
+        <li><a href="/convert/png-to-jpeg">Convert PNG to JPEG</a></li>
+        <li><a href="/convert/png-to-bmp">Convert PNG to BMP</a></li>
+        <li><a href="/convert/png-to-tiff">Convert PNG to TIFF</a></li>
+        <li><a href="/convert/png-to-webp">Convert PNG to WebP</a></li>
+        <li><a href="/convert/jpg-to-png">Convert JPG to PNG</a></li>
+        <li><a href="/convert/jpg-to-jpeg">Convert JPG to JPEG</a></li>
+        <li><a href="/convert/jpg-to-bmp">Convert JPG to BMP</a></li>
+        <li><a href="/convert/jpg-to-tiff">Convert JPG to TIFF</a></li>
+        <li><a href="/convert/jpg-to-webp">Convert JPG to WebP</a></li>
+        <li><a href="/convert/jpeg-to-png">Convert JPEG to PNG</a></li>
+        <li><a href="/convert/jpeg-to-jpg">Convert JPEG to JPG</a></li>
+        <li><a href="/convert/jpeg-to-bmp">Convert JPEG to BMP</a></li>
+        <li><a href="/convert/jpeg-to-tiff">Convert JPEG to TIFF</a></li>
+        <li><a href="/convert/jpeg-to-webp">Convert JPEG to WebP</a></li>
+        <li><a href="/convert/bmp-to-png">Convert BMP to PNG</a></li>
+        <li><a href="/convert/bmp-to-jpg">Convert BMP to JPG</a></li>
+        <li><a href="/convert/bmp-to-jpeg">Convert BMP to JPEG</a></li>
+        <li><a href="/convert/bmp-to-tiff">Convert BMP to TIFF</a></li>
+        <li><a href="/convert/bmp-to-webp">Convert BMP to WebP</a></li>
+        <li><a href="/convert/tiff-to-png">Convert TIFF to PNG</a></li>
+        <li><a href="/convert/tiff-to-jpg">Convert TIFF to JPG</a></li>
+        <li><a href="/convert/tiff-to-jpeg">Convert TIFF to JPEG</a></li>
+        <li><a href="/convert/tiff-to-bmp">Convert TIFF to BMP</a></li>
+        <li><a href="/convert/tiff-to-webp">Convert TIFF to WebP</a></li>
+        <li><a href="/convert/webp-to-png">Convert WebP to PNG</a></li>
+        <li><a href="/convert/webp-to-jpg">Convert WebP to JPG</a></li>
+        <li><a href="/convert/webp-to-jpeg">Convert WebP to JPEG</a></li>
+        <li><a href="/convert/webp-to-bmp">Convert WebP to BMP</a></li>
+        <li><a href="/convert/webp-to-tiff">Convert WebP to TIFF</a></li>
+    </ul>
 </div>
 
 <style>
@@ -106,6 +191,7 @@
         cursor: pointer;
         font-size: 20px;
         transition: transform 0.3s;
+        border-radius: 5px;
     }
 
     .upload-button:hover {
@@ -121,6 +207,7 @@
         font-size: 20px;
         transition: transform 0.3s;
         margin-top: 10px;
+        border-radius: 5px;
     }
 
     .image-preview-container {
@@ -138,6 +225,7 @@
         max-height: 300px;
         display: none;
         transition: transform 0.3s ease;
+        border-radius: 5px;
     }
 
     .rotate-controls {
@@ -146,28 +234,85 @@
 
     .info-container {
         display: grid;
-        grid-template-columns: repeat(3, 1fr); /* Create three equal columns */
-        gap: 20px; /* Space between the grid items */
-        margin: 20px auto; /* Center the container */
+        grid-template-columns: repeat(3, 1fr);
+        /* Create three equal columns */
+        gap: 20px;
+        /* Space between the grid items */
+        margin: 20px auto;
+        /* Center the container */
     }
 
     /* Center the last row when it has fewer than three items */
-    .info-container > :nth-last-child(-n+3) {
-        justify-self: center; /* Center the items in the last row */
+    .info-container> :nth-last-child(-n+3) {
+        justify-self: center;
+        /* Center the items in the last row */
     }
 
     /* Ensuring each section maintains its styling */
     .info-section {
-        padding: 20px; /* Padding for each section */
+        padding: 20px;
+        /* Padding for each section */
         border: 1px solid var(--secondary-color);
         border-radius: 5px;
         background-color: var(--light-background-color);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Shadow for depth */
     }
 
     p {
         margin: 10px 20px;
         line-height: 1.6;
+    }
+
+    li {
+        line-height: 1.6;
+    }
+
+    .tools-list {
+        display: grid;
+        /* Use grid layout */
+        grid-template-columns: repeat(3, 1fr);
+        /* Three columns */
+        gap: 20px;
+        /* Space between grid items */
+        list-style-type: none;
+        padding: 0;
+        margin: 0 auto;
+        /* Center the grid */
+        max-width: 1200px;
+        /* Optional: set a max width for the grid */
+    }
+
+    .tools-list li {
+        background-color: var(--box-color);
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s;
+        display: flex;
+        /* Flexbox to center content */
+        flex-direction: column;
+        /* Stack children vertically */
+        align-items: center;
+        /* Center items horizontally */
+    }
+
+    .tools-list li:hover {
+        background-color: var(--primary-color);
+    }
+
+    .tools-list a {
+        color: var(--link-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+        text-align: center;
+        /* Center text */
+    }
+
+    .tools-list a:hover {
+        color: var(--link-hover-color);
+        text-decoration: underline;
     }
 </style>
 
@@ -188,7 +333,7 @@
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
-            reader.onload = function(e) {
+            reader.onload = function (e) {
                 imagePreview.src = e.target.result;
                 imagePreview.style.display = 'block';
                 resetRotation();
@@ -202,7 +347,7 @@
         rotation = (rotation + degrees) % 360;
         imagePreview.style.transform = `rotate(${rotation}deg)`;
         document.getElementById('rotation-angle').value = rotation;
-        
+
         // Adjust container size based on rotation
         const container = document.querySelector('.image-preview-container');
         if (rotation % 180 !== 0) {
