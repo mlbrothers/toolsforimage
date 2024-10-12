@@ -7,7 +7,7 @@
 {% block title %}Convert JPG to WebP - ToolsForImage{% endblock %}
 
 {% block content %}
-<h1>JPG to WebP Conversion Tool</h1>
+<h1>Free JPG to WebP Conversion Tool</h1>
 <p>Easily convert your JPG images to WebP format. Upload a JPG image and we'll convert it to WebP for you.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/jpg" style="display: none;" onchange="previewImage(event)">
@@ -21,7 +21,7 @@
 </form>
 
 <div>
-    <h1>Our other Image Tools</h1>
+    <h1>Our other free Image Tools</h1>
     <ul class="tools-list">
         <li><a href="/image-compression">Image Compression</a></li>
         <li><a href="/image-resize">Image Resize</a></li>
@@ -33,7 +33,7 @@
         <li><a href="/blur-face">Blur Face</a></li>
     </ul>
     <br>
-    <h2 style="text-align: center;">Image Format Conversion Tools</h2>
+    <h2 style="text-align: center;">Free Image Format Conversion Tools</h2>
     <ul class="tools-list">
         <li><a href="/convert/png-to-jpg">Convert PNG to JPG</a></li>
         <li><a href="/convert/png-to-jpeg">Convert PNG to JPEG</a></li>
@@ -123,51 +123,44 @@
         line-height: 1.6;
     }
 
+    .tool-name {
+        font-weight: bold;
+    }
+
     .tools-list {
         display: grid;
-        /* Use grid layout */
         grid-template-columns: repeat(3, 1fr);
-        /* Three columns */
         gap: 20px;
-        /* Space between grid items */
         list-style-type: none;
         padding: 0;
         margin: 0 auto;
-        /* Center the grid */
         max-width: 1200px;
-        /* Optional: set a max width for the grid */
     }
 
     .tools-list li {
         background-color: var(--box-color);
-        padding: 15px;
+        padding: 3px;
         border-radius: 5px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         transition: background-color 0.3s;
         display: flex;
-        /* Flexbox to center content */
+        border: var(--background-color) 3px solid;
         flex-direction: column;
-        /* Stack children vertically */
         align-items: center;
-        /* Center items horizontally */
     }
 
     .tools-list li:hover {
-        background-color: var(--primary-color);
+        border: var(--link-hover-color) 3px solid;
     }
 
     .tools-list a {
+        display: block;
+        padding: 15px;
+        background-color: var(--box-color);
         color: var(--link-color);
         text-decoration: none;
-        font-weight: bold;
-        transition: color 0.3s;
-        text-align: center;
-        /* Center text */
-    }
-
-    .tools-list a:hover {
-        color: var(--background-color);
-        text-decoration: underline;
+        height: 100%;
+        border-radius: 5px;
     }
 
     h1 {

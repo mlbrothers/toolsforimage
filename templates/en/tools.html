@@ -7,7 +7,7 @@
 {% block title %}ToolsForImage - Image Tools{% endblock %}
 
 {% block content %}
-<h1>Our Image Tools</h1>
+<h1>Our Free Image Tools</h1>
 <ul class="tools-list">
     <li><a href="/image-compression"><span class="tool-name">Image Compression</span> - Reduce file size without compromising quality</a></li>
     <li><a href="/image-resize"><span class="tool-name">Image Resize</span> - Adjust image dimensions to your needs</a></li>
@@ -18,7 +18,7 @@
     <li><a href="/image-crop"><span class="tool-name">Image Crop</span> - Remove unwanted areas from your images</a></li>
     <li><a href="/blur-face"><span class="tool-name">Blur Face</span> - Automatically blur faces in images for privacy</a></li>
 </ul>
-<h2 style="text-align: center;">Image Format Conversion Tools</h2>
+<h2 style="text-align: center;">Free Image Format Conversion Tools</h2>
 <ul class="tools-list">
     <li><a href="/convert/png-to-jpg"><span class="tool-name">PNG to JPG</span> - Convert PNG images to JPG format</a></li>
     <li><a href="/convert/png-to-jpeg"><span class="tool-name">PNG to JPEG</span> - Convert PNG images to JPEG format</a></li>
@@ -75,12 +75,13 @@
         margin-bottom: 10px;
         padding: 15px;
         border-radius: 5px;
+        border: var(--background-color) 3px solid;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         transition: background-color 0.3s;
     }
 
     .tools-list li:hover {
-        background-color: var(--link-hover-color);
+        border: var(--link-hover-color) 3px solid;
     }
 
     .tools-list a {
@@ -92,5 +93,6 @@
         height: 100%; /* Ensures the anchor takes full height */
         border-radius: 5px; /* Match the list item border radius */
     }
+
 </style>
 {% endblock %}
