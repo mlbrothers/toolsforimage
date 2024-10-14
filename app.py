@@ -17,6 +17,47 @@ hti = Html2Image()
 # At the top of your file, add:
 supported_languages = ['en', 'hi', 'es', 'fr', 'de']  # Add more as needed
 
+all_tools_list = [
+    {'name': 'Compress Image', 'url': '/image-compression', 'description': 'Reduce file size of images', 'icon': 'compress.svg'},
+    {'name': 'Resize Image', 'url': '/image-resize', 'description': 'Adjust dimensions of images', 'icon': 'resize1.svg'},
+    {'name': 'Crop Image', 'url': '/image-crop', 'description': 'Remove unwanted areas from images', 'icon': 'crop.svg'},
+    {'name': 'Convert Image', 'url': '/convert-image-format', 'description': 'Convert images to different formats', 'icon': 'convert1.svg'},
+    {'name': 'Rotate Image', 'url': '/image-rotate', 'description': 'Rotate images in any direction', 'icon': 'rotate1.svg'},
+    {'name': 'Image Effects', 'url': '/image-effects', 'description': 'Apply various types of effects on images like black and white, grayscale, sepia, invert, sharpen, blur, contrast, and saturation', 'icon': 'edit.svg'},
+    {'name': 'Image Watermark', 'url': '/image-watermarking', 'description': 'Apply custom watermarks on your image', 'icon': 'stamp.svg'},
+    {'name': 'Blur Face', 'url': '/blur-face', 'description': 'Apply blur effect on face and protect your privacy', 'icon': 'blur.svg'},
+    {'name': 'PNG to JPG', 'url': '/convert/png-to-jpg', 'description': 'Convert PNG images to JPG format', 'icon': 'format_1.svg'},
+    {'name': 'PNG to JPEG', 'url': '/convert/png-to-jpeg', 'description': 'Convert PNG images to JPEG format', 'icon': 'format_2.svg'},
+    {'name': 'PNG to BMP', 'url': '/convert/png-to-bmp', 'description': 'Convert PNG images to BMP format', 'icon': 'format_3.svg'},
+    {'name': 'PNG to TIFF', 'url': '/convert/png-to-tiff', 'description': 'Convert PNG images to TIFF format', 'icon': 'format_4.svg'},
+    {'name': 'PNG to WebP', 'url': '/convert/png-to-webp', 'description': 'Convert PNG images to WebP format', 'icon': 'format_5.svg'},
+    {'name': 'JPG to PNG', 'url': '/convert/jpg-to-png', 'description': 'Convert JPG images to PNG format', 'icon': 'format_1.svg'},
+    {'name': 'JPG to JPEG', 'url': '/convert/jpg-to-jpeg', 'description': 'Convert JPG images to JPEG format', 'icon': 'format_2.svg'},
+    {'name': 'JPG to BMP', 'url': '/convert/jpg-to-bmp', 'description': 'Convert JPG images to BMP format', 'icon': 'format_3.svg'},
+    {'name': 'JPG to TIFF', 'url': '/convert/jpg-to-tiff', 'description': 'Convert JPG images to TIFF format', 'icon': 'format_4.svg'},
+    {'name': 'JPG to WebP', 'url': '/convert/jpg-to-webp', 'description': 'Convert JPG images to WebP format', 'icon': 'format_5.svg'},
+    {'name': 'JPEG to PNG', 'url': '/convert/jpeg-to-png', 'description': 'Convert JPEG images to PNG format', 'icon': 'format_1.svg'},
+    {'name': 'JPEG to JPG', 'url': '/convert/jpeg-to-jpg', 'description': 'Convert JPEG images to JPG format', 'icon': 'format_2.svg'},
+    {'name': 'JPEG to BMP', 'url': '/convert/jpeg-to-bmp', 'description': 'Convert JPEG images to BMP format', 'icon': 'format_3.svg'},
+    {'name': 'JPEG to TIFF', 'url': '/convert/jpeg-to-tiff', 'description': 'Convert JPEG images to TIFF format', 'icon': 'format_4.svg'},
+    {'name': 'JPEG to WebP', 'url': '/convert/jpeg-to-webp', 'description': 'Convert JPEG images to WebP format', 'icon': 'format_5.svg'},
+    {'name': 'BMP to PNG', 'url': '/convert/bmp-to-png', 'description': 'Convert BMP images to PNG format', 'icon': 'format_1.svg'},
+    {'name': 'BMP to JPG', 'url': '/convert/bmp-to-jpg', 'description': 'Convert BMP images to JPG format', 'icon': 'format_2.svg'},
+    {'name': 'BMP to JPEG', 'url': '/convert/bmp-to-jpeg', 'description': 'Convert BMP images to JPEG format', 'icon': 'format_3.svg'},
+    {'name': 'BMP to TIFF', 'url': '/convert/bmp-to-tiff', 'description': 'Convert BMP images to TIFF format', 'icon': 'format_4.svg'},
+    {'name': 'BMP to WebP', 'url': '/convert/bmp-to-webp', 'description': 'Convert BMP images to WebP format', 'icon': 'format_5.svg'},
+    {'name': 'TIFF to PNG', 'url': '/convert/tiff-to-png', 'description': 'Convert TIFF images to PNG format', 'icon': 'format_1.svg'},
+    {'name': 'TIFF to JPG', 'url': '/convert/tiff-to-jpg', 'description': 'Convert TIFF images to JPG format', 'icon': 'format_2.svg'},
+    {'name': 'TIFF to JPEG', 'url': '/convert/tiff-to-jpeg', 'description': 'Convert TIFF images to JPEG format', 'icon': 'format_3.svg'},
+    {'name': 'TIFF to BMP', 'url': '/convert/tiff-to-bmp', 'description': 'Convert TIFF images to BMP format', 'icon': 'format_4.svg'},
+    {'name': 'TIFF to WebP', 'url': '/convert/tiff-to-webp', 'description': 'Convert TIFF images to WebP format', 'icon': 'format_5.svg'},
+    {'name': 'WebP to PNG', 'url': '/convert/webp-to-png', 'description': 'Convert WebP images to PNG format', 'icon': 'format_1.svg'},
+    {'name': 'WebP to JPG', 'url': '/convert/webp-to-jpg', 'description': 'Convert WebP images to JPG format', 'icon': 'format_2.svg'},
+    {'name': 'WebP to JPEG', 'url': '/convert/webp-to-jpeg', 'description': 'Convert WebP images to JPEG format', 'icon': 'format_3.svg'},
+    {'name': 'WebP to BMP', 'url': '/convert/webp-to-bmp', 'description': 'Convert WebP images to BMP format', 'icon': 'format_4.svg'},
+    {'name': 'WebP to TIFF', 'url': '/convert/webp-to-tiff', 'description': 'Convert WebP images to TIFF format', 'icon': 'format_5.svg'},
+]
+
 @app.before_request
 def before_request():
     # Extract language from URL if present
@@ -85,6 +126,17 @@ def index(lang='en'):
     if lang not in supported_languages:
         return redirect('/en/')
     return render_template(f'{lang}/index.html')
+
+@app.route('/search')
+def search():
+    query = request.args.get('query')
+    if query:
+        # Filter tools by matching the query in tool name or description
+        results = [tool for tool in all_tools_list if query.lower() in tool['name'].lower() or query.lower() in tool['description'].lower()]
+    else:
+        results = []
+
+    return render_template('/en/search_results.html', query=query, results=results)
 
 @app.route('/image-compression')
 @app.route('/<lang>/image-compression')
