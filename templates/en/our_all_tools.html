@@ -1,39 +1,6 @@
-{% extends 'en/base.html' %}
-
-{% block title %}Blogs ToolsForImage - Free Online Image Editing Tools{% endblock %}
-
-{% block meta_description %}
-<meta name="description"
-    content="Explore our blog for tips, tutorials, and insights on image editing, compression, and optimization. Stay updated with the latest trends in digital imagery and photography.">
-{% endblock %}
-
-{% block content %}
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PR74FHGP0L"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-PR74FHGP0L');
-</script>
-
-<h1>ToolsForImage Blog</h1>
-<p>Stay updated with the latest trends, tips, and tutorials in image editing and optimization.</p>
-
-<div class="blog-grid">
-    {% for blog in blogs %}
-    <div class="blog-post">
-        <img src="{{ url_for('static', filename=blog.image) }}" alt="{{ blog.title }}">
-        <h2>{{ blog.title }}</h2>
-        <p>{{ blog.description }}</p>
-        <a href="{{ url_for('blog_post', blog_slug=blog.slug, lang=lang) }}" class="read-more">Read More</a>
-    </div>
-    {% endfor %}
-</div>
-
 <div>
     <br>
-    <h2>Online Free Image Tools</h2>
+    <h2>Our other free Image Tools</h2>
     <ul class="tools-list">
         <li><a href="/image-compression">Image Compression</a></li>
         <li><a href="/image-resize">Image Resize</a></li>
@@ -45,7 +12,8 @@
         <li><a href="/blur-face">Blur Face</a></li>
     </ul>
     <br>
-    <h2 style="text-align: center;">Online free image format conversion tools</h2>
+    <br>
+    <h2 style="text-align: center;">Free Image Format Conversion Tools</h2>
     <ul class="tools-list">
         <li><a href="/convert/png-to-jpg">Convert PNG to JPG</a></li>
         <li><a href="/convert/png-to-jpeg">Convert PNG to JPEG</a></li>
@@ -80,69 +48,51 @@
     </ul>
 </div>
 
+
 <style>
-    .blog-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 450px));
-        /* Responsive columns */
-        gap: 20px;
-        margin: 20px 0;
+    h2{
+        font-size: 32px;
     }
-
-    .blog-post {
-        border: 1px solid #ccc;
-        padding: 15px;
-        text-align: center;
-        border-radius: 10px;
-        transition: transform 0.3s, box-shadow 0.3s;
-        background-color: white;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .blog-post img {
-        height: 50px;
-        object-fit: cover;
-        /* Ensure the image covers the space nicely */
-        border-radius: 8px;
-        margin-bottom: 15px;
-    }
-
-    .blog-post h2 {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-        font-weight: 600;
-    }
-
-    .blog-post p {
-        font-size: 1rem;
-        margin-bottom: 15px;
-        color: #666;
-    }
-
-    .blog-post:hover {
-        transform: translateY(-5px);
-        /* Smooth hover effect */
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        /* Enhanced shadow on hover */
-    }
-
-    .read-more {
-        background-color: #007bff;
-        color: white;
-        padding: 10px 20px;
-        text-decoration: none;
-        border-radius: 5px;
-        font-size: 1rem;
+    .tool-name {
         font-weight: bold;
+    }
+
+    .tools-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        list-style-type: none;
+        padding: 0;
+        margin: 0 auto;
+        max-width: 1200px;
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    .tools-list li {
+        background-color: var(--box-color);
+        padding: 3px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         transition: background-color 0.3s;
+        display: flex;
+        border: var(--background-color) 3px solid;
+        flex-direction: column;
+        align-items: center;
+        line-height: 1.6;
     }
 
-    .read-more:hover {
-        background-color: #0056b3;
-        /* Darker blue on hover */
+    .tools-list li:hover {
+        border: var(--link-hover-color) 3px solid;
     }
 
-
-    
+    .tools-list a {
+        display: block;
+        padding: 15px;
+        background-color: var(--box-color);
+        color: var(--link-color);
+        text-decoration: none;
+        height: 100%;
+        border-radius: 5px;
+    }
 </style>
-{% endblock %}

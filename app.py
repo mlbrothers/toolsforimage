@@ -1,6 +1,7 @@
 # Author: Siddharth1India
 import base64
-from flask import Flask, abort, g, jsonify, redirect, render_template, request, send_file, send_from_directory
+from flask import Flask, abort, g, jsonify, redirect, render_template, request, send_file, send_from_directory, url_for
+from jinja2 import TemplateNotFound
 from PIL import Image, ImageEnhance, ImageFilter, ImageOps, ImageDraw, ImageFont, ImageColor
 from html2image import Html2Image
 import io
@@ -657,12 +658,39 @@ def legal(lang='en'):
         return redirect('/en/legal')
     return render_template(f'{lang}/legal.html')
 
+blogs_list = {
+    'en': [
+        {
+            'slug': 'how-to-convert-image-from-jpeg-to-jpg',
+            'title': 'How to convert JPEG to JPG free online',
+            'description': 'How to convert your JPEG images to JPG format for free online without installing any software',
+            'image': 'jpeg-to-jpg-blog.svg',
+        }
+    ]
+}
+
+
 @app.route('/blogs')
 @app.route('/<lang>/blogs')
 def blogs(lang='en'):
     if lang not in supported_languages:
         return redirect('/en/blogs')
-    return render_template(f'{lang}/blogs.html')
+
+    # Get the blogs for the selected language
+    blog_data = blogs_list.get(lang, blogs_list['en'])
+    print(f"rgs",blog_data)
+    return render_template(f'{lang}/blogs.html', blogs=blog_data)
+
+@app.route('/blogs/<blog_slug>')
+@app.route('/<lang>/blogs/<blog_slug>')
+def blog_post(blog_slug, lang='en'):
+    if lang not in supported_languages:
+        return redirect(url_for('blog_post', blog_slug=blog_slug, lang='en'))
+    
+    try:
+        return render_template(f'{lang}/blogs/{blog_slug}.html')
+    except TemplateNotFound:
+        return redirect(url_for('blogs', lang=lang))
 
 @app.route('/our-story')
 @app.route('/<lang>/our-story')
