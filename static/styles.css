@@ -44,6 +44,8 @@ nav {
     align-items: center;
     font-weight: 900;
     font-style: normal;
+    position: relative;
+    z-index: 1000;
 }
 
 .nav-logo {
@@ -108,14 +110,18 @@ nav ul li a:hover {
 .hamburger {
     display: none;
     flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
     cursor: pointer;
+    z-index: 1001;
 }
 
 .hamburger div {
-    width: 25px;
+    width: 30px;
     height: 3px;
     background-color: var(--secondary-color);
-    margin: 4px 0;
+    transition: all 0.3s ease;
 }
 
 .nav-links {
@@ -364,7 +370,7 @@ footer {
 
 .company-info {
     flex: 2;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     max-width: 300px;
 }
 
@@ -430,5 +436,146 @@ footer {
 
     .footer-section ul li {
         margin-bottom: 0.75em;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 60px; /* Adjust based on your navbar height */
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: var(--primary-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        overflow-y: auto;
+    }
+
+    .nav-links.active {
+        transform: translateX(0);
+    }
+
+    .nav-links li {
+        margin: 10px 0; /* Reduced from 20px to 10px */
+    }
+
+    .more-menu {
+        margin-top: 10px;
+    }
+
+    .more-menu-content {
+        margin-top: 10px;
+        position: static;
+        display: none;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .more-menu-content.show {
+        display: block;
+    }
+
+    .more-menu-content a {
+        padding: 15px 0;
+        display: block;
+        text-align: center;
+    }
+
+    .more-menu-button {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        padding-top: 15px;
+    }
+
+    /* Hamburger animation */
+    .hamburger.active div:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active div:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active div:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 32px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    .search-bar input {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .search-bar button {
+        margin-top: 10px;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-item {
+        height: auto;
+        min-height: 100px;
+    }
+
+    .footer-section {
+        width: 100%;
+    }
+
+    .navigate-columns,
+    .tools-columns {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .company-info {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 360px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    .search-bar input,
+    .search-bar button {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .grid-item {
+        padding: 0.5em;
+    }
+
+    .footer-section h3 {
+        font-size: 16px;
+    }
+
+    .footer-section ul li,
+    .company-info p {
+        font-size: 14px;
     }
 }
