@@ -678,7 +678,6 @@ def blogs(lang='en'):
 
     # Get the blogs for the selected language
     blog_data = blogs_list.get(lang, blogs_list['en'])
-    print(f"rgs",blog_data)
     return render_template(f'{lang}/blogs.html', blogs=blog_data)
 
 @app.route('/blogs/<blog_slug>')

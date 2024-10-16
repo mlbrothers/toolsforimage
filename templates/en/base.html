@@ -21,7 +21,9 @@
         {% if request.endpoint not in excluded_endpoints %}
             {% include 'en/our_all_tools.html' %}
         {% endif %}
+
     </main>
+    {% include 'en/navigation_tools.html' %}
     {% include 'en/footer.html' %}
 </body>
 </html>
