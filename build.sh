@@ -2,8 +2,10 @@
 # exit on error
 set -o errexit
 
+# Define storage directory
 STORAGE_DIR=/opt/render/project/.render
 
+# Check if Google Chrome is already downloaded
 if [[ ! -d $STORAGE_DIR/chrome ]]; then
   echo "...Downloading Chrome"
   mkdir -p $STORAGE_DIR/chrome
@@ -16,7 +18,18 @@ else
   echo "...Using Chrome from cache"
 fi
 
-# be sure to add Chrome's location to the PATH as part of your Start Command
-# export PATH="${PATH}:/opt/render/project/.render/chrome/opt/google/chrome"
+# Install system dependencies
+echo "...Installing system dependencies"
+apt-get update
+apt-get install -y libgl1-mesa-glx
 
+# Install Python dependencies
+echo "...Installing Python dependencies"
 pip install -r requirements.txt
+
+# Update PATH
+export PATH="${PATH}:${STORAGE_DIR/chrome/opt/google/chrome}"
+
+# Start the Gunicorn server
+echo "...Starting Gunicorn server"
+gunicorn app:app --bind 0.0.0.0:8080
