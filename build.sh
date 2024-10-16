@@ -18,7 +18,7 @@ else
   echo "...Using Chrome from cache"
 fi
 
-# Install system dependencies
+# Install system dependencies (including libGL for OpenCV)
 echo "...Installing system dependencies"
 apt-get update
 apt-get install -y libgl1-mesa-glx
@@ -26,10 +26,3 @@ apt-get install -y libgl1-mesa-glx
 # Install Python dependencies
 echo "...Installing Python dependencies"
 pip install -r requirements.txt
-
-# Update PATH
-export PATH="${PATH}:${STORAGE_DIR/chrome/opt/google/chrome}"
-
-# Start the Gunicorn server
-echo "...Starting Gunicorn server"
-gunicorn app:app --bind 0.0.0.0:8080
