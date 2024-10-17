@@ -673,7 +673,7 @@ blogs_list = {
             'image': 'blur-face-blog.svg',
         },
         {
-            'slug': 'how-to-convert-image-from-bitmap-to-jpeg',
+            'slug': 'how-to-convert-image-from-bmp-to-jpeg',
             'title': 'How to convert bitmap/bmp to JPEG free online',
             'description': 'How to convert your bitmap images to JPEG format for free online',
             'image': 'bitmap-to-jpeg-blog.svg',
@@ -689,6 +689,12 @@ blogs_list = {
             'title': 'How to convert webp to jpeg free online',
             'description': 'How to convert your webp images to jpeg format for free online',
             'image': 'webp-to-jpeg-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-bmp-to-png',
+            'title': 'How to convert bmp to png free online',
+            'description': 'How to convert your bmp images to png format for free online',
+            'image': 'bmp-to-png-blog.svg',
         }
     ]
 }
