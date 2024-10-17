@@ -663,8 +663,32 @@ blogs_list = {
         {
             'slug': 'how-to-convert-image-from-jpeg-to-jpg',
             'title': 'How to convert JPEG to JPG free online',
-            'description': 'How to convert your JPEG images to JPG format for free online without installing any software',
+            'description': 'How to convert your JPEG images to JPG format for free online',
             'image': 'jpeg-to-jpg-blog.svg',
+        },
+        {
+            'slug': 'how-to-blur-face-on-images-online-for-free',
+            'title': 'How to apply blur filter on face in images',
+            'description': 'Discover how to apply blur effect on the face in images online for free',
+            'image': 'blur-face-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-bitmap-to-jpeg',
+            'title': 'How to convert bitmap/bmp to JPEG free online',
+            'description': 'How to convert your bitmap images to JPEG format for free online',
+            'image': 'bitmap-to-jpeg-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-webp-to-tiff',
+            'title': 'How to convert webp to tiff free online',
+            'description': 'How to convert your webp images to tiff format for free online',
+            'image': 'webp-to-tiff-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-webp-to-jpeg',
+            'title': 'How to convert webp to jpeg free online',
+            'description': 'How to convert your webp images to jpeg format for free online',
+            'image': 'webp-to-jpeg-blog.svg',
         }
     ]
 }

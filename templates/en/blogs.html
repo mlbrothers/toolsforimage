@@ -90,9 +90,11 @@
     .blog-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(400px, 450px));
+        grid-template-columns: repeat(3, 1fr);
         /* Responsive columns */
         gap: 20px;
-        margin: 20px 0;
+        margin: 20px auto;
+        max-width: 1200px;
     }
 
     .blog-post {
@@ -103,6 +105,8 @@
         transition: transform 0.3s, box-shadow 0.3s;
         background-color: white;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* min-width: 400px; */
+        max-width: 450px;
     }
 
     .blog-post img {
