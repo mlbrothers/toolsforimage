@@ -28,8 +28,65 @@
     </div>
     <br>
     <input type="hidden" id="effect-applied" name="effect" value="">
-    <button type="submit" class="upload-button" onclick="return validateImageSelection();">Download Edited Image</button>
+    <button type="submit" class="download-button" onclick="return validateImageSelection();">Download Edited Image</button>
 </form>
+
+<div class="info-container">
+    <div class="info-section">
+        <h2>What Are Image Effects?</h2>
+        <p>Image effects are filters or adjustments applied to photos to enhance their appearance or create a specific visual style. By using different effects, you can modify an image's colors, sharpness, brightness, and more, giving it a whole new look. Whether you're aiming for a vintage feel or a sharp modern edge, image effects allow you to transform your photos in creative ways.</p>
+    </div>
+    <div class="info-section">
+        <h2>Why Apply Image Effects?</h2>
+        <p>Applying effects to your images can bring out the best in your photos. Effects like black and white or sepia can evoke certain emotions or time periods, while others like brightness and contrast adjustments help fine-tune the overall image quality. Image effects are useful in creating aesthetic consistency, enhancing mood, and making images stand out, whether for personal use, social media, or professional projects. By applying effects, you can give your images the perfect look for any occasion.</p>
+    </div>
+    <div class="info-section">
+        <h2>How to Use Our Image Effects Tool</h2>
+        <p>Our image effects tool is easy to use. Simply upload your photo, choose one or more effects from the available options, and click to apply! You can enhance your images with a variety of effects:</p>
+        <ul>
+            <li><strong>Black and White (Grayscale):</strong> Remove all colors from your image, giving it a classic monochrome look.</li>
+            <li><strong>Blur:</strong> Apply a soft focus effect, making the image appear smoother or highlighting specific areas by blurring others.</li>
+            <li><strong>Sharpen:</strong> Increase the definition of the image, making edges crisper and improving clarity.</li>
+            <li><strong>Sepia:</strong> Add a warm brown tone to your image, evoking a vintage, nostalgic feel.</li>
+        </ul>
+    </div>
+    
+    <div class="info-section">
+        <h2>More Effects You Can Apply</h2>
+        <p>Explore additional options to fine-tune your images and achieve the desired look:</p>
+        <ul>
+            <li><strong>Invert:</strong> Flip the colors in your image for a striking negative effect.</li>
+            <li><strong>Brightness:</strong> Adjust the light levels in your image to make it brighter or darker, depending on the desired mood.</li>
+            <li><strong>Contrast:</strong> Change the balance between light and dark areas, giving your photo a more dramatic or subtle look.</li>
+            <li><strong>Saturation:</strong> Control the intensity of colors, making them more vibrant or muted, depending on the visual impact you want.</li>
+        </ul>
+        <p>Our tool works across all devices and ensures that your photos retain their quality while applying these effects, giving you full control over the final result.</p>
+    </div>
+    
+    <div class="info-section">
+        <h2>Benefits of Using Our Image Effects Tool</h2>
+        <p>By using our image effects tool, you can enjoy a wide range of benefits:</p>
+        <ul>
+            <li><strong>Creative Control:</strong> Experiment with various effects to achieve your desired artistic style.</li>
+            <li><strong>Easy-to-Use Interface:</strong> Apply and adjust effects effortlessly with a user-friendly design.</li>
+            <li><strong>No Software Needed:</strong> Access the tool directly from your browser without the need for additional software.</li>
+            <li><strong>Instant Preview:</strong> See how your photo looks with each effect applied in real time.</li>
+            <li><strong>High-Quality Output:</strong> Ensure your photos maintain sharpness and detail, even after applying effects.</li>
+        </ul>
+    </div>
+    <div class="info-section">
+        <h2>Common Use Cases for Image Effects</h2>
+        <p>Image effects are commonly used in various scenarios, such as:</p>
+        <ul>
+            <li><strong>Social Media Content:</strong> Enhance your photos with effects that make them stand out on platforms like Instagram and Facebook.</li>
+            <li><strong>Photography Editing:</strong> Apply finishing touches to professional photography projects to enhance their visual impact.</li>
+            <li><strong>Marketing and Advertising:</strong> Adjust the tone and mood of images to align with branding and promotional content.</li>
+            <li><strong>Personal Projects:</strong> Transform your personal photos into artistic pieces by experimenting with different effects.</li>
+        </ul>
+    </div>
+</div>
+
+
 
 <style>
     h1 {
@@ -77,6 +134,7 @@
 
     .effect-button:hover {
         transform: scale(1.1);
+        background-color: var(--box-hover-text-color);
     }
 
     canvas {
@@ -84,6 +142,19 @@
         margin: 20px auto;
         display: none;
         border: 2px solid var(--box-hover-color);
+        border-radius: 5px;
+    }
+
+    .download-button {
+        background-color: var(--background-color);
+        color: var(--box-hover-color);
+        border: 2px solid var(--box-hover-color);
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 20px;
+        transition: transform 0.3s;
+        margin-top: 10px;
+        margin-bottom: 20px;
         border-radius: 5px;
     }
 

@@ -17,22 +17,85 @@
     gtag('config', 'G-PR74FHGP0L');
 </script>
 
-<h1>Free Blur Face Tool</h1>
-<p>Protect privacy by blurring specific areas in your images. Upload an image, select the area to blur, and download the
-    result.</p>
-<input type="file" id="image-upload" accept="image/*" style="display: none;">
-<button class="upload-button" onclick="document.getElementById('image-upload').click();">Upload Image</button>
-<div id="canvas-container">
-    <canvas id="canvas"></canvas>
-    <div id="blur-box">
-        <div class="resize-handle nw"></div>
-        <div class="resize-handle ne"></div>
-        <div class="resize-handle sw"></div>
-        <div class="resize-handle se"></div>
+<div class="container">
+    <h1>Free Blur Face Tool</h1>
+    <p>Protect privacy by blurring specific areas in your images. Upload an image, select the area to blur, and download
+        the
+        result.</p>
+    <input type="file" id="image-upload" accept="image/*" style="display: none;">
+    <button class="upload-button" onclick="document.getElementById('image-upload').click();">Upload Image</button>
+    <div id="canvas-container">
+        <canvas id="canvas"></canvas>
+        <div id="blur-box">
+            <div class="resize-handle nw"></div>
+            <div class="resize-handle ne"></div>
+            <div class="resize-handle sw"></div>
+            <div class="resize-handle se"></div>
+        </div>
+    </div>
+    <button id="apply-blur">Apply Blur</button>
+    <div id="error-message"></div>
+</div>
+
+<div class="info-container">
+    <div class="info-section">
+        <h2>What is Face Blurring?</h2>
+        <p>Face blurring is the process of obscuring or pixelating faces in images or videos to protect the identities of individuals. This technique is essential for maintaining privacy and anonymity, especially when sharing personal content online. Our face-blurring tool allows you to easily and quickly blur faces, ensuring that your images comply with privacy standards while still being visually appealing.</p>
+    </div>
+
+    <div class="info-section">
+        <h2>Why Blur Faces in Images or Videos?</h2>
+        <p>There are several important reasons to blur faces in your content:</p>
+        <ul>
+            <li><strong>Protect Privacy:</strong> Blurring faces helps safeguard the privacy of individuals, especially in sensitive situations like events, protests, or public gatherings.</li>
+            <li><strong>Comply with Laws:</strong> Many jurisdictions require consent for using identifiable images of individuals. Blurring faces can help you stay compliant with privacy laws.</li>
+            <li><strong>Focus on the Subject:</strong> By blurring faces, you can direct attention to the main subject or action in your image or video without distractions.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>How to Use Our Face Blurring Tool</h2>
+        <p>Our face-blurring tool is designed for ease of use, enabling you to protect identities in just a few steps:</p>
+        <ul>
+            <li>Click the "Upload from Computer" button to upload your image or video.</li>
+            <li>The tool will automatically detect faces in your content. You can choose which faces to blur or adjust the blur strength.</li>
+            <li>Once you're satisfied with the adjustments, click "Download Blurred Image/Video" to save your protected content to your device.</li>
+        </ul>
+        <p>Our tool supports various formats, ensuring compatibility with your images and videos.</p>
+    </div>
+
+    <div class="info-section">
+        <h2>Benefits of Using Our Face Blurring Tool</h2>
+        <p>Here are the key benefits of using our face-blurring tool:</p>
+        <ul>
+            <li><strong>Quick and Efficient:</strong> Easily blur faces in just a few clicks without the need for complex software.</li>
+            <li><strong>Automatic Detection:</strong> The tool automatically identifies faces, making the process faster and more convenient.</li>
+            <li><strong>Maintain Quality:</strong> Ensure that your images and videos retain their quality while protecting privacy.</li>
+            <li><strong>Free and Accessible:</strong> Our tool is available online for free, with no downloads or installations required.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Common Use Cases for Face Blurring</h2>
+        <p>Face blurring is useful in various scenarios, such as:</p>
+        <ul>
+            <li><strong>Event Photography:</strong> Protect the identities of individuals in photos taken at public events or gatherings.</li>
+            <li><strong>Documentaries and News Reports:</strong> Blur faces in interviews or footage where individuals have not given consent for their identity to be revealed.</li>
+            <li><strong>Social Media Sharing:</strong> Share images or videos online while ensuring the privacy of those featured in your content.</li>
+            <li><strong>Family Photos:</strong> Blur faces of children or relatives when sharing personal images on public platforms.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>How Blurring Faces Can Help Protect Privacy</h2>
+        <p>Blurring faces is an effective way to ensure the privacy and security of individuals. Here's how it can help:</p>
+        <ul>
+            <li><strong>Prevent Unauthorized Use:</strong> Blurring faces prevents others from using your images or videos to identify individuals without their consent.</li>
+            <li><strong>Enhance Safety:</strong> Protecting the identities of individuals in sensitive situations helps maintain their safety and security.</li>
+            <li><strong>Promote Ethical Content Sharing:</strong> By using our face-blurring tool, you promote responsible sharing of content that respects individuals' privacy rights.</li>
+        </ul>
     </div>
 </div>
-<button id="apply-blur">Apply Blur</button>
-<div id="error-message"></div>
 
 <div>
     <h1>Our other free Image Tools</h1>
@@ -79,10 +142,19 @@
         <li><a href="/convert/webp-to-jpeg">Convert WebP to JPEG</a></li>
         <li><a href="/convert/webp-to-bmp">Convert WebP to BMP</a></li>
         <li><a href="/convert/webp-to-tiff">Convert WebP to TIFF</a></li>
-    </ul>   
+    </ul>
 </div>
 
 <style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 90%;
+        margin: 0 auto;
+        text-align: center;
+    }
+
     h1 {
         color: var(--secondary-color);
         font-family: var(--font-family);
@@ -98,6 +170,7 @@
         font-size: 20px;
         transition: transform 0.3s;
         margin-bottom: 20px;
+        border-radius: 5px;
     }
 
     .upload-button:hover {
@@ -160,14 +233,15 @@
     }
 
     #apply-blur {
-        background-color: var(--link-hover-color);
-        color: var(--background-color);
+        background-color: var(--background-color);
+        color: var(--box-hover-color);
+        border: 2px solid var(--box-hover-color);
         padding: 10px 20px;
-        border: none;
         cursor: pointer;
-        font-size: 16px;
-        margin-top: 20px;
-        display: none;
+        font-size: 20px;
+        transition: transform 0.3s;
+        margin-top: 10px;
+        border-radius: 5px;
     }
 
     #error-message {
@@ -179,8 +253,6 @@
     li {
         line-height: 1.6;
     }
-
-    
 </style>
 
 <script>

@@ -651,3 +651,25 @@ footer {
         font-size: 14px;
     }
 }
+
+.info-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Create three equal columns */
+    gap: 20px; /* Space between the grid items */
+    margin: 20px auto; /* Center the container */
+    line-height: 1.6;
+}
+
+/* Center the last row when it has fewer than three items */
+.info-container > :nth-last-child(-n+3) {
+    justify-self: center; /* Center the items in the last row */
+}
+
+/* Ensuring each section maintains its styling */
+.info-section {
+    padding: 20px; /* Padding for each section */
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    background-color: var(--light-background-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
