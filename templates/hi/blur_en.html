@@ -1,0 +1,422 @@
+{% extends 'en/base.html' %}
+
+{% block title %}Blur Face online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+
+{% block meta_description %}
+<meta name="description"
+    content="Blur faces or specific areas in your images with ToolsForImage. Protect privacy by selectively blurring parts of your photos. Blur the faces with single click.">
+{% endblock %}
+
+{% block content %}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', '');
+</script>
+
+<div class="container">
+    <h1>Free Blur Face Tool</h1>
+    <p>Protect privacy by blurring specific areas in your images. Upload an image, select the area to blur, and download
+        the
+        result.</p>
+    <input type="file" id="image-upload" accept="image/*" style="display: none;">
+    <button class="upload-button" onclick="document.getElementById('image-upload').click();">Upload Image</button>
+    <div id="canvas-container">
+        <canvas id="canvas"></canvas>
+        <div id="blur-box">
+            <div class="resize-handle nw"></div>
+            <div class="resize-handle ne"></div>
+            <div class="resize-handle sw"></div>
+            <div class="resize-handle se"></div>
+        </div>
+    </div>
+    <button id="apply-blur">Apply Blur</button>
+    <div id="error-message"></div>
+</div>
+
+<div class="info-container">
+    <div class="info-section">
+        <h2>What is Face Blurring?</h2>
+        <p>Face blurring is the process of obscuring or pixelating faces in images or videos to protect the identities of individuals. This technique is essential for maintaining privacy and anonymity, especially when sharing personal content online. Our face-blurring tool allows you to easily and quickly blur faces, ensuring that your images comply with privacy standards while still being visually appealing.</p>
+    </div>
+
+    <div class="info-section">
+        <h2>Why Blur Faces in Images or Videos?</h2>
+        <p>There are several important reasons to blur faces in your content:</p>
+        <ul>
+            <li><strong>Protect Privacy:</strong> Blurring faces helps safeguard the privacy of individuals, especially in sensitive situations like events, protests, or public gatherings.</li>
+            <li><strong>Comply with Laws:</strong> Many jurisdictions require consent for using identifiable images of individuals. Blurring faces can help you stay compliant with privacy laws.</li>
+            <li><strong>Focus on the Subject:</strong> By blurring faces, you can direct attention to the main subject or action in your image or video without distractions.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>How to Use Our Face Blurring Tool</h2>
+        <p>Our face-blurring tool is designed for ease of use, enabling you to protect identities in just a few steps:</p>
+        <ul>
+            <li>Click the "Upload from Computer" button to upload your image or video.</li>
+            <li>The tool will automatically detect faces in your content. You can choose which faces to blur or adjust the blur strength.</li>
+            <li>Once you're satisfied with the adjustments, click "Download Blurred Image/Video" to save your protected content to your device.</li>
+        </ul>
+        <p>Our tool supports various formats, ensuring compatibility with your images and videos.</p>
+    </div>
+
+    <div class="info-section">
+        <h2>Benefits of Using Our Face Blurring Tool</h2>
+        <p>Here are the key benefits of using our face-blurring tool:</p>
+        <ul>
+            <li><strong>Quick and Efficient:</strong> Easily blur faces in just a few clicks without the need for complex software.</li>
+            <li><strong>Automatic Detection:</strong> The tool automatically identifies faces, making the process faster and more convenient.</li>
+            <li><strong>Maintain Quality:</strong> Ensure that your images and videos retain their quality while protecting privacy.</li>
+            <li><strong>Free and Accessible:</strong> Our tool is available online for free, with no downloads or installations required.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Common Use Cases for Face Blurring</h2>
+        <p>Face blurring is useful in various scenarios, such as:</p>
+        <ul>
+            <li><strong>Event Photography:</strong> Protect the identities of individuals in photos taken at public events or gatherings.</li>
+            <li><strong>Documentaries and News Reports:</strong> Blur faces in interviews or footage where individuals have not given consent for their identity to be revealed.</li>
+            <li><strong>Social Media Sharing:</strong> Share images or videos online while ensuring the privacy of those featured in your content.</li>
+            <li><strong>Family Photos:</strong> Blur faces of children or relatives when sharing personal images on public platforms.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>How Blurring Faces Can Help Protect Privacy</h2>
+        <p>Blurring faces is an effective way to ensure the privacy and security of individuals. Here's how it can help:</p>
+        <ul>
+            <li><strong>Prevent Unauthorized Use:</strong> Blurring faces prevents others from using your images or videos to identify individuals without their consent.</li>
+            <li><strong>Enhance Safety:</strong> Protecting the identities of individuals in sensitive situations helps maintain their safety and security.</li>
+            <li><strong>Promote Ethical Content Sharing:</strong> By using our face-blurring tool, you promote responsible sharing of content that respects individuals' privacy rights.</li>
+        </ul>
+    </div>
+</div>
+
+<div>
+    <h1>Our other free Image Tools</h1>
+    <ul class="tools-list">
+        <li><a href="/image-compression">Image Compression</a></li>
+        <li><a href="/image-resize">Image Resize</a></li>
+        <li><a href="/convert-image-format">Convert Image Format</a></li>
+        <li><a href="/image-rotate">Image Rotate</a></li>
+        <li><a href="/image-watermarking">Image Watermarking</a></li>
+        <li><a href="/image-effects">Image Effects</a></li>
+        <li><a href="/image-crop">Image Crop</a></li>
+        <li><a href="/blur-face">Blur Face</a></li>
+    </ul>
+    <br>
+    <h2 style="text-align: center;">Free Image Format Conversion Tools</h2>
+    <ul class="tools-list">
+        <li><a href="/convert/png-to-jpg">Convert PNG to JPG</a></li>
+        <li><a href="/convert/png-to-jpeg">Convert PNG to JPEG</a></li>
+        <li><a href="/convert/png-to-bmp">Convert PNG to BMP</a></li>
+        <li><a href="/convert/png-to-tiff">Convert PNG to TIFF</a></li>
+        <li><a href="/convert/png-to-webp">Convert PNG to WebP</a></li>
+        <li><a href="/convert/jpg-to-png">Convert JPG to PNG</a></li>
+        <li><a href="/convert/jpg-to-jpeg">Convert JPG to JPEG</a></li>
+        <li><a href="/convert/jpg-to-bmp">Convert JPG to BMP</a></li>
+        <li><a href="/convert/jpg-to-tiff">Convert JPG to TIFF</a></li>
+        <li><a href="/convert/jpg-to-webp">Convert JPG to WebP</a></li>
+        <li><a href="/convert/jpeg-to-png">Convert JPEG to PNG</a></li>
+        <li><a href="/convert/jpeg-to-jpg">Convert JPEG to JPG</a></li>
+        <li><a href="/convert/jpeg-to-bmp">Convert JPEG to BMP</a></li>
+        <li><a href="/convert/jpeg-to-tiff">Convert JPEG to TIFF</a></li>
+        <li><a href="/convert/jpeg-to-webp">Convert JPEG to WebP</a></li>
+        <li><a href="/convert/bmp-to-png">Convert BMP to PNG</a></li>
+        <li><a href="/convert/bmp-to-jpg">Convert BMP to JPG</a></li>
+        <li><a href="/convert/bmp-to-jpeg">Convert BMP to JPEG</a></li>
+        <li><a href="/convert/bmp-to-tiff">Convert BMP to TIFF</a></li>
+        <li><a href="/convert/bmp-to-webp">Convert BMP to WebP</a></li>
+        <li><a href="/convert/tiff-to-png">Convert TIFF to PNG</a></li>
+        <li><a href="/convert/tiff-to-jpg">Convert TIFF to JPG</a></li>
+        <li><a href="/convert/tiff-to-jpeg">Convert TIFF to JPEG</a></li>
+        <li><a href="/convert/tiff-to-bmp">Convert TIFF to BMP</a></li>
+        <li><a href="/convert/tiff-to-webp">Convert TIFF to WebP</a></li>
+        <li><a href="/convert/webp-to-png">Convert WebP to PNG</a></li>
+        <li><a href="/convert/webp-to-jpg">Convert WebP to JPG</a></li>
+        <li><a href="/convert/webp-to-jpeg">Convert WebP to JPEG</a></li>
+        <li><a href="/convert/webp-to-bmp">Convert WebP to BMP</a></li>
+        <li><a href="/convert/webp-to-tiff">Convert WebP to TIFF</a></li>
+    </ul>
+</div>
+
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 90%;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    h1 {
+        color: var(--secondary-color);
+        font-family: var(--font-family);
+        text-align: center;
+    }
+
+    .upload-button {
+        background-color: var(--link-hover-color);
+        color: var(--background-color);
+        padding: 20px 40px;
+        border: none;
+        cursor: pointer;
+        font-size: 20px;
+        transition: transform 0.3s;
+        margin-bottom: 20px;
+        border-radius: 5px;
+    }
+
+    .upload-button:hover {
+        transform: scale(1.1);
+    }
+
+    #canvas-container {
+        position: relative;
+        margin: 20px auto;
+        display: inline-block;
+        max-width: 100%;
+        max-height: 80vh;
+    }
+
+    #canvas {
+        display: none;
+        max-width: 100%;
+        max-height: 80vh;
+    }
+
+    #blur-box {
+        position: absolute;
+        border: 2px dashed #fff;
+        background-color: rgba(174, 107, 255, 0.3);
+        cursor: move;
+        display: none;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .resize-handle {
+        width: 10px;
+        height: 10px;
+        background-color: white;
+        position: absolute;
+    }
+
+    .resize-handle.nw {
+        top: -5px;
+        left: -5px;
+        cursor: nw-resize;
+    }
+
+    .resize-handle.ne {
+        top: -5px;
+        right: -5px;
+        cursor: ne-resize;
+    }
+
+    .resize-handle.sw {
+        bottom: -5px;
+        left: -5px;
+        cursor: sw-resize;
+    }
+
+    .resize-handle.se {
+        bottom: -5px;
+        right: -5px;
+        cursor: se-resize;
+    }
+
+    #apply-blur {
+        background-color: var(--background-color);
+        color: var(--box-hover-color);
+        border: 2px solid var(--box-hover-color);
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 20px;
+        transition: transform 0.3s;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+
+    #error-message {
+        color: red;
+        margin-top: 10px;
+        display: none;
+    }
+
+    li {
+        line-height: 1.6;
+    }
+</style>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const blurBox = document.getElementById('blur-box');
+    const applyBlurButton = document.getElementById('apply-blur');
+    const errorMessage = document.getElementById('error-message');
+    let img;
+    let scale = 1;
+
+    document.getElementById('image-upload').addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        if (file) {
+            img = new Image();
+            img.onload = function () {
+                const maxWidth = window.innerWidth * 0.8;
+                const maxHeight = window.innerHeight * 0.8;
+                scale = Math.min(1, maxWidth / img.width, maxHeight / img.height);
+
+                canvas.width = img.width * scale;
+                canvas.height = img.height * scale;
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                canvas.style.display = 'block';
+                blurBox.style.display = 'block';
+                applyBlurButton.style.display = 'block';
+                errorMessage.style.display = 'none';
+                resetBlurBox();
+            }
+            img.src = URL.createObjectURL(file);
+        }
+    });
+
+    let isDragging = false;
+    let isResizing = false;
+    let startX, startY, startLeft, startTop, startWidth, startHeight;
+    let currentHandle;
+
+    blurBox.addEventListener('mousedown', function (e) {
+        if (e.target.classList.contains('resize-handle')) {
+            isResizing = true;
+            currentHandle = e.target;
+        } else {
+            isDragging = true;
+        }
+        startX = e.clientX;
+        startY = e.clientY;
+        startLeft = blurBox.offsetLeft;
+        startTop = blurBox.offsetTop;
+        startWidth = parseInt(getComputedStyle(blurBox).width, 10);
+        startHeight = parseInt(getComputedStyle(blurBox).height, 10);
+    });
+
+    document.addEventListener('mousemove', function (e) {
+        if (isDragging) {
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
+
+            let newLeft = startLeft + dx;
+            let newTop = startTop + dy;
+
+            newLeft = Math.max(0, Math.min(newLeft, canvas.width - blurBox.offsetWidth));
+            newTop = Math.max(0, Math.min(newTop, canvas.height - blurBox.offsetHeight));
+
+            blurBox.style.left = newLeft + 'px';
+            blurBox.style.top = newTop + 'px';
+        } else if (isResizing) {
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
+
+            let newWidth, newHeight, newLeft, newTop;
+
+            if (currentHandle.classList.contains('se')) {
+                newWidth = Math.min(startWidth + dx, canvas.width - startLeft);
+                newHeight = Math.min(startHeight + dy, canvas.height - startTop);
+            } else if (currentHandle.classList.contains('sw')) {
+                newWidth = Math.min(startWidth - dx, startLeft + startWidth);
+                newHeight = Math.min(startHeight + dy, canvas.height - startTop);
+                newLeft = Math.max(0, startLeft + dx);
+            } else if (currentHandle.classList.contains('ne')) {
+                newWidth = Math.min(startWidth + dx, canvas.width - startLeft);
+                newHeight = Math.min(startHeight - dy, startTop + startHeight);
+                newTop = Math.max(0, startTop + dy);
+            } else if (currentHandle.classList.contains('nw')) {
+                newWidth = Math.min(startWidth - dx, startLeft + startWidth);
+                newHeight = Math.min(startHeight - dy, startTop + startHeight);
+                newLeft = Math.max(0, startLeft + dx);
+                newTop = Math.max(0, startTop + dy);
+            }
+
+            // Ensure minimum size for blur box
+            const minSize = 20;
+            newWidth = Math.max(newWidth, minSize);
+            newHeight = Math.max(newHeight, minSize);
+
+            blurBox.style.width = `${newWidth}px`;
+            blurBox.style.height = `${newHeight}px`;
+            if (newLeft !== undefined) blurBox.style.left = `${newLeft}px`;
+            if (newTop !== undefined) blurBox.style.top = `${newTop}px`;
+        }
+    });
+
+    document.addEventListener('mouseup', function () {
+        isDragging = false;
+        isResizing = false;
+    });
+
+    function resetBlurBox() {
+        const initialSize = Math.min(100, canvas.width / 2, canvas.height / 2);
+        blurBox.style.width = `${initialSize}px`;
+        blurBox.style.height = `${initialSize}px`;
+        blurBox.style.left = '0px';
+        blurBox.style.top = '0px';
+    }
+
+    applyBlurButton.addEventListener('click', function () {
+        const blurData = {
+            x: blurBox.offsetLeft / canvas.width,
+            y: blurBox.offsetTop / canvas.height,
+            width: blurBox.offsetWidth / canvas.width,
+            height: blurBox.offsetHeight / canvas.height
+        };
+
+        // Ensure blur region is valid
+        if (blurData.width <= 0 || blurData.height <= 0) {
+            errorMessage.textContent = 'Invalid blur region. Please select a larger area.';
+            errorMessage.style.display = 'block';
+            return;
+        }
+
+        // Convert canvas to base64 image
+        const imageData = canvas.toDataURL('image/png');
+
+        fetch('/apply-blur', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                image: imageData,
+                ...blurData
+            }),
+        })
+            .then(response => response.blob())
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'blurred_image.png';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+
+                // Reload the page after download
+                setTimeout(() => {
+                    window.location.reload();
+                }, 100);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                errorMessage.textContent = 'An error occurred while processing the image.';
+                errorMessage.style.display = 'block';
+            });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,163 @@
+{% extends 'en/base.html' %}
+
+{% block title %}Blogs ToolsForImage - Free Online Image Editing Tools{% endblock %}
+
+{% block meta_description %}
+<meta name="description"
+    content="Explore our blog for tips, tutorials, and insights on image editing, compression, and optimization. Stay updated with the latest trends in digital imagery and photography.">
+{% endblock %}
+
+{% block content %}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', '');
+</script>
+
+<h1>ToolsForImage Blog</h1>
+<p>Stay updated with the latest trends, tips, and tutorials in image editing and optimization.</p>
+
+<div class="blog-grid">
+    {% for blog in blogs %}
+    <div class="blog-post">
+        <img src="{{ url_for('static', filename=blog.image) }}" alt="{{ blog.title }}">
+        <h2>{{ blog.title }}</h2>
+        <p>{{ blog.description }}</p>
+        <div class="read-more-container">
+            <a href="{{ url_for('blog_post', blog_slug=blog.slug, lang=lang) }}" class="read-more">Read More</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div>
+    <br>
+    <h2>Online Free Image Tools</h2>
+    <ul class="tools-list">
+        <li><a href="/image-compression">Image Compression</a></li>
+        <li><a href="/image-resize">Image Resize</a></li>
+        <li><a href="/convert-image-format">Convert Image Format</a></li>
+        <li><a href="/image-rotate">Image Rotate</a></li>
+        <li><a href="/image-watermarking">Image Watermarking</a></li>
+        <li><a href="/image-effects">Image Effects</a></li>
+        <li><a href="/image-crop">Image Crop</a></li>
+        <li><a href="/blur-face">Blur Face</a></li>
+    </ul>
+    <br>
+    <h2 style="text-align: center;">Online free image format conversion tools</h2>
+    <ul class="tools-list">
+        <li><a href="/convert/png-to-jpg">Convert PNG to JPG</a></li>
+        <li><a href="/convert/png-to-jpeg">Convert PNG to JPEG</a></li>
+        <li><a href="/convert/png-to-bmp">Convert PNG to BMP</a></li>
+        <li><a href="/convert/png-to-tiff">Convert PNG to TIFF</a></li>
+        <li><a href="/convert/png-to-webp">Convert PNG to WebP</a></li>
+        <li><a href="/convert/jpg-to-png">Convert JPG to PNG</a></li>
+        <li><a href="/convert/jpg-to-jpeg">Convert JPG to JPEG</a></li>
+        <li><a href="/convert/jpg-to-bmp">Convert JPG to BMP</a></li>
+        <li><a href="/convert/jpg-to-tiff">Convert JPG to TIFF</a></li>
+        <li><a href="/convert/jpg-to-webp">Convert JPG to WebP</a></li>
+        <li><a href="/convert/jpeg-to-png">Convert JPEG to PNG</a></li>
+        <li><a href="/convert/jpeg-to-jpg">Convert JPEG to JPG</a></li>
+        <li><a href="/convert/jpeg-to-bmp">Convert JPEG to BMP</a></li>
+        <li><a href="/convert/jpeg-to-tiff">Convert JPEG to TIFF</a></li>
+        <li><a href="/convert/jpeg-to-webp">Convert JPEG to WebP</a></li>
+        <li><a href="/convert/bmp-to-png">Convert BMP to PNG</a></li>
+        <li><a href="/convert/bmp-to-jpg">Convert BMP to JPG</a></li>
+        <li><a href="/convert/bmp-to-jpeg">Convert BMP to JPEG</a></li>
+        <li><a href="/convert/bmp-to-tiff">Convert BMP to TIFF</a></li>
+        <li><a href="/convert/bmp-to-webp">Convert BMP to WebP</a></li>
+        <li><a href="/convert/tiff-to-png">Convert TIFF to PNG</a></li>
+        <li><a href="/convert/tiff-to-jpg">Convert TIFF to JPG</a></li>
+        <li><a href="/convert/tiff-to-jpeg">Convert TIFF to JPEG</a></li>
+        <li><a href="/convert/tiff-to-bmp">Convert TIFF to BMP</a></li>
+        <li><a href="/convert/tiff-to-webp">Convert TIFF to WebP</a></li>
+        <li><a href="/convert/webp-to-png">Convert WebP to PNG</a></li>
+        <li><a href="/convert/webp-to-jpg">Convert WebP to JPG</a></li>
+        <li><a href="/convert/webp-to-jpeg">Convert WebP to JPEG</a></li>
+        <li><a href="/convert/webp-to-bmp">Convert WebP to BMP</a></li>
+        <li><a href="/convert/webp-to-tiff">Convert WebP to TIFF</a></li>
+    </ul>
+</div>
+
+<style>
+    main p{
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 450px));
+        grid-template-columns: repeat(3, 1fr);
+        /* Responsive columns */
+        gap: 20px;
+        margin: 20px auto;
+        max-width: 1200px;
+    }
+
+    .blog-post {
+        border: 1px solid #ccc;
+        padding: 15px;
+        text-align: center;
+        border-radius: 10px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* min-width: 400px; */
+        max-width: 450px;
+    }
+
+    .blog-post img {
+        height: 50px;
+        object-fit: cover;
+        /* Ensure the image covers the space nicely */
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+
+    .blog-post h2 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .blog-post p {
+        font-size: 1rem;
+        margin-bottom: 15px;
+        color: #666;
+    }
+
+    .blog-post:hover {
+        transform: translateY(-5px);
+        /* Smooth hover effect */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        /* Enhanced shadow on hover */
+    }
+
+    .read-more {
+        background-color: #ffffff;
+        color: #000000;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        transition: background-color 0.3s, transform 0.3s;
+        border: 3px solid black;
+        border-radius: 5px;
+    }
+
+    .read-more-container {
+        margin-top: 30px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .read-more:hover {
+        border: var(--box-hover-text-color) 3px solid;
+        transform: translateY(-3px);
+    }
+</style>
+{% endblock %}

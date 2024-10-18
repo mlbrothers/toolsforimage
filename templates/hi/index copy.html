@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ToolsForImage में आपका स्वागत है - इमेज कम्प्रेशन, रिसाइज़िंग, क्रॉपिंग, फॉर्मेट कन्वर्ज़न, रोटेशन, वॉटरमार्किंग, फेस ब्लरिंग और अधिक के लिए आपका एकमात्र समाधान। हमारे आसान उपयोग टूल्स से अपनी छवियों को आसानी से बढ़ाएँ।">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <title>ToolsForImage - इमेज टूल्स</title>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+<body>
+    <nav>
+        <div class="nav-logo"><a href="/hi/" style="text-decoration: none; color: inherit;">ToolsForImage</a></div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/hi/image-compression">इमेज को संपीड़ित करें</a></li>
+            <li><a href="/hi/image-resize">इमेज का आकार बदलें</a></li>
+            <li><a href="/hi/convert-image-format">इमेज को कन्वर्ट करें</a></li>
+            <li><a href="/hi/image-rotate">इमेज को घुमाएं</a></li>
+            <li class="more-menu">
+                <a href="javascript:void(0)">अधिक</a>
+                <div class="more-menu-content">
+                    <a href="/hi/image-watermarking">वॉटरमार्क</a>
+                    <a href="/hi/image-effects">इमेज इफेक्ट्स</a>
+                    <a href="/hi/image-crop">इमेज क्रॉप करें</a>
+                    <a href="/hi/blur-face">चेहरे को धुंधला करें</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>इमेज टूल्स में आपका स्वागत है</h1>
+
+        <div class="grid-container">
+            <a href="/hi/image-compression" style="text-decoration: none; color: inherit;">
+                <div class="grid-item">
+                    <img src="{{ url_for('static', filename='compress.svg') }}" alt="Compress Image Icon" style="width: 50px; height: 50px;">
+                    <h2>इमेज को संपीड़ित करें</h2>
+                    <p>अपनी छवियों के फ़ाइल आकार को गुणवत्ता से समझौता किए बिना कम करें। तेज़ वेब लोडिंग समय के लिए आदर्श।</p>
+                </div>
+            </a>
+
+            <a href="/hi/image-resize" style="text-decoration: none; color: inherit;">
+                <div class="grid-item">
+                    <img src="{{ url_for('static', filename='resize.svg') }}" alt="Resize Image Icon" style="width: 50px; height: 50px;">
+                    <h2>इमेज का आकार बदलें</h2>
+                    <p>अपनी छवियों के आयामों को किसी भी आवश्यकता के अनुरूप समायोजित करें। सोशल मीडिया, वेब डिज़ाइन और प्रिंट के लिए परफेक्ट।</p>
+                </div>
+            </a>
+
+            <a href="/hi/image-crop" style="text-decoration: none; color: inherit;">
+                <div class="grid-item">
+                    <img src="{{ url_for('static', filename='crop.svg') }}" alt="Crop Image Icon" style="width: 50px; height: 50px;">
+                    <h2>इमेज क्रॉप करें</h2>
+                    <p>अपनी छवियों से अवांछित क्षेत्रों को हटाएँ और आवश्यक हिस्सों को उजागर करें। प्रोफ़ाइल चित्रों और थंबनेल के लिए बढ़िया।</p>
+                </div>
+            </a>
+
+            <a href="/hi/convert-image-format" style="text-decoration: none; color: inherit;">
+                <div class="grid-item">
+                    <img src="{{ url_for('static', filename='convert.svg') }}" alt="Convert Image Icon" style="width: 50px; height: 50px;">
+                    <h2>इमेज को कन्वर्ट करें</h2>
+                    <p>अपनी इमेज फ़ॉर्मेट को JPEG, PNG, GIF और अधिक में बदलें। विभिन्न प्लेटफ़ॉर्म पर अनुकूलता सुनिश्चित करें।</p>
+                </div>
+            </a>
+
+            <a href="/hi/image-rotate" style="text-decoration: none; color: inherit;">
+                <div class="grid-item">
+                    <img src="{{ url_for('static', filename='rotate.svg') }}" alt="Rotate Image Icon" style="width: 50px; height: 50px;">
+                    <h2>इमेज को घुमाएं</h2>
+                    <p>अपनी छवियों की अभिविन्यास को सही करें। आसानी से साइडवेज़ या उल्टा तस्वीरें ठीक करें।</p>
+                </div>
+            </a>
+
+            <a href="/hi/image-effects" style="text-decoration: none; color: inherit;">
+                <div class="grid-item">
+                    <img src="{{ url_for('static', filename='edit.svg') }}" alt="Image Effects Icon" style="width: 50px; height: 50px;">
+                    <h2>इमेज इफेक्ट्स</h2>
+                    <p>अपनी छवियों पर रचनात्मक प्रभाव लागू करें, जैसे कि फ़िल्टर और रंग समायोजन। अपनी तस्वीरों को कलात्मक रूप से बढ़ाएँ।</p>
+                </div>
+            </a>
+
+            <a href="/hi/image-watermarking" style="text-decoration: none; color: inherit;">
+                <div class="grid-item">
+                    <img src="{{ url_for('static', filename='stamp.svg') }}" alt="Watermark Image Icon" style="width: 50px; height: 50px;">
+                    <h2>वॉटरमार्क</h2>
+                    <p>अपनी छवियों में वॉटरमार्क जोड़कर अपने कार्य की सुरक्षा करें। फोटोग्राफरों और डिजिटल कलाकारों के लिए आदर्श।</p>
+                </div>
+            </a>
+
+            <a href="/hi/blur-face" style="text-decoration: none; color: inherit;">
+                <div class="grid-item">
+                    <img src="{{ url_for('static', filename='blur.svg') }}" alt="Blur Face Icon" style="width: 50px; height: 50px;">
+                    <h2>चेहरे को धुंधला करें</h2>
+                    <p>अपनी छवियों में चेहरों को स्वचालित रूप से धुंधला करके गोपनीयता की रक्षा करें। तस्वीरों में गुमनामी बनाए रखने के लिए परफेक्ट।</p>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <ul>
+            <li><a href="/hi/about">हमारे बारे में</a></li>
+            <li><a href="/hi/contact-us">संपर्क करें</a></li>
+            <li><a href="/hi/help">मदद</a></li>
+            <li><a href="/hi/faq">अक्सर पूछे जाने वाले प्रश्न</a></li>
+            <li><a href="/hi/media">मीडिया</a></li>
+            <li><a href="/hi/legal">कानूनी</a></li>
+            <li><a href="/hi/blogs">ब्लॉग्स</a></li>
+            <li><a href="/hi/our-story">हमारी कहानी</a></li>
+            <li><a href="/hi/team">टीम</a></li>
+            <li><a href="/hi/features">विशेषताएं</a></li>
+            <li><a href="/hi/pricing">मूल्य निर्धारण</a></li>
+            <li><a href="/hi/languages">भाषाएं</a></li>
+            <li><a href="/hi/tools">उपकरण</a></li>
+        </ul>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
