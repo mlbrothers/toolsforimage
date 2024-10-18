@@ -416,6 +416,10 @@ def convert_image(lang='en'):
             if image.mode in ('RGBA', 'LA') or (image.mode == 'P' and 'transparency' in image.info):
                 image = image.convert('RGB')
             image.save(img_io, format='JPEG', quality=95)
+        elif output_format == 'ico':
+            # For ICO format, we need to ensure the image is in RGBA mode
+            image = image.convert('RGBA')
+            image.save(img_io, format='ICO', sizes=[(32, 32)])
         else:
             image.save(img_io, format=output_format)
         img_io.seek(0)
@@ -433,7 +437,7 @@ def convert_image_format_route(lang='en', from_format='', to_format=''):
     if lang not in supported_languages:
         return redirect(f'/en/convert/{from_format}-to-{to_format}')
     
-    supported_formats = ['png', 'jpg', 'jpeg', 'bmp', 'tiff', 'webp']
+    supported_formats = ['png', 'jpg', 'jpeg', 'bmp', 'tiff', 'webp', 'ico']
     
     # Normalize formats
     from_format = from_format.lower()
