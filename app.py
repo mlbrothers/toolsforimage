@@ -699,10 +699,63 @@ blogs_list = {
             'title': 'How to convert bmp to png free online',
             'description': 'How to convert your bmp images to png format for free online',
             'image': 'bmp-to-png-blog.svg',
-        }
+        },
+        {
+            'slug': 'how-to-convert-image-from-webp-to-png',
+            'title': 'How to convert webp to png free online',
+            'description': 'How to convert your webp images to png format for free online',
+            'image': 'webp-to-png-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-bmp-to-tiff',
+            'title': 'How to convert bmp to tiff free online',
+            'description': 'How to convert your bmp images to tiff format for free online',
+            'image': 'bmp-to-tiff-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-webp-to-jpg',
+            'title': 'How to convert webp to jpg free online',
+            'description': 'How to convert your webp images to jpg format for free online',
+            'image': 'webp-to-jpg-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-png-to-jpg',
+            'title': 'How to convert png to jpg free online',
+            'description': 'How to convert your png images to jpg format for free online',
+            'image': 'png-to-jpg-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-bmp-to-webp',
+            'title': 'How to convert bitmap/bmp to WEBP free online',
+            'description': 'How to convert your bitmap images to WEBP format for free online',
+            'image': 'bmp-to-webp-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-png-to-bmp',
+            'title': 'How to convert png to bmp free online',
+            'description': 'How to convert your png images to bmp format for free online',
+            'image': 'png-to-bmp-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-png-to-tiff',
+            'title': 'How to convert png to tiff free online',
+            'description': 'How to convert your png images to tiff format for free online',
+            'image': 'png-to-tiff-blog.svg',
+        },  
+        {
+            'slug': 'how-to-convert-image-from-webp-to-bmp',
+            'title': 'How to convert webp to bmp free online',
+            'description': 'How to convert your webp images to bmp format for free online',
+            'image': 'bmp-to-png-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-png-to-webp',
+            'title': 'How to convert png to webp free online',
+            'description': 'How to convert your png images to webp format for free online',
+            'image': 'webp-to-jpeg-blog.svg',
+        }      
     ]
 }
-
 
 @app.route('/blogs')
 @app.route('/<lang>/blogs')
