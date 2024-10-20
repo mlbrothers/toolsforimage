@@ -800,7 +800,25 @@ blogs_list = {
             'title': 'How to convert png to webp free online',
             'description': 'How to convert your png images to webp format for free online',
             'image': 'webp-to-jpeg-blog.svg',
-        }      
+        },
+        {
+            'slug': 'how-to-convert-image-from-tiff-to-jpg',
+            'title': 'How to convert tiff to jpg free online',
+            'description': 'How to convert your tiff images to jpg format for free online',
+            'image': 'webp-to-tiff-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-jpg-to-webp',
+            'title': 'How to convert jpg to webp free online',
+            'description': 'How to convert your jpg images to webp format for free online',
+            'image': 'webp-to-jpg-blog.svg',
+        }, 
+        {
+            'slug': 'how-to-reduce-the-size-of-images-using-image-size-reducer',
+            'title': 'How to reduce the size of images free online',
+            'description': 'Efficiently reduce the size of your images using an efficient tool for image size reducer',
+            'image': 'image-size-reducer-blog.svg',
+        },      
     ]
 }
 
