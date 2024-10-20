@@ -11,6 +11,8 @@ import os
 import numpy as np
 import json
 import cv2
+from rembg import remove
+
 
 app = Flask(__name__)
 hti = Html2Image()
@@ -618,6 +620,51 @@ def apply_blur(lang='en'):
     except Exception as e:
         print(f"Error in apply_blur function: {str(e)}")
         return render_template(f'{lang}/error.html', error=str(e)), 500
+
+
+@app.route('/remove-background')
+@app.route('/<lang>/remove-background')
+def remove_background_page(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/remove-background')
+    return render_template(f'{lang}/remove-background.html')
+
+@app.route('/remove-background', methods=['POST'])
+@app.route('/<lang>/remove-background', methods=['POST'])
+def remove_background(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/remove-background')
+
+    if 'image' not in request.files:
+        return render_template(f'{lang}/error.html', error="No image file provided"), 400
+
+    image_file = request.files['image']
+    if image_file.filename == '':
+        return render_template(f'{lang}/error.html', error="No selected file"), 400
+
+    try:
+        # Read the input image
+        input_image = image_file.read()
+
+        # Remove the background
+        output_image = remove(input_image)
+
+        # Create a BytesIO object to store the output image
+        img_io = io.BytesIO(output_image)
+        img_io.seek(0)
+
+        # Generate a unique filename
+        unique_filename = f"no_bg_{uuid.uuid4().hex}_{int(time.time())}.png"
+
+        return send_file(
+            img_io,
+            mimetype='image/png',
+            as_attachment=True,
+            download_name=unique_filename
+        )
+    except Exception as e:
+        return render_template(f'{lang}/error.html', error=str(e)), 500
+
 
 # Consolidate static page routes
 @app.route('/about')

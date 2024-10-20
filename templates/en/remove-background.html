@@ -1,0 +1,144 @@
+{% extends "en/base.html" %}
+
+{% block meta_description %}
+<meta name="description" content="Remove background from images effortlessly with ToolsForImage's advanced AI-powered tool. Our free online background removal service utilizes cutting-edge artificial intelligence for precise and professional results.">
+{% endblock %}
+
+{% block title %}AI-Powered Background Removal Tool - Free Online Image Editor | ToolsForImage{% endblock %}
+
+{% block content %}
+<h1>Free AI-Powered Background Removal Tool</h1>
+<p>Experience the power of artificial intelligence in image editing. Our advanced AI algorithms make it incredibly easy to remove backgrounds from your images with unparalleled accuracy and efficiency. Simply upload an image, and let our state-of-the-art machine learning model do the rest.</p>
+<form id="background-removal-form" action="/remove-background" method="post" enctype="multipart/form-data">
+    <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload Image</button>
+    <br>
+    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <br>
+    <button type="submit" class="remove-bg-button" onclick="return validateImageSelection();">Remove Background with AI</button>
+</form>
+
+<div class="info-container">
+    <div class="info-section">
+        <h2>What is AI-Powered Background Removal?</h2>
+        <p>AI-powered background removal is a cutting-edge process that uses artificial intelligence and machine learning algorithms to automatically separate the main subject of an image from its background. This advanced technology analyzes complex patterns, edges, and color distributions to achieve highly accurate results, surpassing traditional image processing techniques.</p>
+    </div>
+
+    <div class="info-section">
+        <h2>Why Use AI for Removing Image Backgrounds?</h2>
+        <p>Artificial Intelligence offers numerous advantages in background removal:</p>
+        <ul>
+            <li><strong>Enhanced Accuracy:</strong> AI models can detect intricate details and complex edges that might be missed by conventional methods.</li>
+            <li><strong>Time Efficiency:</strong> AI processes images in seconds, saving hours of manual editing work.</li>
+            <li><strong>Consistency:</strong> AI ensures uniform quality across large batches of images.</li>
+            <li><strong>Handling Complex Images:</strong> AI excels at removing backgrounds from challenging images with intricate details or irregular shapes.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>How to Use Our AI-Powered Background Removal Tool</h2>
+        <p>Harnessing the power of AI for background removal is simple with our user-friendly tool:</p>
+        <ol>
+            <li>Click the "Upload Image" button to select the image you want to process.</li>
+            <li>Once your image is uploaded, click the "Remove Background with AI" button.</li>
+            <li>Our sophisticated AI model will analyze your image and automatically remove the background.</li>
+            <li>After processing, you can download your image with the background seamlessly removed.</li>
+        </ol>
+    </div>
+
+    <div class="info-section">
+        <h2>Benefits of Using Our AI-Driven Background Removal Tool</h2>
+        <ul>
+            <li><strong>Cutting-Edge AI Technology:</strong> Leverage the latest advancements in artificial intelligence and machine learning for superior results.</li>
+            <li><strong>Rapid Processing:</strong> Our AI algorithms work at lightning speed, delivering results in seconds.</li>
+            <li><strong>User-Friendly Interface:</strong> Enjoy the power of AI without needing technical expertise.</li>
+            <li><strong>Continuous Improvement:</strong> Our AI models are constantly learning and improving, ensuring you always get the best possible results.</li>
+            <li><strong>Versatility:</strong> Our AI can handle a wide range of image types and complexities, from simple product photos to intricate portraits.</li>
+        </ul>
+    </div>
+</div>
+
+<style>
+    h1 {
+        color: var(--secondary-color);
+        font-family: var(--font-family);
+        text-align: center;
+    }
+
+    main {
+        padding: 2em;
+        text-align: center;
+    }
+
+    .upload-button, .remove-bg-button {
+        background-color: var(--link-hover-color);
+        color: var(--background-color);
+        padding: 15px 30px;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        transition: transform 0.3s;
+        border-radius: 5px;
+        margin: 10px 0;
+    }
+
+    .upload-button:hover, .remove-bg-button:hover {
+        transform: scale(1.05);
+    }
+
+    .image-preview {
+        margin-top: 20px;
+        max-width: 100%;
+        max-height: 300px;
+        display: none;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 5px;
+    }
+
+    .info-container {
+        text-align: left;
+        margin-top: 40px;
+    }
+
+    .info-section {
+        margin-bottom: 30px;
+    }
+
+    .info-section h2 {
+        color: var(--secondary-color);
+    }
+
+    .info-section ul, .info-section ol {
+        padding-left: 20px;
+    }
+
+    .info-section li {
+        margin-bottom: 10px;
+    }
+</style>
+
+<script>
+    function validateImageSelection() {
+        const imageUpload = document.getElementById('image-upload');
+        if (!imageUpload.value) {
+            alert('Please select an image to upload.');
+            return false;
+        }
+        return true;
+    }
+
+    function previewImage(event) {
+        const imagePreview = document.getElementById('image-preview');
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+{% endblock %}

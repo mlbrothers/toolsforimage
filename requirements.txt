@@ -4,4 +4,5 @@ uuid
 html2image
 numpy
 opencv-python
+rembg
 gunicorn
