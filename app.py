@@ -666,6 +666,58 @@ def remove_background(lang='en'):
         return render_template(f'{lang}/error.html', error=str(e)), 500
 
 
+@app.route('/blur-background')
+@app.route('/<lang>/blur-background')
+def blur_background_page(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/blur-background')
+    return render_template(f'{lang}/blur-background.html')
+
+@app.route('/apply-background-blur', methods=['POST'])
+@app.route('/<lang>/apply-background-blur', methods=['POST'])
+def apply_background_blur(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/apply-background-blur')
+
+    if 'image' not in request.files:
+        return render_template(f'{lang}/error.html', error="No image file provided"), 400
+
+    image_file = request.files['image']
+    if image_file.filename == '':
+        return render_template(f'{lang}/error.html', error="No selected file"), 400
+
+    try:
+        # Read the input image
+        input_image = Image.open(image_file)
+        
+        # Remove the background
+        output_image = remove(input_image)
+        
+        # Blur the original image
+        blurred_image = input_image.filter(ImageFilter.GaussianBlur(10))
+        
+        # Overlay the extracted foreground onto the blurred image
+        blurred_image.paste(output_image, (0, 0), output_image)
+        
+        # Save the resulting image to a BytesIO object
+        img_io = io.BytesIO()
+        blurred_image.save(img_io, format='PNG')
+        img_io.seek(0)
+
+        # Generate a unique filename
+        unique_filename = f"blurred_bg_{uuid.uuid4().hex}_{int(time.time())}.png"
+
+        return send_file(
+            img_io,
+            mimetype='image/png',
+            as_attachment=True,
+            download_name=unique_filename
+        )
+    except Exception as e:
+        return render_template(f'{lang}/error.html', error=str(e)), 500
+
+
+
 # Consolidate static page routes
 @app.route('/about')
 @app.route('/<lang>/about')
