@@ -1,4 +1,4 @@
-{% extends "en/base.html" %}
+{% extends "hi/base.html" %}
 
 {% block meta_description %}
 <meta name="description" content="Explore ToolsForImage's pricing - All our powerful image editing tools are completely free! Compress, resize, crop, convert, and more at no cost.">
@@ -26,7 +26,7 @@
             <li>Unlimited Usage</li>
         </ul>
         <p>Start using our tools for free today!</p>
-        <a href="/" class="cta-button">Get Started</a>
+        <a href="/{{ g.lang }}/" class="cta-button">Get Started</a>
     </div>
 </div>
 
@@ -43,64 +43,16 @@
 <h2>Explore Our Tools</h2>
 <p>Discover the full range of our image editing capabilities:</p>
 <ul>
-    <li><a href="/image-compression">Image Compression</a> - Reduce file size without losing quality</li>
-    <li><a href="/image-resize">Image Resizing</a> - Adjust dimensions to your needs</li>
-    <li><a href="/convert-image-format">Format Conversion</a> - Switch between JPEG, PNG, GIF, and more</li>
-    <li><a href="/image-rotate">Image Rotation</a> - Correct image orientation</li>
-    <li><a href="/image-effects">Image Effects</a> - Apply filters and enhancements</li>
-    <li><a href="/image-watermarking">Watermarking</a> - Protect your images</li>
-    <li><a href="/blur-face">Face Blurring</a> - Maintain privacy in photos</li>
+    <li><a href="/{{ g.lang }}/image-compression">Image Compression</a> - Reduce file size without losing quality</li>
+    <li><a href="/{{ g.lang }}/image-resize">Image Resizing</a> - Adjust dimensions to your needs</li>
+    <li><a href="/{{ g.lang }}/convert-image-format">Format Conversion</a> - Switch between JPEG, PNG, GIF, and more</li>
+    <li><a href="/{{ g.lang }}/image-rotate">Image Rotation</a> - Correct image orientation</li>
+    <li><a href="/{{ g.lang }}/image-effects">Image Effects</a> - Apply filters and enhancements</li>
+    <li><a href="/{{ g.lang }}/image-watermarking">Watermarking</a> - Protect your images</li>
+    <li><a href="/{{ g.lang }}/blur-face">Face Blurring</a> - Maintain privacy in photos</li>
+    <li><a href="//{{ g.lang }}/remove-background">Remove Background</a> - Remove background from your images online for free</li>
+    <li><a href="//{{ g.lang }}/blur-background">Blur Background</a> - Blur the background of your images online for free</li>
 </ul>
-
-<div>
-    <br>
-    <h2>Online Free Image Tools</h2>
-    <ul class="tools-list">
-        <li><a href="/image-compression">Image Compression</a></li>
-        <li><a href="/image-resize">Image Resize</a></li>
-        <li><a href="/convert-image-format">Convert Image Format</a></li>
-        <li><a href="/image-rotate">Image Rotate</a></li>
-        <li><a href="/image-watermarking">Image Watermarking</a></li>
-        <li><a href="/image-effects">Image Effects</a></li>
-        <li><a href="/image-crop">Image Crop</a></li>
-        <li><a href="/blur-face">Blur Face</a></li>
-    </ul>
-    <br>
-    <h2 style="text-align: center;">Online free image format conversion tools</h2>
-    <ul class="tools-list">
-        <li><a href="/convert/png-to-jpg">Convert PNG to JPG</a></li>
-        <li><a href="/convert/png-to-jpeg">Convert PNG to JPEG</a></li>
-        <li><a href="/convert/png-to-bmp">Convert PNG to BMP</a></li>
-        <li><a href="/convert/png-to-tiff">Convert PNG to TIFF</a></li>
-        <li><a href="/convert/png-to-webp">Convert PNG to WebP</a></li>
-        <li><a href="/convert/jpg-to-png">Convert JPG to PNG</a></li>
-        <li><a href="/convert/jpg-to-jpeg">Convert JPG to JPEG</a></li>
-        <li><a href="/convert/jpg-to-bmp">Convert JPG to BMP</a></li>
-        <li><a href="/convert/jpg-to-tiff">Convert JPG to TIFF</a></li>
-        <li><a href="/convert/jpg-to-webp">Convert JPG to WebP</a></li>
-        <li><a href="/convert/jpeg-to-png">Convert JPEG to PNG</a></li>
-        <li><a href="/convert/jpeg-to-jpg">Convert JPEG to JPG</a></li>
-        <li><a href="/convert/jpeg-to-bmp">Convert JPEG to BMP</a></li>
-        <li><a href="/convert/jpeg-to-tiff">Convert JPEG to TIFF</a></li>
-        <li><a href="/convert/jpeg-to-webp">Convert JPEG to WebP</a></li>
-        <li><a href="/convert/bmp-to-png">Convert BMP to PNG</a></li>
-        <li><a href="/convert/bmp-to-jpg">Convert BMP to JPG</a></li>
-        <li><a href="/convert/bmp-to-jpeg">Convert BMP to JPEG</a></li>
-        <li><a href="/convert/bmp-to-tiff">Convert BMP to TIFF</a></li>
-        <li><a href="/convert/bmp-to-webp">Convert BMP to WebP</a></li>
-        <li><a href="/convert/tiff-to-png">Convert TIFF to PNG</a></li>
-        <li><a href="/convert/tiff-to-jpg">Convert TIFF to JPG</a></li>
-        <li><a href="/convert/tiff-to-jpeg">Convert TIFF to JPEG</a></li>
-        <li><a href="/convert/tiff-to-bmp">Convert TIFF to BMP</a></li>
-        <li><a href="/convert/tiff-to-webp">Convert TIFF to WebP</a></li>
-        <li><a href="/convert/webp-to-png">Convert WebP to PNG</a></li>
-        <li><a href="/convert/webp-to-jpg">Convert WebP to JPG</a></li>
-        <li><a href="/convert/webp-to-jpeg">Convert WebP to JPEG</a></li>
-        <li><a href="/convert/webp-to-bmp">Convert WebP to BMP</a></li>
-        <li><a href="/convert/webp-to-tiff">Convert WebP to TIFF</a></li>
-    </ul>
-</div>
-
 
 <style>
     main {

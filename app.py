@@ -22,12 +22,19 @@ supported_languages = ['en', 'hi', 'es', 'fr', 'de']  # Add more as needed
 
 @app.before_request
 def before_request():
+    # Exclude static files from language handling
+    if request.path.startswith('/static/'):
+        return  # Skip setting language for static file requests
+
     # Extract language from URL if present
     parts = request.path.split('/')
+    print(f"Request path parts: {parts}")
     if len(parts) > 1 and parts[1] in supported_languages:
         g.lang = parts[1]
     else:
         g.lang = 'en'  # Default to English
+
+    print(f"Selected language: {g.lang}")
 
 from werkzeug.exceptions import NotFound
 
@@ -871,6 +878,116 @@ blogs_list = {
             'description': 'Efficiently reduce the size of your images using an efficient tool for image size reducer',
             'image': 'image-size-reducer-blog.svg',
         },      
+    ],
+    'hi': [
+        {
+            'slug': 'how-to-convert-image-from-jpeg-to-jpg',
+            'title': 'How to convert JPEG to JPG free online',
+            'description': 'How to convert your JPEG images to JPG format for free online',
+            'image': 'jpeg-to-jpg-blog.svg',
+        },
+        {
+            'slug': 'how-to-blur-face-on-images-online-for-free',
+            'title': 'How to apply blur filter on face in images',
+            'description': 'Discover how to apply blur effect on the face in images online for free',
+            'image': 'blur-face-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-bmp-to-jpeg',
+            'title': 'How to convert bitmap/bmp to JPEG free online',
+            'description': 'How to convert your bitmap images to JPEG format for free online',
+            'image': 'bitmap-to-jpeg-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-webp-to-tiff',
+            'title': 'How to convert webp to tiff free online',
+            'description': 'How to convert your webp images to tiff format for free online',
+            'image': 'webp-to-tiff-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-webp-to-jpeg',
+            'title': 'How to convert webp to jpeg free online',
+            'description': 'How to convert your webp images to jpeg format for free online',
+            'image': 'webp-to-jpeg-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-bmp-to-png',
+            'title': 'How to convert bmp to png free online',
+            'description': 'How to convert your bmp images to png format for free online',
+            'image': 'bmp-to-png-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-webp-to-png',
+            'title': 'How to convert webp to png free online',
+            'description': 'How to convert your webp images to png format for free online',
+            'image': 'webp-to-png-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-bmp-to-tiff',
+            'title': 'How to convert bmp to tiff free online',
+            'description': 'How to convert your bmp images to tiff format for free online',
+            'image': 'bmp-to-tiff-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-webp-to-jpg',
+            'title': 'How to convert webp to jpg free online',
+            'description': 'How to convert your webp images to jpg format for free online',
+            'image': 'webp-to-jpg-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-png-to-jpg',
+            'title': 'How to convert png to jpg free online',
+            'description': 'How to convert your png images to jpg format for free online',
+            'image': 'png-to-jpg-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-bmp-to-webp',
+            'title': 'How to convert bitmap/bmp to WEBP free online',
+            'description': 'How to convert your bitmap images to WEBP format for free online',
+            'image': 'bmp-to-webp-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-png-to-bmp',
+            'title': 'How to convert png to bmp free online',
+            'description': 'How to convert your png images to bmp format for free online',
+            'image': 'png-to-bmp-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-png-to-tiff',
+            'title': 'How to convert png to tiff free online',
+            'description': 'How to convert your png images to tiff format for free online',
+            'image': 'png-to-tiff-blog.svg',
+        },  
+        {
+            'slug': 'how-to-convert-image-from-webp-to-bmp',
+            'title': 'How to convert webp to bmp free online',
+            'description': 'How to convert your webp images to bmp format for free online',
+            'image': 'bmp-to-png-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-png-to-webp',
+            'title': 'How to convert png to webp free online',
+            'description': 'How to convert your png images to webp format for free online',
+            'image': 'webp-to-jpeg-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-tiff-to-jpg',
+            'title': 'How to convert tiff to jpg free online',
+            'description': 'How to convert your tiff images to jpg format for free online',
+            'image': 'webp-to-tiff-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-jpg-to-webp',
+            'title': 'How to convert jpg to webp free online',
+            'description': 'How to convert your jpg images to webp format for free online',
+            'image': 'webp-to-jpg-blog.svg',
+        }, 
+        {
+            'slug': 'how-to-reduce-the-size-of-images-using-image-size-reducer',
+            'title': 'How to reduce the size of images free online',
+            'description': 'Efficiently reduce the size of your images using an efficient tool for image size reducer',
+            'image': 'image-size-reducer-blog.svg',
+        },      
     ]
 }
 
@@ -882,7 +999,7 @@ def blogs(lang='en'):
 
     # Get the blogs for the selected language
     blog_data = blogs_list.get(lang, blogs_list['en'])
-    return render_template(f'{lang}/blogs.html', blogs=blog_data)
+    return render_template(f'{lang}/blogs.html', blogs=blog_data, lang=lang)
 
 @app.route('/blogs/<blog_slug>')
 @app.route('/<lang>/blogs/<blog_slug>')

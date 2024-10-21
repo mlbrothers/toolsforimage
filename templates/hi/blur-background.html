@@ -1,0 +1,144 @@
+{% extends "hi/base.html" %}
+
+{% block meta_description %}
+<meta name="description" content="Blur image backgrounds easily with ToolsForImage's AI-powered background blur tool. Free online image editing using artificial intelligence.">
+{% endblock %}
+
+{% block title %}Blur Image Backgrounds with AI - ToolsForImage Free Online Image Editor{% endblock %}
+
+{% block content %}
+<h1>AI-Powered Background Blur Tool</h1>
+<p>Easily blur the background of your images using our advanced artificial intelligence algorithm. Upload an image and let our AI do the work for you!</p>
+<form id="blur-form" action="/apply-background-blur" method="post" enctype="multipart/form-data">
+    <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload Image</button>
+    <br>
+    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <br>
+    <button type="submit" class="blur-button" onclick="return validateImageSelection();">Apply AI Background Blur</button>
+</form>
+
+<div class="info-container">
+    <div class="info-section">
+        <h2>What is AI-Powered Background Blur?</h2>
+        <p>Our AI-powered background blur tool uses advanced artificial intelligence algorithms to automatically detect the main subject in your image and apply a blur effect to the background. This creates a professional-looking depth-of-field effect, similar to what you might achieve with a high-end camera.</p>
+    </div>
+
+    <div class="info-section">
+        <h2>Why Use AI to Blur Image Backgrounds?</h2>
+        <p>There are several benefits to using our AI-powered background blur tool:</p>
+        <ul>
+            <li><strong>Professional Look:</strong> Create stunning, professional-looking images with a blurred background that draws attention to the main subject.</li>
+            <li><strong>Time-Saving:</strong> Our AI does the work for you, eliminating the need for manual editing or complex software.</li>
+            <li><strong>Enhance Privacy:</strong> Blur out sensitive information or distracting elements in the background of your photos.</li>
+            <li><strong>Artistic Effect:</strong> Add a creative, artistic touch to your images with a beautifully blurred background.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>How to Use Our AI Background Blur Tool</h2>
+        <p>Using our artificial intelligence-powered background blur tool is quick and easy:</p>
+        <ol>
+            <li>Click the "Upload Image" button to select the image you want to edit.</li>
+            <li>Once your image is uploaded, click "Apply AI Background Blur" to start the process.</li>
+            <li>Our AI will analyze your image, detect the main subject, and apply a blur effect to the background.</li>
+            <li>After processing, you can download your newly edited image with a beautifully blurred background.</li>
+        </ol>
+    </div>
+
+    <div class="info-section">
+        <h2>Applications of AI Background Blur</h2>
+        <p>Our AI-powered background blur tool can be useful in various scenarios:</p>
+        <ul>
+            <li><strong>Portrait Photography:</strong> Enhance portrait photos by blurring distracting backgrounds.</li>
+            <li><strong>Product Photography:</strong> Make products stand out by blurring the background in product shots.</li>
+            <li><strong>Social Media:</strong> Create eye-catching social media posts with professionally blurred backgrounds.</li>
+            <li><strong>Privacy Protection:</strong> Blur sensitive information in the background of images before sharing.</li>
+        </ul>
+    </div>
+</div>
+
+<style>
+    h1 {
+        color: var(--secondary-color);
+        font-family: var(--font-family);
+        text-align: center;
+    }
+
+    main {
+        padding: 2em;
+        text-align: center;
+    }
+
+    .upload-button, .blur-button {
+        background-color: var(--link-hover-color);
+        color: var(--background-color);
+        padding: 15px 30px;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        transition: transform 0.3s;
+        border-radius: 5px;
+        margin: 10px 0;
+    }
+
+    .upload-button:hover, .blur-button:hover {
+        transform: scale(1.05);
+    }
+
+    .image-preview {
+        margin-top: 20px;
+        max-width: 100%;
+        max-height: 300px;
+        display: none;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 5px;
+    }
+
+    .info-container {
+        text-align: left;
+        margin-top: 30px;
+    }
+
+    .info-section {
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        color: var(--secondary-color);
+    }
+
+    ul, ol {
+        padding-left: 20px;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+</style>
+
+<script>
+    function validateImageSelection() {
+        const imageUpload = document.getElementById('image-upload');
+        if (!imageUpload.value) {
+            alert('Please select an image to upload.');
+            return false;
+        }
+        return true;
+    }
+
+    function previewImage(event) {
+        const imagePreview = document.getElementById('image-preview');
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+{% endblock %}

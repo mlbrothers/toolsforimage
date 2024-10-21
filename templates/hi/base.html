@@ -11,10 +11,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
-    <title>{% block title %}ToolsForImage{% endblock %}</title>
+    <title>{% block title %}टूल्सफॉरइमेज{% endblock %}</title>
 </head>
 <body>
-    {% include 'en/navbar.html' %}
+    {% include 'hi/navbar.html' %}
     <main>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-PR74FHGP0L"></script>
         <script>
@@ -26,11 +26,11 @@
         {% block content %}{% endblock %}
         {% set excluded_endpoints = ['index', 'tools'] %}
         {% if request.endpoint not in excluded_endpoints %}
-            {% include 'en/our_all_tools.html' %}
+            {% include 'hi/our_all_tools.html' %}
         {% endif %}
 
     </main>
-    {% include 'en/navigation_tools.html' %}
-    {% include 'en/footer.html' %}
+    {% include 'hi/navigation_tools.html' %}
+    {% include 'hi/footer.html' %}
 </body>
 </html>

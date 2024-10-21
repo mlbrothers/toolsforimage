@@ -1,22 +1,24 @@
 <nav>
-    <div class="nav-logo"><a href="/" style="text-decoration: none; color: inherit;">ToolsForImage</a></div>
+    <div class="nav-logo"><a href="/{{ g.lang }}/" style="text-decoration: none; color: inherit;">टूल्सफॉरइमेज</a></div>
     <div class="hamburger" id="hamburger">
         <div></div>
         <div></div>
         <div></div>
     </div>
     <ul class="nav-links" id="nav-links">
-        <li><a href="/image-compression">Compress Image</a></li>
-        <li><a href="/image-resize">Resize Image</a></li>
-        <li><a href="/convert-image-format">Convert Image</a></li>
-        <li><a href="/image-rotate">Rotate Image</a></li>
+        <li><a href="/{{ g.lang }}/image-compression">छवि को कंप्रेस करें</a></li>
+        <li><a href="/{{ g.lang }}/image-resize">छवि का आकार बदलें</a></li>
+        <li><a href="/{{ g.lang }}/convert-image-format">छवि प्रारूप बदलें</a></li>
+        <li><a href="/{{ g.lang }}/image-rotate">छवि घुमाएं</a></li>
         <li class="more-menu">
-            <a href="javascript:void(0)" class="more-menu-button">More</a>
+            <a href="javascript:void(0)" class="more-menu-button">और</a>
             <div class="more-menu-content">
-                <a href="/image-watermarking">Watermark</a>
-                <a href="/image-effects">Image Effects</a>
-                <a href="/image-crop">Crop Image</a>
-                <a href="/blur-face">Blur Face</a>
+                <a href="/{{ g.lang }}/image-watermarking">वॉटरमार्क</a>
+                <a href="/{{ g.lang }}/image-effects">छवि प्रभाव</a>
+                <a href="/{{ g.lang }}/image-crop">छवि क्रॉप करें</a>
+                <a href="/{{ g.lang }}/blur-face">चेहरा धुंधला करें</a>
+                <a href="/{{ g.lang }}/remove-background">पृष्ठभूमि हटाएं</a>
+                <a href="/{{ g.lang }}/blur-background">पृष्ठभूमि धुंधला करें</a>
             </div>
         </li>
     </ul>

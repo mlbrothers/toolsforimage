@@ -1,7 +1,8 @@
-{% extends "en/base.html" %}
+{% extends "hi/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Convert JPEG to JPG images easily with ToolsForImage. Free online JPEG to JPG converter.">
+<meta name="description"
+    content="Convert JPEG to JPG images easily with ToolsForImage. Free online JPEG to JPG converter.">
 {% endblock %}
 
 {% block title %}Convert JPEG to JPG online ToolsForImage - Free Online Image Editing Tools{% endblock %}
@@ -10,8 +11,10 @@
 <h1>Free JPEG to JPG Conversion Tool</h1>
 <p>Easily convert your JPEG images to JPG format. Upload a JPEG image and we'll convert it to JPG for you.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
-    <input type="file" id="image-upload" name="image" accept="image/jpeg" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload JPEG Image</button>
+    <input type="file" id="image-upload" name="image" accept="image/jpeg" style="display: none;"
+        onchange="previewImage(event)">
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload JPEG
+        Image</button>
     <br>
     <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
     <br>
@@ -20,68 +23,106 @@
     <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to JPG</button>
 </form>
 
-<div class="info-container">
-    <div class="info-section">
-        <h2>What is JPEG to JPG Conversion?</h2>
-        <p>JPEG to JPG conversion is the process of changing image files from JPEG (Joint Photographic Experts Group) format to JPG (a commonly used abbreviation of JPEG). Despite the different file extensions, both formats are essentially the same, utilizing lossy compression for high-quality images. Our tool makes it easy to convert your JPEG files to JPG quickly and efficiently.</p>
+<section>
+    <h2>Step by step conversion guide from JPEG to JPG</h2>
+    <div class="step-container">
+        <div class="step">Step 1: Select a jpeg to convert the frames to individual JPG images</div>
+        <div class="arrow">↓</div>
+        <div class="step">Step 2: Upload a jpeg and begin the conversion process</div>
+        <div class="arrow">↓</div>
+        <div class="step">Step 3: Download the JPG files</div>
     </div>
+</section>
 
-    <div class="info-section">
-        <h2>Why Convert JPEG to JPG?</h2>
-        <p>There are a few reasons why you might want to convert JPEG images to JPG:</p>
-        <ul>
-            <li><strong>File Compatibility:</strong> Some software or platforms prefer JPG files over JPEG. Converting ensures compatibility with various applications.</li>
-            <li><strong>File Name Shortening:</strong> Using JPG instead of JPEG can make file names shorter, which is useful for organizing large collections of images.</li>
-            <li><strong>Uniformity:</strong> If you have a mix of JPEG and JPG files, converting them to one format can help maintain consistency across your image library.</li>
-        </ul>
-    </div>
+<div class="faq-container">
+    <h2>FAQs (Frequently Asked Questions)</h2>
+    <div class="info-container">
+        <div class="info-section">
+            <h2>What is JPEG to JPG Conversion?</h2>
+            <p>JPEG to JPG conversion is the process of changing image files from JPEG (Joint Photographic Experts
+                Group) format to JPG (a commonly used abbreviation of JPEG). Despite the different file extensions, both
+                formats are essentially the same, utilizing lossy compression for high-quality images. Our tool makes it
+                easy to convert your JPEG files to JPG quickly and efficiently.</p>
+        </div>
 
-    <div class="info-section">
-        <h2>How to Use Our JPEG to JPG Converter</h2>
-        <p>Our JPEG to JPG conversion tool is designed to be user-friendly. Here’s how to use it:</p>
-        <ul>
-            <li>Click the "Upload JPEG File" button to choose the JPEG image you want to convert.</li>
-            <li>After the image is uploaded, our tool will automatically convert it to JPG format.</li>
-            <li>Once the conversion is complete, click "Download JPG" to save your new file to your device.</li>
-        </ul>
-        <p>Our converter supports various JPEG files, ensuring a smooth conversion experience every time.</p>
-    </div>
+        <div class="info-section">
+            <h2>Why Convert JPEG to JPG?</h2>
+            <p>There are a few reasons why you might want to convert JPEG images to JPG:</p>
+            <ul>
+                <li><strong>File Compatibility:</strong> Some software or platforms prefer JPG files over JPEG.
+                    Converting ensures compatibility with various applications.</li>
+                <li><strong>File Name Shortening:</strong> Using JPG instead of JPEG can make file names shorter, which
+                    is useful for organizing large collections of images.</li>
+                <li><strong>Uniformity:</strong> If you have a mix of JPEG and JPG files, converting them to one format
+                    can help maintain consistency across your image library.</li>
+            </ul>
+        </div>
 
-    <div class="info-section">
-        <h2>Benefits of Using Our JPEG to JPG Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
-        <ul>
-            <li><strong>Quick and Easy:</strong> Convert your JPEG images to JPG in just a few clicks, without any hassle.</li>
-            <li><strong>No Loss of Quality:</strong> Enjoy high-quality images with our lossless conversion feature.</li>
-            <li><strong>Free and Accessible:</strong> Use our online converter for free, without needing to download any software.</li>
-            <li><strong>User-Friendly Interface:</strong> Designed for everyone, our tool makes it easy to convert images, regardless of your technical skills.</li>
-        </ul>
-    </div>
+        <div class="info-section">
+            <h2>How to Use Our JPEG to JPG Converter</h2>
+            <p>Our JPEG to JPG conversion tool is designed to be user-friendly. Here's how to use it:</p>
+            <ul>
+                <li>Click the "Upload JPEG File" button to choose the JPEG image you want to convert.</li>
+                <li>After the image is uploaded, our tool will automatically convert it to JPG format.</li>
+                <li>Once the conversion is complete, click "Download JPG" to save your new file to your device.</li>
+            </ul>
+            <p>Our converter supports various JPEG files, ensuring a smooth conversion experience every time.</p>
+        </div>
 
-    <div class="info-section">
-        <h2>Common Uses for JPEG to JPG Conversion</h2>
-        <p>Here are a few situations where converting JPEG to JPG can be helpful:</p>
-        <ul>
-            <li><strong>File Management:</strong> Convert images for better organization, especially if you have many JPEG files to sort.</li>
-            <li><strong>Web Uploads:</strong> Some websites or applications prefer JPG files, so converting ensures seamless uploads.</li>
-            <li><strong>Sharing with Others:</strong> Ensure that your images are in the preferred format for friends, family, or colleagues.</li>
-            <li><strong>Social Media:</strong> Prepare your images for social media platforms that may favor JPG files over JPEG.</li>
-        </ul>
-    </div>
+        <div class="info-section">
+            <h2>Benefits of Using Our JPEG to JPG Converter</h2>
+            <p>Here are some advantages of using our conversion tool:</p>
+            <ul>
+                <li><strong>Quick and Easy:</strong> Convert your JPEG images to JPG in just a few clicks, without any
+                    hassle.</li>
+                <li><strong>No Loss of Quality:</strong> Enjoy high-quality images with our lossless conversion feature.
+                </li>
+                <li><strong>Free and Accessible:</strong> Use our online converter for free, without needing to download
+                    any software.</li>
+                <li><strong>User-Friendly Interface:</strong> Designed for everyone, our tool makes it easy to convert
+                    images, regardless of your technical skills.</li>
+            </ul>
+        </div>
 
-    <div class="info-section">
-        <h2>How Converting JPEG to JPG Can Enhance Your Images</h2>
-        <p>Converting your JPEG images to JPG can improve their usability and accessibility. Here’s how:</p>
-        <ul>
-            <li><strong>Increased Compatibility:</strong> Ensure that your images work smoothly with a variety of applications and platforms.</li>
-            <li><strong>Efficient Storage:</strong> JPG files are typically smaller, making them easier to store and share.</li>
-            <li><strong>Consistent File Naming:</strong> Standardize your files with JPG extension for easier identification and retrieval.</li>
-        </ul>
+        <div class="info-section">
+            <h2>Common Uses for JPEG to JPG Conversion</h2>
+            <p>Here are a few situations where converting JPEG to JPG can be helpful:</p>
+            <ul>
+                <li><strong>File Management:</strong> Convert images for better organization, especially if you have
+                    many JPEG files to sort.</li>
+                <li><strong>Web Uploads:</strong> Some websites or applications prefer JPG files, so converting ensures
+                    seamless uploads.</li>
+                <li><strong>Sharing with Others:</strong> Ensure that your images are in the preferred format for
+                    friends, family, or colleagues.</li>
+                <li><strong>Social Media:</strong> Prepare your images for social media platforms that may favor JPG
+                    files over JPEG.</li>
+            </ul>
+        </div>
+
+        <div class="info-section">
+            <h2>How Converting JPEG to JPG Can Enhance Your Images</h2>
+            <p>Converting your JPEG images to JPG can improve their usability and accessibility. Here's how:</p>
+            <ul>
+                <li><strong>Increased Compatibility:</strong> Ensure that your images work smoothly with a variety of
+                    applications and platforms.</li>
+                <li><strong>Efficient Storage:</strong> JPG files are typically smaller, making them easier to store and
+                    share.</li>
+                <li><strong>Consistent File Naming:</strong> Standardize your files with JPG extension for easier
+                    identification and retrieval.</li>
+            </ul>
+        </div>
     </div>
 </div>
 
-
 <style>
+    .gif-image{
+        margin: 35px auto;
+        max-width: 600px;
+        max-height: 360px;
+        border: var(--box-hover-color) 1px solid;
+        border-radius: 8px;
+    }
+
     h1 {
         color: var(--secondary-color);
         font-family: var(--font-family);
@@ -136,11 +177,53 @@
         line-height: 1.6;
     }
 
-    h1{
+    h1 {
         text-align: center;
     }
 
-    
+    section {
+        margin: 20px auto 10px auto;
+    }
+
+    .step-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        padding: 0 auto;
+    }
+
+    .step {
+        background-color: #93b3be;
+        color: black;
+        border: 2px solid #546E7A;
+        padding: 15px 20px;
+        width: 500px;
+        text-align: center;
+        border-radius: 15px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .arrow {
+        font-size: 40px;
+        color: black;
+        font-weight: bold;
+        margin: 0;
+        /* Remove any default margin */
+        padding: 0;
+        /* Remove any padding */
+    }
+
+    .step+.arrow {
+        margin-top: -14px;
+    }
+
+    .arrow+.step {
+        margin-top: 0px;
+    }
 </style>
 
 <script>
@@ -158,7 +241,7 @@
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
-            reader.onload = function(e) {
+            reader.onload = function (e) {
                 imagePreview.src = e.target.result;
                 imagePreview.style.display = 'block';
             }
