@@ -2,28 +2,27 @@
 
 {% block meta_description %}
 <meta name="description"
-    content="Rotate your images effortlessly with ToolsForImage. Adjust image orientation quickly and easily.">
+    content="ToolsForImage के साथ अपने चित्रों को आसानी से घुमाएँ। चित्र की ओरिएंटेशन को जल्दी और आसानी से समायोजित करें।">
 {% endblock %}
 
-{% block title %}Rotate Image online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}ToolsForImage पर ऑनलाइन इमेज रोटेट - फ्री ऑनलाइन इमेज एडिटिंग टूल्स{% endblock %}
 
 {% block content %}
-<h1>Free Image Rotation Tool</h1>
-<p>Easily rotate your images with ToolsForImage. Upload an image, preview the rotation, and download the result.</p>
-<p>Upload your image file and rotate it instantly. Choose your image:</p>
+<h1>फ्री इमेज रोटेशन टूल</h1>
+<p>ToolsForImage के साथ अपने चित्रों को आसानी से घुमाएँ। एक चित्र अपलोड करें, घुमाव का पूर्वावलोकन करें, और परिणाम डाउनलोड करें।</p>
+<p>अपना इमेज फ़ाइल अपलोड करें और तुरंत घुमाएँ। अपना चित्र चुनें:</p>
 <form id="rotation-form" action="/rotate-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;"
         onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload from
-        Computer</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">कंप्यूटर से अपलोड करें</button>
     <br>
     <div class="image-preview-container">
-        <img id="image-preview" class="image-preview" src="#" alt="Image Preview">
+        <img id="image-preview" class="image-preview" src="#" alt="चित्र पूर्वावलोकन">
     </div>
     <br>
     <div class="rotate-controls">
         <button type="button" class="rotate-button" onclick="rotateImage(-90)">
-            Rotate Left
+            बाएं घुमाएँ
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 style="vertical-align: -4px;">
@@ -32,7 +31,7 @@
             </svg>
         </button>
         <button type="button" class="rotate-button" onclick="rotateImage(90)">
-            Rotate Right
+            दाएं घुमाएँ
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 style="vertical-align: -4px;">
@@ -43,86 +42,65 @@
     </div>
     <br>
     <input type="hidden" id="rotation-angle" name="rotation" value="0">
-    <button type="submit" class="rotate-button" onclick="return validateImageSelection();">Download Rotated
-        Image</button>
+    <button type="submit" class="rotate-button" onclick="return validateImageSelection();">घुमाया हुआ चित्र डाउनलोड करें</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is Image Rotation?</h2>
-        <p>Image rotation is the process of changing the orientation of an image by rotating it either clockwise or
-            counterclockwise. This feature is useful when your photo or graphic is incorrectly oriented, such as when it
-            was taken upside down or sideways. By rotating images, you can quickly adjust them to the correct angle,
-            ensuring they are properly aligned for viewing or sharing.</p>
+        <h2>चित्र रोटेशन क्या है?</h2>
+        <p>चित्र रोटेशन एक चित्र की ओरिएंटेशन को घुमाने की प्रक्रिया है, इसे घड़ी की दिशा में या घड़ी की दिशा के विपरीत घुमाया जाता है। यह सुविधा उपयोगी होती है जब आपकी फोटो या ग्राफिक गलत तरीके से ओरिएंटेड होती है, जैसे कि जब इसे उल्टा या साइडवेज लिया गया हो। चित्रों को घुमाकर, आप उन्हें जल्दी से सही कोण में समायोजित कर सकते हैं, यह सुनिश्चित करते हुए कि वे देखने या साझा करने के लिए सही तरीके से संरेखित हैं।</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Rotate Your Images?</h2>
-        <p>There are many reasons to rotate images. Sometimes, photos taken on smartphones or cameras don't capture the
-            image in the desired orientation. Rotating the image helps you achieve the perfect alignment, making your
-            photos look professional. Additionally, rotating images can help with design layouts, giving you more
-            flexibility in how the image fits with other elements on websites, social media posts, or print projects.
-            Properly rotated images also enhance the user experience, especially on web pages where the correct
-            orientation ensures better visual appeal.</p>
+        <h2>अपने चित्रों को घुमाने के कारण?</h2>
+        <p>चित्रों को घुमाने के कई कारण होते हैं। कभी-कभी, स्मार्टफ़ोन या कैमरे से ली गई फ़ोटो सही ओरिएंटेशन में नहीं आती हैं। चित्र को घुमाने से आपको सही संरेखण प्राप्त करने में मदद मिलती है, जिससे आपकी फ़ोटो पेशेवर दिखती हैं। इसके अतिरिक्त, चित्रों को घुमाना डिज़ाइन लेआउट में मदद कर सकता है, आपको वेबसाइटों, सोशल मीडिया पोस्ट, या प्रिंट प्रोजेक्ट्स पर अन्य तत्वों के साथ चित्र के फिटिंग में अधिक लचीलापन प्रदान करता है। सही तरीके से घुमाए गए चित्र भी उपयोगकर्ता अनुभव को बढ़ाते हैं, विशेष रूप से वेब पृष्ठों पर जहां सही ओरिएंटेशन बेहतर दृश्य अपील सुनिश्चित करता है।</p>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our Image Rotation Tool</h2>
-        <p>Our image rotation tool is designed to be quick and user-friendly. Here's how it works:</p>
+        <h2>हमारे चित्र रोटेशन टूल का उपयोग कैसे करें</h2>
+        <p>हमारा चित्र रोटेशन टूल त्वरित और उपयोगकर्ता के अनुकूल डिज़ाइन किया गया है। यहाँ यह कैसे काम करता है:</p>
         <ul>
-            <li>First, upload the image you want to rotate by clicking the "Upload from Computer" button.</li>
-            <li>After the image is uploaded, you will see a preview.</li>
-            <li>Use the "Rotate Left" or "Rotate Right" buttons to rotate the image in 90-degree increments until the
-                orientation is as desired.</li>
-            <li>Once you're satisfied with the rotation, click "Download Rotated Image" to save the adjusted image to
-                your device.</li>
+            <li>पहले, "कंप्यूटर से अपलोड करें" बटन पर क्लिक करके वह चित्र अपलोड करें जिसे आप घुमाना चाहते हैं।</li>
+            <li>चित्र अपलोड होने के बाद, आप एक पूर्वावलोकन देखेंगे।</li>
+            <li>चित्र को 90 डिग्री के चरणों में घुमाने के लिए "बाएं घुमाएँ" या "दाएं घुमाएँ" बटनों का उपयोग करें जब तक कि ओरिएंटेशन वांछित न हो।</li>
+            <li>जब आप रोटेशन से संतुष्ट हों, तो समायोजित चित्र को अपने डिवाइस पर सहेजने के लिए "घुमाया हुआ चित्र डाउनलोड करें" पर क्लिक करें।</li>
         </ul>
-        <p>Our tool allows you to rotate images in multiple formats, including PNG, JPG, JPEG, BMP, and more. The best
-            part? It maintains the original quality of your image, so you won't have to worry about any degradation.</p>
+        <p>हमारा टूल PNG, JPG, JPEG, BMP और अधिक सहित कई फ़ॉर्मेट में चित्रों को घुमाने की अनुमति देता है। सबसे अच्छी बात? यह आपके चित्र की मूल गुणवत्ता को बनाए रखता है, इसलिए आपको किसी भी प्रकार के नुकसान की चिंता करने की आवश्यकता नहीं है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our Image Rotation Tool</h2>
-        <p>Our image rotation tool offers several advantages:</p>
+        <h2>हमारे चित्र रोटेशन टूल के लाभ</h2>
+        <p>हमारा चित्र रोटेशन टूल कई लाभ प्रदान करता है:</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Rotate images in just a few clicks, without needing any special
-                software.</li>
-            <li><strong>Supports All Formats:</strong> Whether you're working with PNGs, JPGs, or other popular formats,
-                our tool has you covered.</li>
-            <li><strong>No Loss of Quality:</strong> Rotate your images without compromising their resolution or
-                clarity.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, without any downloads or
-                installations.</li>
+            <li><strong>तेज़ और आसान:</strong> केवल कुछ क्लिक में चित्रों को घुमाएँ, बिना किसी विशेष सॉफ़्टवेयर की आवश्यकता के।</li>
+            <li><strong>सभी फ़ॉर्मेट का समर्थन करता है:</strong> चाहे आप PNGs, JPGs, या अन्य लोकप्रिय फ़ॉर्मेट के साथ काम कर रहे हों, हमारा टूल आपकी सहायता करता है।</li>
+            <li><strong>गुणवत्ता की हानि नहीं:</strong> अपने चित्रों को उनके संकल्प या स्पष्टता का समझौता किए बिना घुमाएँ।</li>
+            <li><strong>फ्री और उपलब्ध:</strong> बिना किसी डाउनलोड या इंस्टॉलेशन के ऑनलाइन हमारे टूल का उपयोग करें।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>Common Use Cases for Image Rotation</h2>
-        <p>Here are a few common situations where you might need to rotate images:</p>
+        <h2>चित्र रोटेशन के लिए सामान्य उपयोग के मामले</h2>
+        <p>यहाँ कुछ सामान्य स्थितियाँ हैं जहाँ आपको चित्रों को घुमाने की आवश्यकता हो सकती है:</p>
         <ul>
-            <li><strong>Photography:</strong> Adjust photos taken in the wrong orientation.</li>
-            <li><strong>Design Layout:</strong> Rotate images to fit into design projects or presentations properly.
-            </li>
-            <li><strong>Social Media:</strong> Ensure that your photos and graphics appear in the correct orientation
-                when sharing on social platforms like Instagram or Facebook.</li>
-            <li><strong>Web Content:</strong> Enhance the visual appeal of your website by making sure images are
-                aligned correctly.</li>
-            <li><strong>Personal Use:</strong> Quickly rotate family photos, vacation images, or any personal pictures
-                to ensure they're displayed as intended.</li>
+            <li><strong>फोटोग्राफी:</strong> गलत ओरिएंटेशन में ली गई फ़ोटोज़ को समायोजित करें।</li>
+            <li><strong>डिज़ाइन लेआउट:</strong> डिज़ाइन प्रोजेक्ट्स या प्रस्तुतियों में ठीक से फ़िट करने के लिए चित्रों को घुमाएँ।</li>
+            <li><strong>सोशल मीडिया:</strong> सुनिश्चित करें कि आपकी फ़ोटो और ग्राफिक्स सोशल प्लेटफॉर्म्स जैसे इंस्टाग्राम या फेसबुक पर साझा करते समय सही ओरिएंटेशन में दिखाई दें।</li>
+            <li><strong>वेब सामग्री:</strong> सुनिश्चित करें कि चित्र सही तरीके से संरेखित हों ताकि आपकी वेबसाइट की दृश्य अपील बढ़े।</li>
+            <li><strong>व्यक्तिगत उपयोग:</strong> सुनिश्चित करें कि आपके पारिवारिक फ़ोटो, छुट्टी की तस्वीरें, या कोई भी व्यक्तिगत चित्र जिस तरीके से प्रदर्शित होनी चाहिए, उसे तुरंत घुमाएँ।</li>
         </ul>
     </div>
     <div class="info-section">
-        <h2>How Rotating Images Can Be Helpful</h2>
-        <p>Rotating images can significantly enhance their usability and appearance. Here are some ways rotating images can be beneficial:</p>
+        <h2>चित्रों को घुमाना किस प्रकार मददगार हो सकता है</h2>
+        <p>चित्रों को घुमाने से उनकी उपयोगिता और उपस्थिति में काफी सुधार हो सकता है। यहाँ कुछ तरीके हैं जिनसे चित्रों को घुमाना फायदेमंद हो सकता है:</p>
         <ul>
-            <li><strong>Correcting Orientation:</strong> Many photos taken with smartphones or cameras end up with the wrong orientation. Rotating these images ensures they are displayed correctly, improving overall viewing experience.</li>
-            <li><strong>Improving Visual Appeal:</strong> Rotated images can create a more balanced and aesthetically pleasing look, making your photos more attractive and engaging to viewers.</li>
-            <li><strong>Better Social Media Sharing:</strong> Social media platforms often prefer images in certain orientations. Rotating your images can help ensure they appear as intended, increasing engagement and shares.</li>
+            <li><strong>ओरिएंटेशन को सही करना:</strong> कई फ़ोटो जो स्मार्टफोन या कैमरे से ली जाती हैं, गलत ओरिएंटेशन में आती हैं। चित्र को घुमाने से इन मुद्दों को हल किया जा सकता है।</li>
+            <li><strong>डिज़ाइन तत्वों के साथ सामंजस्य बनाना:</strong> चित्रों को अन्य डिज़ाइन तत्वों के साथ सही तरीके से संरेखित करने से लेआउट में मदद मिलती है।</li>
+            <li><strong>फोटो की दृश्य अपील बढ़ाना:</strong> सही ओरिएंटेशन से चित्रों को देखने में अधिक आकर्षक बनाता है।</li>
+            <li><strong>कहानी को बेहतर बनाना:</strong> चित्रों को घुमाने से किसी दृश्य या कहानी को संप्रेषित करने में मदद मिल सकती है।</li>
         </ul>
     </div>
-    
 </div>
-
 
 <style>
     h1 {

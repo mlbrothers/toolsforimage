@@ -1,82 +1,82 @@
 {% extends "hi/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Convert webp to BMP images easily with ToolsForImage. Free online webp to BMP converter.">
+<meta name="description" content="ToolsForImage के साथ आसानी से वेबपी को BMP चित्रों में बदलें। मुफ्त ऑनलाइन वेबपी से BMP कन्वर्टर।">
 {% endblock %}
 
-{% block title %}Convert webp to BMP online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}वेबपी से BMP ऑनलाइन कन्वर्ट करें - ToolsForImage - मुफ्त ऑनलाइन इमेज संपादन उपकरण{% endblock %}
 
 {% block content %}
-<h1>Free Webp to BMP Conversion Tool</h1>
-<p>Easily convert your webp images to BMP format. Upload a webp image and we'll convert it to BMP for you.</p>
+<h1>फ्री वेबपी से BMP कन्वर्ज़न टूल</h1>
+<p>अपनी वेबपी इमेज को BMP प्रारूप में आसानी से बदलें। एक वेबपी इमेज अपलोड करें और हम इसे आपके लिए BMP में बदल देंगे।</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/webp" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload webp Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">वेबपी इमेज अपलोड करें</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="छवि पूर्वावलोकन" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="webp">
     <input type="hidden" name="output_format" value="bmp">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to BMP</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">BMP में बदलें</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is WebP to BMP Conversion?</h2>
-        <p>WebP to BMP conversion is the process of changing image files from WebP format to BMP (Bitmap) format. WebP is a modern image format that offers excellent compression and quality, while BMP is a traditional format known for its simplicity and high-quality representation of images. Converting WebP images to BMP can be useful when you need images with uncompressed quality for printing or editing purposes.</p>
+        <h2>वेबपी से BMP कन्वर्ज़न क्या है?</h2>
+        <p>वेबपी से BMP कन्वर्ज़न उस प्रक्रिया को संदर्भित करता है जिसमें चित्र फ़ाइलों को वेबपी प्रारूप से BMP (बिटमैप) प्रारूप में बदल दिया जाता है। वेबपी एक आधुनिक चित्र प्रारूप है जो उत्कृष्ट संकुचन और गुणवत्ता प्रदान करता है, जबकि BMP एक पारंपरिक प्रारूप है जिसे इसकी सरलता और उच्च गुणवत्ता वाली चित्रण के लिए जाना जाता है। वेबपी चित्रों को BMP में बदलना तब उपयोगी हो सकता है जब आपको प्रिंटिंग या संपादन के उद्देश्यों के लिए बिना संकुचन गुणवत्ता वाली चित्रों की आवश्यकता हो।</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert WebP to BMP?</h2>
-        <p>There are several reasons to convert WebP images to BMP format:</p>
+        <h2>वेबपी को BMP में क्यों बदलें?</h2>
+        <p>वेबपी चित्रों को BMP प्रारूप में बदलने के कई कारण हैं:</p>
         <ul>
-            <li><strong>High Image Quality:</strong> BMP files retain the highest quality as they are uncompressed, making them ideal for professional use.</li>
-            <li><strong>Simplicity:</strong> BMP format is straightforward and widely supported by many applications, ensuring compatibility across different platforms.</li>
-            <li><strong>Editing Flexibility:</strong> Converting to BMP allows for easier editing in various graphics software that may not support WebP.</li>
-            <li><strong>No Loss of Detail:</strong> BMP preserves all image details, making it perfect for situations where image fidelity is crucial.</li>
+            <li><strong>उच्च चित्र गुणवत्ता:</strong> BMP फ़ाइलें उच्चतम गुणवत्ता बनाए रखती हैं क्योंकि वे बिना संकुचन होती हैं, जो उन्हें पेशेवर उपयोग के लिए आदर्श बनाती हैं।</li>
+            <li><strong>सरलता:</strong> BMP प्रारूप सीधा है और कई अनुप्रयोगों द्वारा व्यापक रूप से समर्थित है, यह सुनिश्चित करते हुए कि विभिन्न प्लेटफार्मों के बीच संगतता बनी रहे।</li>
+            <li><strong>संपादन में लचीलापन:</strong> BMP में बदलने से आपको विभिन्न ग्राफिक्स सॉफ़्टवेयर में आसान संपादन की सुविधा मिलती है जो वेबपी का समर्थन नहीं करते हैं।</li>
+            <li><strong>बिना विवरण का नुकसान:</strong> BMP सभी चित्र विवरणों को संरक्षित करता है, जिससे यह उन स्थितियों के लिए उत्तम है जहाँ चित्र की सटीकता महत्वपूर्ण है।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our WebP to BMP Converter</h2>
-        <p>Using our WebP to BMP conversion tool is simple and user-friendly. Here’s how to get started:</p>
+        <h2>हमारे वेबपी से BMP कन्वर्टर का उपयोग कैसे करें</h2>
+        <p>हमारे वेबपी से BMP कन्वर्ज़न टूल का उपयोग करना सरल और उपयोगकर्ता के अनुकूल है। यहां बताया गया है कि कैसे शुरू करें:</p>
         <ul>
-            <li>Click the "Upload WebP File" button to select the WebP image you want to convert.</li>
-            <li>After the upload is complete, our tool will automatically start the conversion process.</li>
-            <li>Once the conversion is done, click "Download BMP" to save your new BMP image to your device.</li>
+            <li>"वेबपी फ़ाइल अपलोड करें" बटन पर क्लिक करें ताकि आप वह वेबपी इमेज चुन सकें जिसे आप बदलना चाहते हैं।</li>
+            <li>अपलोड पूरा होने के बाद, हमारा टूल स्वचालित रूप से कन्वर्ज़न प्रक्रिया शुरू कर देगा।</li>
+            <li>कन्वर्ज़न पूरा होने के बाद, "BMP डाउनलोड करें" पर क्लिक करें ताकि आप अपनी नई BMP इमेज को अपने डिवाइस पर सहेज सकें।</li>
         </ul>
-        <p>Our tool supports multiple WebP formats, allowing you to convert your images with ease.</p>
+        <p>हमारा उपकरण कई वेबपी प्रारूपों का समर्थन करता है, जिससे आप आसानी से अपनी इमेज को बदल सकते हैं।</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our WebP to BMP Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>हमारे वेबपी से BMP कन्वर्टर का उपयोग करने के लाभ</h2>
+        <p>यहाँ हमारे कन्वर्ज़न टूल का उपयोग करने के कुछ लाभ दिए गए हैं:</p>
         <ul>
-            <li><strong>Fast and Efficient:</strong> Convert your WebP images to BMP in just a few clicks, saving you time.</li>
-            <li><strong>No Quality Loss:</strong> Enjoy high-quality BMP images without sacrificing any detail during conversion.</li>
-            <li><strong>Free and Online:</strong> Our tool is available for free online, with no downloads or installations required.</li>
-            <li><strong>User-Friendly Interface:</strong> Designed for ease of use, our tool simplifies the conversion process.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for WebP to BMP Conversion</h2>
-        <p>Converting WebP to BMP can be beneficial in various scenarios:</p>
-        <ul>
-            <li><strong>Printing:</strong> Use BMP images for high-quality print projects where clarity is essential.</li>
-            <li><strong>Graphic Design:</strong> Ensure compatibility with design software that works best with BMP files.</li>
-            <li><strong>Image Archiving:</strong> Store images in BMP format for future editing and high-quality reference.</li>
-            <li><strong>Personal Use:</strong> Easily convert images for family albums or photo collections that require high resolution.</li>
+            <li><strong>तेज़ और कुशल:</strong> कुछ क्लिक में अपनी वेबपी इमेज को BMP में बदलें, जिससे आपका समय बचता है।</li>
+            <li><strong>कोई गुणवत्ता हानि नहीं:</strong> कन्वर्ज़न के दौरान किसी भी विवरण को खोए बिना उच्च गुणवत्ता वाली BMP इमेज का आनंद लें।</li>
+            <li><strong>मुफ्त और ऑनलाइन:</strong> हमारा उपकरण मुफ्त ऑनलाइन उपलब्ध है, बिना किसी डाउनलोड या स्थापना की आवश्यकता।</li>
+            <li><strong>उपयोगकर्ता-अनुकूल इंटरफेस:</strong> उपयोग में आसानी के लिए डिज़ाइन किया गया, हमारा टूल कन्वर्ज़न प्रक्रिया को सरल बनाता है।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting WebP to BMP Can Help</h2>
-        <p>Converting your WebP images to BMP format can enhance usability and compatibility. Here’s how:</p>
+        <h2>वेबपी से BMP कन्वर्ज़न के सामान्य उपयोग</h2>
+        <p>वेबपी को BMP में बदलना विभिन्न परिदृश्यों में फायदेमंद हो सकता है:</p>
         <ul>
-            <li><strong>Improved Compatibility:</strong> BMP is supported by a wide range of applications, making your images more accessible for editing.</li>
-            <li><strong>Uncompressed Quality:</strong> BMP files retain all image details, ensuring your images look sharp and clear.</li>
-            <li><strong>Easier Editing:</strong> Work with uncompressed BMP files in your favorite graphics software without quality loss.</li>
+            <li><strong>प्रिंटिंग:</strong> BMP इमेज का उपयोग उच्च गुणवत्ता वाले प्रिंट परियोजनाओं के लिए करें जहाँ स्पष्टता आवश्यक है।</li>
+            <li><strong>ग्राफिक डिज़ाइन:</strong> सुनिश्चित करें कि डिज़ाइन सॉफ़्टवेयर BMP फ़ाइलों के साथ सबसे अच्छा काम करता है।</li>
+            <li><strong>इमेज आर्काइविंग:</strong> भविष्य की संपादन और उच्च गुणवत्ता संदर्भ के लिए BMP प्रारूप में इमेज सहेजें।</li>
+            <li><strong>व्यक्तिगत उपयोग:</strong> परिवार के एल्बम या फोटो संग्रह के लिए उच्च रिज़ॉल्यूशन की आवश्यकता वाले चित्रों को आसानी से बदलें।</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>वेबपी को BMP में बदलने से कैसे मदद मिलती है</h2>
+        <p>अपनी वेबपी इमेज को BMP प्रारूप में बदलने से उपयोगिता और संगतता में वृद्धि हो सकती है। यहाँ बताया गया है कि कैसे:</p>
+        <ul>
+            <li><strong>सुधरी हुई संगतता:</strong> BMP को कई अनुप्रयोगों द्वारा समर्थित किया जाता है, जिससे आपकी इमेज संपादन के लिए अधिक सुलभ होती हैं।</li>
+            <li><strong>बिना संकुचन गुणवत्ता:</strong> BMP फ़ाइलें सभी चित्र विवरणों को बनाए रखती हैं, यह सुनिश्चित करते हुए कि आपकी इमेज स्पष्ट और तेज दिखती हैं।</li>
+            <li><strong>आसान संपादन:</strong> बिना गुणवत्ता खोए अपने पसंदीदा ग्राफिक्स सॉफ़्टवेयर में बिना संकुचन BMP फ़ाइलों के साथ काम करें।</li>
         </ul>
     </div>
 </div>

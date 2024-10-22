@@ -1,82 +1,82 @@
 {% extends "hi/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Convert webp to JPG images easily with ToolsForImage. Free online webp to JPG converter.">
+<meta name="description" content="ToolsForImage के साथ वेबपी को JPG चित्रों में आसानी से कनवर्ट करें। मुफ्त ऑनलाइन वेबपी से JPG कनवर्टर।">
 {% endblock %}
 
-{% block title %}Convert webp to JPG online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}ToolsForImage पर ऑनलाइन वेबपी को JPG में कनवर्ट करें - मुफ्त ऑनलाइन इमेज संपादन टूल{% endblock %}
 
 {% block content %}
-<h1>Free Webp to JPG Conversion Tool</h1>
-<p>Easily convert your webp images to JPG format. Upload a webp image and we'll convert it to JPG for you.</p>
+<h1>मुफ्त वेबपी से JPG कनवर्ज़न टूल</h1>
+<p>अपने वेबपी चित्रों को JPG फॉर्मेट में आसानी से कनवर्ट करें। एक वेबपी चित्र अपलोड करें और हम इसे आपके लिए JPG में कनवर्ट करेंगे।</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/webp" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload webp Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">वेबपी चित्र अपलोड करें</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="चित्र पूर्वावलोकन" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="webp">
     <input type="hidden" name="output_format" value="jpg">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to JPG</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">JPG में कनवर्ट करें</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is WebP to JPG Conversion?</h2>
-        <p>WebP to JPG conversion is the process of changing images from WebP format to JPG (JPEG) format. WebP is a modern image format that provides excellent compression and quality, while JPG is a widely used format for photographs and images. Converting WebP to JPG is essential when you need images that are compatible with a wide range of devices and applications.</p>
+        <h2>वेबपी से JPG कनवर्ज़न क्या है?</h2>
+        <p>वेबपी से JPG कनवर्ज़न वह प्रक्रिया है जिसमें चित्रों को वेबपी फॉर्मेट से JPG (JPEG) फॉर्मेट में बदला जाता है। वेबपी एक आधुनिक इमेज फॉर्मेट है जो उत्कृष्ट संपीड़न और गुणवत्ता प्रदान करता है, जबकि JPG एक व्यापक रूप से उपयोग होने वाला फॉर्मेट है जो तस्वीरों और चित्रों के लिए उपयुक्त है। वेबपी को JPG में कनवर्ट करना तब आवश्यक होता है जब आपको ऐसे चित्रों की आवश्यकता होती है जो कई उपकरणों और अनुप्रयोगों के साथ संगत हों।</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert WebP to JPG?</h2>
-        <p>There are several reasons to convert WebP images to JPG:</p>
+        <h2>वेबपी को JPG में क्यों कनवर्ट करें?</h2>
+        <p>वेबपी चित्रों को JPG में कनवर्ट करने के कई कारण हैं:</p>
         <ul>
-            <li><strong>Broad Compatibility:</strong> JPG is one of the most universally accepted image formats, ensuring your images can be opened on any device or software.</li>
-            <li><strong>Ideal for Photos:</strong> JPG images are perfect for photos, providing a good balance between image quality and file size.</li>
-            <li><strong>Easy Sharing:</strong> JPG format is widely supported on social media and other platforms, making it easier to share your images with others.</li>
-            <li><strong>Reduced File Size:</strong> JPG often results in smaller file sizes, which helps websites load faster and saves storage space.</li>
+            <li><strong>व्यापक संगतता:</strong> JPG सबसे सार्वभौमिक रूप से स्वीकृत इमेज फॉर्मेट में से एक है, यह सुनिश्चित करते हुए कि आपके चित्र किसी भी उपकरण या सॉफ़्टवेयर पर खोले जा सकते हैं।</li>
+            <li><strong>तस्वीरों के लिए आदर्श:</strong> JPG चित्र तस्वीरों के लिए एकदम सही होते हैं, जो इमेज गुणवत्ता और फ़ाइल आकार के बीच अच्छा संतुलन प्रदान करते हैं।</li>
+            <li><strong>साझा करना आसान:</strong> JPG फॉर्मेट सामाजिक मीडिया और अन्य प्लेटफार्मों पर व्यापक रूप से समर्थित है, जिससे दूसरों के साथ अपने चित्र साझा करना आसान होता है।</li>
+            <li><strong>फ़ाइल आकार में कमी:</strong> JPG अक्सर छोटे फ़ाइल आकार में परिणत होता है, जो वेबसाइटों को तेजी से लोड करने में मदद करता है और संग्रहण स्थान बचाता है।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our WebP to JPG Converter</h2>
-        <p>Using our WebP to JPG conversion tool is quick and easy. Here’s how to get started:</p>
+        <h2>हमारे वेबपी से JPG कनवर्टर का उपयोग कैसे करें</h2>
+        <p>हमारे वेबपी से JPG कनवर्ज़न टूल का उपयोग करना त्वरित और आसान है। यहाँ शुरू करने का तरीका है:</p>
         <ul>
-            <li>Click on the "Upload WebP File" button to select the WebP image you want to convert.</li>
-            <li>Once the image is uploaded, our tool will automatically start the conversion process.</li>
-            <li>After conversion, click "Download JPG" to save your new JPG image to your device.</li>
+            <li>"वेबपी फ़ाइल अपलोड करें" बटन पर क्लिक करें ताकि आप उस वेबपी चित्र का चयन कर सकें जिसे आप कनवर्ट करना चाहते हैं।</li>
+            <li>एक बार जब चित्र अपलोड हो जाता है, तो हमारा टूल स्वचालित रूप से कनवर्ज़न प्रक्रिया शुरू कर देगा।</li>
+            <li>कनवर्ज़न के बाद, "JPG डाउनलोड करें" पर क्लिक करें ताकि आप अपने नए JPG चित्र को अपने उपकरण पर सहेज सकें।</li>
         </ul>
-        <p>Our converter supports various WebP formats, ensuring a smooth and efficient conversion experience.</p>
+        <p>हमारा कनवर्टर विभिन्न वेबपी फ़ॉर्मेट का समर्थन करता है, जो एक सुचारू और कुशल कनवर्ज़न अनुभव सुनिश्चित करता है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our WebP to JPG Converter</h2>
-        <p>Here are some advantages of our conversion tool:</p>
+        <h2>हमारे वेबपी से JPG कनवर्टर के उपयोग के लाभ</h2>
+        <p>यहाँ हमारे कनवर्ज़न टूल के कुछ लाभ दिए गए हैं:</p>
         <ul>
-            <li><strong>Fast and Efficient:</strong> Convert your WebP images to JPG in just a few clicks, saving you time.</li>
-            <li><strong>No Quality Loss:</strong> Enjoy high-quality JPG images without losing any important details during conversion.</li>
-            <li><strong>Free and Accessible:</strong> Our tool is available online for free, with no downloads or installations needed.</li>
-            <li><strong>User-Friendly Interface:</strong> Designed for ease of use, our tool simplifies the conversion process for everyone.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for WebP to JPG Conversion</h2>
-        <p>Converting WebP to JPG can be useful in various situations:</p>
-        <ul>
-            <li><strong>Website Optimization:</strong> Use JPG images to enhance page loading speeds and compatibility.</li>
-            <li><strong>Social Media Sharing:</strong> Share images on social platforms with ease, ensuring they appear as intended.</li>
-            <li><strong>Digital Photography:</strong> Save and share photos in JPG format for easy storage and accessibility.</li>
-            <li><strong>Personal Projects:</strong> Convert images for family albums or creative projects that require a widely used format.</li>
+            <li><strong>तेज़ और कुशल:</strong> कुछ क्लिक में अपने वेबपी चित्रों को JPG में कनवर्ट करें, जिससे आपका समय बचता है।</li>
+            <li><strong>गुणवत्ता की हानि नहीं:</strong> कनवर्ज़न के दौरान कोई महत्वपूर्ण विवरण खोए बिना उच्च गुणवत्ता वाले JPG चित्रों का आनंद लें।</li>
+            <li><strong>मुफ्त और सुलभ:</strong> हमारा टूल ऑनलाइन मुफ्त में उपलब्ध है, बिना किसी डाउनलोड या इंस्टॉलेशन के।</li>
+            <li><strong>उपयोगकर्ता के अनुकूल इंटरफेस:</strong> उपयोग में आसानी के लिए डिज़ाइन किया गया है, हमारा टूल सभी के लिए कनवर्ज़न प्रक्रिया को सरल बनाता है।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting WebP to JPG Can Help You</h2>
-        <p>Converting WebP images to JPG format can enhance usability and sharing. Here’s how:</p>
+        <h2>वेबपी से JPG कनवर्ज़न के सामान्य उपयोग</h2>
+        <p>वेबपी को JPG में कनवर्ट करना विभिन्न स्थितियों में उपयोगी हो सकता है:</p>
         <ul>
-            <li><strong>Improved Compatibility:</strong> JPG images are compatible with nearly all devices and software, making your images easily accessible.</li>
-            <li><strong>Faster Loading Times:</strong> Smaller JPG file sizes contribute to faster loading times on websites, enhancing user experience.</li>
-            <li><strong>Simplified Sharing:</strong> JPG files are the go-to choice for many online platforms, making sharing straightforward.</li>
+            <li><strong>वेबसाइट ऑप्टिमाइज़ेशन:</strong> पृष्ठ लोडिंग गति और संगतता बढ़ाने के लिए JPG चित्रों का उपयोग करें।</li>
+            <li><strong>सामाजिक मीडिया पर साझा करना:</strong> सामाजिक प्लेटफार्मों पर चित्र साझा करना आसान बनाएं, यह सुनिश्चित करते हुए कि वे अपेक्षित रूप में प्रकट हों।</li>
+            <li><strong>डिजिटल फोटोग्राफी:</strong> JPG फॉर्मेट में तस्वीरें सहेजें और साझा करें ताकि संग्रहण और पहुंच आसान हो।</li>
+            <li><strong>व्यक्तिगत परियोजनाएँ:</strong> पारिवारिक एल्बम या रचनात्मक परियोजनाओं के लिए व्यापक रूप से उपयोग किए जाने वाले फॉर्मेट में चित्रों को कनवर्ट करें।</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>वेबपी को JPG में कनवर्ट करने से आपको कैसे मदद मिलेगी</h2>
+        <p>वेबपी चित्रों को JPG फॉर्मेट में कनवर्ट करना उपयोगिता और साझा करने को बढ़ा सकता है। यहाँ कैसे:</p>
+        <ul>
+            <li><strong>सुधरी हुई संगतता:</strong> JPG चित्र लगभग सभी उपकरणों और सॉफ़्टवेयर के साथ संगत होते हैं, जिससे आपके चित्र आसानी से सुलभ होते हैं।</li>
+            <li><strong>तेज़ लोडिंग समय:</strong> छोटे JPG फ़ाइल आकार वेबसाइटों पर तेजी से लोडिंग समय में योगदान करते हैं, उपयोगकर्ता अनुभव को बढ़ाते हैं।</li>
+            <li><strong>साझा करने में सरलता:</strong> JPG फ़ाइलें कई ऑनलाइन प्लेटफार्मों के लिए पसंदीदा विकल्प होती हैं, जिससे साझा करना सरल हो जाता है।</li>
         </ul>
     </div>
 </div>

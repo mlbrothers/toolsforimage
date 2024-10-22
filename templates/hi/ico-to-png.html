@@ -1,81 +1,81 @@
 {% extends "hi/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Convert ICO to PNG images easily with ToolsForImage. Free online ICO to PNG converter.">
+<meta name="description" content="ToolsForImage के साथ ICO को PNG छवियों में आसानी से कन्वर्ट करें। फ्री ऑनलाइन ICO से PNG कन्वर्टर।">
 {% endblock %}
 
-{% block title %}Convert ICO to PNG online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}ToolsForImage पर ICO को PNG ऑनलाइन कन्वर्ट करें - फ्री ऑनलाइन इमेज एडिटिंग टूल{% endblock %}
 
 {% block content %}
-<h1>Free ICO to PNG Conversion Tool</h1>
-<p>Easily convert your ICO images to PNG format. Upload an ICO image and we'll convert it to PNG for you.</p>
+<h1>फ्री ICO से PNG कन्वर्शन टूल</h1>
+<p>अपने ICO छवियों को PNG फॉर्मेट में आसानी से कन्वर्ट करें। एक ICO छवि अपलोड करें और हम इसे आपके लिए PNG में कन्वर्ट करेंगे।</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/x-icon" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload ICO Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">ICO छवि अपलोड करें</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="छवि पूर्वावलोकन" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="ico">
     <input type="hidden" name="output_format" value="png">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to PNG</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">PNG में कन्वर्ट करें</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is ICO to PNG Conversion?</h2>
-        <p>ICO to PNG conversion is the process of changing image files from ICO format to PNG format. PNG (Portable Network Graphics) is a widely-used, lossless image format that supports transparency. This conversion is useful when you need to use icon images in contexts where PNG is preferred or required.</p>
+        <h2>ICO से PNG कन्वर्शन क्या है?</h2>
+        <p>ICO से PNG कन्वर्शन ICO फॉर्मेट से PNG फॉर्मेट में इमेज फाइलों को बदलने की प्रक्रिया है। PNG (पोर्टेबल नेटवर्क ग्राफिक्स) एक व्यापक रूप से उपयोग किया जाने वाला, लॉसलेस इमेज फॉर्मेट है जो पारदर्शिता का समर्थन करता है। यह कन्वर्शन तब उपयोगी है जब आपको ऐसे संदर्भों में आइकन छवियों का उपयोग करना हो जहाँ PNG की आवश्यकता या प्राथमिकता हो।</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert ICO to PNG?</h2>
-        <p>There are several reasons to convert ICO images to PNG:</p>
+        <h2>ICO को PNG में क्यों कन्वर्ट करें?</h2>
+        <p>ICO छवियों को PNG में कन्वर्ट करने के कई कारण हैं:</p>
         <ul>
-            <li><strong>Wider Compatibility:</strong> PNG is more widely supported across different platforms and applications.</li>
-            <li><strong>Editing Flexibility:</strong> PNG files are easier to edit in most image editing software.</li>
-            <li><strong>Web Usage:</strong> PNG is commonly used for web graphics due to its support for transparency and wide color range.</li>
+            <li><strong>व्यापक संगतता:</strong> PNG विभिन्न प्लेटफार्मों और अनुप्रयोगों में अधिक व्यापक रूप से समर्थित है।</li>
+            <li><strong>संपादन लचीलापन:</strong> PNG फाइलें अधिकांश इमेज एडिटिंग सॉफ़्टवेयर में संपादित करने में आसान होती हैं।</li>
+            <li><strong>वेब उपयोग:</strong> PNG पारदर्शिता और चौड़े रंग रेंज के समर्थन के कारण वेब ग्राफिक्स के लिए आमतौर पर उपयोग किया जाता है।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our ICO to PNG Converter</h2>
-        <p>Using our ICO to PNG conversion tool is simple and quick. Here's how it works:</p>
+        <h2>हमारे ICO से PNG कन्वर्टर का उपयोग कैसे करें</h2>
+        <p>हमारे ICO से PNG कन्वर्शन टूल का उपयोग करना सरल और त्वरित है। यह इस प्रकार कार्य करता है:</p>
         <ul>
-            <li>Click the "Upload ICO File" button to select the ICO image you want to convert.</li>
-            <li>Once your image is uploaded, our tool will automatically start converting it to PNG format.</li>
-            <li>After the conversion is complete, click "Download PNG" to save your new image file to your device.</li>
+            <li>"ICO फ़ाइल अपलोड करें" बटन पर क्लिक करें ताकि आप उस ICO छवि का चयन कर सकें जिसे आप कन्वर्ट करना चाहते हैं।</li>
+            <li>एक बार जब आपकी छवि अपलोड हो जाती है, तो हमारा टूल स्वचालित रूप से इसे PNG फॉर्मेट में कन्वर्ट करना शुरू कर देगा।</li>
+            <li>कन्वर्शन पूर्ण होने के बाद, "PNG डाउनलोड करें" पर क्लिक करें ताकि आप अपनी नई छवि फ़ाइल अपने डिवाइस पर सहेज सकें।</li>
         </ul>
-        <p>Our converter supports various ICO files, ensuring a smooth and efficient conversion experience for all users.</p>
+        <p>हमारा कन्वर्टर विभिन्न ICO फाइलों का समर्थन करता है, जिससे सभी उपयोगकर्ताओं के लिए एक स्मूद और प्रभावी कन्वर्शन अनुभव सुनिश्चित होता है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our ICO to PNG Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>हमारे ICO से PNG कन्वर्टर का उपयोग करने के लाभ</h2>
+        <p>यहां हमारे कन्वर्शन टूल के कुछ फायदे हैं:</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Convert your ICO images to PNG quickly with just a few clicks.</li>
-            <li><strong>High Quality:</strong> Maintain image quality during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, with no downloads or installations needed.</li>
-            <li><strong>User-Friendly Interface:</strong> Our tool is designed to be intuitive and easy to navigate for everyone.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for ICO to PNG Conversion</h2>
-        <p>Here are some common situations where converting ICO to PNG can be helpful:</p>
-        <ul>
-            <li><strong>Web Development:</strong> Use icon images in web projects where PNG is preferred.</li>
-            <li><strong>Graphic Design:</strong> Incorporate icon images into larger design projects.</li>
-            <li><strong>App Development:</strong> Use icon images in multi-platform applications where PNG is more suitable.</li>
-            <li><strong>Document Creation:</strong> Include icon images in documents or presentations.</li>
+            <li><strong>तेज और आसान:</strong> केवल कुछ क्लिक में अपने ICO छवियों को PNG में जल्दी कन्वर्ट करें।</li>
+            <li><strong>उच्च गुणवत्ता:</strong> कन्वर्शन प्रक्रिया के दौरान छवि गुणवत्ता बनाए रखें।</li>
+            <li><strong>फ्री और सुलभ:</strong> बिना किसी डाउनलोड या इंस्टॉलेशन की आवश्यकता के ऑनलाइन मुफ्त में हमारे टूल का उपयोग करें।</li>
+            <li><strong>उपयोगकर्ता-मित्रता:</strong> हमारा टूल सभी के लिए सहज और नेविगेट करने में आसान है।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting ICO to PNG Can Help</h2>
-        <p>Converting your ICO images to PNG can enhance their usability in various contexts. Here's how:</p>
+        <h2>ICO से PNG कन्वर्शन के सामान्य उपयोग</h2>
+        <p>यहां कुछ सामान्य स्थितियाँ हैं जहाँ ICO को PNG में कन्वर्ट करना सहायक हो सकता है:</p>
         <ul>
-            <li><strong>Improved Compatibility:</strong> PNG is widely supported across different platforms and software.</li>
-            <li><strong>Better Scaling:</strong> PNG images can be scaled more easily without loss of quality.</li>
-            <li><strong>Transparency Support:</strong> PNG supports alpha channel transparency, allowing for flexible use in various designs.</li>
+            <li><strong>वेब विकास:</strong> ऐसे वेब प्रोजेक्ट्स में आइकन छवियों का उपयोग करें जहाँ PNG की प्राथमिकता हो।</li>
+            <li><strong>ग्राफिक डिज़ाइन:</strong> बड़े डिज़ाइन प्रोजेक्ट्स में आइकन छवियों को शामिल करें।</li>
+            <li><strong>ऐप विकास:</strong> मल्टी-प्लेटफार्म अनुप्रयोगों में आइकन छवियों का उपयोग करें जहाँ PNG अधिक उपयुक्त हो।</li>
+            <li><strong>दस्तावेज़ निर्माण:</strong> दस्तावेज़ों या प्रस्तुतियों में आइकन छवियों को शामिल करें।</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>ICO को PNG में कन्वर्ट करने से कैसे मदद मिलती है</h2>
+        <p>अपने ICO छवियों को PNG में कन्वर्ट करने से विभिन्न संदर्भों में उनकी उपयोगिता बढ़ सकती है। यह इस प्रकार है:</p>
+        <ul>
+            <li><strong>सुधरी हुई संगतता:</strong> PNG विभिन्न प्लेटफार्मों और सॉफ़्टवेयर में व्यापक रूप से समर्थित है।</li>
+            <li><strong>बेहतर स्केलिंग:</strong> PNG छवियों को गुणवत्ता खोए बिना अधिक आसानी से स्केल किया जा सकता है।</li>
+            <li><strong>पारदर्शिता समर्थन:</strong> PNG अल्फा चैनल पारदर्शिता का समर्थन करता है, जो विभिन्न डिज़ाइन में लचीला उपयोग की अनुमति देता है।</li>
         </ul>
     </div>
 </div>

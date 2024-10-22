@@ -1,20 +1,20 @@
 {% extends "hi/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Convert your images effortlessly with ToolsForImage. Change image formats without losing quality.">
+<meta name="description" content="ToolsForImage के साथ अपनी छवियों को आसानी से परिवर्तित करें। गुणवत्ता खोए बिना छवि फ़ॉर्मेट बदलें।">
 {% endblock %}
 
-{% block title %}Convert Image online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}ऑनलाइन छवि परिवर्तित करें ToolsForImage - मुफ्त ऑनलाइन छवि संपादन उपकरण{% endblock %}
 
 {% block content %}
-<h1>Free Image Format Conversion Tool</h1>
-<p>Effortlessly convert your image to a different format. Upload an image and select the desired output format.</p>
-<p>Supported formats: PNG, JPG, JPEG, BMP, TIFF, WEBP</p>
+<h1>मुफ्त छवि फ़ॉर्मेट परिवर्तक उपकरण</h1>
+<p>आसानी से अपनी छवि को एक अलग फ़ॉर्मेट में परिवर्तित करें। एक छवि अपलोड करें और वांछित आउटपुट फ़ॉर्मेट चुनें।</p>
+<p>समर्थित फ़ॉर्मेट: PNG, JPG, JPEG, BMP, TIFF, WEBP</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload from Computer</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">कंप्यूटर से अपलोड करें</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="छवि पूर्वावलोकन" style="display: none;">
     <br>
     <select id="output-format" name="output_format" class="format-select">
         <option value="png">PNG</option>
@@ -26,42 +26,42 @@
         <option value="ico">ICO</option>
     </select>
     <br>
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert!</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">परिवर्तित करें!</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is Image Conversion?</h2>
-        <p>Image conversion is the process of changing an image file from one format to another. For example, you might want to convert a PNG file to a JPG file. Different formats have different uses, and choosing the right format can significantly impact your image quality and compatibility. By converting your images, you can ensure they are compatible with various devices, applications, and online platforms.</p>
+        <h2>छवि परिवर्तन क्या है?</h2>
+        <p>छवि परिवर्तन एक छवि फ़ाइल को एक फ़ॉर्मेट से दूसरे फ़ॉर्मेट में बदलने की प्रक्रिया है। उदाहरण के लिए, आप PNG फ़ाइल को JPG फ़ाइल में परिवर्तित करना चाहते हैं। विभिन्न फ़ॉर्मेट का अलग-अलग उपयोग होता है, और सही फ़ॉर्मेट का चयन करना आपकी छवि की गुणवत्ता और संगतता पर महत्वपूर्ण प्रभाव डाल सकता है। अपनी छवियों को परिवर्तित करके, आप सुनिश्चित कर सकते हैं कि वे विभिन्न उपकरणों, अनुप्रयोगों, और ऑनलाइन प्लेटफार्मों के साथ संगत हैं।</p>
     </div>
     <div class="info-section">
-        <h2>Why Convert Images?</h2>
-        <p>There are many reasons to convert images. Some formats, like PNG, are great for high-quality graphics, while others, like JPG, are better for photographs. Converting images can help reduce file sizes, making them load faster on websites, which is crucial for user experience and SEO. Additionally, smaller file sizes help save storage space. It also ensures your images look their best, whether you're sharing them online or preparing them for print. By converting images, you can also make them suitable for different applications, such as social media, email, or web design.</p>
+        <h2>छवियों को परिवर्तित करने के कारण क्या हैं?</h2>
+        <p>छवियों को परिवर्तित करने के कई कारण हैं। कुछ फ़ॉर्मेट, जैसे PNG, उच्च गुणवत्ता वाले ग्राफिक्स के लिए बेहतरीन होते हैं, जबकि अन्य, जैसे JPG, तस्वीरों के लिए बेहतर होते हैं। छवियों को परिवर्तित करने से फ़ाइल का आकार कम करने में मदद मिलती है, जिससे वे वेबसाइटों पर तेजी से लोड होती हैं, जो उपयोगकर्ता अनुभव और SEO के लिए महत्वपूर्ण है। इसके अलावा, छोटे फ़ाइल आकार संग्रहण स्थान बचाने में मदद करते हैं। यह सुनिश्चित करता है कि आपकी छवियाँ ऑनलाइन साझा करते समय या प्रिंट के लिए तैयार करते समय बेहतरीन दिखें। छवियों को परिवर्तित करके, आप उन्हें विभिन्न अनुप्रयोगों के लिए भी उपयुक्त बना सकते हैं, जैसे सोशल मीडिया, ईमेल, या वेब डिज़ाइन।</p>
     </div>
     <div class="info-section">
-        <h2>How to Use Our Image Conversion Tool</h2>
-        <p>Using our image conversion tool is simple and straightforward. Just upload your image, choose the format you want, and click "Convert!" You can convert images to popular formats like PNG, JPG, JPEG, BMP, TIFF, and WEBP. Our tool ensures your images maintain their quality during conversion, so you don't have to worry about losing important details.</p>
-        <p>In addition, our image conversion tool is designed with user-friendliness in mind. Whether you are a professional photographer needing to convert a batch of images or a casual user wanting to change a single photo, our tool caters to all needs. Plus, it works across all devices, making it accessible anywhere, anytime.</p>
+        <h2>हमारे छवि परिवर्तन उपकरण का उपयोग कैसे करें</h2>
+        <p>हमारे छवि परिवर्तन उपकरण का उपयोग करना सरल और सीधा है। बस अपनी छवि अपलोड करें, जो फ़ॉर्मेट आप चाहते हैं उसे चुनें, और "परिवर्तित करें!" पर क्लिक करें। आप छवियों को PNG, JPG, JPEG, BMP, TIFF, और WEBP जैसे लोकप्रिय फ़ॉर्मेट में परिवर्तित कर सकते हैं। हमारा उपकरण यह सुनिश्चित करता है कि आपकी छवियाँ परिवर्तन के दौरान अपनी गुणवत्ता बनाए रखें, ताकि आपको महत्वपूर्ण विवरण खोने की चिंता न हो।</p>
+        <p>इसके अलावा, हमारा छवि परिवर्तन उपकरण उपयोगकर्ता के अनुकूलता को ध्यान में रखते हुए डिज़ाइन किया गया है। चाहे आप एक पेशेवर फ़ोटोग्राफ़र हों जिसे कई छवियों को परिवर्तित करने की आवश्यकता हो या एक साधारण उपयोगकर्ता हो जिसे एकल फ़ोटो बदलने की आवश्यकता हो, हमारा उपकरण सभी जरूरतों के लिए उपयुक्त है। इसके अलावा, यह सभी उपकरणों पर काम करता है, जिससे यह कहीं भी, कभी भी सुलभ होता है।</p>
     </div>
     <div class="info-section">
-        <h2>Benefits of Using Our Image Conversion Tool</h2>
-        <p>Our image conversion tool offers numerous benefits:</p>
+        <h2>हमारे छवि परिवर्तन उपकरण के उपयोग के लाभ</h2>
+        <p>हमारा छवि परिवर्तन उपकरण कई लाभ प्रदान करता है:</p>
         <ul>
-            <li><strong>Fast and Efficient:</strong> Convert images quickly without compromising quality.</li>
-            <li><strong>Multiple Formats Supported:</strong> Easily switch between various formats to suit your needs.</li>
-            <li><strong>Online Accessibility:</strong> No software installation required. Access the tool directly from your web browser.</li>
-            <li><strong>User-Friendly Interface:</strong> Intuitive design that makes converting images easy for everyone.</li>
-            <li><strong>High-Quality Output:</strong> Ensure your images look sharp and vibrant after conversion.</li>
+            <li><strong>तेज़ और प्रभावी:</strong> गुणवत्ता से समझौता किए बिना तेजी से छवियों को परिवर्तित करें।</li>
+            <li><strong>कई फ़ॉर्मेट का समर्थन:</strong> अपनी आवश्यकताओं के अनुसार विभिन्न फ़ॉर्मेट में आसानी से स्विच करें।</li>
+            <li><strong>ऑनलाइन सुलभता:</strong> कोई सॉफ़्टवेयर इंस्टॉलेशन आवश्यक नहीं है। अपने वेब ब्राउज़र से सीधे उपकरण तक पहुँचें।</li>
+            <li><strong>उपयोगकर्ता-अनुकूल इंटरफेस:</strong> सहज डिज़ाइन जो सभी के लिए छवियों को परिवर्तित करना आसान बनाता है।</li>
+            <li><strong>उच्च गुणवत्ता वाला आउटपुट:</strong> सुनिश्चित करें कि आपकी छवियाँ परिवर्तन के बाद तेज और जीवंत दिखें।</li>
         </ul>
     </div>
     <div class="info-section">
-        <h2>Common Use Cases for Image Conversion</h2>
-        <p>Image conversion is essential for various scenarios:</p>
+        <h2>छवि परिवर्तन के सामान्य उपयोग के मामले</h2>
+        <p>छवि परिवर्तन विभिन्न परिदृश्यों के लिए आवश्यक है:</p>
         <ul>
-            <li><strong>Web Optimization:</strong> Convert images to formats that load quickly and improve website performance.</li>
-            <li><strong>Social Media Sharing:</strong> Adjust image sizes and formats to meet platform requirements.</li>
-            <li><strong>Professional Printing:</strong> Prepare images in high-quality formats for print projects.</li>
-            <li><strong>Digital Marketing:</strong> Enhance your visual content for ads and campaigns by using the right formats.</li>
+            <li><strong>वेब ऑप्टिमाइजेशन:</strong> तेजी से लोड होने वाले फ़ॉर्मेट में छवियों को परिवर्तित करें और वेबसाइट के प्रदर्शन में सुधार करें।</li>
+            <li><strong>सोशल मीडिया साझा करना:</strong> प्लेटफ़ॉर्म आवश्यकताओं को पूरा करने के लिए छवि आकार और फ़ॉर्मेट को समायोजित करें।</li>
+            <li><strong>पेशेवर प्रिंटिंग:</strong> प्रिंट परियोजनाओं के लिए उच्च गुणवत्ता वाले फ़ॉर्मेट में छवियों को तैयार करें।</li>
+            <li><strong>डिजिटल मार्केटिंग:</strong> विज्ञापनों और अभियानों के लिए सही फ़ॉर्मेट का उपयोग करके अपने दृश्य सामग्री को बढ़ाएं।</li>
         </ul>
     </div>
 </div>

@@ -1,29 +1,20 @@
 {% extends 'hi/base.html' %}
 
-{% block title %}Blur Face online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}ब्लर फेस ऑनलाइन ToolsForImage - फ्री ऑनलाइन इमेज एडिटिंग टूल{% endblock %}
 
 {% block meta_description %}
 <meta name="description"
-    content="Blur faces or specific areas in your images with ToolsForImage. Protect privacy by selectively blurring parts of your photos. Blur the faces with single click.">
+    content="ToolsForImage के साथ अपने चित्रों में चेहरे या विशेष क्षेत्रों को ब्लर करें। अपने फोटो के हिस्सों को चुनिंदा रूप से ब्लर करके गोपनीयता की सुरक्षा करें। एक क्लिक में चेहरे को ब्लर करें।">
 {% endblock %}
 
 {% block content %}
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', '');
-</script>
+
 
 <div class="container">
-    <h1>Free Blur Face Tool</h1>
-    <p>Protect privacy by blurring specific areas in your images. Upload an image, select the area to blur, and download
-        the
-        result.</p>
+    <h1>फ्री ब्लर फेस टूल</h1>
+    <p>अपने चित्रों में विशेष क्षेत्रों को ब्लर करके गोपनीयता की सुरक्षा करें। एक छवि अपलोड करें, ब्लर करने के लिए क्षेत्र का चयन करें, और परिणाम डाउनलोड करें।</p>
     <input type="file" id="image-upload" accept="image/*" style="display: none;">
-    <button class="upload-button" onclick="document.getElementById('image-upload').click();">Upload Image</button>
+    <button class="upload-button" onclick="document.getElementById('image-upload').click();">छवि अपलोड करें</button>
     <div id="canvas-container">
         <canvas id="canvas"></canvas>
         <div id="blur-box">
@@ -33,66 +24,66 @@
             <div class="resize-handle se"></div>
         </div>
     </div>
-    <button id="apply-blur">Apply Blur</button>
+    <button id="apply-blur">ब्लर लागू करें</button>
     <div id="error-message"></div>
 </div>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is Face Blurring?</h2>
-        <p>Face blurring is the process of obscuring or pixelating faces in images or videos to protect the identities of individuals. This technique is essential for maintaining privacy and anonymity, especially when sharing personal content online. Our face-blurring tool allows you to easily and quickly blur faces, ensuring that your images comply with privacy standards while still being visually appealing.</p>
+        <h2>चेहरे को ब्लर करना क्या है?</h2>
+        <p>चेहरे को ब्लर करना छवियों या वीडियो में व्यक्तियों की पहचान को सुरक्षित करने के लिए चेहरे को अस्पष्ट या पिक्सेलेट करने की प्रक्रिया है। यह तकनीक गोपनीयता और गुमनामी बनाए रखने के लिए आवश्यक है, विशेषकर जब व्यक्तिगत सामग्री ऑनलाइन साझा की जाती है। हमारा फेस-ब्लरिंग टूल आपको आसानी और तेजी से चेहरे को ब्लर करने की सुविधा देता है, जिससे आपके चित्र गोपनीयता मानकों का पालन करते हुए दृश्य रूप से आकर्षक बने रहते हैं।</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Blur Faces in Images or Videos?</h2>
-        <p>There are several important reasons to blur faces in your content:</p>
+        <h2>छवियों या वीडियो में चेहरे को ब्लर करने के कारण क्या हैं?</h2>
+        <p>आपकी सामग्री में चेहरे को ब्लर करने के कई महत्वपूर्ण कारण हैं:</p>
         <ul>
-            <li><strong>Protect Privacy:</strong> Blurring faces helps safeguard the privacy of individuals, especially in sensitive situations like events, protests, or public gatherings.</li>
-            <li><strong>Comply with Laws:</strong> Many jurisdictions require consent for using identifiable images of individuals. Blurring faces can help you stay compliant with privacy laws.</li>
-            <li><strong>Focus on the Subject:</strong> By blurring faces, you can direct attention to the main subject or action in your image or video without distractions.</li>
+            <li><strong>गोपनीयता की सुरक्षा:</strong> चेहरे को ब्लर करने से व्यक्तियों की गोपनीयता की सुरक्षा होती है, विशेषकर संवेदनशील परिस्थितियों में जैसे कार्यक्रमों, प्रदर्शनों, या सार्वजनिक समारोहों में।</li>
+            <li><strong>कानूनों के अनुपालन:</strong> कई क्षेत्रों में व्यक्तियों की पहचान योग्य छवियों के उपयोग के लिए सहमति की आवश्यकता होती है। चेहरे को ब्लर करने से आप गोपनीयता कानूनों के अनुपालन में रह सकते हैं।</li>
+            <li><strong>विषय पर ध्यान केंद्रित करें:</strong> चेहरे को ब्लर करके, आप अपने चित्र या वीडियो में मुख्य विषय या क्रिया पर ध्यान केंद्रित कर सकते हैं बिना किसी विकर्षण के।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our Face Blurring Tool</h2>
-        <p>Our face-blurring tool is designed for ease of use, enabling you to protect identities in just a few steps:</p>
+        <h2>हमारे फेस ब्लरिंग टूल का उपयोग कैसे करें</h2>
+        <p>हमारा फेस-ब्लरिंग टूल उपयोग में आसान है, जिससे आप केवल कुछ चरणों में पहचान की सुरक्षा कर सकते हैं:</p>
         <ul>
-            <li>Click the "Upload from Computer" button to upload your image or video.</li>
-            <li>The tool will automatically detect faces in your content. You can choose which faces to blur or adjust the blur strength.</li>
-            <li>Once you're satisfied with the adjustments, click "Download Blurred Image/Video" to save your protected content to your device.</li>
+            <li>"कंप्यूटर से अपलोड करें" बटन पर क्लिक करें अपनी छवि या वीडियो अपलोड करने के लिए।</li>
+            <li>यह उपकरण आपकी सामग्री में स्वचालित रूप से चेहरे का पता लगाएगा। आप यह चुन सकते हैं कि कौन से चेहरे को ब्लर करना है या ब्लर की ताकत को समायोजित कर सकते हैं।</li>
+            <li>एक बार जब आप समायोजनों से संतुष्ट हो जाएं, तो "ब्लर की गई छवि/वीडियो डाउनलोड करें" पर क्लिक करें ताकि आप अपने सुरक्षित कंटेंट को अपने डिवाइस पर सहेज सकें।</li>
         </ul>
-        <p>Our tool supports various formats, ensuring compatibility with your images and videos.</p>
+        <p>हमारा उपकरण विभिन्न प्रारूपों का समर्थन करता है, जिससे आपकी छवियों और वीडियो के साथ संगतता सुनिश्चित होती है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our Face Blurring Tool</h2>
-        <p>Here are the key benefits of using our face-blurring tool:</p>
+        <h2>हमारे फेस ब्लरिंग टूल के लाभ</h2>
+        <p>हमारे फेस-ब्लरिंग टूल का उपयोग करने के मुख्य लाभ यहां दिए गए हैं:</p>
         <ul>
-            <li><strong>Quick and Efficient:</strong> Easily blur faces in just a few clicks without the need for complex software.</li>
-            <li><strong>Automatic Detection:</strong> The tool automatically identifies faces, making the process faster and more convenient.</li>
-            <li><strong>Maintain Quality:</strong> Ensure that your images and videos retain their quality while protecting privacy.</li>
-            <li><strong>Free and Accessible:</strong> Our tool is available online for free, with no downloads or installations required.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Use Cases for Face Blurring</h2>
-        <p>Face blurring is useful in various scenarios, such as:</p>
-        <ul>
-            <li><strong>Event Photography:</strong> Protect the identities of individuals in photos taken at public events or gatherings.</li>
-            <li><strong>Documentaries and News Reports:</strong> Blur faces in interviews or footage where individuals have not given consent for their identity to be revealed.</li>
-            <li><strong>Social Media Sharing:</strong> Share images or videos online while ensuring the privacy of those featured in your content.</li>
-            <li><strong>Family Photos:</strong> Blur faces of children or relatives when sharing personal images on public platforms.</li>
+            <li><strong>त्वरित और कुशल:</strong> बिना जटिल सॉफ़्टवेयर की आवश्यकता के केवल कुछ क्लिक में आसानी से चेहरे को ब्लर करें।</li>
+            <li><strong>स्वचालित पहचान:</strong> उपकरण स्वचालित रूप से चेहरों की पहचान करता है, जिससे प्रक्रिया तेजी और सुविधाजनक हो जाती है।</li>
+            <li><strong>गुणवत्ता बनाए रखें:</strong> गोपनीयता की सुरक्षा करते हुए सुनिश्चित करें कि आपकी छवियों और वीडियो की गुणवत्ता बरकरार रहे।</li>
+            <li><strong>फ्री और सुलभ:</strong> हमारा उपकरण ऑनलाइन मुफ्त में उपलब्ध है, कोई डाउनलोड या इंस्टॉलेशन की आवश्यकता नहीं है।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Blurring Faces Can Help Protect Privacy</h2>
-        <p>Blurring faces is an effective way to ensure the privacy and security of individuals. Here's how it can help:</p>
+        <h2>चेहरे को ब्लर करने के सामान्य उपयोग केस</h2>
+        <p>चेहरे को ब्लर करना विभिन्न परिदृश्यों में उपयोगी होता है, जैसे:</p>
         <ul>
-            <li><strong>Prevent Unauthorized Use:</strong> Blurring faces prevents others from using your images or videos to identify individuals without their consent.</li>
-            <li><strong>Enhance Safety:</strong> Protecting the identities of individuals in sensitive situations helps maintain their safety and security.</li>
-            <li><strong>Promote Ethical Content Sharing:</strong> By using our face-blurring tool, you promote responsible sharing of content that respects individuals' privacy rights.</li>
+            <li><strong>इवेंट फोटोग्राफी:</strong> सार्वजनिक कार्यक्रमों या समारोहों में ली गई तस्वीरों में व्यक्तियों की पहचान की सुरक्षा करें।</li>
+            <li><strong>डॉक्यूमेंट्री और समाचार रिपोर्ट:</strong> ऐसे इंटरव्यू या फुटेज में चेहरों को ब्लर करें जहां व्यक्तियों ने अपनी पहचान प्रकट करने की सहमति नहीं दी है।</li>
+            <li><strong>सोशल मीडिया शेयरिंग:</strong> अपनी सामग्री में शामिल व्यक्तियों की गोपनीयता सुनिश्चित करते हुए ऑनलाइन छवियों या वीडियो साझा करें।</li>
+            <li><strong>परिवार की तस्वीरें:</strong> सार्वजनिक प्लेटफार्मों पर व्यक्तिगत छवियों को साझा करते समय बच्चों या रिश्तेदारों के चेहरे को ब्लर करें।</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>चेहरे को ब्लर करना गोपनीयता की सुरक्षा में कैसे मदद कर सकता है</h2>
+        <p>चेहरे को ब्लर करना व्यक्तियों की गोपनीयता और सुरक्षा सुनिश्चित करने का एक प्रभावी तरीका है। यह कैसे मदद कर सकता है:</p>
+        <ul>
+            <li><strong>अनधिकृत उपयोग को रोकें:</strong> चेहरे को ब्लर करने से दूसरों को आपकी छवियों या वीडियो का उपयोग करके व्यक्तियों की पहचान करने से रोका जा सकता है बिना उनकी सहमति के।</li>
+            <li><strong>सुरक्षा बढ़ाएं:</strong> संवेदनशील परिस्थितियों में व्यक्तियों की पहचान की सुरक्षा करना उनकी सुरक्षा और सुरक्षा बनाए रखने में मदद करता है।</li>
+            <li><strong>नैतिक सामग्री साझा करने को बढ़ावा दें:</strong> हमारे फेस-ब्लरिंग टूल का उपयोग करके, आप ऐसे सामग्री का जिम्मेदार तरीके से साझा करने को बढ़ावा देते हैं जो व्यक्तियों के गोपनीयता अधिकारों का सम्मान करती है।</li>
         </ul>
     </div>
 </div>

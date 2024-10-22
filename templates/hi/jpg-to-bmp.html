@@ -1,84 +1,85 @@
 {% extends "hi/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Convert JPG to BMP images easily with ToolsForImage. Free online JPG to BMP converter.">
+<meta name="description" content="ToolsForImage के साथ JPG को BMP इमेजों में आसानी से बदलें। मुफ्त ऑनलाइन JPG से BMP कनवर्टर।">
 {% endblock %}
 
-{% block title %}Convert JPG to BMP online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}ToolsForImage ऑनलाइन JPG से BMP कन्वर्ट करें - मुफ्त ऑनलाइन इमेज संपादन उपकरण{% endblock %}
 
 {% block content %}
-<h1>Free JPG to BMP Conversion Tool</h1>
-<p>Easily convert your JPG images to BMP format. Upload a JPG image and we'll convert it to BMP for you.</p>
+<h1>मुफ्त JPG से BMP कनवर्ज़न टूल</h1>
+<p>आसानी से अपने JPG इमेज को BMP फ़ॉर्मेट में बदलें। एक JPG इमेज अपलोड करें और हम इसे आपके लिए BMP में बदल देंगे।</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/jpg" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload JPG Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">JPG इमेज अपलोड करें</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="इमेज पूर्वावलोकन" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="jpg">
     <input type="hidden" name="output_format" value="bmp">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to BMP</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">BMP में बदलें</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is JPG to BMP Conversion?</h2>
-        <p>JPG to BMP conversion is the process of changing image files from JPG (Joint Photographic Experts Group) format to BMP (Bitmap) format. This conversion is useful for users who need high-quality images without compression artifacts. Our tool makes it easy to convert JPG images to BMP quickly and efficiently.</p>
+        <h2>JPG से BMP कन्वर्ज़न क्या है?</h2>
+        <p>JPG से BMP कन्वर्ज़न JPG (जॉइंट फ़ोटोग्राफ़िक एक्सपर्ट्स ग्रुप) फ़ॉर्मेट से BMP (Bitmap) फ़ॉर्मेट में इमेज फ़ाइलों को बदलने की प्रक्रिया है। यह कन्वर्ज़न उन उपयोगकर्ताओं के लिए उपयोगी है जिन्हें बिना संकुचन के उच्च गुणवत्ता वाली इमेजों की आवश्यकता होती है। हमारा टूल JPG इमेजों को BMP में तेजी से और प्रभावी ढंग से बदलने में मदद करता है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert JPG to BMP?</h2>
-        <p>There are several reasons to convert JPG images to BMP:</p>
+        <h2>JPG को BMP में क्यों बदलें?</h2>
+        <p>JPG इमेजों को BMP में बदलने के कई कारण हैं:</p>
         <ul>
-            <li><strong>Lossless Quality:</strong> BMP images are uncompressed, ensuring that the original image quality is preserved without any loss of detail.</li>
-            <li><strong>Editing Flexibility:</strong> BMP format is ideal for editing and processing in graphic design software, as it retains all image data.</li>
-            <li><strong>Compatibility:</strong> BMP files are widely supported by various applications, making them easy to use for printing and design projects.</li>
+            <li><strong>गुणवत्ता का नुकसान रहित:</strong> BMP इमेजें असंकुचित होती हैं, जिससे सुनिश्चित होता है कि मूल इमेज की गुणवत्ता बिना किसी विवरण के नुकसान के संरक्षित है।</li>
+            <li><strong>संपादन की लचीलापन:</strong> BMP फ़ॉर्मेट ग्राफिक डिज़ाइन सॉफ़्टवेयर में संपादित और संसाधित करने के लिए आदर्श है, क्योंकि यह सभी इमेज डेटा को बनाए रखता है।</li>
+            <li><strong>संगतता:</strong> BMP फ़ाइलें विभिन्न अनुप्रयोगों द्वारा व्यापक रूप से समर्थित हैं, जिससे इन्हें प्रिंटिंग और डिज़ाइन परियोजनाओं के लिए उपयोग करना आसान होता है।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our JPG to BMP Converter</h2>
-        <p>Using our JPG to BMP conversion tool is simple and user-friendly. Here’s how it works:</p>
+        <h2>हमारे JPG से BMP कन्वर्टर का उपयोग कैसे करें</h2>
+        <p>हमारे JPG से BMP कन्वर्ज़न टूल का उपयोग करना सरल और उपयोगकर्ता के अनुकूल है। यह कैसे काम करता है:</p>
         <ul>
-            <li>Click the "Upload JPG File" button to select the JPG image you want to convert.</li>
-            <li>After uploading, our tool will automatically convert your image to BMP format.</li>
-            <li>Once the conversion is complete, click "Download BMP" to save your new image to your device.</li>
+            <li>"JPG फ़ाइल अपलोड करें" बटन पर क्लिक करें और JPG इमेज का चयन करें जिसे आप बदलना चाहते हैं।</li>
+            <li>अपलोड करने के बाद, हमारा टूल स्वचालित रूप से आपकी इमेज को BMP फ़ॉर्मेट में बदल देगा।</li>
+            <li>कन्वर्ज़न पूरा होने पर, "BMP डाउनलोड करें" पर क्लिक करें और अपनी नई इमेज को अपने उपकरण में सहेजें।</li>
         </ul>
-        <p>Our converter supports various JPG files, ensuring a smooth conversion experience every time.</p>
+        <p>हमारा कन्वर्टर विभिन्न JPG फ़ाइलों का समर्थन करता है, जिससे हर बार एक सहज कन्वर्ज़न अनुभव सुनिश्चित होता है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our JPG to BMP Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>हमारे JPG से BMP कन्वर्टर के लाभ</h2>
+        <p>हमारे कन्वर्ज़न टूल का उपयोग करने के कुछ लाभ यहां दिए गए हैं:</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Convert your JPG images to BMP in just a few clicks, with no complicated steps.</li>
-            <li><strong>No Loss of Quality:</strong> Enjoy high-quality images with our advanced conversion process, ensuring your images look great.</li>
-            <li><strong>Free and Accessible:</strong> Use our online converter for free, with no downloads or installations required.</li>
-            <li><strong>User-Friendly Interface:</strong> Designed for everyone, our tool is easy to navigate, regardless of your technical skills.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for JPG to BMP Conversion</h2>
-        <p>Here are a few situations where converting JPG to BMP can be beneficial:</p>
-        <ul>
-            <li><strong>Graphic Design:</strong> Use BMP images for projects that require high-quality graphics and easy editing capabilities.</li>
-            <li><strong>Printing:</strong> BMP files are ideal for printing because of their lossless quality, ensuring sharp and clear prints.</li>
-            <li><strong>Archiving:</strong> Store images in BMP format for long-term archiving, as they preserve all details without compression.</li>
-            <li><strong>Image Manipulation:</strong> Convert JPG to BMP for better results in image editing and manipulation software.</li>
+            <li><strong>तेज़ और आसान:</strong> अपने JPG इमेज को बस कुछ क्लिक में BMP में बदलें, बिना किसी जटिलता के।</li>
+            <li><strong>गुणवत्ता का कोई नुकसान नहीं:</strong> हमारे उन्नत कन्वर्ज़न प्रक्रिया के साथ उच्च गुणवत्ता वाली इमेज का आनंद लें, जिससे आपकी इमेज शानदार दिखती हैं।</li>
+            <li><strong>मुफ्त और सुलभ:</strong> हमारे ऑनलाइन कन्वर्टर का उपयोग मुफ्त में करें, बिना किसी डाउनलोड या इंस्टॉलेशन की आवश्यकता के।</li>
+            <li><strong>उपयोगकर्ता के अनुकूल इंटरफेस:</strong> सभी के लिए डिज़ाइन किया गया, हमारा टूल नेविगेट करने में आसान है, चाहे आपकी तकनीकी क्षमताएं कैसी भी हों।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting JPG to BMP Can Improve Your Images</h2>
-        <p>Converting your JPG images to BMP can significantly enhance their usability and quality. Here’s how:</p>
+        <h2>JPG से BMP कन्वर्ज़न के सामान्य उपयोग</h2>
+        <p>यहां कुछ ऐसे स्थितियां दी गई हैं जहां JPG को BMP में बदलना फायदेमंद हो सकता है:</p>
         <ul>
-            <li><strong>Preserved Quality:</strong> BMP format retains the original image quality, making it ideal for high-resolution needs.</li>
-            <li><strong>Enhanced Editing:</strong> BMP images are easier to work with in graphic design software, allowing for more precise editing.</li>
-            <li><strong>Versatile Use:</strong> BMP files can be used in various applications, from web design to print media, offering flexibility.</li>
+            <li><strong>ग्राफिक डिज़ाइन:</strong> उच्च गुणवत्ता वाली ग्राफिक्स और आसान संपादन क्षमताओं की आवश्यकता वाले परियोजनाओं के लिए BMP इमेज का उपयोग करें।</li>
+            <li><strong>प्रिंटिंग:</strong> BMP फ़ाइलें अपने बिना हानि वाली गुणवत्ता के कारण प्रिंटिंग के लिए आदर्श होती हैं, जिससे स्पष्ट और तेज़ प्रिंट सुनिश्चित होता है।</li>
+            <li><strong>आर्काइविंग:</strong> बिना संकुचन के सभी विवरणों को संरक्षित करते हुए लंबी अवधि के लिए BMP फ़ॉर्मेट में इमेजें संग्रहित करें।</li>
+            <li><strong>इमेज मैनिपुलेशन:</strong> इमेज संपादन और मैनिपुलेशन सॉफ़्टवेयर में बेहतर परिणामों के लिए JPG को BMP में बदलें।</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>JPG को BMP में बदलने से आपकी इमेज में कैसे सुधार हो सकता है</h2>
+        <p>अपने JPG इमेज को BMP में बदलने से उनकी उपयोगिता और गुणवत्ता में काफी सुधार हो सकता है। यह कैसे:</p>
+        <ul>
+            <li><strong>गुणवत्ता संरक्षित:</strong> BMP फ़ॉर्मेट मूल इमेज की गुणवत्ता को बनाए रखता है, जो उच्च-रेज़ॉल्यूशन आवश्यकताओं के लिए आदर्श बनाता है।</li>
+            <li><strong>संपादन में सुधार:</strong> ग्राफिक डिज़ाइन सॉफ़्टवेयर में BMP इमेज के साथ काम करना आसान होता है, जिससे अधिक सटीक संपादन संभव होता है।</li>
+            <li><strong>विविध उपयोग:</strong> BMP फ़ाइलें विभिन्न अनुप्रयोगों में उपयोग की जा सकती हैं, जैसे कि वेब डिज़ाइन से लेकर प्रिंट मीडिया तक, लचीलापन प्रदान करती हैं।</li>
         </ul>
     </div>
 </div>
+
 
 
 <style>

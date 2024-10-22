@@ -1,81 +1,81 @@
 {% extends "hi/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Convert JPG to ICO images easily with ToolsForImage. Free online JPG to ICO converter.">
+<meta name="description" content="ToolsForImage के साथ JPG को ICO इमेज में आसानी से बदलें। फ्री ऑनलाइन JPG से ICO कन्वर्टर।">
 {% endblock %}
 
-{% block title %}Convert JPG to ICO online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}ToolsForImage पर JPG को ICO ऑनलाइन बदलें - फ्री ऑनलाइन इमेज संपादन उपकरण{% endblock %}
 
 {% block content %}
-<h1>Free JPG to ICO Conversion Tool</h1>
-<p>Easily convert your JPG images to ICO format. Upload a JPG image and we'll convert it to ICO for you.</p>
+<h1>फ्री JPG से ICO कन्वर्ज़न टूल</h1>
+<p>अपने JPG इमेज को ICO फॉर्मेट में आसानी से बदलें। एक JPG इमेज अपलोड करें और हम इसे आपके लिए ICO में बदल देंगे।</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/jpeg" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload JPG Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">JPG इमेज अपलोड करें</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="इमेज प्रिव्यू" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="jpg">
     <input type="hidden" name="output_format" value="ico">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to ICO</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">ICO में बदलें</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is JPG to ICO Conversion?</h2>
-        <p>JPG to ICO conversion is the process of changing image files from JPG format to ICO format. ICO is a file format used for icons in Microsoft Windows. This conversion is useful when you need to create icons for Windows applications, websites, or favicons.</p>
+        <h2>JPG से ICO कन्वर्ज़न क्या है?</h2>
+        <p>JPG से ICO कन्वर्ज़न एक प्रक्रिया है जिसमें इमेज फाइलों को JPG फॉर्मेट से ICO फॉर्मेट में बदल दिया जाता है। ICO एक फ़ाइल प्रारूप है जो Microsoft Windows में आइकनों के लिए उपयोग किया जाता है। यह कन्वर्ज़न तब उपयोगी होता है जब आपको Windows एप्लिकेशन, वेबसाइटों या फेविकॉन्स के लिए आइकन बनाना होता है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert JPG to ICO?</h2>
-        <p>There are several reasons to convert JPG images to ICO:</p>
+        <h2>JPG को ICO में बदलने के लिए क्यों?</h2>
+        <p>JPG इमेज को ICO में बदलने के कई कारण हैं:</p>
         <ul>
-            <li><strong>Create Windows Icons:</strong> ICO is the standard format for Windows application icons.</li>
-            <li><strong>Website Favicons:</strong> ICO is commonly used for website favicons, the small icons displayed in browser tabs.</li>
-            <li><strong>Multiple Sizes:</strong> ICO files can contain multiple image sizes in one file, useful for different display scenarios.</li>
+            <li><strong>Windows आइकन बनाना:</strong> ICO Windows एप्लिकेशन आइकनों के लिए मानक प्रारूप है।</li>
+            <li><strong>वेबसाइट फेविकॉन्स:</strong> ICO आमतौर पर वेबसाइट फेविकॉन्स के लिए उपयोग किया जाता है, जो ब्राउज़र टैब में दिखाए जाते हैं।</li>
+            <li><strong>कई आकार:</strong> ICO फ़ाइलें एक फ़ाइल में कई इमेज आकार रख सकती हैं, जो विभिन्न डिस्प्ले परिदृश्यों के लिए उपयोगी होती हैं।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our JPG to ICO Converter</h2>
-        <p>Using our JPG to ICO conversion tool is simple and quick. Here's how it works:</p>
+        <h2>हमारे JPG से ICO कन्वर्टर का उपयोग कैसे करें</h2>
+        <p>हमारे JPG से ICO कन्वर्ज़न टूल का उपयोग करना सरल और त्वरित है। यह इस प्रकार काम करता है:</p>
         <ul>
-            <li>Click the "Upload JPG File" button to select the JPG image you want to convert.</li>
-            <li>Once your image is uploaded, our tool will automatically start converting it to ICO format.</li>
-            <li>After the conversion is complete, click "Download ICO" to save your new icon file to your device.</li>
+            <li>"JPG फ़ाइल अपलोड करें" बटन पर क्लिक करें ताकि आप जिस JPG इमेज को बदलना चाहते हैं उसे चुन सकें।</li>
+            <li>एक बार जब आपकी इमेज अपलोड हो जाती है, तो हमारा टूल स्वचालित रूप से इसे ICO फॉर्मेट में बदलना शुरू कर देगा।</li>
+            <li>कन्वर्ज़न पूरा होने के बाद, "ICO डाउनलोड करें" पर क्लिक करें ताकि आप अपने नए आइकन फ़ाइल को अपने डिवाइस पर सहेज सकें।</li>
         </ul>
-        <p>Our converter supports various JPG files, ensuring a smooth and efficient conversion experience for all users.</p>
+        <p>हमारा कन्वर्टर विभिन्न JPG फ़ाइलों का समर्थन करता है, जो सभी उपयोगकर्ताओं के लिए एक सहज और प्रभावी कन्वर्ज़न अनुभव सुनिश्चित करता है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our JPG to ICO Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>हमारे JPG से ICO कन्वर्टर के लाभ</h2>
+        <p>यहाँ हमारे कन्वर्ज़न टूल के कुछ लाभ दिए गए हैं:</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Convert your JPG images to ICO quickly with just a few clicks.</li>
-            <li><strong>High Quality:</strong> Maintain image quality during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, with no downloads or installations needed.</li>
-            <li><strong>User-Friendly Interface:</strong> Our tool is designed to be intuitive and easy to navigate for everyone.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for JPG to ICO Conversion</h2>
-        <p>Here are some common situations where converting JPG to ICO can be helpful:</p>
-        <ul>
-            <li><strong>Application Development:</strong> Create icons for Windows applications.</li>
-            <li><strong>Web Design:</strong> Generate favicons for websites to display in browser tabs and bookmarks.</li>
-            <li><strong>Custom Folder Icons:</strong> Create personalized icons for Windows folders.</li>
-            <li><strong>Desktop Shortcuts:</strong> Design custom icons for desktop shortcuts.</li>
+            <li><strong>त्वरित और आसान:</strong> केवल कुछ क्लिक में अपने JPG इमेज को ICO में जल्दी बदलें।</li>
+            <li><strong>उच्च गुणवत्ता:</strong> कन्वर्ज़न प्रक्रिया के दौरान इमेज गुणवत्ता बनाए रखें।</li>
+            <li><strong>फ्री और सुलभ:</strong> हमारी टूल का ऑनलाइन उपयोग मुफ्त में करें, बिना किसी डाउनलोड या इंस्टॉलेशन की आवश्यकता के।</li>
+            <li><strong>उपयोगकर्ता-अनुकूल इंटरफ़ेस:</strong> हमारा टूल हर किसी के लिए सहज और नेविगेट करने में आसान है।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting JPG to ICO Can Help</h2>
-        <p>Converting your JPG images to ICO can enhance their usability in specific contexts. Here's how:</p>
+        <h2>JPG से ICO कन्वर्ज़न के सामान्य उपयोग</h2>
+        <p>यहाँ कुछ सामान्य परिस्थितियाँ हैं जहाँ JPG को ICO में बदलना मददगार हो सकता है:</p>
         <ul>
-            <li><strong>Windows Compatibility:</strong> ICO is the native icon format for Windows, ensuring proper display.</li>
-            <li><strong>Web Standards:</strong> ICO is widely supported as the favicon format across different browsers.</li>
-            <li><strong>Multiple Resolutions:</strong> ICO files can store multiple image sizes, useful for different display scenarios.</li>
+            <li><strong>एप्लिकेशन विकास:</strong> Windows एप्लिकेशनों के लिए आइकन बनाना।</li>
+            <li><strong>वेब डिज़ाइन:</strong> वेबसाइटों के लिए फेविकॉन्स उत्पन्न करना जो ब्राउज़र टैब और बुकमार्क में प्रदर्शित होते हैं।</li>
+            <li><strong>कस्टम फ़ोल्डर आइकन:</strong> Windows फ़ोल्डरों के लिए व्यक्तिगत आइकन बनाना।</li>
+            <li><strong>डेस्कटॉप शॉर्टकट:</strong> डेस्कटॉप शॉर्टकट के लिए कस्टम आइकन डिज़ाइन करना।</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>JPG को ICO में बदलने से कैसे मदद मिलती है</h2>
+        <p>आपकी JPG इमेज को ICO में बदलने से उनके उपयोगिता में वृद्धि हो सकती है। यहाँ कैसे:</p>
+        <ul>
+            <li><strong>Windows संगतता:</strong> ICO Windows के लिए मूल आइकन प्रारूप है, यह सुनिश्चित करता है कि इसे सही तरीके से प्रदर्शित किया जाए।</li>
+            <li><strong>वेब मानक:</strong> ICO विभिन्न ब्राउज़रों में फेविकॉन प्रारूप के रूप में व्यापक रूप से समर्थित है।</li>
+            <li><strong>कई रिज़ॉल्यूशंस:</strong> ICO फ़ाइलें विभिन्न डिस्प्ले परिदृश्यों के लिए कई इमेज आकार संग्रहित कर सकती हैं।</li>
         </ul>
     </div>
 </div>

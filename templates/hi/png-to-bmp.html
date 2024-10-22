@@ -1,84 +1,83 @@
 {% extends "hi/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Convert PNG to BMP images easily with ToolsForImage. Free online PNG to BMP converter.">
+<meta name="description" content="ToolsForImage के साथ PNG को BMP छवियों को आसानी से कनवर्ट करें। मुफ्त ऑनलाइन PNG से BMP कनवर्टर।">
 {% endblock %}
 
-{% block title %}Convert PNG to BMP online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}ऑनलाइन PNG से BMP कनवर्ट करें ToolsForImage - मुफ्त ऑनलाइन इमेज एडिटिंग टूल{% endblock %}
 
 {% block content %}
-<h1>Free PNG to BMP Conversion Tool</h1>
-<p>Easily convert your PNG images to BMP format. Upload a PNG image and we'll convert it to BMP for you.</p>
+<h1>मुफ्त PNG से BMP कनवर्जन टूल</h1>
+<p>अपने PNG चित्रों को BMP प्रारूप में आसानी से कनवर्ट करें। एक PNG छवि अपलोड करें और हम इसे आपके लिए BMP में परिवर्तित करेंगे।</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/png" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload PNG Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">PNG छवि अपलोड करें</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="छवि पूर्वावलोकन" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="png">
     <input type="hidden" name="output_format" value="bmp">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to BMP</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">BMP में कनवर्ट करें</button>
 </form>
 <div class="info-container">
     <div class="info-section">
-        <h2>What is PNG to BMP Conversion?</h2>
-        <p>PNG to BMP conversion is the process of changing image files from PNG format to BMP format. BMP (Bitmap) is a raster graphics format used for storing digital images. Converting PNG images to BMP can be helpful when you need to use a simple, uncompressed image format that retains high quality for editing or printing purposes.</p>
+        <h2>PNG से BMP कनवर्जन क्या है?</h2>
+        <p>PNG से BMP कनवर्जन का अर्थ है PNG प्रारूप से BMP प्रारूप में चित्र फ़ाइलों को बदलना। BMP (Bitmap) एक रास्टर ग्राफिक्स प्रारूप है जिसका उपयोग डिजिटल छवियों को स्टोर करने के लिए किया जाता है। PNG छवियों को BMP में परिवर्तित करना तब सहायक हो सकता है जब आपको संपादन या प्रिंटिंग उद्देश्यों के लिए उच्च गुणवत्ता बनाए रखने वाले सरल, अनकम्प्रेस्ड इमेज प्रारूप का उपयोग करने की आवश्यकता हो।</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert PNG to BMP?</h2>
-        <p>There are several reasons to convert PNG images to BMP:</p>
+        <h2>PNG को BMP में कनवर्ट करने के फायदे</h2>
+        <p>PNG छवियों को BMP में कनवर्ट करने के कई कारण हैं:</p>
         <ul>
-            <li><strong>High-Quality Images:</strong> BMP files maintain excellent image quality without compression, making them ideal for professional applications.</li>
-            <li><strong>Editing Flexibility:</strong> BMP format is often preferred for editing and graphic design due to its simplicity and lack of compression artifacts.</li>
-            <li><strong>Compatibility:</strong> BMP files are widely supported by many software applications, ensuring easy access and use across different platforms.</li>
+            <li><strong>उच्च गुणवत्ता की छवियाँ:</strong> BMP फ़ाइलें बिना संकुचन के उत्कृष्ट छवि गुणवत्ता बनाए रखती हैं, जो उन्हें पेशेवर अनुप्रयोगों के लिए आदर्श बनाती हैं।</li>
+            <li><strong>संपादन में लचीलापन:</strong> BMP प्रारूप को अक्सर संपादन और ग्राफिक डिज़ाइन के लिए पसंद किया जाता है क्योंकि इसमें सरलता और संकुचन कलाकृतियों की कमी होती है।</li>
+            <li><strong>संगतता:</strong> BMP फ़ाइलें कई सॉफ़्टवेयर अनुप्रयोगों द्वारा व्यापक रूप से समर्थित हैं, जिससे विभिन्न प्लेटफार्मों पर आसान पहुंच और उपयोग सुनिश्चित होता है।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our PNG to BMP Converter</h2>
-        <p>Our PNG to BMP conversion tool is designed to be user-friendly and straightforward. Here’s how you can use it:</p>
+        <h2>हमारे PNG से BMP कनवर्टर का उपयोग कैसे करें</h2>
+        <p>हमारा PNG से BMP कनवर्जन टूल उपयोगकर्ता के अनुकूल और सीधा है। इसे उपयोग करने का तरीका यहां है:</p>
         <ul>
-            <li>Click the "Upload PNG File" button to select the PNG image you want to convert.</li>
-            <li>Once the image is uploaded, our tool will automatically process the conversion to BMP format.</li>
-            <li>After the conversion is complete, click "Download BMP" to save your new image to your device.</li>
+            <li>PNG छवि चुनने के लिए "PNG फ़ाइल अपलोड करें" बटन पर क्लिक करें।</li>
+            <li>एक बार छवि अपलोड हो जाने के बाद, हमारा टूल स्वचालित रूप से BMP प्रारूप में कनवर्जन को संसाधित करेगा।</li>
+            <li>कनवर्जन पूरा होने के बाद, अपने नए चित्र को अपने डिवाइस पर सहेजने के लिए "BMP डाउनलोड करें" पर क्लिक करें।</li>
         </ul>
-        <p>Our converter supports a variety of PNG files, ensuring a smooth conversion experience every time.</p>
+        <p>हमारा कनवर्टर विभिन्न PNG फ़ाइलों का समर्थन करता है, जिससे हर बार सुचारु कनवर्जन अनुभव सुनिश्चित होता है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our PNG to BMP Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>हमारे PNG से BMP कनवर्टर के उपयोग के लाभ</h2>
+        <p>हमारे कनवर्जन टूल का उपयोग करने के कुछ लाभ यहां दिए गए हैं:</p>
         <ul>
-            <li><strong>Fast and Efficient:</strong> Convert your PNG images to BMP quickly and easily, without any complicated steps.</li>
-            <li><strong>No Loss of Quality:</strong> Enjoy high-quality output with no compression, ensuring that your images look their best.</li>
-            <li><strong>Free and Online:</strong> Use our tool for free, directly in your web browser, with no need for software downloads.</li>
-            <li><strong>User-Friendly Interface:</strong> Designed for everyone, our tool is simple and easy to navigate, making it accessible for all users.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for PNG to BMP Conversion</h2>
-        <p>Here are some situations where converting PNG to BMP can be beneficial:</p>
-        <ul>
-            <li><strong>Graphic Design:</strong> Use BMP images for graphic design projects where high-quality and uncompressed images are required.</li>
-            <li><strong>Image Editing:</strong> Convert PNG files to BMP for easier editing in various software applications.</li>
-            <li><strong>Printing:</strong> Use BMP images for printing purposes, as they retain high quality without compression artifacts.</li>
-            <li><strong>Archiving:</strong> Store images in BMP format for long-term archival, preserving their quality over time.</li>
+            <li><strong>तेज और कुशल:</strong> बिना किसी जटिल कदम के, जल्दी और आसानी से अपने PNG चित्रों को BMP में कनवर्ट करें।</li>
+            <li><strong>गुणवत्ता की हानि नहीं:</strong> बिना संकुचन के उच्च गुणवत्ता का आउटपुट प्राप्त करें, जिससे आपकी छवियाँ अपने सर्वश्रेष्ठ दिखें।</li>
+            <li><strong>मुफ्त और ऑनलाइन:</strong> हमारे टूल का उपयोग मुफ्त में करें, सीधे अपने वेब ब्राउज़र में, बिना सॉफ़्टवेयर डाउनलोड की आवश्यकता के।</li>
+            <li><strong>उपयोगकर्ता के अनुकूल इंटरफेस:</strong> सभी के लिए डिज़ाइन किया गया, हमारा टूल सरल और नेविगेट करने में आसान है, जिससे यह सभी उपयोगकर्ताओं के लिए सुलभ हो जाता है।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting PNG to BMP Can Help</h2>
-        <p>Converting your PNG images to BMP can enhance their usability and performance in various applications. Here’s how:</p>
+        <h2>PNG से BMP कनवर्जन के सामान्य उपयोग</h2>
+        <p>यहां कुछ स्थितियां हैं जहां PNG को BMP में परिवर्तित करना फायदेमंद हो सकता है:</p>
         <ul>
-            <li><strong>Better Editing Experience:</strong> BMP images are easier to work with in graphic design software, making your editing process smoother.</li>
-            <li><strong>Improved Print Quality:</strong> Use BMP files to ensure your printed images maintain their sharpness and clarity.</li>
-            <li><strong>Easy Access:</strong> BMP format is compatible with many applications, ensuring that your images can be used wherever you need them.</li>
+            <li><strong>ग्राफिक डिज़ाइन:</strong> ग्राफिक डिज़ाइन परियोजनाओं के लिए BMP छवियों का उपयोग करें जहां उच्च गुणवत्ता और अनकम्प्रेस्ड छवियों की आवश्यकता होती है।</li>
+            <li><strong>छवि संपादन:</strong> विभिन्न सॉफ़्टवेयर अनुप्रयोगों में संपादन को सरल बनाने के लिए PNG फ़ाइलों को BMP में कनवर्ट करें।</li>
+            <li><strong>प्रिंटिंग:</strong> BMP छवियों का उपयोग प्रिंटिंग उद्देश्यों के लिए करें, क्योंकि वे बिना संकुचन कलाकृतियों के उच्च गुणवत्ता बनाए रखते हैं।</li>
+            <li><strong>आर्काइविंग:</strong> लंबे समय तक संग्रहण के लिए BMP प्रारूप में छवियाँ सहेजें, जिससे समय के साथ उनकी गुणवत्ता बनी रहे।</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>PNG से BMP में कनवर्जन कैसे मदद कर सकता है</h2>
+        <p>अपने PNG चित्रों को BMP में परिवर्तित करना विभिन्न अनुप्रयोगों में उनकी उपयोगिता और प्रदर्शन को बढ़ा सकता है। यहां बताया गया है:</p>
+        <ul>
+            <li><strong>बेहतर संपादन अनुभव:</strong> BMP छवियाँ ग्राफिक डिज़ाइन सॉफ़्टवेयर में काम करने में आसान होती हैं, जिससे आपका संपादन प्रक्रिया सुचारू हो जाती है।</li>
+            <li><strong>प्रिंट गुणवत्ता में सुधार:</strong> सुनिश्चित करें कि आपकी मुद्रित छवियाँ अपनी तीक्ष्णता और स्पष्टता बनाए रखें।</li>
+            <li><strong>आसान पहुंच:</strong> BMP प्रारूप कई अनुप्रयोगों के साथ संगत है, यह सुनिश्चित करता है कि आपकी छवियाँ जहां भी आपको चाहिए, वहां उपयोग की जा सकें।</li>
         </ul>
     </div>
 </div>
-
 
 <style>
     h1 {

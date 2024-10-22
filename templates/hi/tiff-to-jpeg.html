@@ -1,85 +1,86 @@
 {% extends "hi/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Convert TIFF to JPEG images easily with ToolsForImage. Free online TIFF to JPEG converter.">
+<meta name="description" content="ToolsForImage के साथ TIFF को JPEG छवियों में आसानी से परिवर्तित करें। मुफ्त ऑनलाइन TIFF से JPEG कनवर्टर।">
 {% endblock %}
 
-{% block title %}Convert TIFF to JPEG online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}ToolsForImage पर ऑनलाइन TIFF से JPEG में परिवर्तित करें - मुफ्त ऑनलाइन इमेज एडिटिंग टूल{% endblock %}
 
 {% block content %}
-<h1>Free TIFF to JPEG Conversion Tool</h1>
-<p>Easily convert your TIFF images to JPEG format. Upload a TIFF image and we'll convert it to JPEG for you.</p>
+<h1>मुफ्त TIFF से JPEG कनवर्जन टूल</h1>
+<p>अपनी TIFF छवियों को JPEG फॉर्मेट में आसानी से परिवर्तित करें। एक TIFF छवि अपलोड करें और हम इसे JPEG में परिवर्तित कर देंगे।</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/tiff" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload TIFF Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">TIFF छवि अपलोड करें</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="छवि पूर्वावलोकन" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="tiff">
     <input type="hidden" name="output_format" value="jpeg">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to JPEG</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">JPEG में परिवर्तित करें</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is TIFF to JPEG Conversion?</h2>
-        <p>TIFF to JPEG conversion is the process of changing images from TIFF (Tagged Image File Format) to JPEG (Joint Photographic Experts Group) format. TIFF is known for its high quality and is often used in professional photography, while JPEG is a popular format for everyday use due to its smaller file size and good quality. Converting TIFF images to JPEG can help you save space and share your images easily.</p>
+        <h2>TIFF से JPEG कनवर्जन क्या है?</h2>
+        <p>TIFF से JPEG कनवर्जन वह प्रक्रिया है जिसमें छवियों को TIFF (टैग्ड इमेज फाइल फॉर्मेट) से JPEG (जॉइंट फोटोग्राफिक एक्सपर्ट्स ग्रुप) फॉर्मेट में बदला जाता है। TIFF उच्च गुणवत्ता के लिए जाना जाता है और अक्सर पेशेवर फोटोग्राफी में उपयोग किया जाता है, जबकि JPEG छोटे फ़ाइल आकार और अच्छी गुणवत्ता के कारण दैनिक उपयोग के लिए एक लोकप्रिय फॉर्मेट है। TIFF छवियों को JPEG में परिवर्तित करना आपको स्थान बचाने और अपनी छवियों को आसानी से साझा करने में मदद कर सकता है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert TIFF to JPEG?</h2>
-        <p>There are several reasons to convert TIFF images to JPEG:</p>
+        <h2>TIFF को JPEG में क्यों परिवर्तित करें?</h2>
+        <p>TIFF छवियों को JPEG में परिवर्तित करने के कई कारण हैं:</p>
         <ul>
-            <li><strong>Smaller File Size:</strong> JPEG images are compressed, making them easier to store and share without taking up too much space.</li>
-            <li><strong>Wide Compatibility:</strong> JPEG is one of the most widely supported image formats, compatible with nearly all devices and software.</li>
-            <li><strong>Good Quality:</strong> JPEG format maintains good quality for photographs, making it ideal for web use and sharing.</li>
-            <li><strong>Fast Loading:</strong> JPEG files load quickly on websites, enhancing user experience for online viewing.</li>
+            <li><strong>छोटा फ़ाइल आकार:</strong> JPEG छवियाँ संकुचित होती हैं, जिससे उन्हें संग्रहित करना और साझा करना आसान होता है बिना बहुत अधिक स्थान घेरे।</li>
+            <li><strong>व्यापक संगतता:</strong> JPEG सबसे व्यापक रूप से समर्थित छवि फॉर्मेटों में से एक है, जो लगभग सभी उपकरणों और सॉफ़्टवेयर के साथ संगत है।</li>
+            <li><strong>अच्छी गुणवत्ता:</strong> JPEG फॉर्मेट फ़ोटोग्राफ़ के लिए अच्छी गुणवत्ता बनाए रखता है, जिससे यह वेब उपयोग और साझा करने के लिए आदर्श है।</li>
+            <li><strong>तेज़ लोडिंग:</strong> JPEG फ़ाइलें वेबसाइटों पर तेजी से लोड होती हैं, ऑनलाइन देखने के लिए उपयोगकर्ता अनुभव को बढ़ाती हैं।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our TIFF to JPEG Converter</h2>
-        <p>Our TIFF to JPEG conversion tool is designed for ease of use. Here’s how to convert your images:</p>
+        <h2>हमारे TIFF से JPEG कनवर्टर का उपयोग कैसे करें</h2>
+        <p>हमारा TIFF से JPEG कनवर्जन टूल उपयोग में आसानी के लिए डिज़ाइन किया गया है। अपनी छवियों को परिवर्तित करने का तरीका यहाँ है:</p>
         <ul>
-            <li>Click the "Upload TIFF File" button to select the TIFF image you want to convert.</li>
-            <li>After the upload, the conversion process will begin automatically.</li>
-            <li>Once the conversion is complete, click "Download JPEG" to save the new image to your device.</li>
+            <li>TIFF छवि चुनने के लिए "TIFF फ़ाइल अपलोड करें" बटन पर क्लिक करें।</li>
+            <li>अपलोड के बाद, कनवर्जन प्रक्रिया स्वचालित रूप से शुरू हो जाएगी।</li>
+            <li>एक बार कनवर्जन पूरा होने के बाद, "JPEG डाउनलोड करें" पर क्लिक करें ताकि नई छवि को अपने उपकरण में सहेज सकें।</li>
         </ul>
-        <p>Our converter supports various TIFF formats, ensuring a seamless experience for all users.</p>
+        <p>हमारा कनवर्टर विभिन्न TIFF फॉर्मेट का समर्थन करता है, जिससे सभी उपयोगकर्ताओं के लिए एक सुगम अनुभव सुनिश्चित होता है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our TIFF to JPEG Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>हमारे TIFF से JPEG कनवर्टर के लाभ</h2>
+        <p>हमारे कनवर्जन टूल का उपयोग करने के कुछ लाभ यहाँ दिए गए हैं:</p>
         <ul>
-            <li><strong>Quick and Easy:</strong> Convert your TIFF images to JPEG in just a few simple steps.</li>
-            <li><strong>No Quality Loss:</strong> Enjoy high-quality results without significant degradation during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, without the need for software installation.</li>
-            <li><strong>User-Friendly Interface:</strong> Our tool is designed to be intuitive and easy to navigate, ensuring a smooth experience.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for TIFF to JPEG Conversion</h2>
-        <p>Here are some scenarios where converting TIFF to JPEG can be beneficial:</p>
-        <ul>
-            <li><strong>Web Use:</strong> JPEG is ideal for images on websites and social media due to its small size and good quality.</li>
-            <li><strong>Photography:</strong> Share your photos easily with friends and family using the JPEG format.</li>
-            <li><strong>Document Creation:</strong> Use JPEG images in presentations or documents where file size and compatibility matter.</li>
-            <li><strong>Personal Use:</strong> Quickly convert personal photos to share on various platforms or to save space on your device.</li>
+            <li><strong>त्वरित और आसान:</strong> कुछ सरल कदमों में अपनी TIFF छवियों को JPEG में परिवर्तित करें।</li>
+            <li><strong>गुणवत्ता का कोई नुकसान नहीं:</strong> कनवर्जन प्रक्रिया के दौरान महत्वपूर्ण गिरावट के बिना उच्च गुणवत्ता के परिणाम प्राप्त करें।</li>
+            <li><strong>मुफ्त और सुलभ:</strong> बिना सॉफ़्टवेयर इंस्टॉलेशन के ऑनलाइन हमारे टूल का उपयोग करें।</li>
+            <li><strong>उपयोगकर्ता के अनुकूल इंटरफ़ेस:</strong> हमारा टूल सहज और नेविगेट करने में आसान डिज़ाइन किया गया है, जिससे एक सुगम अनुभव सुनिश्चित होता है।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting TIFF to JPEG Can Help</h2>
-        <p>Converting your TIFF images to JPEG can enhance their usability and performance. Here’s how:</p>
+        <h2>TIFF से JPEG कनवर्जन के सामान्य उपयोग</h2>
+        <p>यहाँ कुछ परिदृश्यों में हैं जहाँ TIFF को JPEG में परिवर्तित करना फायदेमंद हो सकता है:</p>
         <ul>
-            <li><strong>Increased Accessibility:</strong> JPEG images can be easily shared across all devices and platforms.</li>
-            <li><strong>Efficient Storage:</strong> Reduce file sizes for easier management and storage on your device.</li>
-            <li><strong>Improved Sharing:</strong> JPEG format is preferred for online sharing, ensuring your images look great wherever they are viewed.</li>
+            <li><strong>वेब उपयोग:</strong> JPEG छोटे आकार और अच्छी गुणवत्ता के कारण वेबसाइटों और सोशल मीडिया पर छवियों के लिए आदर्श है।</li>
+            <li><strong>फोटोग्राफी:</strong> JPEG फॉर्मेट का उपयोग करते हुए अपने दोस्तों और परिवार के साथ अपनी तस्वीरें आसानी से साझा करें।</li>
+            <li><strong>डॉक्यूमेंट निर्माण:</strong> फ़ाइल आकार और संगतता महत्वपूर्ण होने पर प्रस्तुतियों या दस्तावेज़ों में JPEG छवियों का उपयोग करें।</li>
+            <li><strong>व्यक्तिगत उपयोग:</strong> विभिन्न प्लेटफार्मों पर साझा करने या अपने उपकरण पर स्थान बचाने के लिए व्यक्तिगत तस्वीरों को तेजी से परिवर्तित करें।</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>TIFF को JPEG में परिवर्तित करने से कैसे मदद मिलती है</h2>
+        <p>अपनी TIFF छवियों को JPEG में परिवर्तित करने से उनकी उपयोगिता और प्रदर्शन को बढ़ाया जा सकता है। यहाँ कैसे:</p>
+        <ul>
+            <li><strong>सुविधा में वृद्धि:</strong> JPEG छवियों को सभी उपकरणों और प्लेटफार्मों पर आसानी से साझा किया जा सकता है।</li>
+            <li><strong>कुशल भंडारण:</strong> अपने उपकरण पर प्रबंधन और संग्रहण के लिए फ़ाइल के आकार को कम करें।</li>
+            <li><strong>साझा करने में सुधार:</strong> ऑनलाइन साझा करने के लिए JPEG फॉर्मेट को प्राथमिकता दी जाती है, यह सुनिश्चित करते हुए कि आपकी छवियाँ कहीं भी देखी जाएं, शानदार दिखें।</li>
         </ul>
     </div>
 </div>
+
 
 <style>
     h1 {

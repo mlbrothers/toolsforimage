@@ -1,96 +1,85 @@
 {% extends 'hi/base.html' %}
 
-{% block title %}Convert BMP to webp online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}BMP से WEBP ऑनलाइन रूपांतरण ToolsForImage - नि:शुल्क ऑनलाइन छवि संपादन उपकरण{% endblock %}
 
 {% block meta_description %}
-<meta name="description" content="Convert BMP to webp images easily with ToolsForImage. Free online BMP to webp converter.">
+<meta name="description" content="ToolsForImage के साथ BMP को WEBP छवियों में आसानी से परिवर्तित करें। नि:शुल्क ऑनलाइन BMP से WEBP रूपांतरण।">
 {% endblock %}
 
 {% block content %}
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id="></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '');
-    </script>
 
-    <h1>Free BMP to webp Conversion Tool</h1>
-    <p>Easily convert your BMP images to webp format. Upload a BMP image and we'll convert it to webp for you.</p>
+    <h1>नि:शुल्क BMP से WEBP रूपांतरण उपकरण</h1>
+    <p>अपने BMP छवियों को WEBP प्रारूप में आसानी से परिवर्तित करें। एक BMP छवि अपलोड करें और हम इसे WEBP में परिवर्तित कर देंगे।</p>
     <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
         <input type="file" id="image-upload" name="image" accept="image/bmp" style="display: none;" onchange="previewImage(event)">
-        <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload BMP Image</button>
+        <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">BMP छवि अपलोड करें</button>
         <br>
-        <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+        <img id="image-preview" class="image-preview" src="#" alt="छवि पूर्वावलोकन" style="display: none;">
         <br>
         <input type="hidden" name="input_format" value="bmp">
         <input type="hidden" name="output_format" value="webp">
-        <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to webp</button>
+        <button type="submit" class="convert-button" onclick="return validateImageSelection();">WEBP में परिवर्तित करें</button>
     </form>
 
     <div class="info-container">
         <div class="info-section">
-            <h2>What is BMP to WEBP Conversion?</h2>
-            <p>BMP to WEBP conversion is the process of changing image files from BMP (Bitmap) format to WEBP (Web Picture format). BMP files are high-quality but can be large in size, while WEBP files offer excellent compression, allowing for smaller file sizes without sacrificing quality. Our tool makes this conversion easy and fast, helping you optimize your images for web use.</p>
+            <h2>BMP से WEBP रूपांतरण क्या है?</h2>
+            <p>BMP से WEBP रूपांतरण वह प्रक्रिया है जिसमें छवि फ़ाइलों को BMP (Bitmap) प्रारूप से WEBP (वेब चित्र प्रारूप) में परिवर्तित किया जाता है। BMP फ़ाइलें उच्च गुणवत्ता वाली होती हैं लेकिन आकार में बड़ी हो सकती हैं, जबकि WEBP फ़ाइलें उत्कृष्ट संकुचन प्रदान करती हैं, जिससे गुणवत्ता को बनाए रखते हुए फ़ाइल के आकार को कम किया जा सकता है। हमारा उपकरण इस रूपांतरण को आसान और तेज बनाता है, जिससे आप अपनी छवियों को वेब उपयोग के लिए अनुकूलित कर सकते हैं।</p>
         </div>
     
         <div class="info-section">
-            <h2>Why Convert BMP to WEBP?</h2>
-            <p>There are several benefits to converting BMP images to WEBP:</p>
+            <h2>BMP को WEBP में परिवर्तित करने के लाभ</h2>
+            <p>BMP छवियों को WEBP में परिवर्तित करने के कई लाभ हैं:</p>
             <ul>
-                <li><strong>Smaller File Sizes:</strong> WEBP files are significantly smaller than BMP files, making them easier to load on websites and share online.</li>
-                <li><strong>High-Quality Images:</strong> WEBP supports both lossy and lossless compression, allowing you to maintain image quality while reducing file size.</li>
-                <li><strong>Support for Transparency:</strong> WEBP supports transparent backgrounds, making it ideal for graphics and logos used on the web.</li>
+                <li><strong>छोटे फ़ाइल आकार:</strong> WEBP फ़ाइलें BMP फ़ाइलों की तुलना में काफी छोटी होती हैं, जिससे उन्हें वेबसाइटों पर लोड करना और ऑनलाइन साझा करना आसान होता है।</li>
+                <li><strong>उच्च गुणवत्ता वाली छवियाँ:</strong> WEBP दोनों लॉस्सी और लॉसलेस संकुचन का समर्थन करता है, जिससे आप फ़ाइल के आकार को कम करते हुए छवि की गुणवत्ता बनाए रख सकते हैं।</li>
+                <li><strong>पारदर्शिता का समर्थन:</strong> WEBP पारदर्शी पृष्ठभूमियों का समर्थन करता है, जिससे यह वेब पर उपयोग किए जाने वाले ग्राफिक्स और लोगो के लिए आदर्श है।</li>
             </ul>
         </div>
     
         <div class="info-section">
-            <h2>How to Use Our BMP to WEBP Converter</h2>
-            <p>Our BMP to WEBP conversion tool is designed for simplicity. Here’s how to use it:</p>
+            <h2>हमारे BMP से WEBP रूपांतरण उपकरण का उपयोग कैसे करें</h2>
+            <p>हमारा BMP से WEBP रूपांतरण उपकरण सरलता के लिए डिज़ाइन किया गया है। इसका उपयोग कैसे करें:</p>
             <ul>
-                <li>Click on the "Upload BMP File" button to select the BMP image you want to convert.</li>
-                <li>After uploading, our tool will automatically convert the BMP file to WEBP format.</li>
-                <li>Once the conversion is complete, click "Download WEBP" to save your new image to your device.</li>
+                <li>"BMP फ़ाइल अपलोड करें" बटन पर क्लिक करें और उस BMP छवि का चयन करें जिसे आप परिवर्तित करना चाहते हैं।</li>
+                <li>अपलोड करने के बाद, हमारा उपकरण स्वचालित रूप से BMP फ़ाइल को WEBP प्रारूप में परिवर्तित करेगा।</li>
+                <li>जब रूपांतरण पूरा हो जाए, तो अपने नए चित्र को अपने डिवाइस पर सहेजने के लिए "WEBP डाउनलोड करें" पर क्लिक करें।</li>
             </ul>
-            <p>Our converter supports various BMP files, ensuring a hassle-free conversion experience every time.</p>
+            <p>हमारा रूपांतरण उपकरण विभिन्न BMP फ़ाइलों का समर्थन करता है, जिससे हर बार बिना किसी परेशानी के रूपांतरण अनुभव सुनिश्चित होता है।</p>
         </div>
     
         <div class="info-section">
-            <h2>Benefits of Using Our BMP to WEBP Converter</h2>
-            <p>Here are some advantages of using our conversion tool:</p>
+            <h2>हमारे BMP से WEBP रूपांतरण उपकरण के लाभ</h2>
+            <p>यहां हमारे रूपांतरण उपकरण के कुछ लाभ दिए गए हैं:</p>
             <ul>
-                <li><strong>Fast and Efficient:</strong> Convert your BMP images to WEBP quickly and easily.</li>
-                <li><strong>No Loss of Quality:</strong> Enjoy high-resolution images with our lossless conversion option.</li>
-                <li><strong>Free and Accessible:</strong> Use our online converter for free, with no downloads or installations needed.</li>
-                <li><strong>User-Friendly Interface:</strong> Designed for everyone, our intuitive tool makes it easy to convert images, regardless of your technical skills.</li>
-            </ul>
-        </div>
-    
-        <div class="info-section">
-            <h2>Common Uses for BMP to WEBP Conversion</h2>
-            <p>There are many situations where converting BMP to WEBP is beneficial:</p>
-            <ul>
-                <li><strong>Website Optimization:</strong> Reduce load times by using smaller WEBP files, improving user experience and SEO.</li>
-                <li><strong>Social Media:</strong> Share high-quality images without worrying about large file sizes.</li>
-                <li><strong>Graphic Design:</strong> Create web-ready graphics that maintain quality while being lightweight.</li>
-                <li><strong>Image Galleries:</strong> Use WEBP format for faster loading in image galleries or portfolios.</li>
+                <li><strong>तेज़ और प्रभावी:</strong> अपने BMP छवियों को WEBP में जल्दी और आसानी से परिवर्तित करें।</li>
+                <li><strong>गुणवत्ता का कोई नुकसान नहीं:</strong> हमारे लॉसलेस रूपांतरण विकल्प के साथ उच्च-रिज़ॉल्यूशन छवियों का आनंद लें।</li>
+                <li><strong>नि:शुल्क और सुलभ:</strong> हमारे ऑनलाइन रूपांतरण उपकरण का उपयोग नि:शुल्क करें, बिना किसी डाउनलोड या स्थापना की आवश्यकता के।</li>
+                <li><strong>उपयोगकर्ता के अनुकूल इंटरफ़ेस:</strong> सभी के लिए डिज़ाइन किया गया, हमारा सहज उपकरण आपको तकनीकी कौशल की परवाह किए बिना छवियों को परिवर्तित करने में मदद करता है।</li>
             </ul>
         </div>
     
         <div class="info-section">
-            <h2>How Converting BMP to WEBP Enhances Your Images</h2>
-            <p>Transforming your BMP images to WEBP can greatly improve their usability and online performance. Here’s how:</p>
+            <h2>BMP से WEBP रूपांतरण के सामान्य उपयोग</h2>
+            <p>BMP को WEBP में परिवर्तित करने के कई लाभकारी परिदृश्य हैं:</p>
             <ul>
-                <li><strong>Improved Loading Speed:</strong> Smaller WEBP files load faster on websites, enhancing user experience.</li>
-                <li><strong>Versatile File Use:</strong> WEBP format is widely supported by modern browsers, making it ideal for web applications.</li>
-                <li><strong>Quality Retention:</strong> WEBP offers high-quality images with compression, perfect for web graphics and photos.</li>
+                <li><strong>वेबसाइट अनुकूलन:</strong> छोटे WEBP फ़ाइलों का उपयोग करके लोड समय को कम करें, उपयोगकर्ता अनुभव और SEO में सुधार करें।</li>
+                <li><strong>सोशल मीडिया:</strong> बड़ी फ़ाइलों के आकार की चिंता किए बिना उच्च गुणवत्ता वाली छवियाँ साझा करें।</li>
+                <li><strong>ग्राफिक डिज़ाइन:</strong> गुणवत्ता को बनाए रखते हुए हल्के वेब-तैयार ग्राफिक्स बनाएं।</li>
+                <li><strong>छवि गैलरी:</strong> छवि गैलरी या पोर्टफोलियो में तेजी से लोडिंग के लिए WEBP प्रारूप का उपयोग करें।</li>
             </ul>
         </div>
-    </div>
     
-
-    
+        <div class="info-section">
+            <h2>BMP को WEBP में परिवर्तित करने से आपकी छवियों में कैसे सुधार होता है</h2>
+            <p>आपकी BMP छवियों को WEBP में बदलने से उनकी उपयोगिता और ऑनलाइन प्रदर्शन में बहुत सुधार हो सकता है। यहां बताया गया है:</p>
+            <ul>
+                <li><strong>बेहतर लोडिंग गति:</strong> छोटे WEBP फ़ाइलें वेबसाइटों पर तेजी से लोड होती हैं, जिससे उपयोगकर्ता अनुभव में सुधार होता है।</li>
+                <li><strong>बहुपरकारी फ़ाइल उपयोग:</strong> WEBP प्रारूप आधुनिक ब्राउज़रों द्वारा व्यापक रूप से समर्थित है, जिससे यह वेब अनुप्रयोगों के लिए आदर्श है।</li>
+                <li><strong>गुणवत्ता बनाए रखना:</strong> WEBP संकुचन के साथ उच्च गुणवत्ता वाली छवियाँ प्रदान करता है, जो वेब ग्राफिक्स और फ़ोटो के लिए सही है।</li>
+            </ul>
+        </div>
+    </div>  
 
     <script>
         function validateImageSelection() {

@@ -1,92 +1,90 @@
 {% extends "hi/base.html" %}
 
-{% block title %}Image Effects online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}छवि प्रभाव ऑनलाइन ToolsForImage - मुफ्त ऑनलाइन छवि संपादन उपकरण{% endblock %}
 
 {% block meta_description %}
-<meta name="description" content="Apply various effects to your images with ToolsForImage. Enhance your photos with filters like grayscale, blur, sharpen, and more.">
+<meta name="description" content="ToolsForImage के साथ अपनी छवियों पर विभिन्न प्रभाव लागू करें। ग्रेस्केल, धुंधला, तेज़, और अन्य जैसे फ़िल्टर के साथ अपने फ़ोटो को बढ़ाएं।">
 {% endblock %}
 
 {% block content %}
-<h1>Free Image Effects Tool</h1>
-<p>Enhance your images with various effects using ToolsForImage. Upload an image, apply effects, and download the result.</p>
-<p>Upload your image file and apply effects instantly. Choose your image:</p>
+<h1>फ्री इमेज इफेक्ट्स टूल</h1>
+<p>ToolsForImage का उपयोग करके विभिन्न प्रभावों के साथ अपनी छवियों को बढ़ाएं। एक छवि अपलोड करें, प्रभाव लागू करें, और परिणाम डाउनलोड करें।</p>
+<p>अपनी छवि फ़ाइल अपलोड करें और तुरंत प्रभाव लागू करें। अपनी छवि चुनें:</p>
 <form id="effects-form" action="/apply-effects" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload from Computer</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">कंप्यूटर से अपलोड करें</button>
     <br>
     <canvas id="canvas"></canvas>
     <br>
     <div class="effects-container">
-        <button type="button" class="effect-button" onclick="toggleEffect('grayscale')">Black and White</button>
-        <button type="button" class="effect-button" onclick="toggleEffect('blur')">Blur</button>
-        <button type="button" class="effect-button" onclick="toggleEffect('sharpen')">Sharpen</button>
-        <button type="button" class="effect-button" onclick="toggleEffect('sepia')">Sepia</button>
-        <button type="button" class="effect-button" onclick="toggleEffect('invert')">Invert</button>
-        <button type="button" class="effect-button" onclick="toggleEffect('brightness')">Brightness</button>
-        <button type="button" class="effect-button" onclick="toggleEffect('contrast')">Contrast</button>
-        <button type="button" class="effect-button" onclick="toggleEffect('saturation')">Saturation</button>
+        <button type="button" class="effect-button" onclick="toggleEffect('grayscale')">काले और सफेद</button>
+        <button type="button" class="effect-button" onclick="toggleEffect('blur')">धुंधला</button>
+        <button type="button" class="effect-button" onclick="toggleEffect('sharpen')">तेज़ करना</button>
+        <button type="button" class="effect-button" onclick="toggleEffect('sepia')">सेपिया</button>
+        <button type="button" class="effect-button" onclick="toggleEffect('invert')">उल्टा</button>
+        <button type="button" class="effect-button" onclick="toggleEffect('brightness')">चमक</button>
+        <button type="button" class="effect-button" onclick="toggleEffect('contrast')">विपरीत</button>
+        <button type="button" class="effect-button" onclick="toggleEffect('saturation')">संक्रमण</button>
     </div>
     <br>
     <input type="hidden" id="effect-applied" name="effect" value="">
-    <button type="submit" class="download-button" onclick="return validateImageSelection();">Download Edited Image</button>
+    <button type="submit" class="download-button" onclick="return validateImageSelection();">संपादित छवि डाउनलोड करें</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What Are Image Effects?</h2>
-        <p>Image effects are filters or adjustments applied to photos to enhance their appearance or create a specific visual style. By using different effects, you can modify an image's colors, sharpness, brightness, and more, giving it a whole new look. Whether you're aiming for a vintage feel or a sharp modern edge, image effects allow you to transform your photos in creative ways.</p>
+        <h2>छवि प्रभाव क्या हैं?</h2>
+        <p>छवि प्रभाव फ़ोटो पर लागू फ़िल्टर या समायोजन होते हैं जो उनके रूप को बढ़ाने या एक विशिष्ट दृश्य शैली बनाने के लिए होते हैं। विभिन्न प्रभावों का उपयोग करके, आप एक छवि के रंग, तीखेपन, चमक और अधिक को संशोधित कर सकते हैं, जिससे उसे पूरी तरह से नया रूप मिलता है। चाहे आप एक पुरानी भावना या एक तेज आधुनिक धार का लक्ष्य रख रहे हों, छवि प्रभाव आपको अपने फ़ोटो को रचनात्मक तरीकों से बदलने की अनुमति देते हैं।</p>
     </div>
     <div class="info-section">
-        <h2>Why Apply Image Effects?</h2>
-        <p>Applying effects to your images can bring out the best in your photos. Effects like black and white or sepia can evoke certain emotions or time periods, while others like brightness and contrast adjustments help fine-tune the overall image quality. Image effects are useful in creating aesthetic consistency, enhancing mood, and making images stand out, whether for personal use, social media, or professional projects. By applying effects, you can give your images the perfect look for any occasion.</p>
+        <h2>छवि प्रभाव लागू करने के लिए क्यों?</h2>
+        <p>अपनी छवियों पर प्रभाव लागू करने से आपके फ़ोटो की सर्वश्रेष्ठ विशेषताएं सामने आ सकती हैं। काले और सफेद या सेपिया जैसे प्रभाव निश्चित भावनाओं या समय अवधि को प्रकट कर सकते हैं, जबकि चमक और विपरीत समायोजन जैसे अन्य समग्र छवि गुणवत्ता को ठीक करने में मदद करते हैं। छवि प्रभाव सौंदर्य संगति बनाने, मूड को बढ़ाने और छवियों को विशेष बनाने में उपयोगी होते हैं, चाहे वह व्यक्तिगत उपयोग के लिए हो, सोशल मीडिया के लिए, या पेशेवर परियोजनाओं के लिए। प्रभाव लागू करके, आप अपनी छवियों को किसी भी अवसर के लिए सही रूप दे सकते हैं।</p>
     </div>
     <div class="info-section">
-        <h2>How to Use Our Image Effects Tool</h2>
-        <p>Our image effects tool is easy to use. Simply upload your photo, choose one or more effects from the available options, and click to apply! You can enhance your images with a variety of effects:</p>
+        <h2>हमारे छवि प्रभाव उपकरण का उपयोग कैसे करें</h2>
+        <p>हमारा छवि प्रभाव उपकरण उपयोग में आसान है। बस अपनी फोटो अपलोड करें, उपलब्ध विकल्पों में से एक या अधिक प्रभाव चुनें, और लागू करने के लिए क्लिक करें! आप अपने छवियों को विभिन्न प्रभावों के साथ बढ़ा सकते हैं:</p>
         <ul>
-            <li><strong>Black and White (Grayscale):</strong> Remove all colors from your image, giving it a classic monochrome look.</li>
-            <li><strong>Blur:</strong> Apply a soft focus effect, making the image appear smoother or highlighting specific areas by blurring others.</li>
-            <li><strong>Sharpen:</strong> Increase the definition of the image, making edges crisper and improving clarity.</li>
-            <li><strong>Sepia:</strong> Add a warm brown tone to your image, evoking a vintage, nostalgic feel.</li>
+            <li><strong>काले और सफेद (ग्रेस्केल):</strong> अपनी छवि से सभी रंग हटा दें, जिससे इसे एक क्लासिक मोनोक्रोम रूप मिलता है।</li>
+            <li><strong>धुंधला:</strong> एक नरम फोकस प्रभाव लागू करें, जिससे छवि अधिक चिकनी दिखाई दे या अन्य क्षेत्रों को धुंधला करके विशिष्ट क्षेत्रों को उजागर करें।</li>
+            <li><strong>तेज़ करना:</strong> छवि की परिभाषा बढ़ाएँ, जिससे किनारे स्पष्ट हो जाएं और स्पष्टता में सुधार हो।</li>
+            <li><strong>सेपिया:</strong> अपनी छवि में एक गर्म भूरा टोन जोड़ें, जो एक पुरानी, पुरानी भावना को उत्पन्न करता है।</li>
         </ul>
     </div>
     
     <div class="info-section">
-        <h2>More Effects You Can Apply</h2>
-        <p>Explore additional options to fine-tune your images and achieve the desired look:</p>
+        <h2>आप और अधिक प्रभाव लागू कर सकते हैं</h2>
+        <p>अपने छवियों को ठीक करने और इच्छित रूप प्राप्त करने के लिए अतिरिक्त विकल्पों का अन्वेषण करें:</p>
         <ul>
-            <li><strong>Invert:</strong> Flip the colors in your image for a striking negative effect.</li>
-            <li><strong>Brightness:</strong> Adjust the light levels in your image to make it brighter or darker, depending on the desired mood.</li>
-            <li><strong>Contrast:</strong> Change the balance between light and dark areas, giving your photo a more dramatic or subtle look.</li>
-            <li><strong>Saturation:</strong> Control the intensity of colors, making them more vibrant or muted, depending on the visual impact you want.</li>
+            <li><strong>उल्टा:</strong> अपनी छवि के रंगों को पलटें एक प्रभावशाली नकारात्मक प्रभाव के लिए।</li>
+            <li><strong>चमक:</strong> अपनी छवि में प्रकाश स्तरों को समायोजित करें, इसे उज्जवल या गहरा बनाएं, इच्छित मूड के आधार पर।</li>
+            <li><strong>विपरीत:</strong> हल्की और गहरी क्षेत्रों के बीच संतुलन बदलें, जिससे आपकी फोटो अधिक नाटकीय या सूक्ष्म दिखाई दे।</li>
+            <li><strong>संक्रमण:</strong> रंगों की तीव्रता को नियंत्रित करें, उन्हें अधिक जीवंत या म्यूट करें, जिस दृश्य प्रभाव की आप चाहत रखते हैं।</li>
         </ul>
-        <p>Our tool works across all devices and ensures that your photos retain their quality while applying these effects, giving you full control over the final result.</p>
+        <p>हमारा उपकरण सभी उपकरणों पर काम करता है और यह सुनिश्चित करता है कि आपके फ़ोटो इन प्रभावों को लागू करने के दौरान अपनी गुणवत्ता बनाए रखें, जिससे आपको अंतिम परिणाम पर पूरी नियंत्रण मिलती है।</p>
     </div>
     
     <div class="info-section">
-        <h2>Benefits of Using Our Image Effects Tool</h2>
-        <p>By using our image effects tool, you can enjoy a wide range of benefits:</p>
+        <h2>हमारे छवि प्रभाव उपकरण का उपयोग करने के लाभ</h2>
+        <p>हमारे छवि प्रभाव उपकरण का उपयोग करके, आप कई लाभों का आनंद ले सकते हैं:</p>
         <ul>
-            <li><strong>Creative Control:</strong> Experiment with various effects to achieve your desired artistic style.</li>
-            <li><strong>Easy-to-Use Interface:</strong> Apply and adjust effects effortlessly with a user-friendly design.</li>
-            <li><strong>No Software Needed:</strong> Access the tool directly from your browser without the need for additional software.</li>
-            <li><strong>Instant Preview:</strong> See how your photo looks with each effect applied in real time.</li>
-            <li><strong>High-Quality Output:</strong> Ensure your photos maintain sharpness and detail, even after applying effects.</li>
+            <li><strong>रचनात्मक नियंत्रण:</strong> अपने इच्छित कलात्मक शैली प्राप्त करने के लिए विभिन्न प्रभावों के साथ प्रयोग करें।</li>
+            <li><strong>उपयोग में आसान इंटरफ़ेस:</strong> उपयोगकर्ता के अनुकूल डिज़ाइन के साथ प्रभाव लागू करना और समायोजित करना आसान है।</li>
+            <li><strong>कोई सॉफ़्टवेयर आवश्यक नहीं:</strong> किसी अतिरिक्त सॉफ़्टवेयर की आवश्यकता के बिना सीधे अपने ब्राउज़र से उपकरण तक पहुँचें।</li>
+            <li><strong>तत्काल पूर्वावलोकन:</strong> वास्तविक समय में लागू किए गए प्रत्येक प्रभाव के साथ अपनी फोटो कैसे दिखती है, यह देखें।</li>
+            <li><strong>उच्च गुणवत्ता वाला उत्पादन:</strong> सुनिश्चित करें कि आपके फ़ोटो प्रभाव लागू करने के बाद भी स्पष्टता और विवरण बनाए रखते हैं।</li>
         </ul>
     </div>
     <div class="info-section">
-        <h2>Common Use Cases for Image Effects</h2>
-        <p>Image effects are commonly used in various scenarios, such as:</p>
+        <h2>छवि प्रभावों के सामान्य उपयोग के मामले</h2>
+        <p>छवि प्रभावों का विभिन्न परिदृश्यों में सामान्यत: उपयोग किया जाता है, जैसे:</p>
         <ul>
-            <li><strong>Social Media Content:</strong> Enhance your photos with effects that make them stand out on platforms like Instagram and Facebook.</li>
-            <li><strong>Photography Editing:</strong> Apply finishing touches to professional photography projects to enhance their visual impact.</li>
-            <li><strong>Marketing and Advertising:</strong> Adjust the tone and mood of images to align with branding and promotional content.</li>
-            <li><strong>Personal Projects:</strong> Transform your personal photos into artistic pieces by experimenting with different effects.</li>
+            <li><strong>सोशल मीडिया सामग्री:</strong> अपने फ़ोटो को प्रभावों के साथ बढ़ाएं जो उन्हें Instagram और Facebook जैसे प्लेटफार्मों पर अलग बनाते हैं।</li>
+            <li><strong>फोटोग्राफी संपादन:</strong> पेशेवर फोटोग्राफी परियोजनाओं को उनके दृश्य प्रभाव को बढ़ाने के लिए अंतिम स्पर्श लागू करें।</li>
+            <li><strong>मार्केटिंग और विज्ञापन:</strong> छवियों के स्वर और मूड को समायोजित करें ताकि वे ब्रांडिंग और प्रचार सामग्री के साथ मेल खा सकें।</li>
+            <li><strong>व्यक्तिगत परियोजनाएँ:</strong> अपने व्यक्तिगत फ़ोटो को विभिन्न प्रभावों के साथ प्रयोग करके कलात्मक कृतियों में बदलें।</li>
         </ul>
     </div>
 </div>
-
-
 
 <style>
     h1 {

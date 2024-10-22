@@ -1,59 +1,59 @@
 {% extends "hi/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Blur image backgrounds easily with ToolsForImage's AI-powered background blur tool. Free online image editing using artificial intelligence.">
+<meta name="description" content="ToolsForImage के AI-शक्ति वाले बैकग्राउंड ब्लर टूल के साथ आसानी से इमेज बैकग्राउंड को ब्लर करें। कृत्रिम बुद्धिमत्ता का उपयोग करके मुफ्त ऑनलाइन इमेज संपादन।">
 {% endblock %}
 
-{% block title %}Blur Image Backgrounds with AI - ToolsForImage Free Online Image Editor{% endblock %}
+{% block title %}AI के साथ इमेज बैकग्राउंड को ब्लर करें - ToolsForImage मुफ्त ऑनलाइन इमेज संपादक{% endblock %}
 
 {% block content %}
-<h1>AI-Powered Background Blur Tool</h1>
-<p>Easily blur the background of your images using our advanced artificial intelligence algorithm. Upload an image and let our AI do the work for you!</p>
+<h1>AI-शक्ति वाला बैकग्राउंड ब्लर टूल</h1>
+<p>हमारे उन्नत कृत्रिम बुद्धिमत्ता एल्गोरिदम का उपयोग करके अपनी छवियों के बैकग्राउंड को आसानी से ब्लर करें। एक छवि अपलोड करें और हमारे AI को आपके लिए काम करने दें!</p>
 <form id="blur-form" action="/apply-background-blur" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">छवि अपलोड करें</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="छवि पूर्वावलोकन" style="display: none;">
     <br>
-    <button type="submit" class="blur-button" onclick="return validateImageSelection();">Apply AI Background Blur</button>
+    <button type="submit" class="blur-button" onclick="return validateImageSelection();">AI बैकग्राउंड ब्लर लागू करें</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is AI-Powered Background Blur?</h2>
-        <p>Our AI-powered background blur tool uses advanced artificial intelligence algorithms to automatically detect the main subject in your image and apply a blur effect to the background. This creates a professional-looking depth-of-field effect, similar to what you might achieve with a high-end camera.</p>
+        <h2>AI-शक्ति वाला बैकग्राउंड ब्लर क्या है?</h2>
+        <p>हमारा AI-शक्ति वाला बैकग्राउंड ब्लर टूल आपके चित्र में मुख्य विषय का स्वचालित रूप से पता लगाने और बैकग्राउंड पर ब्लर प्रभाव लागू करने के लिए उन्नत कृत्रिम बुद्धिमत्ता एल्गोरिदम का उपयोग करता है। इससे एक पेशेवर-लगने वाला गहराई-के-क्षेत्र प्रभाव बनता है, जो आप उच्च गुणवत्ता वाले कैमरे से प्राप्त कर सकते हैं।</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Use AI to Blur Image Backgrounds?</h2>
-        <p>There are several benefits to using our AI-powered background blur tool:</p>
+        <h2>छवि बैकग्राउंड को ब्लर करने के लिए AI का उपयोग क्यों करें?</h2>
+        <p>हमारे AI-शक्ति वाले बैकग्राउंड ब्लर टूल का उपयोग करने के कई लाभ हैं:</p>
         <ul>
-            <li><strong>Professional Look:</strong> Create stunning, professional-looking images with a blurred background that draws attention to the main subject.</li>
-            <li><strong>Time-Saving:</strong> Our AI does the work for you, eliminating the need for manual editing or complex software.</li>
-            <li><strong>Enhance Privacy:</strong> Blur out sensitive information or distracting elements in the background of your photos.</li>
-            <li><strong>Artistic Effect:</strong> Add a creative, artistic touch to your images with a beautifully blurred background.</li>
+            <li><strong>पेशेवर रूप:</strong> मुख्य विषय पर ध्यान आकर्षित करने वाले धुंधले बैकग्राउंड के साथ आश्चर्यजनक, पेशेवर-लगने वाली छवियाँ बनाएं।</li>
+            <li><strong>समय की बचत:</strong> हमारा AI आपके लिए काम करता है, मैनुअल संपादन या जटिल सॉफ़्टवेयर की आवश्यकता को समाप्त करता है।</li>
+            <li><strong>गोपनीयता में वृद्धि:</strong> अपनी छवियों के बैकग्राउंड में संवेदनशील जानकारी या विकर्षक तत्वों को धुंधला करें।</li>
+            <li><strong>कलात्मक प्रभाव:</strong> अपनी छवियों में एक सुंदर धुंधले बैकग्राउंड के साथ रचनात्मक, कलात्मक स्पर्श जोड़ें।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our AI Background Blur Tool</h2>
-        <p>Using our artificial intelligence-powered background blur tool is quick and easy:</p>
+        <h2>हमारे AI बैकग्राउंड ब्लर टूल का उपयोग कैसे करें</h2>
+        <p>हमारे कृत्रिम बुद्धिमत्ता-शक्ति वाले बैकग्राउंड ब्लर टूल का उपयोग करना त्वरित और आसान है:</p>
         <ol>
-            <li>Click the "Upload Image" button to select the image you want to edit.</li>
-            <li>Once your image is uploaded, click "Apply AI Background Blur" to start the process.</li>
-            <li>Our AI will analyze your image, detect the main subject, and apply a blur effect to the background.</li>
-            <li>After processing, you can download your newly edited image with a beautifully blurred background.</li>
+            <li>"छवि अपलोड करें" बटन पर क्लिक करें और उस छवि का चयन करें जिसे आप संपादित करना चाहते हैं।</li>
+            <li>एक बार जब आपकी छवि अपलोड हो जाए, तो प्रक्रिया शुरू करने के लिए "AI बैकग्राउंड ब्लर लागू करें" पर क्लिक करें।</li>
+            <li>हमारा AI आपकी छवि का विश्लेषण करेगा, मुख्य विषय का पता लगाएगा, और बैकग्राउंड पर एक धुंधला प्रभाव लागू करेगा।</li>
+            <li>प्रसंस्करण के बाद, आप एक खूबसूरती से धुंधले बैकग्राउंड वाली अपनी नई संपादित छवि डाउनलोड कर सकते हैं।</li>
         </ol>
     </div>
 
     <div class="info-section">
-        <h2>Applications of AI Background Blur</h2>
-        <p>Our AI-powered background blur tool can be useful in various scenarios:</p>
+        <h2>AI बैकग्राउंड ब्लर के अनुप्रयोग</h2>
+        <p>हमारा AI-शक्ति वाला बैकग्राउंड ब्लर टूल विभिन्न परिदृश्यों में उपयोगी हो सकता है:</p>
         <ul>
-            <li><strong>Portrait Photography:</strong> Enhance portrait photos by blurring distracting backgrounds.</li>
-            <li><strong>Product Photography:</strong> Make products stand out by blurring the background in product shots.</li>
-            <li><strong>Social Media:</strong> Create eye-catching social media posts with professionally blurred backgrounds.</li>
-            <li><strong>Privacy Protection:</strong> Blur sensitive information in the background of images before sharing.</li>
+            <li><strong>पोर्ट्रेट फोटोग्राफी:</strong> विकर्षक बैकग्राउंड को धुंधला करके पोर्ट्रेट फ़ोटो को बढ़ाएँ।</li>
+            <li><strong>उत्पाद फोटोग्राफी:</strong> उत्पाद चित्रों में बैकग्राउंड को धुंधला करके उत्पादों को उजागर करें।</li>
+            <li><strong>सोशल मीडिया:</strong> पेशेवर रूप से धुंधले बैकग्राउंड के साथ आकर्षक सोशल मीडिया पोस्ट बनाएं।</li>
+            <li><strong>गोपनीयता सुरक्षा:</strong> साझा करने से पहले छवियों के बैकग्राउंड में संवेदनशील जानकारी को धुंधला करें।</li>
         </ul>
     </div>
 </div>

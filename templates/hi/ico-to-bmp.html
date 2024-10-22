@@ -1,81 +1,81 @@
 {% extends "hi/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Convert ICO to BMP images easily with ToolsForImage. Free online ICO to BMP converter.">
+<meta name="description" content="ToolsForImage के साथ ICO को BMP छवियों में आसानी से परिवर्तित करें। मुफ्त ऑनलाइन ICO से BMP रूपांतरण उपकरण।">
 {% endblock %}
 
-{% block title %}Convert ICO to BMP online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}ऑनलाइन ICO को BMP में परिवर्तित करें ToolsForImage - मुफ्त ऑनलाइन छवि संपादन उपकरण{% endblock %}
 
 {% block content %}
-<h1>Free ICO to BMP Conversion Tool</h1>
-<p>Easily convert your ICO images to BMP format. Upload an ICO image and we'll convert it to BMP for you.</p>
+<h1>मुफ्त ICO से BMP रूपांतरण उपकरण</h1>
+<p>अपनी ICO छवियों को BMP प्रारूप में आसानी से परिवर्तित करें। एक ICO छवि अपलोड करें और हम इसे आपके लिए BMP में परिवर्तित कर देंगे।</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/x-icon" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload ICO Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">ICO छवि अपलोड करें</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="छवि पूर्वावलोकन" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="ico">
     <input type="hidden" name="output_format" value="bmp">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to BMP</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">BMP में परिवर्तित करें</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is ICO to BMP Conversion?</h2>
-        <p>ICO to BMP conversion is the process of changing image files from ICO format to BMP format. BMP (Bitmap Image File) is a raster graphics image file format used to store bitmap digital images. This conversion is useful when you need to use icon images in contexts where BMP is preferred or required.</p>
+        <h2>ICO से BMP रूपांतरण क्या है?</h2>
+        <p>ICO से BMP रूपांतरण उस प्रक्रिया को संदर्भित करता है जिसमें छवि फ़ाइलों को ICO प्रारूप से BMP प्रारूप में बदला जाता है। BMP (Bitmap Image File) एक रास्टर ग्राफिक्स छवि फ़ाइल प्रारूप है जिसका उपयोग बिटमैप डिजिटल छवियों को संग्रहीत करने के लिए किया जाता है। यह रूपांतरण तब उपयोगी होता है जब आपको आइकन छवियों का उपयोग करना हो, जहाँ BMP की आवश्यकता होती है या इसे पसंद किया जाता है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert ICO to BMP?</h2>
-        <p>There are several reasons to convert ICO images to BMP:</p>
+        <h2>ICO को BMP में परिवर्तित करने के कारण क्या हैं?</h2>
+        <p>ICO छवियों को BMP में परिवर्तित करने के कई कारण हैं:</p>
         <ul>
-            <li><strong>Compatibility:</strong> BMP is widely supported across different platforms and applications.</li>
-            <li><strong>Lossless Quality:</strong> BMP is a lossless format, ensuring no quality loss during conversion.</li>
-            <li><strong>Simplicity:</strong> BMP files are simple and straightforward, making them easy to work with.</li>
+            <li><strong>अनुकूलता:</strong> BMP विभिन्न प्लेटफार्मों और अनुप्रयोगों में व्यापक रूप से समर्थित है।</li>
+            <li><strong>गुणवत्ता में कोई हानि नहीं:</strong> BMP एक हानि रहित प्रारूप है, जो रूपांतरण के दौरान कोई गुणवत्ता हानि सुनिश्चित करता है।</li>
+            <li><strong>सरलता:</strong> BMP फ़ाइलें सरल और सीधे हैं, जिससे काम करना आसान होता है।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our ICO to BMP Converter</h2>
-        <p>Using our ICO to BMP conversion tool is simple and quick. Here's how it works:</p>
+        <h2>हमारे ICO से BMP कन्वर्टर का उपयोग कैसे करें</h2>
+        <p>हमारे ICO से BMP रूपांतरण उपकरण का उपयोग करना सरल और तेज है। यहाँ यह कैसे काम करता है:</p>
         <ul>
-            <li>Click the "Upload ICO File" button to select the ICO image you want to convert.</li>
-            <li>Once your image is uploaded, our tool will automatically start converting it to BMP format.</li>
-            <li>After the conversion is complete, click "Download BMP" to save your new image file to your device.</li>
+            <li>ICO छवि को चयनित करने के लिए "ICO फ़ाइल अपलोड करें" बटन पर क्लिक करें।</li>
+            <li>जब आपकी छवि अपलोड हो जाए, तो हमारा उपकरण स्वचालित रूप से इसे BMP प्रारूप में परिवर्तित करना शुरू कर देगा।</li>
+            <li>रूपांतरण पूरा होने के बाद, अपनी नई छवि फ़ाइल को अपने डिवाइस पर सहेजने के लिए "BMP डाउनलोड करें" पर क्लिक करें।</li>
         </ul>
-        <p>Our converter supports various ICO files, ensuring a smooth and efficient conversion experience for all users.</p>
+        <p>हमारा कन्वर्टर विभिन्न ICO फ़ाइलों का समर्थन करता है, जिससे सभी उपयोगकर्ताओं के लिए एक चिकनी और प्रभावी रूपांतरण अनुभव सुनिश्चित होता है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our ICO to BMP Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>हमारे ICO से BMP कन्वर्टर के उपयोग के लाभ</h2>
+        <p>हमारे रूपांतरण उपकरण के कुछ लाभ यहाँ दिए गए हैं:</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Convert your ICO images to BMP quickly with just a few clicks.</li>
-            <li><strong>High Quality:</strong> Maintain image quality during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, with no downloads or installations needed.</li>
-            <li><strong>User-Friendly Interface:</strong> Our tool is designed to be intuitive and easy to navigate for everyone.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for ICO to BMP Conversion</h2>
-        <p>Here are some common situations where converting ICO to BMP can be helpful:</p>
-        <ul>
-            <li><strong>Legacy Systems:</strong> Use icon images in older systems that prefer BMP format.</li>
-            <li><strong>Graphic Design:</strong> Incorporate icon images into larger design projects that require BMP files.</li>
-            <li><strong>Software Development:</strong> Use icon images in applications where BMP is more suitable.</li>
-            <li><strong>Document Creation:</strong> Include icon images in documents or presentations that require BMP format.</li>
+            <li><strong>तेज़ और आसान:</strong> केवल कुछ क्लिक में अपने ICO चित्रों को BMP में जल्दी से परिवर्तित करें।</li>
+            <li><strong>उच्च गुणवत्ता:</strong> रूपांतरण प्रक्रिया के दौरान छवि गुणवत्ता बनाए रखें।</li>
+            <li><strong>मुफ्त और सुलभ:</strong> हमारे उपकरण का ऑनलाइन उपयोग मुफ्त है, जिसमें कोई डाउनलोड या स्थापना की आवश्यकता नहीं है।</li>
+            <li><strong>उपयोगकर्ता के अनुकूल इंटरफ़ेस:</strong> हमारा उपकरण सभी के लिए सहज और नेविगेट करने में आसान है।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting ICO to BMP Can Help</h2>
-        <p>Converting your ICO images to BMP can enhance their usability in various contexts. Here's how:</p>
+        <h2>ICO को BMP रूपांतरण के सामान्य उपयोग</h2>
+        <p>यहाँ कुछ सामान्य स्थितियाँ हैं जहाँ ICO को BMP में परिवर्तित करना मददगार हो सकता है:</p>
         <ul>
-            <li><strong>Improved Compatibility:</strong> BMP is widely supported across different platforms and software.</li>
-            <li><strong>Lossless Quality:</strong> BMP ensures no loss of image quality during conversion.</li>
-            <li><strong>Simplicity:</strong> BMP files are simple and easy to work with in various applications.</li>
+            <li><strong>विरासत प्रणाली:</strong> पुरानी प्रणालियों में आइकन छवियों का उपयोग करें जो BMP प्रारूप को प्राथमिकता देती हैं।</li>
+            <li><strong>ग्राफिक डिज़ाइन:</strong> बड़े डिज़ाइन प्रोजेक्ट में आइकन छवियों को शामिल करें जिनमें BMP फ़ाइलें आवश्यक हैं।</li>
+            <li><strong>सॉफ़्टवेयर विकास:</strong> उन अनुप्रयोगों में आइकन छवियों का उपयोग करें जहाँ BMP अधिक उपयुक्त है।</li>
+            <li><strong>दस्तावेज़ निर्माण:</strong> दस्तावेज़ों या प्रस्तुतियों में आइकन छवियों को शामिल करें जिनमें BMP प्रारूप की आवश्यकता होती है।</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>ICO को BMP में परिवर्तित करना कैसे मदद कर सकता है</h2>
+        <p>अपने ICO चित्रों को BMP में परिवर्तित करना विभिन्न संदर्भों में उनकी उपयोगिता बढ़ा सकता है। यहाँ कैसे:</p>
+        <ul>
+            <li><strong>सुधरी हुई अनुकूलता:</strong> BMP विभिन्न प्लेटफार्मों और सॉफ़्टवेयर में व्यापक रूप से समर्थित है।</li>
+            <li><strong>गुणवत्ता में कोई हानि नहीं:</strong> BMP रूपांतरण के दौरान छवि गुणवत्ता की कोई हानि नहीं सुनिश्चित करता है।</li>
+            <li><strong>सरलता:</strong> BMP फ़ाइलें विभिन्न अनुप्रयोगों में काम करने के लिए सरल और आसान होती हैं।</li>
         </ul>
     </div>
 </div>

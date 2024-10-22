@@ -1,42 +1,42 @@
 {% extends "hi/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Compress your images effortlessly with ToolsForImage. Reduce file size without compromising quality for faster web loading times.">
+<meta name="description" content="ToolsForImage के साथ अपने चित्रों को बिना किसी गुणवत्ता की हानि के बिना आसानी से संकुचित करें। तेज़ वेब लोडिंग समय के लिए फ़ाइल का आकार कम करें।">
 {% endblock %}
 
-{% block title %}Compress Image online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}ऑनलाइन छवि संकुचन ToolsForImage - मुफ्त ऑनलाइन छवि संपादन उपकरण{% endblock %}
 
 {% block content %}
-<h1>Free Image Compression Tool</h1>
-<p>Effortlessly compress a single <strong>JPG/JPEG</strong>, <strong>PNG</strong>, or <strong>WEBP</strong> image with top-notch quality and optimal compression.</p>
+<h1>मुफ्त छवि संकुचन उपकरण</h1>
+<p>शीर्ष गुणवत्ता और सर्वोत्तम संकुचन के साथ एक <strong>JPG/JPEG</strong>, <strong>PNG</strong>, या <strong>WEBP</strong> छवि को बिना किसी कठिनाई के संकुचित करें।</p>
 
-<p>Upload your image file and compress it instantly. Choose your image:</p>
+<p>अपनी छवि फ़ाइल अपलोड करें और तुरंत संकुचित करें। अपनी छवि चुनें:</p>
 
 <form id="compression-form" action="/compress-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload from Computer</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">कंप्यूटर से अपलोड करें</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="छवि पूर्वावलोकन" style="display: none;">
     <br>
-    <button type="submit" class="compress-button" onclick="return validateImageSelection();">Compress!</button>
+    <button type="submit" class="compress-button" onclick="return validateImageSelection();">संकुचित करें!</button>
 </form>
 
-<p>Your image will be compressed to achieve the best quality and smallest file size.</p>
+<p>आपकी छवि सर्वोत्तम गुणवत्ता और सबसे छोटे फ़ाइल आकार को प्राप्त करने के लिए संकुचित की जाएगी।</p>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is Image Compression?</h2>
-        <p>Image compression is an important method that reduces the file size of digital images while keeping their quality as good as possible. It uses special techniques to remove unnecessary data and organize image files more efficiently, which helps save storage space. There are two main types of image compression: lossless and lossy. Lossless compression keeps all the original data, so you can get back the exact image, while lossy compression removes some data to make the file smaller, which can help web pages load faster. Knowing about image compression is important for anyone working with digital images, as it helps improve the performance of websites and online services.</p>
+        <h2>छवि संकुचन क्या है?</h2>
+        <p>छवि संकुचन एक महत्वपूर्ण विधि है जो डिजिटल छवियों के फ़ाइल आकार को कम करती है जबकि उनकी गुणवत्ता को संभवतः अच्छा बनाए रखती है। यह अनावश्यक डेटा को हटाने और छवि फ़ाइलों को अधिक कुशलता से व्यवस्थित करने के लिए विशेष तकनीकों का उपयोग करती है, जिससे संग्रहण स्थान की बचत होती है। छवि संकुचन के दो मुख्य प्रकार हैं: लॉसलेस और लॉसी। लॉसलेस संकुचन सभी मूल डेटा को बनाए रखता है, ताकि आप सही छवि को वापस प्राप्त कर सकें, जबकि लॉसी संकुचन कुछ डेटा को हटाकर फ़ाइल को छोटा बनाता है, जो वेब पृष्ठों को तेजी से लोड करने में मदद कर सकता है। डिजिटल छवियों के साथ काम करने वाले किसी भी व्यक्ति के लिए छवि संकुचन के बारे में जानना महत्वपूर्ण है, क्योंकि यह वेबसाइटों और ऑनलाइन सेवाओं के प्रदर्शन को बेहतर बनाने में मदद करता है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Image Compression</h2>
-        <p>The benefits of image compression go beyond just making files smaller. One of the biggest advantages is that it helps websites run better. Compressed images load more quickly, which improves the user experience and keeps people from leaving the site. This is especially important for online shopping websites, where slow images can cause customers to abandon their carts and miss out on sales. Plus, search engines like Google look for fast-loading websites when ranking them, so using optimized images can help your site rank higher in search results. In the end, image compression makes browsing smoother and more enjoyable for users, leading to more interactions and sales.</p>
+        <h2>छवि संकुचन के लाभ</h2>
+        <p>छवि संकुचन के लाभ केवल फ़ाइलों को छोटा करने से परे जाते हैं। एक बड़ा लाभ यह है कि यह वेबसाइटों को बेहतर तरीके से चलाने में मदद करता है। संकुचित छवियां अधिक तेजी से लोड होती हैं, जो उपयोगकर्ता अनुभव को बेहतर बनाती हैं और लोगों को साइट छोड़ने से रोकती हैं। यह विशेष रूप से ऑनलाइन शॉपिंग वेबसाइटों के लिए महत्वपूर्ण है, जहां धीमी छवियों के कारण ग्राहक अपनी कार्ट छोड़ सकते हैं और बिक्री से चूक सकते हैं। इसके अलावा, गूगल जैसी खोज इंजन तेज़ लोड होने वाली वेबसाइटों को रैंकिंग करते समय देखती हैं, इसलिए अनुकूलित छवियों का उपयोग आपकी साइट को खोज परिणामों में उच्च रैंकिंग प्राप्त करने में मदद कर सकता है। अंत में, छवि संकुचन उपयोगकर्ताओं के लिए ब्राउज़िंग को सुचारू और आनंददायक बनाता है, जिससे अधिक इंटरैक्शन और बिक्री होती है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Use Cases of Image Compression</h2>
-        <p>Image compression is useful in many different areas and platforms. For example, social media sites use image compression to allow users to upload and share photos quickly and easily. Websites that show a lot of images, like galleries or news websites, benefit from compressed images to keep their pages loading fast and manage data efficiently. Additionally, mobile apps that display images often use compression to reduce data usage and improve performance, especially in areas with slow internet. In short, image compression is an essential tool for making digital content better, meeting the needs of both businesses and users by enhancing speed, user experience, and overall effectiveness online.</p>
+        <h2>छवि संकुचन के उपयोग मामले</h2>
+        <p>छवि संकुचन विभिन्न क्षेत्रों और प्लेटफार्मों में उपयोगी है। उदाहरण के लिए, सोशल मीडिया साइटें उपयोगकर्ताओं को फ़ोटो को जल्दी और आसानी से अपलोड और साझा करने के लिए छवि संकुचन का उपयोग करती हैं। वेब साइटें जो बहुत सारी छवियाँ दिखाती हैं, जैसे गैलरी या समाचार वेबसाइटें, अपने पृष्ठों को तेज़ी से लोड रखने और डेटा को कुशलतापूर्वक प्रबंधित करने के लिए संकुचित छवियों का लाभ उठाती हैं। इसके अलावा, मोबाइल ऐप्स जो छवियों को प्रदर्शित करते हैं, अक्सर डेटा उपयोग को कम करने और प्रदर्शन को बेहतर बनाने के लिए संकुचन का उपयोग करते हैं, विशेष रूप से धीमे इंटरनेट वाले क्षेत्रों में। संक्षेप में, छवि संकुचन डिजिटल सामग्री को बेहतर बनाने के लिए एक आवश्यक उपकरण है, जो व्यवसायों और उपयोगकर्ताओं दोनों की जरूरतों को पूरा करता है और ऑनलाइन गति, उपयोगकर्ता अनुभव, और समग्र प्रभावशीलता को बढ़ाता है।</p>
     </div>
 </div>
 

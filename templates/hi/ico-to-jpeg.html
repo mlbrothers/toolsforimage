@@ -1,81 +1,81 @@
 {% extends "hi/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Convert ICO to JPEG images easily with ToolsForImage. Free online ICO to JPEG converter.">
+<meta name="description" content="ToolsForImage के साथ ICO को JPEG छवियों में आसानी से परिवर्तित करें। मुफ्त ऑनलाइन ICO से JPEG कन्वर्टर।">
 {% endblock %}
 
-{% block title %}Convert ICO to JPEG online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}ToolsForImage पर ICO से JPEG ऑनलाइन परिवर्तित करें - मुफ्त ऑनलाइन छवि संपादन उपकरण{% endblock %}
 
 {% block content %}
-<h1>Free ICO to JPEG Conversion Tool</h1>
-<p>Easily convert your ICO images to JPEG format. Upload an ICO image and we'll convert it to JPEG for you.</p>
+<h1>मुफ्त ICO से JPEG रूपांतरण उपकरण</h1>
+<p>आसानी से अपने ICO चित्रों को JPEG प्रारूप में परिवर्तित करें। एक ICO छवि अपलोड करें और हम इसे आपके लिए JPEG में परिवर्तित करेंगे।</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/x-icon" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload ICO Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">ICO छवि अपलोड करें</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="छवि पूर्वावलोकन" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="ico">
     <input type="hidden" name="output_format" value="jpeg">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to JPEG</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">JPEG में परिवर्तित करें</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is ICO to JPEG Conversion?</h2>
-        <p>ICO to JPEG conversion is the process of changing image files from ICO format to JPEG format. JPEG (Joint Photographic Experts Group) is a widely-used, lossy compression image format. This conversion is useful when you need to use icon images in contexts where JPEG is preferred or required.</p>
+        <h2>ICO से JPEG रूपांतरण क्या है?</h2>
+        <p>ICO से JPEG रूपांतरण एक प्रक्रिया है जिसमें छवि फ़ाइलों को ICO प्रारूप से JPEG प्रारूप में बदल दिया जाता है। JPEG (जॉइंट फ़ोटोग्राफ़िक एक्सपर्ट्स ग्रुप) एक व्यापक रूप से उपयोग किया जाने वाला, लॉसी संपीड़न छवि प्रारूप है। यह रूपांतरण तब उपयोगी है जब आपको ऐसे संदर्भों में आइकन छवियों का उपयोग करने की आवश्यकता होती है जहाँ JPEG को प्राथमिकता दी जाती है या इसकी आवश्यकता होती है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert ICO to JPEG?</h2>
-        <p>There are several reasons to convert ICO images to JPEG:</p>
+        <h2>ICO को JPEG में परिवर्तित करने के कारण?</h2>
+        <p>ICO छवियों को JPEG में परिवर्तित करने के कई कारण हैं:</p>
         <ul>
-            <li><strong>Smaller File Size:</strong> JPEG compression can significantly reduce file size, making it ideal for web use.</li>
-            <li><strong>Wide Compatibility:</strong> JPEG is universally supported across different platforms and applications.</li>
-            <li><strong>Photography Use:</strong> JPEG is particularly well-suited for photographic images with smooth color transitions.</li>
+            <li><strong>छोटी फ़ाइल का आकार:</strong> JPEG संपीड़न फ़ाइल के आकार को काफी कम कर सकता है, जिससे यह वेब उपयोग के लिए आदर्श बनता है।</li>
+            <li><strong>व्यापक संगतता:</strong> JPEG विभिन्न प्लेटफ़ॉर्म और अनुप्रयोगों में सार्वभौमिक रूप से समर्थित है।</li>
+            <li><strong>फोटोग्राफी उपयोग:</strong> JPEG विशेष रूप से चिकनी रंग संक्रमण वाली फ़ोटोग्राफिक छवियों के लिए उपयुक्त है।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our ICO to JPEG Converter</h2>
-        <p>Using our ICO to JPEG conversion tool is simple and quick. Here's how it works:</p>
+        <h2>हमारे ICO से JPEG कन्वर्टर का उपयोग कैसे करें</h2>
+        <p>हमारे ICO से JPEG रूपांतरण उपकरण का उपयोग करना सरल और त्वरित है। यह काम कैसे करता है:</p>
         <ul>
-            <li>Click the "Upload ICO File" button to select the ICO image you want to convert.</li>
-            <li>Once your image is uploaded, our tool will automatically start converting it to JPEG format.</li>
-            <li>After the conversion is complete, click "Download JPEG" to save your new image file to your device.</li>
+            <li>ICO छवि का चयन करने के लिए "ICO फ़ाइल अपलोड करें" बटन पर क्लिक करें।</li>
+            <li>एक बार जब आपकी छवि अपलोड हो जाती है, तो हमारा उपकरण स्वचालित रूप से इसे JPEG प्रारूप में परिवर्तित करना शुरू कर देगा।</li>
+            <li>परिवर्तन पूर्ण होने के बाद, "JPEG डाउनलोड करें" पर क्लिक करें ताकि आप अपनी नई छवि फ़ाइल को अपने डिवाइस पर सहेज सकें।</li>
         </ul>
-        <p>Our converter supports various ICO files, ensuring a smooth and efficient conversion experience for all users.</p>
+        <p>हमारा कन्वर्टर विभिन्न ICO फ़ाइलों का समर्थन करता है, जिससे सभी उपयोगकर्ताओं के लिए एक सहज और प्रभावी रूपांतरण अनुभव सुनिश्चित होता है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our ICO to JPEG Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>हमारे ICO से JPEG कन्वर्टर के लाभ</h2>
+        <p>यहाँ हमारे रूपांतरण उपकरण के कुछ लाभ हैं:</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Convert your ICO images to JPEG quickly with just a few clicks.</li>
-            <li><strong>Optimized Quality:</strong> Balance between image quality and file size during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, with no downloads or installations needed.</li>
-            <li><strong>User-Friendly Interface:</strong> Our tool is designed to be intuitive and easy to navigate for everyone.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for ICO to JPEG Conversion</h2>
-        <p>Here are some common situations where converting ICO to JPEG can be helpful:</p>
-        <ul>
-            <li><strong>Web Development:</strong> Use icon images in web projects where smaller file sizes are crucial.</li>
-            <li><strong>Email Marketing:</strong> Include icon images in email campaigns where JPEG is widely supported.</li>
-            <li><strong>Social Media:</strong> Use converted icons in social media posts where JPEG is commonly used.</li>
-            <li><strong>Print Materials:</strong> Incorporate icon images into print designs where JPEG is preferred.</li>
+            <li><strong>तेज और आसान:</strong> कुछ क्लिक में अपने ICO चित्रों को JPEG में जल्दी से परिवर्तित करें।</li>
+            <li><strong>अनुकूलित गुणवत्ता:</strong> रूपांतरण प्रक्रिया के दौरान छवि गुणवत्ता और फ़ाइल के आकार के बीच संतुलन बनाए रखें।</li>
+            <li><strong>मुफ्त और सुलभ:</strong> बिना किसी डाउनलोड या स्थापना की आवश्यकता के हमारे उपकरण का ऑनलाइन मुफ्त उपयोग करें।</li>
+            <li><strong>उपयोगकर्ता-अनुकूल इंटरफेस:</strong> हमारा उपकरण सभी के लिए सहज और नेविगेट करने में आसान होने के लिए डिज़ाइन किया गया है।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting ICO to JPEG Can Help</h2>
-        <p>Converting your ICO images to JPEG can enhance their usability in various contexts. Here's how:</p>
+        <h2>ICO से JPEG रूपांतरण के सामान्य उपयोग</h2>
+        <p>यहाँ कुछ सामान्य परिस्थितियाँ हैं जहाँ ICO को JPEG में परिवर्तित करना सहायक हो सकता है:</p>
         <ul>
-            <li><strong>Reduced File Size:</strong> JPEG compression can significantly decrease file size, improving load times.</li>
-            <li><strong>Broader Compatibility:</strong> JPEG is universally supported, ensuring your images can be viewed across different platforms.</li>
-            <li><strong>Efficient Storage:</strong> Smaller file sizes mean you can store more images in the same amount of space.</li>
+            <li><strong>वेब विकास:</strong> वेब परियोजनाओं में जहाँ छोटे फ़ाइल आकार महत्वपूर्ण होते हैं, आइकन छवियों का उपयोग करें।</li>
+            <li><strong>ईमेल मार्केटिंग:</strong> ईमेल अभियानों में आइकन छवियों को शामिल करें जहाँ JPEG व्यापक रूप से समर्थित है।</li>
+            <li><strong>सोशल मीडिया:</strong> सोशल मीडिया पोस्ट में JPEG का सामान्य उपयोग होने पर परिवर्तित आइकन का उपयोग करें।</li>
+            <li><strong>प्रिंट सामग्री:</strong> जहाँ JPEG प्राथमिकता दी जाती है, प्रिंट डिज़ाइनों में आइकन छवियों को शामिल करें।</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>ICO को JPEG में परिवर्तित करना कैसे मदद कर सकता है</h2>
+        <p>अपने ICO चित्रों को JPEG में परिवर्तित करना विभिन्न संदर्भों में उनकी उपयोगिता बढ़ा सकता है। यह कैसे:</p>
+        <ul>
+            <li><strong>फाइल का आकार कम होना:</strong> JPEG संपीड़न फ़ाइल के आकार को काफी कम कर सकता है, लोड समय में सुधार करता है।</li>
+            <li><strong>व्यापक संगतता:</strong> JPEG सार्वभौमिक रूप से समर्थित है, यह सुनिश्चित करता है कि आपकी छवियाँ विभिन्न प्लेटफ़ॉर्म पर देखी जा सकें।</li>
+            <li><strong>कुशल भंडारण:</strong> छोटे फ़ाइल आकार का अर्थ है कि आप एक ही मात्रा में अधिक छवियों को स्टोर कर सकते हैं।</li>
         </ul>
     </div>
 </div>

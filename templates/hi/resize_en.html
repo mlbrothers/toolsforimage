@@ -1,56 +1,56 @@
 {% extends "hi/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Resize your images effortlessly with ToolsForImage. Adjust dimensions in pixels or percentages while maintaining or ignoring aspect ratio.">
+<meta name="description" content="ToolsForImage के साथ अपनी छवियों को आसानी से आकार दें। पिक्सल या प्रतिशत में आयाम समायोजित करें, जबकि अनुपात को बनाए रखें या नजरअंदाज करें।">
 {% endblock %}
 
-{% block title %}Resize Image online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}ऑनलाइन छवि आकार बदलने के उपकरण - मुफ्त ऑनलाइन छवि संपादन उपकरण | ToolsForImage{% endblock %}
 
 {% block content %}
-<h1>Free Image Resize Tool</h1>
-<p>Effortlessly resize your image by specifying dimensions in pixels or percentages. You can choose to maintain or ignore the aspect ratio.</p>
+<h1>मुफ्त छवि आकार बदलने का उपकरण</h1>
+<p>पिक्सल या प्रतिशत में आयाम निर्दिष्ट करके अपनी छवि का आकार आसानी से बदलें। आप अनुपात को बनाए रखने या नजरअंदाज करने का विकल्प चुन सकते हैं।</p>
 
 <form id="resize-form" action="/resize-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">छवि अपलोड करें</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="छवि पूर्वावलोकन" style="display: none;">
     
     <div class="resize-options">
         <label>
-            <input type="radio" name="resizeType" value="pixel" checked onchange="updateDimensionLabels()"> Pixels
+            <input type="radio" name="resizeType" value="pixel" checked onchange="updateDimensionLabels()"> पिक्सल
         </label>
         <label>
-            <input type="radio" name="resizeType" value="percentage" onchange="updateDimensionLabels()"> Percentage
+            <input type="radio" name="resizeType" value="percentage" onchange="updateDimensionLabels()"> प्रतिशत
         </label>
         <br><br>
-        <label for="width"><span id="widthLabel">Width (px):</span></label>
+        <label for="width"><span id="widthLabel">चौड़ाई (पिक्सल):</span></label>
         <input type="number" id="width" name="width" min="1" required>
-        <label for="height"><span id="heightLabel">Height (px):</span></label>
+        <label for="height"><span id="heightLabel">ऊँचाई (पिक्सल):</span></label>
         <input type="number" id="height" name="height" min="1" required>
         <br><br>
         <label>
-            <input type="checkbox" id="lockRatio" checked> Lock aspect ratio
+            <input type="checkbox" id="lockRatio" checked> अनुपात लॉक करें
         </label>
     </div>
     <br>
-    <button type="submit" class="resize-button" onclick="return validateImageSelection();">Resize Image</button>
+    <button type="submit" class="resize-button" onclick="return validateImageSelection();">छवि का आकार बदलें</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is Image Resizing?</h2>
-        <p>Image resizing is the process of changing the dimensions of an image. You can adjust the width and height to fit your needs. Whether you're preparing images for a website, social media, or printing, resizing helps ensure your images look their best.</p>
+        <h2>छवि आकार बदलना क्या है?</h2>
+        <p>छवि आकार बदलना एक प्रक्रिया है जिसके द्वारा छवि के आयामों को बदल दिया जाता है। आप अपनी आवश्यकताओं के अनुसार चौड़ाई और ऊँचाई समायोजित कर सकते हैं। चाहे आप छवियों को वेबसाइट, सोशल मीडिया, या प्रिंटिंग के लिए तैयार कर रहे हों, आकार बदलना आपकी छवियों को सर्वश्रेष्ठ रूप में देखने में मदद करता है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Resizing Images</h2>
-        <p>Resizing images can greatly improve website performance. Smaller images load faster, enhancing user experience and keeping visitors engaged. This is especially important for online stores, where slow images can lead to lost sales. Additionally, properly sized images help with search engine optimization (SEO), as search engines favor fast-loading pages.</p>
+        <h2>छवियों का आकार बदलने के लाभ</h2>
+        <p>छवियों का आकार बदलना वेबसाइट के प्रदर्शन में काफी सुधार कर सकता है। छोटी छवियाँ तेज़ी से लोड होती हैं, जिससे उपयोगकर्ता का अनुभव बढ़ता है और आगंतुकों को व्यस्त रखा जाता है। यह विशेष रूप से ऑनलाइन स्टोर के लिए महत्वपूर्ण है, जहाँ धीमी छवियों के कारण बिक्री खोई जा सकती है। इसके अलावा, सही आकार की छवियाँ खोज इंजन अनुकूलन (SEO) में मदद करती हैं, क्योंकि खोज इंजन तेज़ लोड होने वाले पृष्ठों को प्राथमिकता देते हैं।</p>
     </div>
 
     <div class="info-section">
-        <h2>When to Resize Images</h2>
-        <p>Resize images before uploading them to your website or social media. Large images can slow down loading times, so adjusting their size helps improve performance. It's also helpful when you want to create thumbnails or optimize images for specific devices.</p>
+        <h2>कब छवियों का आकार बदलें</h2>
+        <p>अपनी वेबसाइट या सोशल मीडिया पर अपलोड करने से पहले छवियों का आकार बदलें। बड़ी छवियाँ लोडिंग समय को धीमा कर सकती हैं, इसलिए उनका आकार समायोजित करना प्रदर्शन में सुधार करने में मदद करता है। यह तब भी मददगार होता है जब आप थंबनेल बनाना चाहते हैं या विशिष्ट उपकरणों के लिए छवियों का अनुकूलन करना चाहते हैं।</p>
     </div>
 </div>
 

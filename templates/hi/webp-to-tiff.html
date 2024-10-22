@@ -1,82 +1,82 @@
 {% extends "hi/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Convert webp to TIFF images easily with ToolsForImage. Free online webp to TIFF converter.">
+<meta name="description" content="ToolsForImage के साथ वेबपी को TIFF छवियों में आसानी से परिवर्तित करें। फ्री ऑनलाइन वेबपी से TIFF कनवर्टर।">
 {% endblock %}
 
-{% block title %}Convert webp to TIFF online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}ToolsForImage पर ऑनलाइन वेबपी को TIFF में परिवर्तित करें - फ्री ऑनलाइन इमेज एडिटिंग टूल{% endblock %}
 
 {% block content %}
-<h1>Free Webp to TIFF Conversion Tool</h1>
-<p>Easily convert your webp images to TIFF format. Upload a webp image and we'll convert it to TIFF for you.</p>
+<h1>फ्री वेबपी से TIFF परिवर्तक उपकरण</h1>
+<p>अपनी वेबपी छवियों को TIFF प्रारूप में आसानी से परिवर्तित करें। एक वेबपी छवि अपलोड करें और हम इसे आपके लिए TIFF में परिवर्तित करेंगे।</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/webp" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload webp Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">वेबपी छवि अपलोड करें</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="छवि पूर्वावलोकन" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="webp">
     <input type="hidden" name="output_format" value="tiff">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to TIFF</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">TIFF में परिवर्तित करें</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is WebP to TIFF Conversion?</h2>
-        <p>WebP to TIFF conversion is the process of changing images from WebP format to TIFF format. WebP is known for its efficient compression and quality, while TIFF is a high-quality image format used primarily in professional photography and graphic design. Converting WebP to TIFF allows you to maintain high resolution and detail in your images, making it perfect for archival purposes and high-quality prints.</p>
+        <h2>वेबपी से TIFF परिवर्तक क्या है?</h2>
+        <p>वेबपी से TIFF परिवर्तक वह प्रक्रिया है जिसमें छवियों को वेबपी प्रारूप से TIFF प्रारूप में बदला जाता है। वेबपी अपने कुशल संकुचन और गुणवत्ता के लिए जाना जाता है, जबकि TIFF एक उच्च गुणवत्ता वाली छवि प्रारूप है जिसका मुख्य उपयोग पेशेवर फोटोग्राफी और ग्राफिक डिज़ाइन में होता है। वेबपी को TIFF में परिवर्तित करने से आप अपनी छवियों में उच्च संकल्प और विवरण बनाए रख सकते हैं, जो इसे अभिलेखीय उद्देश्यों और उच्च गुणवत्ता वाले प्रिंट के लिए आदर्श बनाता है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert WebP to TIFF?</h2>
-        <p>There are several reasons to convert WebP images to TIFF:</p>
+        <h2>वेबपी को TIFF में परिवर्तित करने के लाभ क्या हैं?</h2>
+        <p>वेबपी छवियों को TIFF में परिवर्तित करने के कई कारण हैं:</p>
         <ul>
-            <li><strong>High-Quality Images:</strong> TIFF is a lossless format, meaning it retains all the details of your images without compression artifacts.</li>
-            <li><strong>Professional Use:</strong> TIFF is widely used in printing and publishing, making it ideal for professional photographers and designers.</li>
-            <li><strong>Flexibility:</strong> TIFF supports various color spaces and is compatible with many editing and printing applications.</li>
-            <li><strong>Archiving:</strong> Use TIFF for long-term storage of images due to its high quality and ability to handle large file sizes.</li>
+            <li><strong>उच्च गुणवत्ता वाली छवियाँ:</strong> TIFF एक लॉसलेस प्रारूप है, जिसका मतलब है कि यह आपकी छवियों के सभी विवरणों को बिना संकुचन के बनाए रखता है।</li>
+            <li><strong>पेशेवर उपयोग:</strong> TIFF का उपयोग व्यापक रूप से प्रिंटिंग और प्रकाशन में होता है, जो इसे पेशेवर फोटोग्राफरों और डिजाइनरों के लिए आदर्श बनाता है।</li>
+            <li><strong>लचीलापन:</strong> TIFF विभिन्न रंग स्थानों का समर्थन करता है और कई संपादन और प्रिंटिंग अनुप्रयोगों के साथ संगत है।</li>
+            <li><strong>अभिलेखागार:</strong> इसकी उच्च गुणवत्ता और बड़े फ़ाइल आकारों को संभालने की क्षमता के कारण TIFF का उपयोग छवियों के दीर्घकालिक भंडारण के लिए करें।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our WebP to TIFF Converter</h2>
-        <p>Our WebP to TIFF conversion tool is easy to use. Follow these simple steps:</p>
+        <h2>हमारे वेबपी से TIFF कनवर्टर का उपयोग कैसे करें</h2>
+        <p>हमारा वेबपी से TIFF परिवर्तक उपकरण उपयोग में आसान है। इन सरल चरणों का पालन करें:</p>
         <ul>
-            <li>Click the "Upload WebP File" button to select the WebP image you want to convert.</li>
-            <li>Once uploaded, our tool will automatically convert your image to TIFF format.</li>
-            <li>After the conversion is complete, click "Download TIFF" to save your new TIFF image to your device.</li>
+            <li>"वेबपी फ़ाइल अपलोड करें" बटन पर क्लिक करें और उस वेबपी छवि का चयन करें जिसे आप परिवर्तित करना चाहते हैं।</li>
+            <li>एक बार अपलोड होने पर, हमारा उपकरण स्वचालित रूप से आपकी छवि को TIFF प्रारूप में परिवर्तित करेगा।</li>
+            <li>एक बार परिवर्तित होने के बाद, "TIFF डाउनलोड करें" पर क्लिक करें ताकि आप अपनी नई TIFF छवि को अपने डिवाइस पर सहेज सकें।</li>
         </ul>
-        <p>Our converter supports a variety of WebP images, ensuring a smooth and efficient conversion process.</p>
+        <p>हमारा कनवर्टर विभिन्न प्रकार की वेबपी छवियों का समर्थन करता है, यह सुनिश्चित करते हुए कि आपके पास एक सुगम और प्रभावी परिवर्तक प्रक्रिया है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our WebP to TIFF Converter</h2>
-        <p>Using our conversion tool offers numerous advantages:</p>
+        <h2>हमारे वेबपी से TIFF कनवर्टर के उपयोग के लाभ</h2>
+        <p>हमारे परिवर्तक उपकरण का उपयोग करने के कई फायदे हैं:</p>
         <ul>
-            <li><strong>Fast and Convenient:</strong> Convert your WebP images to TIFF in just a few clicks, making it quick and hassle-free.</li>
-            <li><strong>No Quality Loss:</strong> Enjoy the highest quality TIFF images with no loss of detail during the conversion.</li>
-            <li><strong>Free and Accessible:</strong> Our tool is available online for free, requiring no downloads or installations.</li>
-            <li><strong>User-Friendly Design:</strong> Our easy-to-navigate interface makes the conversion process straightforward for everyone.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for WebP to TIFF Conversion</h2>
-        <p>Converting WebP to TIFF can be helpful in various scenarios:</p>
-        <ul>
-            <li><strong>Photography:</strong> Preserve high-resolution images for professional use and printing.</li>
-            <li><strong>Graphic Design:</strong> Create high-quality images for brochures, posters, and other marketing materials.</li>
-            <li><strong>Archiving:</strong> Store images in a lossless format for long-term preservation.</li>
-            <li><strong>Artwork and Illustration:</strong> Use TIFF for illustrations that require detailed reproduction.</li>
+            <li><strong>तेज़ और सुविधाजनक:</strong> अपने वेबपी छवियों को केवल कुछ क्लिक में TIFF में परिवर्तित करें, जिससे यह त्वरित और परेशानी-मुक्त हो जाता है।</li>
+            <li><strong>कोई गुणवत्ता हानि नहीं:</strong> कन्वर्ज़न के दौरान विवरण की हानि के बिना उच्चतम गुणवत्ता वाली TIFF छवियों का आनंद लें।</li>
+            <li><strong>फ्री और सुलभ:</strong> हमारा उपकरण ऑनलाइन मुफ्त में उपलब्ध है, जिसमें कोई डाउनलोड या स्थापना की आवश्यकता नहीं है।</li>
+            <li><strong>उपयोगकर्ता-मित्रता डिज़ाइन:</strong> हमारा आसान-से-नेविगेट इंटरफेस परिवर्तक प्रक्रिया को सभी के लिए सरल बनाता है।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting WebP to TIFF Can Help You</h2>
-        <p>Converting WebP images to TIFF format can greatly enhance usability and quality. Here are some ways it can help:</p>
+        <h2>वेबपी से TIFF परिवर्तक के सामान्य उपयोग</h2>
+        <p>वेबपी को TIFF में परिवर्तित करना विभिन्न परिदृश्यों में सहायक हो सकता है:</p>
         <ul>
-            <li><strong>Improved Image Quality:</strong> TIFF retains all image details, making it suitable for high-quality prints and professional use.</li>
-            <li><strong>Flexibility in Editing:</strong> TIFF files are widely supported by image editing software, allowing for easier modifications.</li>
-            <li><strong>Ideal for Archival:</strong> TIFF’s lossless nature makes it perfect for long-term storage of important images.</li>
+            <li><strong>फोटोग्राफी:</strong> पेशेवर उपयोग और प्रिंटिंग के लिए उच्च-संकल्प छवियों को संरक्षित करें।</li>
+            <li><strong>ग्राफिक डिज़ाइन:</strong> ब्रॉशर, पोस्टर और अन्य मार्केटिंग सामग्रियों के लिए उच्च गुणवत्ता वाली छवियाँ बनाएं।</li>
+            <li><strong>अभिलेखागार:</strong> दीर्घकालिक संरक्षण के लिए लॉसलेस प्रारूप में छवियों को संग्रहीत करें।</li>
+            <li><strong>कला और चित्रण:</strong> उन चित्रणों के लिए TIFF का उपयोग करें जिन्हें विस्तृत पुनरुत्पादन की आवश्यकता होती है।</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>वेबपी को TIFF में परिवर्तित करने से आपको कैसे मदद मिल सकती है</h2>
+        <p>वेबपी छवियों को TIFF प्रारूप में परिवर्तित करना उपयोगिता और गुणवत्ता को बहुत बढ़ा सकता है। यह मदद कर सकता है:</p>
+        <ul>
+            <li><strong>छवि गुणवत्ता में सुधार:</strong> TIFF सभी छवि विवरणों को बनाए रखता है, जिससे यह उच्च गुणवत्ता वाले प्रिंट और पेशेवर उपयोग के लिए उपयुक्त होता है।</li>
+            <li><strong>संपादन में लचीलापन:</strong> TIFF फ़ाइलें छवि संपादन सॉफ़्टवेयर द्वारा व्यापक रूप से समर्थित होती हैं, जिससे संशोधन करना आसान होता है।</li>
+            <li><strong>अभिलेखीय के लिए आदर्श:</strong> TIFF की लॉसलेस प्रकृति इसे महत्वपूर्ण छवियों के दीर्घकालिक भंडारण के लिए परफेक्ट बनाती है।</li>
         </ul>
     </div>
 </div>

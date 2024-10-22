@@ -1,85 +1,84 @@
 {% extends "hi/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Convert JPG to PNG images easily with ToolsForImage. Free online JPG to PNG converter.">
+<meta name="description" content="ToolsForImage के साथ JPG को PNG छवियों में आसानी से परिवर्तित करें। मुफ्त ऑनलाइन JPG से PNG कनवर्टर।">
 {% endblock %}
 
-{% block title %}Convert JPG to PNG online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}ToolsForImage पर JPG को PNG में कनवर्ट करें - मुफ्त ऑनलाइन इमेज एडिटिंग टूल{% endblock %}
 
 {% block content %}
-<h1>Free JPG to PNG Conversion Tool</h1>
-<p>Easily convert your JPG images to PNG format. Upload a JPG image and we'll convert it to PNG for you.</p>
+<h1>मुफ्त JPG से PNG कनवर्ज़न टूल</h1>
+<p>अपने JPG चित्रों को PNG फ़ॉर्मेट में आसानी से परिवर्तित करें। एक JPG चित्र अपलोड करें और हम इसे आपके लिए PNG में परिवर्तित करेंगे।</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/jpg" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload JPG Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">JPG चित्र अपलोड करें</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="छवि पूर्वावलोकन" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="jpg">
     <input type="hidden" name="output_format" value="png">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to PNG</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">PNG में परिवर्तित करें</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is JPG to PNG Conversion?</h2>
-        <p>JPG to PNG conversion is the process of changing image files from JPG format to PNG (Portable Network Graphics) format. While JPG is widely used for photos, PNG is better for images that need transparency or high-quality graphics. Our tool allows you to easily convert JPG images to PNG in just a few clicks.</p>
+        <h2>JPG से PNG कनवर्ज़न क्या है?</h2>
+        <p>JPG से PNG कनवर्ज़न वह प्रक्रिया है जिसमें छवि फ़ाइलों को JPG फ़ॉर्मेट से PNG (पोर्टेबल नेटवर्क ग्राफ़िक्स) फ़ॉर्मेट में बदला जाता है। जबकि JPG का उपयोग आमतौर पर फोटो के लिए किया जाता है, PNG उन चित्रों के लिए बेहतर है जिन्हें पारदर्शिता या उच्च गुणवत्ता वाले ग्राफिक्स की आवश्यकता होती है। हमारा टूल आपको केवल कुछ क्लिक में JPG चित्रों को PNG में आसानी से परिवर्तित करने की अनुमति देता है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert JPG to PNG?</h2>
-        <p>There are several reasons to convert JPG images to PNG:</p>
+        <h2>JPG को PNG में परिवर्तित करने के लाभ?</h2>
+        <p>JPG चित्रों को PNG में परिवर्तित करने के कई कारण हैं:</p>
         <ul>
-            <li><strong>Transparency Support:</strong> PNG format allows for transparent backgrounds, making it ideal for logos and graphics.</li>
-            <li><strong>Lossless Compression:</strong> PNG files maintain high quality without losing detail, perfect for images that require clarity.</li>
-            <li><strong>Improved Quality:</strong> Converting to PNG can enhance the visual quality of your images, especially for graphics with text or sharp lines.</li>
+            <li><strong>पारदर्शिता समर्थन:</strong> PNG फ़ॉर्मेट पारदर्शी पृष्ठभूमियों की अनुमति देता है, जिससे यह लोगो और ग्राफिक्स के लिए आदर्श बनता है।</li>
+            <li><strong>लॉसलेस संपीड़न:</strong> PNG फ़ाइलें उच्च गुणवत्ता बनाए रखती हैं बिना विवरण खोए, जो स्पष्टता की आवश्यकता वाले चित्रों के लिए आदर्श है।</li>
+            <li><strong>सुधारी गई गुणवत्ता:</strong> PNG में परिवर्तित करने से आपके चित्रों की दृश्य गुणवत्ता में सुधार हो सकता है, खासकर उन ग्राफिक्स के लिए जिनमें टेक्स्ट या तेज़ रेखाएँ होती हैं।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our JPG to PNG Converter</h2>
-        <p>Using our JPG to PNG conversion tool is straightforward. Here’s how it works:</p>
+        <h2>हमारे JPG से PNG कनवर्टर का उपयोग कैसे करें</h2>
+        <p>हमारे JPG से PNG कनवर्ज़न टूल का उपयोग करना सीधा है। यहाँ यह कैसे काम करता है:</p>
         <ul>
-            <li>Click the "Upload JPG File" button to select the JPG image you want to convert.</li>
-            <li>After uploading, our tool will automatically convert your image to PNG format.</li>
-            <li>Once the conversion is complete, click "Download PNG" to save your new image to your device.</li>
+            <li>जिस JPG चित्र को आप परिवर्तित करना चाहते हैं, उसे चुनने के लिए "JPG फ़ाइल अपलोड करें" बटन पर क्लिक करें।</li>
+            <li>अपलोड करने के बाद, हमारा टूल आपके चित्र को स्वचालित रूप से PNG फ़ॉर्मेट में परिवर्तित कर देगा।</li>
+            <li>एक बार कन्वर्ज़न पूरा हो जाने पर, "PNG डाउनलोड करें" पर क्लिक करें ताकि आप अपनी नई छवि अपने डिवाइस पर सहेज सकें।</li>
         </ul>
-        <p>Our converter supports various JPG files, ensuring a smooth conversion experience every time.</p>
+        <p>हमारा कनवर्टर विभिन्न JPG फ़ाइलों का समर्थन करता है, जिससे हर बार सुगम कन्वर्ज़न अनुभव सुनिश्चित होता है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our JPG to PNG Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>हमारे JPG से PNG कनवर्टर का उपयोग करने के लाभ</h2>
+        <p>हमारे कनवर्ज़न टूल का उपयोग करने के कुछ फायदे यहाँ दिए गए हैं:</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Convert your JPG images to PNG in just a few clicks, with no complicated steps.</li>
-            <li><strong>High-Quality Output:</strong> Enjoy clear and sharp images during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our online converter for free, with no downloads or installations required.</li>
-            <li><strong>User-Friendly Interface:</strong> Designed for everyone, our tool is easy to navigate, regardless of your technical skills.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for JPG to PNG Conversion</h2>
-        <p>Here are a few situations where converting JPG to PNG can be beneficial:</p>
-        <ul>
-            <li><strong>Web Design:</strong> Use PNG images for websites that require transparent backgrounds for a more polished look.</li>
-            <li><strong>Graphics and Logos:</strong> PNG is perfect for logos, icons, and graphics that need high quality and transparency.</li>
-            <li><strong>Digital Art:</strong> Artists often prefer PNG format to preserve their artwork’s details and colors without loss.</li>
-            <li><strong>Social Media:</strong> Share images with transparent backgrounds on platforms that support PNG format for better visual appeal.</li>
+            <li><strong>तेज़ और आसान:</strong> केवल कुछ क्लिक में अपने JPG चित्रों को PNG में परिवर्तित करें, बिना जटिल चरणों के।</li>
+            <li><strong>उच्च गुणवत्ता वाला आउटपुट:</strong> कनवर्ज़न प्रक्रिया के दौरान स्पष्ट और तेज़ चित्रों का आनंद लें।</li>
+            <li><strong>मुफ्त और सुलभ:</strong> हमारे ऑनलाइन कनवर्टर का उपयोग मुफ्त में करें, बिना किसी डाउनलोड या स्थापना की आवश्यकता के।</li>
+            <li><strong>उपयोगकर्ता के अनुकूल इंटरफ़ेस:</strong> सभी के लिए डिज़ाइन किया गया, हमारा टूल सभी के लिए नेविगेट करना आसान है, चाहे आपकी तकनीकी कौशल कैसी भी हो।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting JPG to PNG Can Help</h2>
-        <p>Converting your JPG images to PNG can enhance their usability and appearance. Here’s how:</p>
+        <h2>JPG से PNG कनवर्ज़न के सामान्य उपयोग</h2>
+        <p>यहाँ कुछ परिस्थितियाँ हैं जहाँ JPG को PNG में परिवर्तित करना लाभकारी हो सकता है:</p>
         <ul>
-            <li><strong>Better Transparency:</strong> PNG allows for transparent backgrounds, which is useful for layering images in designs.</li>
-            <li><strong>Improved Quality:</strong> PNG format preserves image quality, making your photos and graphics look their best.</li>
-            <li><strong>Enhanced Flexibility:</strong> Using PNG images gives you more options for how to present your graphics, especially online.</li>
+            <li><strong>वेब डिज़ाइन:</strong> वेबसाइटों के लिए PNG चित्रों का उपयोग करें जिन्हें पारदर्शी पृष्ठभूमियों की आवश्यकता होती है ताकि अधिक पॉलिश दिख सके।</li>
+            <li><strong>ग्राफिक्स और लोगो:</strong> PNG लोगो, आइकनों, और ग्राफिक्स के लिए आदर्श है जिन्हें उच्च गुणवत्ता और पारदर्शिता की आवश्यकता होती है।</li>
+            <li><strong>डिजिटल कला:</strong> कलाकार अक्सर PNG फ़ॉर्मेट को अपनी कलाकृति के विवरण और रंगों को बिना नुकसान के संरक्षित करने के लिए पसंद करते हैं।</li>
+            <li><strong>सोशल मीडिया:</strong> PNG फ़ॉर्मेट का समर्थन करने वाले प्लेटफ़ॉर्म पर पारदर्शी पृष्ठभूमियों वाले चित्र साझा करें ताकि दृश्य अपील बेहतर हो सके।</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>JPG को PNG में परिवर्तित करने से कैसे मदद मिल सकती है</h2>
+        <p>अपने JPG चित्रों को PNG में परिवर्तित करना उनकी उपयोगिता और उपस्थिति को बढ़ा सकता है। यहाँ कैसे:</p>
+        <ul>
+            <li><strong>बेहतर पारदर्शिता:</strong> PNG पारदर्शी पृष्ठभूमियों की अनुमति देता है, जो डिज़ाइन में चित्रों को परत करने के लिए उपयोगी होता है।</li>
+            <li><strong>सुधारी गई गुणवत्ता:</strong> PNG फ़ॉर्मेट छवि गुणवत्ता को संरक्षित करता है, जिससे आपकी फ़ोटो और ग्राफिक्स अपने सबसे अच्छे दिखते हैं।</li>
+            <li><strong>सुधारी गई लचीलापन:</strong> PNG चित्रों का उपयोग करने से आपको अपने ग्राफिक्स को प्रस्तुत करने के लिए अधिक विकल्प मिलते हैं, खासकर ऑनलाइन।</li>
         </ul>
     </div>
 </div>
-
 
 <style>
     h1 {

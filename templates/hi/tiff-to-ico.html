@@ -1,81 +1,81 @@
 {% extends "hi/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Convert TIFF to ICO images easily with ToolsForImage. Free online TIFF to ICO converter.">
+<meta name="description" content="ToolsForImage के साथ TIFF को ICO छवियों में आसानी से बदलें। मुफ्त ऑनलाइन TIFF से ICO कनवर्टर।">
 {% endblock %}
 
-{% block title %}Convert TIFF to ICO online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}ToolsForImage पर ऑनलाइन TIFF को ICO में परिवर्तित करें - मुफ्त ऑनलाइन छवि संपादन उपकरण{% endblock %}
 
 {% block content %}
-<h1>Free TIFF to ICO Conversion Tool</h1>
-<p>Easily convert your TIFF images to ICO format. Upload a TIFF image and we'll convert it to ICO for you.</p>
+<h1>मुफ्त TIFF से ICO कन्वर्ज़न टूल</h1>
+<p>अपनी TIFF छवियों को ICO प्रारूप में आसानी से बदलें। एक TIFF छवि अपलोड करें और हम इसे आपके लिए ICO में बदल देंगे।</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/tiff" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload TIFF Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">TIFF छवि अपलोड करें</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="छवि पूर्वावलोकन" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="tiff">
     <input type="hidden" name="output_format" value="ico">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to ICO</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">ICO में परिवर्तित करें</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is TIFF to ICO Conversion?</h2>
-        <p>TIFF to ICO conversion is the process of changing image files from TIFF format to ICO format. ICO is a file format used for icons in Microsoft Windows. This conversion is useful when you need to create icons for Windows applications, websites, or favicons.</p>
+        <h2>TIFF से ICO परिवर्तित करना क्या है?</h2>
+        <p>TIFF से ICO परिवर्तन वह प्रक्रिया है जिसमें छवि फ़ाइलों को TIFF प्रारूप से ICO प्रारूप में बदला जाता है। ICO एक फ़ाइल प्रारूप है जो Microsoft Windows में आइकों के लिए उपयोग किया जाता है। यह परिवर्तन तब उपयोगी होता है जब आपको Windows अनुप्रयोगों, वेबसाइटों या फ़ेविकॉन्स के लिए आइकन बनाने की आवश्यकता होती है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert TIFF to ICO?</h2>
-        <p>There are several reasons to convert TIFF images to ICO:</p>
+        <h2>TIFF को ICO में क्यों परिवर्तित करें?</h2>
+        <p>TIFF छवियों को ICO में परिवर्तित करने के कई कारण हैं:</p>
         <ul>
-            <li><strong>Create Windows Icons:</strong> ICO is the standard format for Windows application icons.</li>
-            <li><strong>Website Favicons:</strong> ICO is commonly used for website favicons, the small icons displayed in browser tabs.</li>
-            <li><strong>Multiple Sizes:</strong> ICO files can contain multiple image sizes in one file, useful for different display scenarios.</li>
+            <li><strong>Windows आइकन बनाना:</strong> ICO Windows अनुप्रयोग आइकों के लिए मानक प्रारूप है।</li>
+            <li><strong>वेबसाइट फ़ेविकॉन्स:</strong> ICO सामान्य रूप से वेबसाइट फ़ेविकॉन्स के लिए उपयोग किया जाता है, जो ब्राउज़र टैब में प्रदर्शित छोटे आइकन होते हैं।</li>
+            <li><strong>कई आकार:</strong> ICO फ़ाइलों में एक फ़ाइल में कई छवि आकार हो सकते हैं, जो विभिन्न डिस्प्ले परिदृश्यों के लिए उपयोगी होते हैं।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our TIFF to ICO Converter</h2>
-        <p>Using our TIFF to ICO conversion tool is simple and quick. Here's how it works:</p>
+        <h2>हमारे TIFF से ICO कन्वर्टर का उपयोग कैसे करें</h2>
+        <p>हमारे TIFF से ICO परिवर्तन टूल का उपयोग करना सरल और तेज़ है। यहाँ यह कैसे काम करता है:</p>
         <ul>
-            <li>Click the "Upload TIFF File" button to select the TIFF image you want to convert.</li>
-            <li>Once your image is uploaded, our tool will automatically start converting it to ICO format.</li>
-            <li>After the conversion is complete, click "Download ICO" to save your new icon file to your device.</li>
+            <li>TIFF छवि का चयन करने के लिए "TIFF फ़ाइल अपलोड करें" बटन पर क्लिक करें।</li>
+            <li>एक बार आपकी छवि अपलोड हो जाने के बाद, हमारा उपकरण स्वचालित रूप से इसे ICO प्रारूप में बदलना शुरू कर देगा।</li>
+            <li>परिवर्तन पूरा होने के बाद, अपने नए आइकन फ़ाइल को अपने डिवाइस पर सहेजने के लिए "ICO डाउनलोड करें" पर क्लिक करें।</li>
         </ul>
-        <p>Our converter supports various TIFF files, ensuring a smooth and efficient conversion experience for all users.</p>
+        <p>हमारा कन्वर्टर विभिन्न TIFF फ़ाइलों का समर्थन करता है, जिससे सभी उपयोगकर्ताओं के लिए एक सुचारू और कुशल परिवर्तन अनुभव सुनिश्चित होता है।</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our TIFF to ICO Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>हमारे TIFF से ICO कन्वर्टर का उपयोग करने के लाभ</h2>
+        <p>यहां हमारे परिवर्तन उपकरण का उपयोग करने के कुछ लाभ दिए गए हैं:</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Convert your TIFF images to ICO quickly with just a few clicks.</li>
-            <li><strong>High Quality:</strong> Maintain image quality during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, with no downloads or installations needed.</li>
-            <li><strong>User-Friendly Interface:</strong> Our tool is designed to be intuitive and easy to navigate for everyone.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for TIFF to ICO Conversion</h2>
-        <p>Here are some common situations where converting TIFF to ICO can be helpful:</p>
-        <ul>
-            <li><strong>Application Development:</strong> Create icons for Windows applications.</li>
-            <li><strong>Web Design:</strong> Generate favicons for websites to display in browser tabs and bookmarks.</li>
-            <li><strong>Custom Folder Icons:</strong> Create personalized icons for Windows folders.</li>
-            <li><strong>Desktop Shortcuts:</strong> Design custom icons for desktop shortcuts.</li>
+            <li><strong>तेज और आसान:</strong> अपनी TIFF छवियों को केवल कुछ क्लिक में ICO में जल्दी परिवर्तित करें।</li>
+            <li><strong>उच्च गुणवत्ता:</strong> परिवर्तन प्रक्रिया के दौरान छवि की गुणवत्ता बनाए रखें।</li>
+            <li><strong>मुफ्त और सुलभ:</strong> बिना डाउनलोड या इंस्टॉलेशन की आवश्यकता के ऑनलाइन हमारे उपकरण का उपयोग करें।</li>
+            <li><strong>उपयोगकर्ता के अनुकूल इंटरफ़ेस:</strong> हमारा उपकरण सभी के लिए सहज और नेविगेट करने में आसान डिज़ाइन किया गया है।</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting TIFF to ICO Can Help</h2>
-        <p>Converting your TIFF images to ICO can enhance their usability in specific contexts. Here's how:</p>
+        <h2>TIFF से ICO परिवर्तन के सामान्य उपयोग</h2>
+        <p>यहां कुछ सामान्य स्थितियाँ दी गई हैं जहाँ TIFF को ICO में परिवर्तित करना सहायक हो सकता है:</p>
         <ul>
-            <li><strong>Windows Compatibility:</strong> ICO is the native icon format for Windows, ensuring proper display.</li>
-            <li><strong>Web Standards:</strong> ICO is widely supported as the favicon format across different browsers.</li>
-            <li><strong>Multiple Resolutions:</strong> ICO files can store multiple image sizes, useful for different display scenarios.</li>
+            <li><strong>अनुप्रयोग विकास:</strong> Windows अनुप्रयोगों के लिए आइकन बनाना।</li>
+            <li><strong>वेब डिज़ाइन:</strong> वेबसाइटों के लिए फ़ेविकॉन्स उत्पन्न करना ताकि वे ब्राउज़र टैब और बुकमार्क में प्रदर्शित हों।</li>
+            <li><strong>कस्टम फ़ोल्डर आइकन:</strong> Windows फ़ोल्डरों के लिए व्यक्तिगत आइकन बनाना।</li>
+            <li><strong>डेस्कटॉप शॉर्टकट:</strong> डेस्कटॉप शॉर्टकट के लिए कस्टम आइकन डिज़ाइन करना।</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>TIFF को ICO में परिवर्तित करने से कैसे मदद मिल सकती है</h2>
+        <p>अपनी TIFF छवियों को ICO में परिवर्तित करना विशेष संदर्भों में उनकी उपयोगिता को बढ़ा सकता है। यहाँ कैसे:</p>
+        <ul>
+            <li><strong>Windows संगतता:</strong> ICO Windows के लिए स्वदेशी आइकन प्रारूप है, यह सुनिश्चित करता है कि सही ढंग से प्रदर्शित हो।</li>
+            <li><strong>वेब मानक:</strong> ICO विभिन्न ब्राउज़रों में फ़ेविकॉन प्रारूप के रूप में व्यापक रूप से समर्थित है।</li>
+            <li><strong>कई संकल्प:</strong> ICO फ़ाइलें कई छवि आकारों को स्टोर कर सकती हैं, जो विभिन्न डिस्प्ले परिदृश्यों के लिए उपयोगी हैं।</li>
         </ul>
     </div>
 </div>

@@ -1,24 +1,17 @@
 {% extends 'hi/base.html' %}
 
-{% block title %}Blogs ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}ब्लॉग्स ToolsForImage - फ्री ऑनलाइन इमेज एडिटिंग टूल{% endblock %}
 
 {% block meta_description %}
 <meta name="description"
-    content="Explore our blog for tips, tutorials, and insights on image editing, compression, and optimization. Stay updated with the latest trends in digital imagery and photography.">
+    content="इमेज एडिटिंग, कंप्रेशन, और ऑप्टिमाइज़ेशन पर टिप्स, ट्यूटोरियल और जानकारी के लिए हमारे ब्लॉग का अन्वेषण करें। डिजिटल इमेजरी और फोटोग्राफी में नवीनतम ट्रेंड्स से अपडेट रहें।">
 {% endblock %}
 
 {% block content %}
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', '');
-</script>
 
-<h1>ToolsForImage Blog</h1>
-<p>Stay updated with the latest trends, tips, and tutorials in image editing and optimization.</p>
+
+<h1>ToolsForImage ब्लॉग</h1>
+<p>इमेज एडिटिंग और ऑप्टिमाइज़ेशन में नवीनतम ट्रेंड्स, टिप्स, और ट्यूटोरियल से अपडेट रहें।</p>
 
 <div class="blog-grid">
     {% for blog in blogs %}
@@ -27,7 +20,7 @@
         <h2>{{ blog.title }}</h2>
         <p>{{ blog.description }}</p>
         <div class="read-more-container">
-            <a href="{{ url_for('blog_post', blog_slug=blog.slug, lang=lang) }}" class="read-more">Read More</a>
+            <a href="{{ url_for('blog_post', blog_slug=blog.slug, lang=lang) }}" class="read-more">अधिक पढ़ें</a>
         </div>
     </div>
     {% endfor %}

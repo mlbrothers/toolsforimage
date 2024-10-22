@@ -1,120 +1,135 @@
 {% extends 'hi/base.html' %}
 
-{% block title %}Convert BMP to TIFF online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}BMP को TIFF में ऑनलाइन कन्वर्ट करें - ToolsForImage - मुफ्त ऑनलाइन छवि संपादन उपकरण{% endblock %}
 
 {% block meta_description %}
-<meta name="description" content="Convert BMP to TIFF images easily with ToolsForImage. Free online BMP to TIFF converter.">
+<meta name="description"
+    content="ToolsForImage के साथ BMP को TIFF छवियों में आसानी से कन्वर्ट करें। मुफ्त ऑनलाइन BMP से TIFF कन्वर्टर।">
 {% endblock %}
 
 {% block content %}
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id="></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '');
-    </script>
 
-    <h1>Free BMP to TIFF Conversion Tool</h1>
-    <p>Easily convert your BMP images to TIFF format. Upload a BMP image and we'll convert it to TIFF for you.</p>
-    <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
-        <input type="file" id="image-upload" name="image" accept="image/bmp" style="display: none;" onchange="previewImage(event)">
-        <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload BMP Image</button>
-        <br>
-        <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
-        <br>
-        <input type="hidden" name="input_format" value="bmp">
-        <input type="hidden" name="output_format" value="tiff">
-        <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to TIFF</button>
-    </form>
+<h1>फ्री BMP से TIFF कन्वर्ज़न टूल</h1>
+<p>आसानी से अपने BMP छवियों को TIFF प्रारूप में कन्वर्ट करें। एक BMP छवि अपलोड करें और हम इसे आपके लिए TIFF में कन्वर्ट
+    कर देंगे।</p>
+<form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
+    <input type="file" id="image-upload" name="image" accept="image/bmp" style="display: none;"
+        onchange="previewImage(event)">
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">BMP छवि अपलोड
+        करें</button>
+    <br>
+    <img id="image-preview" class="image-preview" src="#" alt="छवि पूर्वावलोकन" style="display: none;">
+    <br>
+    <input type="hidden" name="input_format" value="bmp">
+    <input type="hidden" name="output_format" value="tiff">
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">TIFF में कन्वर्ट
+        करें</button>
+</form>
 
-    <div class="info-container">
-        <div class="info-section">
-            <h2>What is BMP to TIFF Conversion?</h2>
-            <p>BMP to TIFF conversion is the process of changing image files from BMP (Bitmap) format to TIFF (Tagged Image File Format). BMP files are high-quality but can be large, while TIFF files offer excellent quality and are widely used in professional settings, especially for printing and archiving. Our tool simplifies this conversion, allowing you to get the best of both formats with ease.</p>
-        </div>
-    
-        <div class="info-section">
-            <h2>Why Convert BMP to TIFF?</h2>
-            <p>Converting BMP images to TIFF has several advantages:</p>
-            <ul>
-                <li><strong>High Quality:</strong> TIFF files are known for their superior image quality, making them ideal for printing and professional photography.</li>
-                <li><strong>Multiple Color Depths:</strong> TIFF supports various color depths, which is useful for detailed images and graphics.</li>
-                <li><strong>Lossless Compression:</strong> TIFF files can be compressed without losing quality, making them suitable for archiving images.</li>
-            </ul>
-        </div>
-    
-        <div class="info-section">
-            <h2>How to Use Our BMP to TIFF Converter</h2>
-            <p>Our BMP to TIFF conversion tool is designed for simplicity. Just follow these easy steps:</p>
-            <ul>
-                <li>Click on the "Upload BMP File" button to select the BMP image you wish to convert.</li>
-                <li>Once the image is uploaded, our tool will automatically process the conversion to TIFF format.</li>
-                <li>After the conversion is complete, click "Download TIFF" to save your new image to your device.</li>
-            </ul>
-            <p>Our tool supports various BMP files, ensuring a hassle-free conversion experience every time.</p>
-        </div>
-    
-        <div class="info-section">
-            <h2>Benefits of Using Our BMP to TIFF Converter</h2>
-            <p>Here are some advantages of using our conversion tool:</p>
-            <ul>
-                <li><strong>Fast and Efficient:</strong> Convert your BMP images to TIFF quickly and easily.</li>
-                <li><strong>No Loss of Quality:</strong> Enjoy high-resolution images with our lossless conversion process.</li>
-                <li><strong>Free and Accessible:</strong> Use our online converter for free, with no downloads or installations needed.</li>
-                <li><strong>User-Friendly:</strong> Designed for everyone, our intuitive interface makes it easy to convert images, regardless of your technical skills.</li>
-            </ul>
-        </div>
-    
-        <div class="info-section">
-            <h2>Common Uses for BMP to TIFF Conversion</h2>
-            <p>There are many scenarios where converting BMP to TIFF is beneficial:</p>
-            <ul>
-                <li><strong>Professional Printing:</strong> Use TIFF images for high-quality prints that require detailed color and clarity.</li>
-                <li><strong>Archiving:</strong> Store important images in TIFF format for long-term preservation without quality loss.</li>
-                <li><strong>Graphic Design:</strong> Create graphics and illustrations with enhanced detail for design projects.</li>
-                <li><strong>Medical Imaging:</strong> TIFF is often used in medical applications for its ability to handle large images without losing detail.</li>
-            </ul>
-        </div>
-    
-        <div class="info-section">
-            <h2>How Converting BMP to TIFF Enhances Your Images</h2>
-            <p>Transforming your BMP images to TIFF can greatly improve their usability and quality. Here’s how:</p>
-            <ul>
-                <li><strong>Superior Image Quality:</strong> TIFF files retain more detail, making them ideal for professional use.</li>
-                <li><strong>Versatile File Use:</strong> TIFF format is accepted by most image editing software, providing flexibility in your projects.</li>
-                <li><strong>Better Archiving:</strong> TIFF's lossless compression makes it a preferred choice for preserving important images over time.</li>
-            </ul>
-        </div>
+<div class="info-container">
+    <div class="info-section">
+        <h2>BMP से TIFF कन्वर्ज़न क्या है?</h2>
+        <p>BMP से TIFF कन्वर्ज़न BMP (Bitmap) प्रारूप से TIFF (Tagged Image File Format) प्रारूप में छवि फ़ाइलों को
+            बदलने की प्रक्रिया है। BMP फ़ाइलें उच्च गुणवत्ता की होती हैं लेकिन बड़ी हो सकती हैं, जबकि TIFF फ़ाइलें
+            उत्कृष्ट गुणवत्ता प्रदान करती हैं और पेशेवर सेटिंग्स में व्यापक रूप से उपयोग की जाती हैं, विशेष रूप से
+            प्रिंटिंग और आर्काइविंग के लिए। हमारा उपकरण इस कन्वर्ज़न को सरल बनाता है, जिससे आप दोनों प्रारूपों का
+            सर्वश्रेष्ठ आसानी से प्राप्त कर सकते हैं।</p>
     </div>
-    
 
-    
+    <div class="info-section">
+        <h2>BMP को TIFF में क्यों कन्वर्ट करें?</h2>
+        <p>BMP छवियों को TIFF में कन्वर्ट करने के कई लाभ हैं:</p>
+        <ul>
+            <li><strong>उच्च गुणवत्ता:</strong> TIFF फ़ाइलें अपनी उच्च छवि गुणवत्ता के लिए जानी जाती हैं, जो उन्हें
+                प्रिंटिंग और पेशेवर फ़ोटोग्राफी के लिए आदर्श बनाती हैं।</li>
+            <li><strong>कई रंग गहराई:</strong> TIFF विभिन्न रंग गहराई का समर्थन करता है, जो विस्तृत छवियों और ग्राफिक्स
+                के लिए उपयोगी है।</li>
+            <li><strong>गुणवत्ता की हानि के बिना संपीड़न:</strong> TIFF फ़ाइलों को बिना गुणवत्ता खोए संकुचित किया जा
+                सकता है, जिससे उन्हें छवियों के आर्काइविंग के लिए उपयुक्त बनाया जा सकता है।</li>
+        </ul>
+    </div>
 
-    <script>
-        function validateImageSelection() {
-            const imageUpload = document.getElementById('image-upload');
-            if (!imageUpload.value) {
-                alert('Please select a BMP image to upload.');
-                return false;
-            }
-            return true;
+    <div class="info-section">
+        <h2>हमारे BMP से TIFF कन्वर्टर का उपयोग कैसे करें</h2>
+        <p>हमारा BMP से TIFF कन्वर्ज़न टूल सरलता के लिए डिज़ाइन किया गया है। बस इन आसान चरणों का पालन करें:</p>
+        <ul>
+            <li>जिस BMP छवि को आप कन्वर्ट करना चाहते हैं, उसे चुनने के लिए "BMP फ़ाइल अपलोड करें" बटन पर क्लिक करें।
+            </li>
+            <li>एक बार छवि अपलोड होने के बाद, हमारा उपकरण स्वचालित रूप से TIFF प्रारूप में कन्वर्ज़न प्रक्रिया करेगा।
+            </li>
+            <li>कन्वर्ज़न पूरा होने के बाद, "TIFF डाउनलोड करें" पर क्लिक करें ताकि आप अपनी नई छवि अपने डिवाइस पर सहेज
+                सकें।</li>
+        </ul>
+        <p>हमारा उपकरण विभिन्न BMP फ़ाइलों का समर्थन करता है, जिससे हर बार एक परेशानी-मुक्त कन्वर्ज़न अनुभव सुनिश्चित
+            होता है।</p>
+    </div>
+
+    <div class="info-section">
+        <h2>हमारे BMP से TIFF कन्वर्टर के उपयोग के लाभ</h2>
+        <p>यहां हमारे कन्वर्ज़न टूल का उपयोग करने के कुछ लाभ दिए गए हैं:</p>
+        <ul>
+            <li><strong>तेज़ और प्रभावी:</strong> अपने BMP छवियों को तेजी से और आसानी से TIFF में कन्वर्ट करें।</li>
+            <li><strong>गुणवत्ता की हानि नहीं:</strong> हमारे हानि रहित कन्वर्ज़न प्रक्रिया के साथ उच्च-रिज़ॉल्यूशन
+                छवियों का आनंद लें।</li>
+            <li><strong>मुफ्त और सुलभ:</strong> हमारे ऑनलाइन कन्वर्टर का उपयोग मुफ्त में करें, बिना किसी डाउनलोड या
+                इंस्टॉलेशन की आवश्यकता।</li>
+            <li><strong>उपयोगकर्ता के अनुकूल:</strong> सभी के लिए डिज़ाइन किया गया, हमारा अंतर्ज्ञान आधारित इंटरफ़ेस
+                छवियों को कन्वर्ट करना आसान बनाता है, चाहे आपकी तकनीकी क्षमताएँ कुछ भी हों।</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>BMP को TIFF में कन्वर्ज़न के सामान्य उपयोग</h2>
+        <p>BMP को TIFF में कन्वर्ट करने के कई परिदृश्य हैं जहां यह लाभकारी है:</p>
+        <ul>
+            <li><strong>पेशेवर प्रिंटिंग:</strong> उच्च गुणवत्ता वाले प्रिंट के लिए TIFF छवियों का उपयोग करें जिन्हें
+                विस्तृत रंग और स्पष्टता की आवश्यकता होती है।</li>
+            <li><strong>आर्काइविंग:</strong> महत्वपूर्ण छवियों को TIFF प्रारूप में स्टोर करें ताकि गुणवत्ता की हानि के
+                बिना दीर्घकालिक संरक्षण हो सके।</li>
+            <li><strong>ग्राफिक डिजाइन:</strong> डिज़ाइन परियोजनाओं के लिए ग्राफिक्स और चित्रों को अधिक विस्तार के साथ
+                बनाएं।</li>
+            <li><strong>चिकित्सा इमेजिंग:</strong> TIFF का उपयोग चिकित्सा अनुप्रयोगों में अक्सर किया जाता है क्योंकि यह
+                बिना विवरण खोए बड़े चित्रों को संभालने की क्षमता रखता है।</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>BMP को TIFF में कन्वर्ट करने से आपकी छवियों को कैसे लाभ होता है</h2>
+        <p>अपने BMP छवियों को TIFF में बदलना उनकी उपयोगिता और गुणवत्ता में बहुत सुधार कर सकता है। यहां बताया गया है:</p>
+        <ul>
+            <li><strong>सर्वश्रेष्ठ छवि गुणवत्ता:</strong> TIFF फ़ाइलें अधिक विवरण बनाए रखती हैं, जो उन्हें पेशेवर उपयोग
+                के लिए आदर्श बनाती हैं।</li>
+            <li><strong>लचीला फ़ाइल उपयोग:</strong> TIFF प्रारूप अधिकांश छवि संपादन सॉफ़्टवेयर द्वारा स्वीकार किया जाता
+                है, जिससे आपके परियोजनाओं में लचीलापन मिलता है।</li>
+            <li><strong>बेहतर आर्काइविंग:</strong> TIFF का हानि रहित संपीड़न इसे समय के साथ महत्वपूर्ण छवियों को
+                संरक्षित करने के लिए पसंदीदा विकल्प बनाता है।</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function validateImageSelection() {
+        const imageUpload = document.getElementById('image-upload');
+        if (!imageUpload.value) {
+            alert('Please select a BMP image to upload.');
+            return false;
         }
+        return true;
+    }
 
-        function previewImage(event) {
-            const imagePreview = document.getElementById('image-preview');
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    imagePreview.src = e.target.result;
-                    imagePreview.style.display = 'block';
-                }
-                reader.readAsDataURL(file);
+    function previewImage(event) {
+        const imagePreview = document.getElementById('image-preview');
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = 'block';
             }
+            reader.readAsDataURL(file);
         }
-    </script>
+    }
+</script>
 
 <style>
     h1 {
@@ -171,7 +186,7 @@
         line-height: 1.6;
     }
 
-    
+
 
     h1 {
         text-align: center;
