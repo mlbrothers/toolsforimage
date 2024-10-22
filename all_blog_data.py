@@ -119,7 +119,19 @@ blogs_list = {
             'title': 'How to convert JPG to ICO free online',
             'description': 'How to convert your JPG images to ICO format for free online',
             'image': 'jpg-to-ico-blog.svg',
-        },   
+        }, 
+        {
+            'slug': 'how-to-convert-image-from-bmp-to-jpg',
+            'title': 'How to convert bmp to jpg free online',
+            'description': 'How to convert your bmp images to jpg format for free online',
+            'image': 'bmp-to-png-blog.svg',
+        },  
+        {
+            'slug': 'how-to-rotate-images-online-for-free',
+            'title': 'How to rotate images free online',
+            'description': 'How to rotate images images for free online',
+            'image': 'image-rotate-blog.svg',
+        },  
     ],
     'hi': [
         {
@@ -241,6 +253,18 @@ blogs_list = {
             'title': 'JPG को ICO में ऑनलाइन मुफ्त में कैसे बदलें',
             'description': 'कैसे अपने JPG चित्रों को ICO प्रारूप में मुफ्त में ऑनलाइन बदलें',
             'image': 'jpg-to-ico-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-bmp-to-jpg',
+            'title': 'बीएमपी को जेपीजी में मुफ्त ऑनलाइन कैसे बदलें',
+            'description': 'अपनी बीएमपी छवियों को मुफ्त में ऑनलाइन जेपीजी प्रारूप में कैसे बदलें',
+            'image': 'bmp-to-png-blog.svg',
+        },  
+        {
+            'slug': 'how-to-rotate-images-online-for-free',
+            'title': 'मुफ्त में छवियों को ऑनलाइन कैसे घुमाएं',
+            'description': 'मुफ्त में छवियों को ऑनलाइन कैसे घुमाएं',
+            'image': 'image-rotate-blog.svg',
         },
     ]
 }

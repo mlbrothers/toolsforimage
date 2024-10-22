@@ -29,13 +29,10 @@ def before_request():
 
     # Extract language from URL if present
     parts = request.path.split('/')
-    print(f"Request path parts: {parts}")
     if len(parts) > 1 and parts[1] in supported_languages:
         g.lang = parts[1]
     else:
         g.lang = 'en'  # Default to English
-
-    print(f"Selected language: {g.lang}")
 
 from werkzeug.exceptions import NotFound
 
