@@ -1,22 +1,23 @@
-{% extends 'en/base.html' %}
+{% extends 'fr/base.html' %}
 
-{% block title %}Blur Face online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}Flouter un visage en ligne avec ToolsForImage - Outils de retouche d'image en ligne gratuits{% endblock
+%}
 
 {% block meta_description %}
 <meta name="description"
-    content="Blur faces or specific areas in your images with ToolsForImage. Protect privacy by selectively blurring parts of your photos. Blur the faces with single click.">
+    content="Floutez les visages ou des zones spécifiques dans vos images avec ToolsForImage. Protégez la confidentialité en floutant des parties de vos photos. Floutez les visages en un seul clic.">
 {% endblock %}
 
 {% block content %}
 
 
 <div class="container">
-    <h1>Free Blur Face Tool</h1>
-    <p>Protect privacy by blurring specific areas in your images. Upload an image, select the area to blur, and download
-        the
-        result.</p>
+    <h1>Outil gratuit de floutage de visage</h1>
+    <p>Protégez la confidentialité en floutant des zones spécifiques de vos images. Téléchargez une image, sélectionnez
+        la zone à flouter et téléchargez le résultat.</p>
     <input type="file" id="image-upload" accept="image/*" style="display: none;">
-    <button class="upload-button" onclick="document.getElementById('image-upload').click();">Upload Image</button>
+    <button class="upload-button" onclick="document.getElementById('image-upload').click();">Télécharger
+        l'image</button>
     <div id="canvas-container">
         <canvas id="canvas"></canvas>
         <div id="blur-box">
@@ -26,66 +27,91 @@
             <div class="resize-handle se"></div>
         </div>
     </div>
-    <button id="apply-blur">Apply Blur</button>
+    <button id="apply-blur">Appliquer le flou</button>
     <div id="error-message"></div>
 </div>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is Face Blurring?</h2>
-        <p>Face blurring is the process of obscuring or pixelating faces in images or videos to protect the identities of individuals. This technique is essential for maintaining privacy and anonymity, especially when sharing personal content online. Our face-blurring tool allows you to easily and quickly blur faces, ensuring that your images comply with privacy standards while still being visually appealing.</p>
+        <h2>Qu'est-ce que le floutage de visage ?</h2>
+        <p>Le floutage de visage est le processus qui consiste à obscurcir ou à pixelliser les visages dans les images
+            ou les vidéos afin de protéger l'identité des individus. Cette technique est essentielle pour préserver la
+            confidentialité et l'anonymat, surtout lors du partage de contenu personnel en ligne. Notre outil de
+            floutage de visage vous permet de flouter facilement et rapidement les visages, garantissant que vos images
+            respectent les normes de confidentialité tout en restant visuellement attrayantes.</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Blur Faces in Images or Videos?</h2>
-        <p>There are several important reasons to blur faces in your content:</p>
+        <h2>Pourquoi flouter les visages dans les images ou vidéos ?</h2>
+        <p>Il y a plusieurs raisons importantes pour lesquelles vous devriez flouter les visages dans vos contenus :</p>
         <ul>
-            <li><strong>Protect Privacy:</strong> Blurring faces helps safeguard the privacy of individuals, especially in sensitive situations like events, protests, or public gatherings.</li>
-            <li><strong>Comply with Laws:</strong> Many jurisdictions require consent for using identifiable images of individuals. Blurring faces can help you stay compliant with privacy laws.</li>
-            <li><strong>Focus on the Subject:</strong> By blurring faces, you can direct attention to the main subject or action in your image or video without distractions.</li>
+            <li><strong>Protéger la confidentialité :</strong> Le floutage des visages permet de préserver la vie privée
+                des individus, notamment dans des situations sensibles comme les événements, manifestations ou
+                rassemblements publics.</li>
+            <li><strong>Respecter les lois :</strong> Dans de nombreuses juridictions, le consentement est requis pour
+                utiliser des images identifiables de personnes. Le floutage des visages peut vous aider à rester en
+                conformité avec les lois sur la confidentialité.</li>
+            <li><strong>Concentrer l'attention sur le sujet :</strong> En floutant les visages, vous pouvez diriger
+                l'attention sur le sujet principal ou l'action dans votre image ou vidéo sans distractions.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our Face Blurring Tool</h2>
-        <p>Our face-blurring tool is designed for ease of use, enabling you to protect identities in just a few steps:</p>
+        <h2>Comment utiliser notre outil de floutage de visage</h2>
+        <p>Notre outil de floutage de visage est conçu pour être simple d'utilisation, vous permettant de protéger les
+            identités en quelques étapes seulement :</p>
         <ul>
-            <li>Click the "Upload from Computer" button to upload your image or video.</li>
-            <li>The tool will automatically detect faces in your content. You can choose which faces to blur or adjust the blur strength.</li>
-            <li>Once you're satisfied with the adjustments, click "Download Blurred Image/Video" to save your protected content to your device.</li>
+            <li>Cliquez sur le bouton "Télécharger depuis l'ordinateur" pour télécharger votre image ou vidéo.</li>
+            <li>L'outil détectera automatiquement les visages dans votre contenu. Vous pouvez choisir les visages à
+                flouter ou ajuster l'intensité du flou.</li>
+            <li>Une fois les ajustements terminés, cliquez sur "Télécharger l'image/vidéo floutée" pour enregistrer
+                votre contenu protégé sur votre appareil.</li>
         </ul>
-        <p>Our tool supports various formats, ensuring compatibility with your images and videos.</p>
+        <p>Notre outil prend en charge différents formats, garantissant la compatibilité avec vos images et vidéos.</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our Face Blurring Tool</h2>
-        <p>Here are the key benefits of using our face-blurring tool:</p>
+        <h2>Avantages de l'utilisation de notre outil de floutage de visage</h2>
+        <p>Voici les principaux avantages de l'utilisation de notre outil de floutage de visage :</p>
         <ul>
-            <li><strong>Quick and Efficient:</strong> Easily blur faces in just a few clicks without the need for complex software.</li>
-            <li><strong>Automatic Detection:</strong> The tool automatically identifies faces, making the process faster and more convenient.</li>
-            <li><strong>Maintain Quality:</strong> Ensure that your images and videos retain their quality while protecting privacy.</li>
-            <li><strong>Free and Accessible:</strong> Our tool is available online for free, with no downloads or installations required.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Use Cases for Face Blurring</h2>
-        <p>Face blurring is useful in various scenarios, such as:</p>
-        <ul>
-            <li><strong>Event Photography:</strong> Protect the identities of individuals in photos taken at public events or gatherings.</li>
-            <li><strong>Documentaries and News Reports:</strong> Blur faces in interviews or footage where individuals have not given consent for their identity to be revealed.</li>
-            <li><strong>Social Media Sharing:</strong> Share images or videos online while ensuring the privacy of those featured in your content.</li>
-            <li><strong>Family Photos:</strong> Blur faces of children or relatives when sharing personal images on public platforms.</li>
+            <li><strong>Rapide et efficace :</strong> Floutez facilement les visages en quelques clics, sans avoir
+                besoin de logiciels complexes.</li>
+            <li><strong>Détection automatique :</strong> L'outil identifie automatiquement les visages, rendant le
+                processus plus rapide et plus pratique.</li>
+            <li><strong>Maintenir la qualité :</strong> Assurez-vous que vos images et vidéos conservent leur qualité
+                tout en protégeant la confidentialité.</li>
+            <li><strong>Gratuit et accessible :</strong> Notre outil est disponible en ligne gratuitement, sans
+                téléchargement ni installation nécessaires.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Blurring Faces Can Help Protect Privacy</h2>
-        <p>Blurring faces is an effective way to ensure the privacy and security of individuals. Here's how it can help:</p>
+        <h2>Cas d'utilisation fréquents du floutage de visage</h2>
+        <p>Le floutage de visage est utile dans divers scénarios, tels que :</p>
         <ul>
-            <li><strong>Prevent Unauthorized Use:</strong> Blurring faces prevents others from using your images or videos to identify individuals without their consent.</li>
-            <li><strong>Enhance Safety:</strong> Protecting the identities of individuals in sensitive situations helps maintain their safety and security.</li>
-            <li><strong>Promote Ethical Content Sharing:</strong> By using our face-blurring tool, you promote responsible sharing of content that respects individuals' privacy rights.</li>
+            <li><strong>Photographie événementielle :</strong> Protégez l'identité des individus dans les photos prises
+                lors d'événements publics ou de rassemblements.</li>
+            <li><strong>Documentaires et reportages :</strong> Floutez les visages dans les interviews ou les séquences
+                où les individus n'ont pas donné leur consentement pour être identifiés.</li>
+            <li><strong>Partage sur les réseaux sociaux :</strong> Partagez des images ou vidéos en ligne tout en
+                garantissant la confidentialité des personnes figurant dans votre contenu.</li>
+            <li><strong>Photos de famille :</strong> Floutez les visages des enfants ou des proches lorsque vous
+                partagez des images personnelles sur des plateformes publiques.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Comment le floutage des visages peut aider à protéger la confidentialité</h2>
+        <p>Le floutage des visages est un moyen efficace de garantir la confidentialité et la sécurité des individus.
+            Voici comment cela peut vous aider :</p>
+        <ul>
+            <li><strong>Empêcher l'utilisation non autorisée :</strong> Le floutage des visages empêche les autres
+                d'utiliser vos images ou vidéos pour identifier des personnes sans leur consentement.</li>
+            <li><strong>Améliorer la sécurité :</strong> Protéger l'identité des individus dans des situations sensibles
+                aide à maintenir leur sécurité et leur protection.</li>
+            <li><strong>Promouvoir un partage éthique de contenu :</strong> En utilisant notre outil de floutage de
+                visage, vous encouragez le partage responsable de contenu respectant les droits à la confidentialité des
+                individus.</li>
         </ul>
     </div>
 </div>

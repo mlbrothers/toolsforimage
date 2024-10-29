@@ -1,0 +1,144 @@
+{% extends "fr/base.html" %}
+
+{% block meta_description %}
+<meta name="description" content="Floutez facilement l'arrière-plan de vos images avec l'outil de flou d'arrière-plan de ToolsForImage, alimenté par l'IA. Édition d'images en ligne gratuite utilisant l'intelligence artificielle.">
+{% endblock %}
+
+{% block title %}Floutez les arrière-plans d'images avec l'IA - Outil d'édition d'images en ligne gratuit de ToolsForImage{% endblock %}
+
+{% block content %}
+<h1>Outil de flou d'arrière-plan alimenté par l'IA</h1>
+<p>Floutez facilement l'arrière-plan de vos images grâce à notre algorithme d'intelligence artificielle avancé. Téléchargez une image et laissez notre IA faire le travail pour vous !</p>
+<form id="blur-form" action="/apply-background-blur" method="post" enctype="multipart/form-data">
+    <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Télécharger une image</button>
+    <br>
+    <img id="image-preview" class="image-preview" src="#" alt="Aperçu de l'image" style="display: none;">
+    <br>
+    <button type="submit" class="blur-button" onclick="return validateImageSelection();">Appliquer le flou d'arrière-plan par IA</button>
+</form>
+
+<div class="info-container">
+    <div class="info-section">
+        <h2>Qu'est-ce que le flou d'arrière-plan alimenté par l'IA ?</h2>
+        <p>Notre outil de flou d'arrière-plan alimenté par l'IA utilise des algorithmes avancés d'intelligence artificielle pour détecter automatiquement le sujet principal de votre image et appliquer un effet de flou à l'arrière-plan. Cela crée un effet de profondeur de champ professionnel, similaire à ce que vous pourriez obtenir avec un appareil photo haut de gamme.</p>
+    </div>
+
+    <div class="info-section">
+        <h2>Pourquoi utiliser l'IA pour flouter les arrière-plans d'images ?</h2>
+        <p>Il y a plusieurs avantages à utiliser notre outil de flou d'arrière-plan alimenté par l'IA :</p>
+        <ul>
+            <li><strong>Apparence professionnelle :</strong> Créez des images époustouflantes et professionnelles avec un arrière-plan flou qui attire l'attention sur le sujet principal.</li>
+            <li><strong>Gain de temps :</strong> Notre IA fait le travail pour vous, éliminant ainsi le besoin de retouches manuelles ou de logiciels complexes.</li>
+            <li><strong>Renforcement de la confidentialité :</strong> Floutez les informations sensibles ou les éléments distrayants en arrière-plan de vos photos.</li>
+            <li><strong>Effet artistique :</strong> Apportez une touche créative et artistique à vos images avec un arrière-plan joliment flou.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Comment utiliser notre outil de flou d'arrière-plan par IA</h2>
+        <p>L'utilisation de notre outil de flou d'arrière-plan alimenté par l'intelligence artificielle est rapide et facile :</p>
+        <ol>
+            <li>Cliquez sur le bouton "Télécharger une image" pour sélectionner l'image que vous souhaitez modifier.</li>
+            <li>Une fois votre image téléchargée, cliquez sur "Appliquer le flou d'arrière-plan par IA" pour démarrer le processus.</li>
+            <li>Notre IA analysera votre image, détectera le sujet principal et appliquera un effet de flou à l'arrière-plan.</li>
+            <li>Après le traitement, vous pouvez télécharger votre image nouvellement éditée avec un arrière-plan joliment flou.</li>
+        </ol>
+    </div>
+
+    <div class="info-section">
+        <h2>Applications du flou d'arrière-plan par IA</h2>
+        <p>Notre outil de flou d'arrière-plan alimenté par l'IA peut être utile dans divers scénarios :</p>
+        <ul>
+            <li><strong>Photographie de portrait :</strong> Améliorez les photos de portrait en floutant les arrière-plans distrayants.</li>
+            <li><strong>Photographie de produit :</strong> Faites ressortir les produits en floutant l'arrière-plan dans les photos de produits.</li>
+            <li><strong>Réseaux sociaux :</strong> Créez des publications accrocheuses sur les réseaux sociaux avec des arrière-plans flous de manière professionnelle.</li>
+            <li><strong>Protection de la vie privée :</strong> Floutez les informations sensibles en arrière-plan des images avant de les partager.</li>
+        </ul>
+    </div>
+</div>
+
+<style>
+    h1 {
+        color: var(--secondary-color);
+        font-family: var(--font-family);
+        text-align: center;
+    }
+
+    main {
+        padding: 2em;
+        text-align: center;
+    }
+
+    .upload-button, .blur-button {
+        background-color: var(--link-hover-color);
+        color: var(--background-color);
+        padding: 15px 30px;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        transition: transform 0.3s;
+        border-radius: 5px;
+        margin: 10px 0;
+    }
+
+    .upload-button:hover, .blur-button:hover {
+        transform: scale(1.05);
+    }
+
+    .image-preview {
+        margin-top: 20px;
+        max-width: 100%;
+        max-height: 300px;
+        display: none;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 5px;
+    }
+
+    .info-container {
+        text-align: left;
+        margin-top: 30px;
+    }
+
+    .info-section {
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        color: var(--secondary-color);
+    }
+
+    ul, ol {
+        padding-left: 20px;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+</style>
+
+<script>
+    function validateImageSelection() {
+        const imageUpload = document.getElementById('image-upload');
+        if (!imageUpload.value) {
+            alert('Please select an image to upload.');
+            return false;
+        }
+        return true;
+    }
+
+    function previewImage(event) {
+        const imagePreview = document.getElementById('image-preview');
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+{% endblock %}

@@ -1,25 +1,28 @@
-{% extends "hi/base.html" %}
+{% extends "fr/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="ToolsForImage के लिए अपनी पसंदीदा भाषा चुनें - अंग्रेजी या हिंदी में हमारे छवि उपकरणों तक पहुँचें।">
+<meta name="description" content="Choose your preferred language for ToolsForImage - Access our image tools in English, Hindi, or French.">
 {% endblock %}
 
-{% block title %}भाषा चयन ToolsForImage - मुफ्त ऑनलाइन इमेज एडिटिंग टूल{% endblock %}
+{% block title %}Sélection de la langue ToolsForImage - Outils de retouche d'images en ligne gratuits{% endblock %}
 
 {% block content %}
-<h1>अपनी भाषा चुनें</h1>
-<p>ToolsForImage का उपयोग करने के लिए अपनी पसंदीदा भाषा का चयन करें:</p>
+<h1>Choisissez votre langue</h1>
+<p>Sélectionnez votre langue préférée pour utiliser ToolsForImage :</p>
 <div class="language-container">
     <div class="language-box">
-        <a href="/en">अंग्रेजी (English)</a>
+        <a href="/{{ g.lang }}/en">English</a>
     </div>
     <div class="language-box">
-        <a href="/hi">हिन्दी (Hindi)</a>
+        <a href="/{{ g.lang }}/hi">हिन्दी (Hindi)</a>
     </div>
     <div class="language-box">
-        <a href="/fr">फ्रेंच (French)</a>
+        <a href="/{{ g.lang }}/fr">Français (French)</a>
     </div>
 </div>
+
+
+
 
 <style>
     h1 {
