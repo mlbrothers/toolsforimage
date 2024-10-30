@@ -279,7 +279,7 @@ blogs_list = {
             'image': 'crop-image-blog.svg',
         }
     ],
-    'en': [
+    'fr': [
         {
             'slug': 'how-to-convert-image-from-jpeg-to-jpg',
             'title': 'Comment convertir JPEG en JPG gratuitement en ligne',
