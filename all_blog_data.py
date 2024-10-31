@@ -138,6 +138,19 @@ blogs_list = {
             'description': 'How to crop images images for free online',
             'image': 'crop-image-blog.svg',
         },  
+        {
+            'slug': 'how-to-convert-image-from-jpeg-to-png',
+            'title': 'How to convert jpeg to png free online',
+            'description': 'How to convert your jpeg images to png format for free online',
+            'image': 'webp-to-png-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-jpeg-to-webp',
+            'title': 'How to convert jpeg to webp free online',
+            'description': 'How to convert your jpeg images to webp format for free online',
+            'image': 'webp-to-jpeg-blog.svg',
+        },
+
     ],
     'hi': [
         {
@@ -277,7 +290,20 @@ blogs_list = {
             'title': 'ऑनलाइन इमेज कैसे क्रॉप करें मुफ्त में',
             'description': 'इमेज को मुफ्त में ऑनलाइन कैसे क्रॉप करें',
             'image': 'crop-image-blog.svg',
-        }
+        },
+        {
+            'slug': 'how-to-convert-image-from-jpeg-to-png',
+            'title': 'JPEG को PNG में मुफ्त ऑनलाइन कैसे बदलें',
+            'description': 'अपने JPEG इमेज को मुफ्त में ऑनलाइन PNG फॉर्मेट में कैसे बदलें',
+            'image': 'webp-to-png-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-jpeg-to-webp',
+            'title': "JPEG को WEBP में मुफ्त ऑनलाइन कैसे बदलें",
+            'description': "अपने JPEG चित्रों को मुफ्त ऑनलाइन WEBP प्रारूप में कैसे बदलें",
+            'image': 'webp-to-jpeg-blog.svg',
+        },
+
     ],
     'fr': [
         {
@@ -417,6 +443,18 @@ blogs_list = {
             'title': 'Comment recadrer des images gratuitement en ligne',
             'description': 'Comment recadrer des images gratuitement en ligne',
             'image': 'crop-image-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-jpeg-to-png',
+            'title': 'Comment convertir JPEG en PNG gratuitement en ligne',
+            'description': 'Comment convertir vos images JPEG au format PNG gratuitement en ligne',
+            'image': 'webp-to-png-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-jpeg-to-webp',
+            'title':  "Comment convertir JPEG en WEBP gratuitement en ligne",
+            'description': "Comment convertir vos images JPEG au format WEBP gratuitement en ligne",
+            'image': 'webp-to-jpeg-blog.svg',
         },
     ]
 }
