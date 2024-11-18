@@ -156,7 +156,24 @@ blogs_list = {
             'description': 'Top 3 tools to blur faces or any area in photos online for free.',
             'image': 'best-blur-face-tools-blog.svg',
         },
-
+        {
+            'slug': 'how-to-convert-image-from-jpg-to-bmp',
+            'title': 'How to convert jpg to bmp free online',
+            'description': 'How to convert your jpg images to bmp format for free online',
+            'image': 'bmp-to-png-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-jpg-to-png',
+            'title': 'How to convert jpg to png free online',
+            'description': 'How to convert your jpg images to png format for free online',
+            'image': 'webp-to-png-blog.svg',
+        },
+        {
+            'slug': 'how-to-convert-image-from-png-to-jpeg',
+            'title': 'How to convert png to jpeg free online',
+            'description': 'How to convert your png images to jpeg format for free online',
+            'image': 'jpeg-to-jpg-blog.svg',
+        },
     ],
     'hi': [
         {
@@ -314,8 +331,25 @@ blogs_list = {
             'title': 'फोटो में चेहरा या कोई भी क्षेत्र धुंधला करने के लिए टॉप 3 टूल्स',
             'description': 'फोटो में चेहरा या कोई भी क्षेत्र ऑनलाइन मुफ्त में धुंधला करने के लिए टॉप 3 टूल्स।',
             'image': 'best-blur-face-tools-blog.svg',
-        }
-
+        },
+        {
+            'slug': 'jpg-ko-bmp-me-kaise-badlein',
+            'title': 'JPG को BMP में मुफ्त ऑनलाइन कैसे बदलें',
+            'description': 'अपने JPG इमेज को मुफ्त में ऑनलाइन BMP फॉर्मेट में कैसे बदलें',
+            'image': 'bmp-to-png-blog.svg',
+        },
+        {
+            'slug': 'jpg-ko-png-me-kaise-badlein',
+            'title': 'JPG को PNG में मुफ्त ऑनलाइन कैसे बदलें',
+            'description': 'अपने JPG इमेज को मुफ्त में ऑनलाइन PNG फॉर्मेट में कैसे बदलें',
+            'image': 'webp-to-png-blog.svg',
+        },
+        {
+            'slug': 'png-ko-jpeg-me-kaise-badlein',
+            'title': 'PNG को JPEG में ऑनलाइन मुफ्त में कैसे बदलें',
+            'description': 'कैसे अपने PNG चित्रों को JPEG प्रारूप में मुफ्त में ऑनलाइन बदलें',
+            'image': 'jpeg-to-jpg-blog.svg',
+        },
     ],
     'fr': [
         {
@@ -473,7 +507,24 @@ blogs_list = {
             'title': "Top 3 outils pour flouter les visages ou n'importe quelle zone dans les photos",
             'description': "Top 3 outils pour flouter les visages ou n'importe quelle zone dans les photos en ligne gratuitement.",
             'image': 'best-blur-face-tools-blog.svg',
-        }
-
+        },
+        {
+            'slug': 'comment-convertir-image-de-jpg-a-bmp',
+            'title': 'Comment convertir JPG en BMP gratuitement en ligne',
+            'description': 'Comment convertir vos images JPG au format BMP gratuitement en ligne',
+            'image': 'bmp-to-png-blog.svg',
+        },
+        {
+            'slug': 'comment-convertir-image-de-jpg-a-png',
+            'title': 'Comment convertir JPG en PNG gratuitement en ligne',
+            'description': 'Comment convertir vos images JPG au format PNG gratuitement en ligne',
+            'image': 'webp-to-png-blog.svg',
+        },
+        {
+            'slug': 'comment-convertir-image-de-png-a-jpeg',
+            'title': 'Comment convertir png en jpeg gratuitement en ligne',
+            'description': 'Comment convertir vos images png au format jpeg gratuitement en ligne',
+            'image': 'jpeg-to-jpg-blog.svg',
+        },
     ]
 }
