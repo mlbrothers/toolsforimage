@@ -1,14 +1,14 @@
 {% extends "en/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Convert JPG to PNG images easily with ToolsForImage. Free online JPG to PNG converter.">
+<meta name="description" content="Easily convert JPG to PNG images with ToolsForImage. Free, fast, and secure online JPG to PNG converter for high-quality image transformations.">
 {% endblock %}
 
-{% block title %} JPG to PNG online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}Online JPG to PNG converter | ToolsForImage | Free Online Image converter{% endblock %}
 
 {% block content %}
-<h1>Free JPG to PNG Conversion Tool</h1>
-<p>Easily convert your JPG images to PNG format. Upload a JPG image and we'll convert it to PNG for you.</p>
+<h1>Free online JPG to PNG Converter</h1>
+<p>Easily convert your images from JPG to PNG format. Upload a JPG image and we'll convert it to PNG for you.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/jpg" style="display: none;" onchange="previewImage(event)">
     <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload JPG Image</button>
@@ -23,12 +23,12 @@
 <div class="info-container">
     <div class="info-section">
         <h2>What is JPG to PNG Conversion?</h2>
-        <p>JPG to PNG conversion is the process of changing image files from JPG format to PNG (Portable Network Graphics) format. While JPG is widely used for photos, PNG is better for images that need transparency or high-quality graphics. Our tool allows you to easily convert JPG images to PNG in just a few clicks.</p>
+        <p>JPG to PNG format conversion is the process of changing image files from JPG to PNG (Portable Network Graphics) format. While JPG is widely used for photos, PNG is better for images that need transparency or high-quality graphics. Our tool allows you to easily convert JPG images to PNG in just a few clicks.</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert JPG to PNG?</h2>
-        <p>There are several reasons to convert JPG images to PNG:</p>
+        <h2>Why Convert JPG to PNG format?</h2>
+        <p>There are several reasons to convert JPG images to PNG format:</p>
         <ul>
             <li><strong>Transparency Support:</strong> PNG format allows for transparent backgrounds, making it ideal for logos and graphics.</li>
             <li><strong>Lossless Compression:</strong> PNG files maintain high quality without losing detail, perfect for images that require clarity.</li>

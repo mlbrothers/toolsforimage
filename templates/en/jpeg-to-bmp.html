@@ -1,14 +1,14 @@
 {% extends "en/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Convert JPEG to BMP images easily with ToolsForImage. Free online JPEG to BMP converter.">
+<meta name="description" content="Easily convert JPEG to BMP images with ToolsForImage. Free, fast, and secure online JPEG to BMP converter for high-quality image transformations.">
 {% endblock %}
 
-{% block title %} JPEG to BMP online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}Online JPEG to BMP converter | ToolsForImage | Free Online Image converter{% endblock %}
 
 {% block content %}
-<h1>Free JPEG to BMP Conversion Tool</h1>
-<p>Easily convert your JPEG images to BMP format. Upload a JPEG image and we'll convert it to BMP for you.</p>
+<h1>Free Online JPEG to BMP Converter</h1>
+<p>Easily convert your images from JPEG to BMP format. Upload a JPEG image and we'll convert it to BMP for you.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/jpeg" style="display: none;" onchange="previewImage(event)">
     <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload JPEG Image</button>

@@ -1,14 +1,14 @@
 {% extends "en/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Convert TIFF to JPG images easily with ToolsForImage. Free online TIFF to JPG converter.">
+<meta name="description" content="Easily convert TIFF to JPG images with ToolsForImage. Free, fast, and secure online TIFF to JPG converter for high-quality image transformations.">
 {% endblock %}
 
-{% block title %} TIFF to JPG online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}Online TIFF to JPG converter | ToolsForImage | Free Online Image converter{% endblock %}
 
 {% block content %}
-<h1>Free TIFF to JPG Conversion Tool</h1>
-<p>Easily convert your TIFF images to JPG format. Upload a TIFF image and we'll convert it to JPG for you.</p>
+<h1>Free Online TIFF to JPG Converter</h1>
+<p>Easily convert your images from TIFF to JPG format. Upload a TIFF image and we'll convert it to JPG for you.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/tiff" style="display: none;" onchange="previewImage(event)">
     <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload TIFF Image</button>

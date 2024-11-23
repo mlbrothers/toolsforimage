@@ -1,14 +1,14 @@
 {% extends "en/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Convert PNG to BMP images easily with ToolsForImage. Free online PNG to BMP converter.">
+<meta name="description" content="Easily convert PNG to BMP images with ToolsForImage. Free, fast, and secure online PNG to BMP converter for high-quality image transformations.">
 {% endblock %}
 
-{% block title %} PNG to BMP online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}Online PNG to BMP converter | ToolsForImage | Free Online Image converter{% endblock %}
 
 {% block content %}
-<h1>Free PNG to BMP Conversion Tool</h1>
-<p>Easily convert your PNG images to BMP format. Upload a PNG image and we'll convert it to BMP for you.</p>
+<h1>Free Online PNG to BMP Converter</h1>
+<p>Easily convert your images from PNG to BMP format. Upload a PNG image and we'll convert it to BMP for you.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/png" style="display: none;" onchange="previewImage(event)">
     <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload PNG Image</button>

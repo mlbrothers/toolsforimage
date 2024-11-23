@@ -1,14 +1,14 @@
 {% extends "en/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Convert ICO to WebP images easily with ToolsForImage. Free online ICO to WebP converter.">
+<meta name="description" content="Easily convert ICO to WEBP images with ToolsForImage. Free, fast, and secure online ICO to WEBP converter for high-quality image transformations.">
 {% endblock %}
 
-{% block title %} ICO to WebP online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}Online ICO to WEBP converter | ToolsForImage | Free Online Image converter{% endblock %}
 
 {% block content %}
-<h1>Free ICO to WebP Conversion Tool</h1>
-<p>Easily convert your ICO images to WebP format. Upload an ICO image and we'll convert it to WebP for you.</p>
+<h1>Free Online ICO to WEBP Converter</h1>
+<p>Easily convert your images from ICO to WebP format. Upload an ICO image and we'll convert it to WebP for you.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/x-icon" style="display: none;" onchange="previewImage(event)">
     <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload ICO Image</button>

@@ -1,14 +1,14 @@
 {% extends "en/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Convert webp to JPEG images easily with ToolsForImage. Free online webp to JPEG converter.">
+<meta name="description" content="Easily convert WEBP to JPEG images with ToolsForImage. Free, fast, and secure online WEBP to JPEG converter for high-quality image transformations.">
 {% endblock %}
 
-{% block title %} webp to JPEG online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}Online WEBP to JPEG converter | ToolsForImage | Free Online Image converter{% endblock %}
 
 {% block content %}
-<h1>Free Webp to JPEG Conversion Tool</h1>
-<p>Easily convert your webp images to JPEG format. Upload a webp image and we'll convert it to JPEG for you.</p>
+<h1>Free Online WEBP to JPEG Converter</h1>
+<p>Easily convert your images from WebP to JPEG format. Upload a webp image and we'll convert it to JPEG for you.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/webp" style="display: none;" onchange="previewImage(event)">
     <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload webp Image</button>

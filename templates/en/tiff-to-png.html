@@ -1,14 +1,14 @@
 {% extends "en/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Convert TIFF to PNG images easily with ToolsForImage. Free online TIFF to PNG converter.">
+<meta name="description" content="Easily convert TIFF to PNG images with ToolsForImage. Free, fast, and secure online TIFF to PNG converter for high-quality image transformations.">
 {% endblock %}
 
-{% block title %} TIFF to PNG online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}Online TIFF to PNG converter | ToolsForImage | Free Online Image converter{% endblock %}
 
 {% block content %}
-<h1>Free TIFF to PNG Conversion Tool</h1>
-<p>Easily convert your TIFF images to PNG format. Upload a TIFF image and we'll convert it to PNG for you.</p>
+<h1>Free Online TIFF to PNG Converter</h1>
+<p>Easily convert your images from TIFF to PNG format. Upload a TIFF image and we'll convert it to PNG for you.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/tiff" style="display: none;" onchange="previewImage(event)">
     <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload TIFF Image</button>

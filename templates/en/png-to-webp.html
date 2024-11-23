@@ -1,14 +1,14 @@
 {% extends "en/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Convert PNG to WebP images easily with ToolsForImage. Free online PNG to WebP converter.">
+<meta name="description" content="Easily convert PNG to WEBP images with ToolsForImage. Free, fast, and secure online PNG to WEBP converter for high-quality image transformations.">
 {% endblock %}
 
-{% block title %} PNG to WebP online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}Online PNG to WEBP converter | ToolsForImage | Free Online Image converter{% endblock %}
 
 {% block content %}
-<h1>Free PNG to WebP Conversion Tool</h1>
-<p>Easily convert your PNG images to WebP format. Upload a PNG image and we'll convert it to WebP for you.</p>
+<h1>Free Online PNG to WEBP Converter</h1>
+<p>Easily convert your images from PNG to WebP format. Upload a PNG image and we'll convert it to WebP for you.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/png" style="display: none;" onchange="previewImage(event)">
     <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload PNG Image</button>

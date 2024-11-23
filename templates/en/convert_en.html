@@ -1,15 +1,15 @@
 {% extends "en/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Convert your images effortlessly with ToolsForImage. Change image formats without losing quality.">
+<meta name="description" content="Easily convert your images with ToolsForImage's free online tools. Change image formats quickly without losing quality for seamless file transformations.">
 {% endblock %}
 
-{% block title %}Convert Image online ToolsForImage - Free Online Image Editing Tools{% endblock %}
+{% block title %}Convert Image online | ToolsForImage | Comprehensive Free Online Tools for Image Conversion, Editing, Resizing, Remove Background, Blur background and More{% endblock %}
 
 {% block content %}
-<h1>Free Image Format Conversion Tool</h1>
+<h1>Free Online Image Format Converter</h1>
 <p>Effortlessly convert your image to a different format. Upload an image and select the desired output format.</p>
-<p>Supported formats: PNG, JPG, JPEG, BMP, TIFF, WEBP</p>
+<p>Supported formats: PNG, JPG, JPEG, BMP, TIFF, WEBP, ICO</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
     <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload from Computer</button>
