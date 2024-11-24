@@ -4,11 +4,11 @@
 <meta name="description" content="Floutez facilement l'arrière-plan de vos images avec l'outil de flou d'arrière-plan de ToolsForImage, alimenté par l'IA. Édition d'images en ligne gratuite utilisant l'intelligence artificielle.">
 {% endblock %}
 
-{% block title %}Floutez les arrière-plans d'images avec l'IA - Outil d'édition d'images en ligne gratuit de ToolsForImage{% endblock %}
+{% block title %}Floutez les arrière-plans d'images avec l'IA | ToolsForImage | Outils en ligne gratuits et complets pour flouter les visages, convertir des images, éditer, redimensionner, supprimer l'arrière-plan, flouter l'arrière-plan et bien plus encore{% endblock %}
 
 {% block content %}
 <h1>Outil de flou d'arrière-plan alimenté par l'IA</h1>
-<p>Floutez facilement l'arrière-plan de vos images grâce à notre algorithme d'intelligence artificielle avancé. Téléchargez une image et laissez notre IA faire le travail pour vous !</p>
+<p>Floutez facilement l'arrière-plan de vos images grâce à notre algorithme d'intelligence artificielle avancé. Téléchargez une image et laissez notre IA faire le travail pour vous!</p>
 <form id="blur-form" action="/apply-background-blur" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
     <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Télécharger une image</button>
