@@ -1,0 +1,144 @@
+{% extends "zh/base.html" %}
+
+{% block title %}免费在线AI背景模糊工具 | ToolsForImage | 提供全面的免费在线工具，支持模糊人脸、图片转换、编辑、调整大小、去除背景、模糊背景等{% endblock %}
+
+{% block meta_description %}
+<meta name="description" content="使用 ToolsForImage 的AI驱动背景模糊工具，轻松免费在线模糊图片背景。借助人工智能免费实现背景模糊。">
+{% endblock %}
+
+{% block content %}
+<h1>免费在线AI驱动背景模糊工具</h1>
+<p>使用我们先进的人工智能算法，轻松模糊图片背景。上传图片，让我们的AI为您完成工作！</p>
+<form id="blur-form" action="/apply-background-blur" method="post" enctype="multipart/form-data">
+    <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">上传图片</button>
+    <br>
+    <img id="image-preview" class="image-preview" src="#" alt="图片预览" style="display: none;">
+    <br>
+    <button type="submit" class="blur-button" onclick="return validateImageSelection();">应用AI背景模糊</button>
+</form>
+
+<div class="info-container">
+    <div class="info-section">
+        <h2>什么是AI驱动的背景模糊？</h2>
+        <p>我们的AI驱动背景模糊工具使用先进的人工智能算法，自动检测图片中的主要主体，并对背景应用模糊效果。这种效果类似于使用高端相机实现的专业景深效果。</p>
+    </div>
+
+    <div class="info-section">
+        <h2>为什么使用AI模糊图片背景？</h2>
+        <p>使用我们AI驱动背景模糊工具有以下几个好处：</p>
+        <ul>
+            <li><strong>专业效果：</strong>创建专业外观的图片，模糊背景以突出主要主体。</li>
+            <li><strong>节省时间：</strong>我们的AI为您完成工作，无需手动编辑或复杂软件。</li>
+            <li><strong>增强隐私：</strong>模糊照片背景中的敏感信息或干扰元素。</li>
+            <li><strong>艺术效果：</strong>通过美观的背景模糊，为您的图片增添创意和艺术气息。</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>如何使用我们的AI背景模糊工具</h2>
+        <p>使用我们的AI驱动背景模糊工具快速又简单：</p>
+        <ol>
+            <li>点击“上传图片”按钮，选择您想要编辑的图片。</li>
+            <li>图片上传后，点击“应用AI背景模糊”开始处理。</li>
+            <li>我们的AI将分析您的图片，检测主要主体，并对背景应用模糊效果。</li>
+            <li>处理完成后，您可以下载具有美丽模糊背景的编辑图片。</li>
+        </ol>
+    </div>
+
+    <div class="info-section">
+        <h2>AI背景模糊的应用场景</h2>
+        <p>我们的AI驱动背景模糊工具可在多种场景中发挥作用：</p>
+        <ul>
+            <li><strong>人像摄影：</strong>通过模糊干扰背景，提升人像照片效果。</li>
+            <li><strong>产品摄影：</strong>通过模糊产品照片的背景，让产品更加突出。</li>
+            <li><strong>社交媒体：</strong>创建吸引眼球的社交媒体帖子，呈现专业模糊背景。</li>
+            <li><strong>隐私保护：</strong>在分享前模糊图片背景中的敏感信息。</li>
+        </ul>
+    </div>
+</div>
+
+<style>
+    h1 {
+        color: var(--secondary-color);
+        font-family: var(--font-family);
+        text-align: center;
+    }
+
+    main {
+        padding: 2em;
+        text-align: center;
+    }
+
+    .upload-button, .blur-button {
+        background-color: var(--link-hover-color);
+        color: var(--background-color);
+        padding: 15px 30px;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        transition: transform 0.3s;
+        border-radius: 5px;
+        margin: 10px 0;
+    }
+
+    .upload-button:hover, .blur-button:hover {
+        transform: scale(1.05);
+    }
+
+    .image-preview {
+        margin-top: 20px;
+        max-width: 100%;
+        max-height: 300px;
+        display: none;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 5px;
+    }
+
+    .info-container {
+        text-align: left;
+        margin-top: 30px;
+    }
+
+    .info-section {
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        color: var(--secondary-color);
+    }
+
+    ul, ol {
+        padding-left: 20px;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+</style>
+
+<script>
+    function validateImageSelection() {
+        const imageUpload = document.getElementById('image-upload');
+        if (!imageUpload.value) {
+            alert('Please select an image to upload.');
+            return false;
+        }
+        return true;
+    }
+
+    function previewImage(event) {
+        const imagePreview = document.getElementById('image-preview');
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+{% endblock %}
