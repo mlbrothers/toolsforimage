@@ -1,81 +1,81 @@
-{% extends "en/base.html" %}
+{% extends "zh/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert WEBP to ICO images with ToolsForImage. Free, fast, and secure online WEBP to ICO converter for high-quality image transformations.">
+<meta name="description" content="使用 ToolsForImage 轻松将 WEBP 转换为 ICO 图片。免费、快速且安全的在线 WEBP 到 ICO 转换器，提供高质量的图片转换服务。">
 {% endblock %}
 
-{% block title %}Online WEBP to ICO converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}在线 WEBP 到 ICO 转换器 | ToolsForImage | 免费在线图片转换器{% endblock %}
 
 {% block content %}
-<h1>Free Online WEBP to ICO Converter</h1>
-<p>Easily convert your images from WebP to ICO format. Upload a WebP image and we'll convert it to ICO for you.</p>
+<h1>免费在线 WEBP 到 ICO 转换器</h1>
+<p>轻松将您的图片从 WEBP 格式转换为 ICO 格式。上传一个 WEBP 图片，我们将为您转换为 ICO 格式。</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/webp" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload WebP Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">上传 WEBP 图片</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="图片预览" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="webp">
     <input type="hidden" name="output_format" value="ico">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to ICO</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">转换为 ICO</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is WebP to ICO Conversion?</h2>
-        <p>WebP to ICO conversion is the process of changing image files from WebP format to ICO format. ICO is a file format used for icons in Microsoft Windows. This conversion is useful when you need to create icons for Windows applications, websites, or favicons.</p>
+        <h2>什么是 WEBP 到 ICO 转换？</h2>
+        <p>WEBP 到 ICO 转换是将图片文件从 WEBP 格式更改为 ICO 格式的过程。ICO 是 Microsoft Windows 图标使用的文件格式。当您需要为 Windows 应用程序、网站或图标创建图标时，此转换非常有用。</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert WebP to ICO?</h2>
-        <p>There are several reasons to convert WebP images to ICO:</p>
+        <h2>为什么要将 WEBP 转换为 ICO？</h2>
+        <p>将 WEBP 图片转换为 ICO 格式的原因有很多：</p>
         <ul>
-            <li><strong>Create Windows Icons:</strong> ICO is the standard format for Windows application icons.</li>
-            <li><strong>Website Favicons:</strong> ICO is commonly used for website favicons, the small icons displayed in browser tabs.</li>
-            <li><strong>Multiple Sizes:</strong> ICO files can contain multiple image sizes in one file, useful for different display scenarios.</li>
+            <li><strong>创建 Windows 图标：</strong>ICO 是 Windows 应用程序图标的标准格式。</li>
+            <li><strong>网站图标：</strong>ICO 常用于网站图标，例如浏览器标签中显示的小图标。</li>
+            <li><strong>多种尺寸：</strong>ICO 文件可以包含多个不同尺寸的图像，适用于不同显示场景。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our WebP to ICO Converter</h2>
-        <p>Using our WebP to ICO conversion tool is simple and quick. Here's how it works:</p>
+        <h2>如何使用我们的 WEBP 到 ICO 转换器</h2>
+        <p>使用我们的 WEBP 到 ICO 转换工具简单快捷，操作步骤如下：</p>
         <ul>
-            <li>Click the "Upload WebP File" button to select the WebP image you want to convert.</li>
-            <li>Once your image is uploaded, our tool will automatically start converting it to ICO format.</li>
-            <li>After the conversion is complete, click "Download ICO" to save your new icon file to your device.</li>
+            <li>点击“上传 WEBP 文件”按钮，选择您要转换的 WEBP 图片。</li>
+            <li>图片上传后，我们的工具会自动开始转换为 ICO 格式。</li>
+            <li>转换完成后，点击“下载 ICO”即可将新的图标文件保存到您的设备。</li>
         </ul>
-        <p>Our converter supports various WebP files, ensuring a smooth and efficient conversion experience for all users.</p>
+        <p>我们的转换器支持多种 WEBP 文件格式，确保为所有用户提供流畅高效的转换体验。</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our WebP to ICO Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>使用我们的 WEBP 到 ICO 转换器的优势</h2>
+        <p>以下是使用我们转换工具的几个优势：</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Convert your WebP images to ICO quickly with just a few clicks.</li>
-            <li><strong>High Quality:</strong> Maintain image quality during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, with no downloads or installations needed.</li>
-            <li><strong>User-Friendly Interface:</strong> Our tool is designed to be intuitive and easy to navigate for everyone.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for WebP to ICO Conversion</h2>
-        <p>Here are some common situations where converting WebP to ICO can be helpful:</p>
-        <ul>
-            <li><strong>Application Development:</strong> Create icons for Windows applications.</li>
-            <li><strong>Web Design:</strong> Generate favicons for websites to display in browser tabs and bookmarks.</li>
-            <li><strong>Custom Folder Icons:</strong> Create personalized icons for Windows folders.</li>
-            <li><strong>Desktop Shortcuts:</strong> Design custom icons for desktop shortcuts.</li>
+            <li><strong>快速便捷：</strong>仅需几次点击即可快速将 WEBP 图片转换为 ICO。</li>
+            <li><strong>高质量：</strong>转换过程中保持图片质量不变。</li>
+            <li><strong>免费可用：</strong>我们的工具可免费在线使用，无需下载或安装。</li>
+            <li><strong>用户友好：</strong>我们的工具设计直观，易于操作。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting WebP to ICO Can Help</h2>
-        <p>Converting your WebP images to ICO can enhance their usability in specific contexts. Here's how:</p>
+        <h2>WEBP 到 ICO 转换的常见用途</h2>
+        <p>以下是一些 WEBP 转换为 ICO 的常见场景：</p>
         <ul>
-            <li><strong>Windows Compatibility:</strong> ICO is the native icon format for Windows, ensuring proper display.</li>
-            <li><strong>Web Standards:</strong> ICO is widely supported as the favicon format across different browsers.</li>
-            <li><strong>Multiple Resolutions:</strong> ICO files can store multiple image sizes, useful for different display scenarios.</li>
+            <li><strong>应用开发：</strong>创建 Windows 应用程序的图标。</li>
+            <li><strong>网页设计：</strong>为网站生成在浏览器标签和书签中显示的图标。</li>
+            <li><strong>自定义文件夹图标：</strong>为 Windows 文件夹创建个性化图标。</li>
+            <li><strong>桌面快捷方式：</strong>为桌面快捷方式设计自定义图标。</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>将 WEBP 转换为 ICO 如何帮助您？</h2>
+        <p>将您的 WEBP 图片转换为 ICO 格式可以在特定场景中提升图片的可用性。以下是一些优势：</p>
+        <ul>
+            <li><strong>Windows 兼容性：</strong>ICO 是 Windows 的本地图标格式，确保正确显示。</li>
+            <li><strong>网页标准：</strong>ICO 是不同浏览器广泛支持的图标格式。</li>
+            <li><strong>多分辨率：</strong>ICO 文件可存储多个图像尺寸，适用于不同显示场景。</li>
         </ul>
     </div>
 </div>

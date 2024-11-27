@@ -1,28 +1,28 @@
-{% extends "en/base.html" %}
+{% extends "zh/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Choose your preferred language for ToolsForImage - Access our image tools in English, Hindi, or French.">
+<meta name="description" content="选择您喜欢的语言，访问 ToolsForImage - 使用我们的图像工具，支持英语、印地语或法语。">
 {% endblock %}
 
-{% block title %}Language Selection | ToolsForImage | Comprehensive Free Online Tools for Blur Faces, Image Conversion, Editing, Resizing, Remove Background, Blur background and More{% endblock %}
+{% block title %}语言选择 | ToolsForImage | 综合免费在线工具，包括模糊人脸、图像转换、编辑、调整大小、去背景、模糊背景等{% endblock %}
 
 {% block content %}
-<h1>Choose Your Language</h1>
-<p>Select your preferred language to use ToolsForImage:</p>
+<h1>选择您的语言</h1>
+<p>选择您喜欢的语言以使用 ToolsForImage：</p>
 <div class="language-container">
     <div class="language-box">
-        <a href="/en">English</a>
+        <a href="/{{ g.lang }}/en">英语 (English)</a>
     </div>
     <div class="language-box">
-        <a href="/hi">हिन्दी (Hindi)</a>
+        <a href="/{{ g.lang }}/hi">हिन्दी (Hindi)</a>
     </div>
     <div class="language-box">
-        <a href="/fr">Français (French)</a>
+        <a href="/{{ g.lang }}/fr">Français (French)</a>
+    </div>
+    <div class="language-box">
+        <a href="/{{ g.lang }}/zh">中文 (Chinese)</a>
     </div>
 </div>
-
-
-
 
 <style>
     h1 {

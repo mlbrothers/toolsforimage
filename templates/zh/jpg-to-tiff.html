@@ -1,84 +1,85 @@
-{% extends "en/base.html" %}
+{% extends "zh/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert JPG to TIFF images with ToolsForImage. Free, fast, and secure online JPG to TIFF converter for high-quality image transformations.">
+<meta name="description" content="轻松使用 ToolsForImage 将 JPG 转换为 TIFF 图像。免费、快速、安全的在线 JPG 到 TIFF 转换器，为您提供高质量的图像转换服务。">
 {% endblock %}
 
-{% block title %}Online JPG to TIFF converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}在线 JPG 到 TIFF 转换器 | ToolsForImage | 免费在线图像转换器{% endblock %}
 
 {% block content %}
-<h1>Free Online JPG to TIFF Converter</h1>
-<p>Easily convert your images from JPG to TIFF format. Upload a JPG image and we'll convert it to TIFF for you.</p>
+<h1>免费在线 JPG 到 TIFF 转换器</h1>
+<p>轻松将您的图像从 JPG 格式转换为 TIFF 格式。上传 JPG 图像，我们将为您将其转换为 TIFF。</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/jpg" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload JPG Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">上传 JPG 图像</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="图像预览" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="jpg">
     <input type="hidden" name="output_format" value="tiff">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to TIFF</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">转换为 TIFF</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is JPG to TIFF Conversion?</h2>
-        <p>JPG to TIFF conversion is the process of changing image files from JPG format to TIFF (Tagged Image File Format). JPG is commonly used for photographs, while TIFF is known for its high quality and versatility in professional settings. Our tool makes it easy to convert JPG images to TIFF format quickly and efficiently.</p>
+        <h2>什么是 JPG 到 TIFF 转换？</h2>
+        <p>JPG 到 TIFF 转换是将图像文件从 JPG 格式转换为 TIFF（标签图像文件格式）的过程。JPG 常用于照片，而 TIFF 因其高质量和在专业领域的多功能性而著称。我们的工具使您可以快速高效地将 JPG 图像转换为 TIFF 格式。</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert JPG to TIFF?</h2>
-        <p>There are several reasons to convert JPG images to TIFF:</p>
+        <h2>为什么要将 JPG 转换为 TIFF？</h2>
+        <p>以下是将 JPG 图像转换为 TIFF 的一些原因：</p>
         <ul>
-            <li><strong>High-Quality Images:</strong> TIFF files support lossless compression, which preserves the quality of your images, making them ideal for printing and archiving.</li>
-            <li><strong>Better Editing Capabilities:</strong> TIFF format is widely used in professional editing software, allowing for more detailed and flexible image manipulation.</li>
-            <li><strong>Color Depth:</strong> TIFF files can store images with higher color depth, resulting in richer colors and smoother gradients.</li>
+            <li><strong>高质量图像：</strong>TIFF 文件支持无损压缩，可以保留图像质量，非常适合打印和存档。</li>
+            <li><strong>更好的编辑能力：</strong>TIFF 格式广泛应用于专业编辑软件中，可以进行更详细和灵活的图像操作。</li>
+            <li><strong>色彩深度：</strong>TIFF 文件可以存储具有更高色彩深度的图像，从而呈现更丰富的颜色和更平滑的渐变。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our JPG to TIFF Converter</h2>
-        <p>Using our JPG to TIFF conversion tool is simple. Here’s how to do it:</p>
+        <h2>如何使用我们的 JPG 到 TIFF 转换器</h2>
+        <p>使用我们的 JPG 到 TIFF 转换工具非常简单。以下是操作步骤：</p>
         <ul>
-            <li>Click the "Upload JPG File" button to select the JPG image you want to convert.</li>
-            <li>After uploading, our tool will automatically process the conversion to TIFF format.</li>
-            <li>Once the conversion is complete, click "Download TIFF" to save your new image to your device.</li>
+            <li>点击“上传 JPG 文件”按钮，选择您要转换的 JPG 图像。</li>
+            <li>上传后，我们的工具将自动将其转换为 TIFF 格式。</li>
+            <li>转换完成后，点击“下载 TIFF”按钮，将新图像保存到您的设备。</li>
         </ul>
-        <p>Our converter supports a wide range of JPG files, ensuring a smooth conversion experience every time.</p>
+        <p>我们的转换器支持多种 JPG 文件，确保每次都有流畅的转换体验。</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our JPG to TIFF Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>使用我们 JPG 到 TIFF 转换器的优势</h2>
+        <p>以下是使用我们转换工具的一些优势：</p>
         <ul>
-            <li><strong>Fast and Convenient:</strong> Convert your JPG images to TIFF in just a few clicks, without any hassle.</li>
-            <li><strong>Quality Preservation:</strong> Enjoy high-quality output without losing any details during the conversion.</li>
-            <li><strong>Free and Online:</strong> Use our converter for free, directly in your web browser, with no downloads required.</li>
-            <li><strong>User-Friendly Interface:</strong> Designed for ease of use, our tool is accessible to everyone, regardless of technical skills.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for JPG to TIFF Conversion</h2>
-        <p>Here are a few situations where converting JPG to TIFF can be beneficial:</p>
-        <ul>
-            <li><strong>Professional Photography:</strong> Photographers often use TIFF format for its high quality and ability to handle detailed images.</li>
-            <li><strong>Graphic Design:</strong> Designers may convert JPGs to TIFF for projects requiring high-resolution images and more color depth.</li>
-            <li><strong>Archiving:</strong> TIFF is a preferred format for archiving images, ensuring long-term storage without quality loss.</li>
-            <li><strong>Print Production:</strong> Use TIFF images for printing to achieve the best results in color accuracy and detail.</li>
+            <li><strong>快速便捷：</strong>只需几次点击即可将 JPG 图像转换为 TIFF，操作简单。</li>
+            <li><strong>质量保证：</strong>在转换过程中保持高质量输出，无任何细节丢失。</li>
+            <li><strong>免费在线工具：</strong>直接在浏览器中免费使用我们的转换器，无需下载。</li>
+            <li><strong>用户友好的界面：</strong>我们专为用户设计的工具简单易用，无论您是否具备技术背景。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting JPG to TIFF Can Help</h2>
-        <p>Converting your JPG images to TIFF can enhance their usability and appearance. Here’s how:</p>
+        <h2>JPG 到 TIFF 转换的常见用途</h2>
+        <p>以下是一些将 JPG 转换为 TIFF 的适用场景：</p>
         <ul>
-            <li><strong>Improved Quality:</strong> TIFF files maintain high image quality, making them ideal for professional use.</li>
-            <li><strong>Better Editing:</strong> Use TIFF images in editing software to achieve precise and detailed adjustments.</li>
-            <li><strong>Increased Compatibility:</strong> TIFF is widely supported by various graphic and printing software, ensuring smooth workflows.</li>
+            <li><strong>专业摄影：</strong>摄影师通常使用 TIFF 格式，因为它能够处理细节丰富的高质量图像。</li>
+            <li><strong>图形设计：</strong>设计师可能会将 JPG 转换为 TIFF，以用于需要高分辨率图像和更多色彩深度的项目。</li>
+            <li><strong>图像存档：</strong>TIFF 是图像存档的首选格式，可确保长期存储且不丢失质量。</li>
+            <li><strong>印刷制作：</strong>使用 TIFF 图像进行印刷，可以在色彩准确性和细节方面达到最佳效果。</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>将 JPG 转换为 TIFF 的好处</h2>
+        <p>将您的 JPG 图像转换为 TIFF 可以提高其实用性和外观。以下是一些具体好处：</p>
+        <ul>
+            <li><strong>提升质量：</strong>TIFF 文件保持高图像质量，非常适合专业用途。</li>
+            <li><strong>更好的编辑：</strong>在编辑软件中使用 TIFF 图像，可以实现精确和详细的调整。</li>
+            <li><strong>增强兼容性：</strong>TIFF 被多种图形和打印软件广泛支持，确保工作流程的顺畅。</li>
         </ul>
     </div>
 </div>
+
 
 <style>
     h1 {

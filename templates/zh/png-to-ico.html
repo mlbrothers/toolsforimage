@@ -1,84 +1,85 @@
-{% extends "en/base.html" %}
+{% extends "zh/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert PNG to ICO images with ToolsForImage. Free, fast, and secure online PNG to ICO converter for high-quality image transformations.">
+<meta name="description" content="轻松将PNG图像转换为ICO图像，使用ToolsForImage。免费的、快速的、安全的在线PNG到ICO转换器，提供高质量的图像转换。">
 {% endblock %}
 
-{% block title %}Online PNG to ICO converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}在线PNG到ICO转换器 | ToolsForImage | 免费的在线图像转换器{% endblock %}
 
 {% block content %}
-<h1>Free Online PNG to ICO Converter</h1>
-<p>Easily convert your images from PNG to ICO format. Upload a PNG image and we'll convert it to ICO for you.</p>
+<h1>免费在线PNG到ICO转换器</h1>
+<p>轻松将您的PNG图像转换为ICO格式。上传PNG图像，我们将为您转换为ICO格式。</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/png" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload PNG Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">上传PNG图像</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="图像预览" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="png">
     <input type="hidden" name="output_format" value="ico">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to ICO</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">转换为ICO</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is PNG to ICO Conversion?</h2>
-        <p>PNG to ICO conversion is the process of changing image files from PNG format to ICO format. ICO is a file format used for icons in Microsoft Windows. This conversion is useful when you need to create icons for Windows applications, websites, or favicons.</p>
+        <h2>什么是PNG到ICO转换？</h2>
+        <p>PNG到ICO转换是将PNG格式的图像文件转换为ICO格式的过程。ICO是用于Windows操作系统中图标的文件格式。此转换在您需要为Windows应用程序、网站或网站图标（favicon）创建图标时非常有用。</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert PNG to ICO?</h2>
-        <p>There are several reasons to convert PNG images to ICO:</p>
+        <h2>为什么要将PNG转换为ICO？</h2>
+        <p>将PNG图像转换为ICO有以下几个理由：</p>
         <ul>
-            <li><strong>Create Windows Icons:</strong> ICO is the standard format for Windows application icons.</li>
-            <li><strong>Website Favicons:</strong> ICO is commonly used for website favicons, the small icons displayed in browser tabs.</li>
-            <li><strong>Multiple Sizes:</strong> ICO files can contain multiple image sizes in one file, useful for different display scenarios.</li>
+            <li><strong>创建Windows图标：</strong>ICO是Windows应用程序图标的标准格式。</li>
+            <li><strong>网站图标：</strong>ICO通常用于网站的favicon，浏览器标签页中显示的小图标。</li>
+            <li><strong>多种尺寸：</strong>ICO文件可以在一个文件中包含多个图像尺寸，适用于不同的显示场景。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our PNG to ICO Converter</h2>
-        <p>Using our PNG to ICO conversion tool is simple and quick. Here's how it works:</p>
+        <h2>如何使用我们的PNG到ICO转换器</h2>
+        <p>使用我们的PNG到ICO转换工具既简单又快速。以下是操作步骤：</p>
         <ul>
-            <li>Click the "Upload PNG File" button to select the PNG image you want to convert.</li>
-            <li>Once your image is uploaded, our tool will automatically start converting it to ICO format.</li>
-            <li>After the conversion is complete, click "Download ICO" to save your new icon file to your device.</li>
+            <li>点击“上传PNG文件”按钮，选择您要转换的PNG图像。</li>
+            <li>上传图像后，我们的工具将自动开始将其转换为ICO格式。</li>
+            <li>转换完成后，点击“下载ICO”按钮，将新的图标文件保存到您的设备。</li>
         </ul>
-        <p>Our converter supports various PNG files, ensuring a smooth and efficient conversion experience for all users.</p>
+        <p>我们的转换器支持各种PNG文件，确保为所有用户提供流畅、高效的转换体验。</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our PNG to ICO Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>使用我们的PNG到ICO转换器的好处</h2>
+        <p>以下是使用我们转换工具的一些优势：</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Convert your PNG images to ICO quickly with just a few clicks.</li>
-            <li><strong>High Quality:</strong> Maintain image quality during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, with no downloads or installations needed.</li>
-            <li><strong>User-Friendly Interface:</strong> Our tool is designed to be intuitive and easy to navigate for everyone.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for PNG to ICO Conversion</h2>
-        <p>Here are some common situations where converting PNG to ICO can be helpful:</p>
-        <ul>
-            <li><strong>Application Development:</strong> Create icons for Windows applications.</li>
-            <li><strong>Web Design:</strong> Generate favicons for websites to display in browser tabs and bookmarks.</li>
-            <li><strong>Custom Folder Icons:</strong> Create personalized icons for Windows folders.</li>
-            <li><strong>Desktop Shortcuts:</strong> Design custom icons for desktop shortcuts.</li>
+            <li><strong>快速简便：</strong>只需几次点击即可快速将PNG图像转换为ICO格式。</li>
+            <li><strong>高质量：</strong>在转换过程中保持图像质量。</li>
+            <li><strong>免费且可访问：</strong>直接在您的浏览器中使用我们的在线工具，无需下载或安装任何软件。</li>
+            <li><strong>用户友好的界面：</strong>我们的工具设计直观，任何人都可以轻松使用。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting PNG to ICO Can Help</h2>
-        <p>Converting your PNG images to ICO can enhance their usability in specific contexts. Here's how:</p>
+        <h2>PNG到ICO转换的常见用途</h2>
+        <p>以下是一些在特定情况下转换PNG为ICO的常见用途：</p>
         <ul>
-            <li><strong>Windows Compatibility:</strong> ICO is the native icon format for Windows, ensuring proper display.</li>
-            <li><strong>Web Standards:</strong> ICO is widely supported as the favicon format across different browsers.</li>
-            <li><strong>Multiple Resolutions:</strong> ICO files can store multiple image sizes, useful for different display scenarios.</li>
+            <li><strong>应用程序开发：</strong>为Windows应用程序创建图标。</li>
+            <li><strong>网页设计：</strong>为网站生成favicon，用于浏览器标签和书签。</li>
+            <li><strong>自定义文件夹图标：</strong>为Windows文件夹创建个性化图标。</li>
+            <li><strong>桌面快捷方式：</strong>为桌面快捷方式设计自定义图标。</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>将PNG转换为ICO如何帮助您</h2>
+        <p>将PNG图像转换为ICO可以增强其在特定上下文中的可用性。以下是一些好处：</p>
+        <ul>
+            <li><strong>Windows兼容性：</strong>ICO是Windows的原生图标格式，确保图标正确显示。</li>
+            <li><strong>网页标准：</strong>ICO在不同浏览器中广泛支持，作为网站的favicon格式。</li>
+            <li><strong>多种分辨率：</strong>ICO文件可以存储多个图像尺寸，适用于不同的显示场景。</li>
         </ul>
     </div>
 </div>
+
 
 <style>
     h1 {

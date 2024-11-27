@@ -1,59 +1,59 @@
-{% extends "en/base.html" %}
+{% extends "zh/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Remove background from images effortlessly with ToolsForImage's advanced AI-powered tool. Our free online background removal service utilizes cutting-edge artificial intelligence for precise and professional results.">
+<meta name="description" content="通过ToolsForImage的先进AI驱动工具轻松去除图像背景。我们免费的在线背景去除服务利用最先进的人工智能技术，提供精确和专业的结果。">
 {% endblock %}
 
-{% block title %}AI-Powered Background Removal Tool | ToolsForImage | Comprehensive Free Online Tools for Blur Faces, Image Conversion, Editing, Resizing, Remove Background, Blur background and More{% endblock %}
+{% block title %}AI驱动的背景去除工具 | ToolsForImage | 全面免费的在线工具，包括模糊人脸、图像转换、编辑、调整大小、去除背景、模糊背景等{% endblock %}
 
 {% block content %}
-<h1>Free Online Background Remover using AI</h1>
-<p>Experience the power of artificial intelligence in image editing. Our advanced AI algorithms make it incredibly easy to remove backgrounds from your images with unparalleled accuracy and efficiency. Simply upload an image, and let our state-of-the-art machine learning model do the rest.</p>
+<h1>使用AI的免费在线背景去除工具</h1>
+<p>体验图像编辑中的人工智能力量。我们先进的AI算法使得从图像中去除背景变得异常简单，精度和效率无与伦比。只需上传图像，让我们最先进的机器学习模型来完成其余的工作。</p>
 <form id="background-removal-form" action="/remove-background" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">上传图像</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="图像预览" style="display: none;">
     <br>
-    <button type="submit" class="remove-bg-button" onclick="return validateImageSelection();">Remove Background with AI</button>
+    <button type="submit" class="remove-bg-button" onclick="return validateImageSelection();">使用AI去除背景</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is AI-Powered Background Removal?</h2>
-        <p>AI-powered background removal is a cutting-edge process that uses artificial intelligence and machine learning algorithms to automatically separate the main subject of an image from its background. This advanced technology analyzes complex patterns, edges, and color distributions to achieve highly accurate results, surpassing traditional image processing techniques.</p>
+        <h2>什么是AI驱动的背景去除？</h2>
+        <p>AI驱动的背景去除是一种前沿技术，使用人工智能和机器学习算法自动将图像的主要主体与背景分离。这项先进的技术分析复杂的模式、边缘和颜色分布，以实现高度准确的结果，超越传统的图像处理技术。</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Use AI for Removing Image Backgrounds?</h2>
-        <p>Artificial Intelligence offers numerous advantages in background removal:</p>
+        <h2>为什么使用AI去除图像背景？</h2>
+        <p>人工智能在背景去除中提供了诸多优势：</p>
         <ul>
-            <li><strong>Enhanced Accuracy:</strong> AI models can detect intricate details and complex edges that might be missed by conventional methods.</li>
-            <li><strong>Time Efficiency:</strong> AI processes images in seconds, saving hours of manual editing work.</li>
-            <li><strong>Consistency:</strong> AI ensures uniform quality across large batches of images.</li>
-            <li><strong>Handling Complex Images:</strong> AI excels at removing backgrounds from challenging images with intricate details or irregular shapes.</li>
+            <li><strong>增强的精确度：</strong>AI模型能够检测到传统方法可能忽略的复杂细节和边缘。</li>
+            <li><strong>时间效率：</strong>AI在几秒钟内处理图像，节省了大量的手动编辑工作时间。</li>
+            <li><strong>一致性：</strong>AI确保大量图像处理的一致质量。</li>
+            <li><strong>处理复杂图像：</strong>AI在处理复杂图像（如细节丰富或形状不规则的图像）时表现出色。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our AI-Powered Background Removal Tool</h2>
-        <p>Harnessing the power of AI for background removal is simple with our user-friendly tool:</p>
+        <h2>如何使用我们的AI驱动的背景去除工具</h2>
+        <p>利用AI进行背景去除非常简单，使用我们易于操作的工具：</p>
         <ol>
-            <li>Click the "Upload Image" button to select the image you want to process.</li>
-            <li>Once your image is uploaded, click the "Remove Background with AI" button.</li>
-            <li>Our sophisticated AI model will analyze your image and automatically remove the background.</li>
-            <li>After processing, you can download your image with the background seamlessly removed.</li>
+            <li>点击“上传图像”按钮选择您要处理的图像。</li>
+            <li>上传图像后，点击“使用AI去除背景”按钮。</li>
+            <li>我们的先进AI模型将分析您的图像并自动去除背景。</li>
+            <li>处理完成后，您可以下载去除背景的图像。</li>
         </ol>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our AI-Driven Background Removal Tool</h2>
+        <h2>使用我们AI驱动的背景去除工具的好处</h2>
         <ul>
-            <li><strong>Cutting-Edge AI Technology:</strong> Leverage the latest advancements in artificial intelligence and machine learning for superior results.</li>
-            <li><strong>Rapid Processing:</strong> Our AI algorithms work at lightning speed, delivering results in seconds.</li>
-            <li><strong>User-Friendly Interface:</strong> Enjoy the power of AI without needing technical expertise.</li>
-            <li><strong>Continuous Improvement:</strong> Our AI models are constantly learning and improving, ensuring you always get the best possible results.</li>
-            <li><strong>Versatility:</strong> Our AI can handle a wide range of image types and complexities, from simple product photos to intricate portraits.</li>
+            <li><strong>前沿AI技术：</strong>利用人工智能和机器学习的最新进展，获得卓越的结果。</li>
+            <li><strong>快速处理：</strong>我们的AI算法以闪电般的速度工作，几秒钟内即可提供结果。</li>
+            <li><strong>用户友好的界面：</strong>享受AI的强大功能，无需技术专业知识。</li>
+            <li><strong>持续改进：</strong>我们的AI模型不断学习和改进，确保您始终获得最佳结果。</li>
+            <li><strong>多功能性：</strong>我们的AI能够处理各种类型和复杂度的图像，从简单的产品照片到复杂的人物肖像。</li>
         </ul>
     </div>
 </div>

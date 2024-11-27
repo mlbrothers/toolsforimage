@@ -1,81 +1,81 @@
-{% extends "en/base.html" %}
+{% extends "zh/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert JPG to PNG images with ToolsForImage. Free, fast, and secure online JPG to PNG converter for high-quality image transformations.">
+<meta name="description" content="轻松使用 ToolsForImage 将 JPG 图像转换为 PNG 图像。免费、快速、安全的在线 JPG 转 PNG 转换器，提供高质量图像转换服务。">
 {% endblock %}
 
-{% block title %}Online JPG to PNG converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}在线 JPG 转 PNG 转换器 | ToolsForImage | 免费在线图像转换器{% endblock %}
 
 {% block content %}
-<h1>Free online JPG to PNG Converter</h1>
-<p>Easily convert your images from JPG to PNG format. Upload a JPG image and we'll convert it to PNG for you.</p>
+<h1>免费在线 JPG 转 PNG 转换器</h1>
+<p>轻松将您的图像从 JPG 格式转换为 PNG 格式。上传一张 JPG 图像，我们将为您转换为 PNG。</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/jpg" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload JPG Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">上传 JPG 图像</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="图像预览" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="jpg">
     <input type="hidden" name="output_format" value="png">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to PNG</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">转换为 PNG</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is JPG to PNG Conversion?</h2>
-        <p>JPG to PNG format conversion is the process of changing image files from JPG to PNG (Portable Network Graphics) format. While JPG is widely used for photos, PNG is better for images that need transparency or high-quality graphics. Our tool allows you to easily convert JPG images to PNG in just a few clicks.</p>
+        <h2>什么是 JPG 转 PNG 转换？</h2>
+        <p>JPG 转 PNG 格式转换是将图像文件从 JPG 格式更改为 PNG（可移植网络图形）格式的过程。虽然 JPG 广泛用于照片，但 PNG 更适合需要透明或高质量图形的图像。我们的工具让您可以轻松将 JPG 图像转换为 PNG，只需几次点击即可完成。</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert JPG to PNG format?</h2>
-        <p>There are several reasons to convert JPG images to PNG format:</p>
+        <h2>为什么将 JPG 转换为 PNG 格式？</h2>
+        <p>将 JPG 图像转换为 PNG 格式有以下几个原因：</p>
         <ul>
-            <li><strong>Transparency Support:</strong> PNG format allows for transparent backgrounds, making it ideal for logos and graphics.</li>
-            <li><strong>Lossless Compression:</strong> PNG files maintain high quality without losing detail, perfect for images that require clarity.</li>
-            <li><strong>Improved Quality:</strong> Converting to PNG can enhance the visual quality of your images, especially for graphics with text or sharp lines.</li>
+            <li><strong>支持透明背景：</strong>PNG 格式支持透明背景，非常适合徽标和图形。</li>
+            <li><strong>无损压缩：</strong>PNG 文件在不丢失细节的情况下保持高质量，非常适合需要清晰度的图像。</li>
+            <li><strong>改善图像质量：</strong>转换为 PNG 可以提高图像的视觉质量，尤其是带有文字或清晰线条的图形。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our JPG to PNG Converter</h2>
-        <p>Using our JPG to PNG conversion tool is straightforward. Here’s how it works:</p>
+        <h2>如何使用我们的 JPG 转 PNG 转换器</h2>
+        <p>使用我们的 JPG 转 PNG 转换工具非常简单。以下是操作步骤：</p>
         <ul>
-            <li>Click the "Upload JPG File" button to select the JPG image you want to convert.</li>
-            <li>After uploading, our tool will automatically convert your image to PNG format.</li>
-            <li>Once the conversion is complete, click "Download PNG" to save your new image to your device.</li>
+            <li>点击“上传 JPG 文件”按钮选择您要转换的 JPG 图像。</li>
+            <li>上传后，我们的工具会自动将您的图像转换为 PNG 格式。</li>
+            <li>转换完成后，点击“下载 PNG”将新图像保存到您的设备。</li>
         </ul>
-        <p>Our converter supports various JPG files, ensuring a smooth conversion experience every time.</p>
+        <p>我们的转换器支持多种 JPG 文件，确保每次转换都顺畅无阻。</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our JPG to PNG Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>使用我们 JPG 转 PNG 转换器的好处</h2>
+        <p>以下是使用我们转换工具的优势：</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Convert your JPG images to PNG in just a few clicks, with no complicated steps.</li>
-            <li><strong>High-Quality Output:</strong> Enjoy clear and sharp images during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our online converter for free, with no downloads or installations required.</li>
-            <li><strong>User-Friendly Interface:</strong> Designed for everyone, our tool is easy to navigate, regardless of your technical skills.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for JPG to PNG Conversion</h2>
-        <p>Here are a few situations where converting JPG to PNG can be beneficial:</p>
-        <ul>
-            <li><strong>Web Design:</strong> Use PNG images for websites that require transparent backgrounds for a more polished look.</li>
-            <li><strong>Graphics and Logos:</strong> PNG is perfect for logos, icons, and graphics that need high quality and transparency.</li>
-            <li><strong>Digital Art:</strong> Artists often prefer PNG format to preserve their artwork’s details and colors without loss.</li>
-            <li><strong>Social Media:</strong> Share images with transparent backgrounds on platforms that support PNG format for better visual appeal.</li>
+            <li><strong>快速简单：</strong>只需几次点击即可将您的 JPG 图像转换为 PNG，无需复杂步骤。</li>
+            <li><strong>高质量输出：</strong>转换过程中图像清晰锐利。</li>
+            <li><strong>免费可用：</strong>免费使用我们的在线转换器，无需下载或安装。</li>
+            <li><strong>用户友好界面：</strong>我们的工具为所有人设计，无论您的技术水平如何，都能轻松上手。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting JPG to PNG Can Help</h2>
-        <p>Converting your JPG images to PNG can enhance their usability and appearance. Here’s how:</p>
+        <h2>JPG 转 PNG 转换的常见用途</h2>
+        <p>以下是一些 JPG 转 PNG 转换可能有用的情况：</p>
         <ul>
-            <li><strong>Better Transparency:</strong> PNG allows for transparent backgrounds, which is useful for layering images in designs.</li>
-            <li><strong>Improved Quality:</strong> PNG format preserves image quality, making your photos and graphics look their best.</li>
-            <li><strong>Enhanced Flexibility:</strong> Using PNG images gives you more options for how to present your graphics, especially online.</li>
+            <li><strong>网页设计：</strong>为需要透明背景的网站使用 PNG 图像，以获得更精致的外观。</li>
+            <li><strong>图形和徽标：</strong>PNG 非常适合需要高质量和透明背景的徽标、图标和图形。</li>
+            <li><strong>数字艺术：</strong>艺术家通常更喜欢 PNG 格式，以在无损的情况下保留艺术作品的细节和颜色。</li>
+            <li><strong>社交媒体：</strong>在支持 PNG 格式的平台上共享具有透明背景的图像，以获得更好的视觉吸引力。</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>将 JPG 转换为 PNG 的优势</h2>
+        <p>将 JPG 图像转换为 PNG 可以提高其可用性和外观。以下是好处：</p>
+        <ul>
+            <li><strong>更好的透明度：</strong>PNG 支持透明背景，这在设计中叠加图像时非常有用。</li>
+            <li><strong>更高的图像质量：</strong>PNG 格式可以保留图像质量，使照片和图形看起来更好。</li>
+            <li><strong>灵活性增强：</strong>使用 PNG 图像为您提供更多展示图形的选择，尤其是在网络上。</li>
         </ul>
     </div>
 </div>

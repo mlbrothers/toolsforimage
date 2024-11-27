@@ -1,81 +1,81 @@
-{% extends "en/base.html" %}
+{% extends "zh/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert JPG to BMP images with ToolsForImage. Free, fast, and secure online JPG to BMP converter for high-quality image transformations.">
+<meta name="description" content="使用 ToolsForImage 轻松将 JPG 转换为 BMP 图像。免费、快速且安全的在线 JPG 到 BMP 转换工具，用于高质量图像转换。">
 {% endblock %}
 
-{% block title %}Online JPG to BMP converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}在线 JPG 到 BMP 转换器 | ToolsForImage | 免费在线图像转换工具{% endblock %}
 
 {% block content %}
-<h1>Free Online JPG to BMP Converter</h1>
-<p>Easily convert your images from JPG to BMP format. Upload a JPG image and we'll convert it to BMP for you.</p>
+<h1>免费在线 JPG 到 BMP 转换器</h1>
+<p>轻松将您的图像从 JPG 格式转换为 BMP 格式。上传 JPG 图像，我们将为您转换为 BMP。</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/jpg" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload JPG Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">上传 JPG 图像</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="图像预览" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="jpg">
     <input type="hidden" name="output_format" value="bmp">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to BMP</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">转换为 BMP</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is JPG to BMP Conversion?</h2>
-        <p>JPG to BMP conversion is the process of changing image files from JPG (Joint Photographic Experts Group) format to BMP (Bitmap) format. This conversion is useful for users who need high-quality images without compression artifacts. Our tool makes it easy to convert JPG images to BMP quickly and efficiently.</p>
+        <h2>什么是 JPG 到 BMP 转换？</h2>
+        <p>JPG 到 BMP 转换是将图像文件从 JPG（联合图像专家组）格式更改为 BMP（位图）格式的过程。这种转换适用于需要高质量图像而没有压缩痕迹的用户。我们的工具使 JPG 图像转换为 BMP 快捷高效。</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert JPG to BMP?</h2>
-        <p>There are several reasons to convert JPG images to BMP:</p>
+        <h2>为什么要将 JPG 转换为 BMP？</h2>
+        <p>以下是将 JPG 图像转换为 BMP 的一些原因：</p>
         <ul>
-            <li><strong>Lossless Quality:</strong> BMP images are uncompressed, ensuring that the original image quality is preserved without any loss of detail.</li>
-            <li><strong>Editing Flexibility:</strong> BMP format is ideal for editing and processing in graphic design software, as it retains all image data.</li>
-            <li><strong>Compatibility:</strong> BMP files are widely supported by various applications, making them easy to use for printing and design projects.</li>
+            <li><strong>无损质量：</strong> BMP 图像未压缩，确保原始图像质量没有任何损失。</li>
+            <li><strong>编辑灵活性：</strong> BMP 格式非常适合图形设计软件中的编辑和处理，因为它保留了所有图像数据。</li>
+            <li><strong>兼容性：</strong> BMP 文件被各种应用程序广泛支持，非常适合用于打印和设计项目。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our JPG to BMP Converter</h2>
-        <p>Using our JPG to BMP conversion tool is simple and user-friendly. Here’s how it works:</p>
+        <h2>如何使用我们的 JPG 到 BMP 转换器</h2>
+        <p>使用我们的 JPG 到 BMP 转换工具简单且用户友好。以下是操作步骤：</p>
         <ul>
-            <li>Click the "Upload JPG File" button to select the JPG image you want to convert.</li>
-            <li>After uploading, our tool will automatically convert your image to BMP format.</li>
-            <li>Once the conversion is complete, click "Download BMP" to save your new image to your device.</li>
+            <li>点击“上传 JPG 文件”按钮，选择您想要转换的 JPG 图像。</li>
+            <li>上传后，我们的工具会自动将您的图像转换为 BMP 格式。</li>
+            <li>转换完成后，点击“下载 BMP”将新图像保存到您的设备。</li>
         </ul>
-        <p>Our converter supports various JPG files, ensuring a smooth conversion experience every time.</p>
+        <p>我们的转换器支持各种 JPG 文件，确保每次转换都顺利进行。</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our JPG to BMP Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>使用我们的 JPG 到 BMP 转换器的好处</h2>
+        <p>以下是使用我们转换工具的一些优势：</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Convert your JPG images to BMP in just a few clicks, with no complicated steps.</li>
-            <li><strong>No Loss of Quality:</strong> Enjoy high-quality images with our advanced conversion process, ensuring your images look great.</li>
-            <li><strong>Free and Accessible:</strong> Use our online converter for free, with no downloads or installations required.</li>
-            <li><strong>User-Friendly Interface:</strong> Designed for everyone, our tool is easy to navigate, regardless of your technical skills.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for JPG to BMP Conversion</h2>
-        <p>Here are a few situations where converting JPG to BMP can be beneficial:</p>
-        <ul>
-            <li><strong>Graphic Design:</strong> Use BMP images for projects that require high-quality graphics and easy editing capabilities.</li>
-            <li><strong>Printing:</strong> BMP files are ideal for printing because of their lossless quality, ensuring sharp and clear prints.</li>
-            <li><strong>Archiving:</strong> Store images in BMP format for long-term archiving, as they preserve all details without compression.</li>
-            <li><strong>Image Manipulation:</strong> Convert JPG to BMP for better results in image editing and manipulation software.</li>
+            <li><strong>快速简便：</strong>只需几次点击即可将您的 JPG 图像转换为 BMP，无需复杂步骤。</li>
+            <li><strong>无质量损失：</strong>通过我们的高级转换过程，确保您的图像保持高质量。</li>
+            <li><strong>免费且易于访问：</strong>免费使用我们的在线转换器，无需下载或安装。</li>
+            <li><strong>用户友好界面：</strong>我们的工具为所有用户设计，简单易用，无论您的技术水平如何。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting JPG to BMP Can Improve Your Images</h2>
-        <p>Converting your JPG images to BMP can significantly enhance their usability and quality. Here’s how:</p>
+        <h2>JPG 转 BMP 转换的常见用途</h2>
+        <p>以下是一些 JPG 转 BMP 的常见用途：</p>
         <ul>
-            <li><strong>Preserved Quality:</strong> BMP format retains the original image quality, making it ideal for high-resolution needs.</li>
-            <li><strong>Enhanced Editing:</strong> BMP images are easier to work with in graphic design software, allowing for more precise editing.</li>
-            <li><strong>Versatile Use:</strong> BMP files can be used in various applications, from web design to print media, offering flexibility.</li>
+            <li><strong>图形设计：</strong>在需要高质量图形和易于编辑的项目中使用 BMP 图像。</li>
+            <li><strong>打印：</strong> BMP 文件因其无损质量，非常适合打印，确保清晰锐利的打印效果。</li>
+            <li><strong>归档：</strong>将图像以 BMP 格式存储以供长期归档，因为它保留了所有细节而没有压缩。</li>
+            <li><strong>图像处理：</strong>将 JPG 转换为 BMP 以便在图像编辑和处理软件中获得更好的效果。</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>将 JPG 转换为 BMP 如何改善您的图像</h2>
+        <p>将 JPG 图像转换为 BMP 可以显著提高其可用性和质量。以下是一些好处：</p>
+        <ul>
+            <li><strong>质量保留：</strong> BMP 格式保留了原始图像质量，非常适合高分辨率需求。</li>
+            <li><strong>增强编辑：</strong> BMP 图像在图形设计软件中更易于操作，允许更精确的编辑。</li>
+            <li><strong>多功能用途：</strong> BMP 文件可用于多种应用，从网页设计到印刷媒体，灵活性强。</li>
         </ul>
     </div>
 </div>

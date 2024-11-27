@@ -1,82 +1,82 @@
-{% extends "en/base.html" %}
+{% extends "zh/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert WEBP to TIFF images with ToolsForImage. Free, fast, and secure online WEBP to TIFF converter for high-quality image transformations.">
+<meta name="description" content="使用 ToolsForImage 轻松将 WEBP 转换为 TIFF 图像。免费的、快速的、安全的在线 WEBP 到 TIFF 转换器，提供高质量的图像转换。">
 {% endblock %}
 
-{% block title %}Online WEBP to TIFF converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}在线 WEBP 到 TIFF 转换器 | ToolsForImage | 免费在线图像转换器{% endblock %}
 
 {% block content %}
-<h1>Free Online WEBP to TIFF Converter</h1>
-<p>Easily convert your images from WEBP to TIFF format. Upload a webp image and we'll convert it to TIFF for you.</p>
+<h1>免费在线 WEBP 到 TIFF 转换器</h1>
+<p>轻松将您的图像从 WEBP 转换为 TIFF 格式。上传一个 WEBP 图像，我们将为您转换为 TIFF 格式。</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/webp" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload webp Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">上传 WEBP 图像</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="图像预览" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="webp">
     <input type="hidden" name="output_format" value="tiff">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to TIFF</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">转换为 TIFF</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is WebP to TIFF Conversion?</h2>
-        <p>WebP to TIFF conversion is the process of changing images from WebP format to TIFF format. WebP is known for its efficient compression and quality, while TIFF is a high-quality image format used primarily in professional photography and graphic design. Converting WebP to TIFF allows you to maintain high resolution and detail in your images, making it perfect for archival purposes and high-quality prints.</p>
+        <h2>什么是 WEBP 到 TIFF 的转换？</h2>
+        <p>WEBP 到 TIFF 的转换是将图像从 WEBP 格式转换为 TIFF 格式的过程。WEBP 以其高效的压缩和图像质量而闻名，而 TIFF 是一种主要用于专业摄影和图形设计的高质量图像格式。将 WEBP 转换为 TIFF 可保持高分辨率和图像细节，适用于归档和高质量打印。</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert WebP to TIFF?</h2>
-        <p>There are several reasons to convert WebP images to TIFF:</p>
+        <h2>为什么将 WEBP 转换为 TIFF？</h2>
+        <p>将 WEBP 图像转换为 TIFF 有几个原因：</p>
         <ul>
-            <li><strong>High-Quality Images:</strong> TIFF is a lossless format, meaning it retains all the details of your images without compression artifacts.</li>
-            <li><strong>Professional Use:</strong> TIFF is widely used in printing and publishing, making it ideal for professional photographers and designers.</li>
-            <li><strong>Flexibility:</strong> TIFF supports various color spaces and is compatible with many editing and printing applications.</li>
-            <li><strong>Archiving:</strong> Use TIFF for long-term storage of images due to its high quality and ability to handle large file sizes.</li>
+            <li><strong>高质量图像：</strong>TIFF 是无损格式，意味着它保留了图像的所有细节，而不会产生压缩伪影。</li>
+            <li><strong>专业用途：</strong>TIFF 在印刷和出版中广泛使用，非常适合专业摄影师和设计师。</li>
+            <li><strong>灵活性：</strong>TIFF 支持多种色彩空间，并与许多编辑和打印应用程序兼容。</li>
+            <li><strong>归档：</strong>由于 TIFF 的高质量和能处理大文件的能力，可以使用 TIFF 格式进行图像的长期存储。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our WebP to TIFF Converter</h2>
-        <p>Our WebP to TIFF conversion tool is easy to use. Follow these simple steps:</p>
+        <h2>如何使用我们的 WEBP 到 TIFF 转换器</h2>
+        <p>我们的 WEBP 到 TIFF 转换工具使用简单，按照以下步骤操作：</p>
         <ul>
-            <li>Click the "Upload WebP File" button to select the WebP image you want to convert.</li>
-            <li>Once uploaded, our tool will automatically convert your image to TIFF format.</li>
-            <li>After the conversion is complete, click "Download TIFF" to save your new TIFF image to your device.</li>
+            <li>点击“上传 WEBP 文件”按钮，选择您要转换的 WEBP 图像。</li>
+            <li>上传后，我们的工具将自动将您的图像转换为 TIFF 格式。</li>
+            <li>转换完成后，点击“下载 TIFF”将新的 TIFF 图像保存到您的设备。</li>
         </ul>
-        <p>Our converter supports a variety of WebP images, ensuring a smooth and efficient conversion process.</p>
+        <p>我们的转换器支持各种 WEBP 图像，确保转换过程顺畅高效。</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our WebP to TIFF Converter</h2>
-        <p>Using our conversion tool offers numerous advantages:</p>
+        <h2>使用我们的 WEBP 到 TIFF 转换器的好处</h2>
+        <p>使用我们的转换工具有许多优势：</p>
         <ul>
-            <li><strong>Fast and Convenient:</strong> Convert your WebP images to TIFF in just a few clicks, making it quick and hassle-free.</li>
-            <li><strong>No Quality Loss:</strong> Enjoy the highest quality TIFF images with no loss of detail during the conversion.</li>
-            <li><strong>Free and Accessible:</strong> Our tool is available online for free, requiring no downloads or installations.</li>
-            <li><strong>User-Friendly Design:</strong> Our easy-to-navigate interface makes the conversion process straightforward for everyone.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for WebP to TIFF Conversion</h2>
-        <p>Converting WebP to TIFF can be helpful in various scenarios:</p>
-        <ul>
-            <li><strong>Photography:</strong> Preserve high-resolution images for professional use and printing.</li>
-            <li><strong>Graphic Design:</strong> Create high-quality images for brochures, posters, and other marketing materials.</li>
-            <li><strong>Archiving:</strong> Store images in a lossless format for long-term preservation.</li>
-            <li><strong>Artwork and Illustration:</strong> Use TIFF for illustrations that require detailed reproduction.</li>
+            <li><strong>快速便捷：</strong>只需几次点击即可将您的 WEBP 图像转换为 TIFF，快速且无忧。</li>
+            <li><strong>无质量损失：</strong>转换过程中不损失图像的任何细节，享受高质量的 TIFF 图像。</li>
+            <li><strong>免费且易于访问：</strong>我们的工具可以在线免费使用，无需下载或安装。</li>
+            <li><strong>用户友好的设计：</strong>我们的界面易于导航，使每个人都能轻松完成转换过程。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting WebP to TIFF Can Help You</h2>
-        <p>Converting WebP images to TIFF format can greatly enhance usability and quality. Here are some ways it can help:</p>
+        <h2>WEBP 到 TIFF 转换的常见用途</h2>
+        <p>将 WEBP 转换为 TIFF 在多种场景下非常有用：</p>
         <ul>
-            <li><strong>Improved Image Quality:</strong> TIFF retains all image details, making it suitable for high-quality prints and professional use.</li>
-            <li><strong>Flexibility in Editing:</strong> TIFF files are widely supported by image editing software, allowing for easier modifications.</li>
-            <li><strong>Ideal for Archival:</strong> TIFF’s lossless nature makes it perfect for long-term storage of important images.</li>
+            <li><strong>摄影：</strong>为专业用途和印刷保存高分辨率图像。</li>
+            <li><strong>平面设计：</strong>为宣传册、海报和其他营销材料创建高质量图像。</li>
+            <li><strong>归档：</strong>以无损格式存储图像，进行长期保存。</li>
+            <li><strong>艺术和插图：</strong>使用 TIFF 格式进行插图创作，确保图像详细还原。</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>WEBP 转换为 TIFF 如何帮助您</h2>
+        <p>将 WEBP 图像转换为 TIFF 格式可以显著提升图像质量和可用性。以下是一些帮助：</p>
+        <ul>
+            <li><strong>提升图像质量：</strong>TIFF 格式保留了所有图像细节，非常适合高质量打印和专业用途。</li>
+            <li><strong>编辑灵活性：</strong>TIFF 文件被广泛支持，方便在图像编辑软件中进行修改。</li>
+            <li><strong>适合归档：</strong>TIFF 的无损特性使其非常适合用于长期存储重要图像。</li>
         </ul>
     </div>
 </div>

@@ -1,118 +1,116 @@
-{% extends "en/base.html" %}
+{% extends "zh/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Add watermarks to your images easily with our watermarking tool. Protect your images and add branding effortlessly.">
+<meta name="description" content="使用我们的水印工具轻松为您的图像添加水印。保护您的图像并轻松添加品牌标识。">
 {% endblock %}
 
-{% block title %}Image Watermarking Tool online | ToolsForImage | Comprehensive Free Online Tools for Blur Faces, Image Conversion, Editing, Resizing, Remove Background, Blur background and More{% endblock %}
+{% block title %}在线图片水印工具 | ToolsForImage | 免费在线工具，用于模糊人脸、图像转换、编辑、调整大小、移除背景、模糊背景等功能{% endblock %}
 
 {% block content %}
-<h1>Free Image Watermarking Tool</h1>
+<h1>免费图片水印工具</h1>
 
 <div class="watermark-editor">
     <div class="watermark-controls">
-        <label for="imageUpload">Upload Image:</label>
+        <label for="imageUpload">上传图片：</label>
         <input type="file" id="imageUpload" accept="image/*">
         
-        <label for="watermarkText">Watermark Text:</label>
-        <input type="text" id="watermarkText" placeholder="Enter watermark text">
+        <label for="watermarkText">水印文字：</label>
+        <input type="text" id="watermarkText" placeholder="输入水印文字">
         
-        <label for="watermarkColor">Watermark Color:</label>
+        <label for="watermarkColor">水印颜色：</label>
         <input type="color" id="watermarkColor" value="#000000">
         
-        <label for="watermarkOpacity">Watermark Opacity:</label>
+        <label for="watermarkOpacity">水印透明度：</label>
         <input type="range" id="watermarkOpacity" min="0" max="1" step="0.1" value="0.5">
         
-        <label for="watermarkFontSize">Watermark Font Size:</label>
-        <input type="number" id="watermarkFontSize" min="8" value="20" placeholder="Font size">
+        <label for="watermarkFontSize">水印字体大小：</label>
+        <input type="number" id="watermarkFontSize" min="8" value="20" placeholder="字体大小">
         
-        <label for="watermarkPosition">Watermark Position:</label>
+        <label for="watermarkPosition">水印位置：</label>
         <select id="watermarkPosition">
-            <option value="top-left">Top Left</option>
-            <option value="top-right">Top Right</option>
-            <option value="bottom-left">Bottom Left</option>
-            <option value="bottom-right">Bottom Right</option>
-            <option value="center">Center</option>
+            <option value="top-left">左上角</option>
+            <option value="top-right">右上角</option>
+            <option value="bottom-left">左下角</option>
+            <option value="bottom-right">右下角</option>
+            <option value="center">中心</option>
         </select>
         
-        <label for="watermarkFontStyle">Watermark Font Style:</label>
+        <label for="watermarkFontStyle">水印字体样式：</label>
         <select id="watermarkFontStyle">
-            <option value="normal">Normal</option>
-            <option value="bold">Bold</option>
-            <option value="italic">Italic</option>
-            <option value="bold-italic">Bold Italic</option>
+            <option value="normal">普通</option>
+            <option value="bold">加粗</option>
+            <option value="italic">斜体</option>
+            <option value="bold-italic">加粗斜体</option>
         </select>
     </div>
 
     <div class="watermark-preview">
-        <img id="previewImage" src="" alt="Preview">
+        <img id="previewImage" src="" alt="预览">
     </div>
 
-    <button class="button" id="downloadImage">Download Watermarked Image</button>
+    <button class="button" id="downloadImage">下载带水印的图片</button>
 </div>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is Image Watermarking?</h2>
-        <p>Image watermarking is the process of adding a logo, text, or symbol to your images to protect them from unauthorized use. A watermark can be a small, semi-transparent mark placed anywhere on the image. This tool helps you add watermarks easily, ensuring that your photos, graphics, or digital creations are protected and easily identified as yours.</p>
+        <h2>什么是图片水印？</h2>
+        <p>图片水印是指在您的图像上添加标志、文字或符号，以防止未经授权的使用。水印通常是一个小的、半透明的标记，可以放置在图像的任意位置。我们的工具可以帮助您轻松添加水印，确保您的照片、图形或数字创作受到保护，并可以轻松识别为您的作品。</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Use Watermarks on Your Images?</h2>
-        <p>Watermarking your images is important for several reasons:</p>
+        <h2>为什么要给图片添加水印？</h2>
+        <p>为您的图片添加水印非常重要，原因包括：</p>
         <ul>
-            <li><strong>Protect Your Work:</strong> Prevent others from stealing or using your images without permission by adding a watermark.</li>
-            <li><strong>Build Your Brand:</strong> Adding a watermark with your logo or brand name can increase visibility and brand recognition.</li>
-            <li><strong>Share Safely Online:</strong> When sharing images on social media, blogs, or websites, a watermark can help safeguard your intellectual property.</li>
+            <li><strong>保护您的作品：</strong>通过添加水印，防止他人未经许可窃取或使用您的图像。</li>
+            <li><strong>打造您的品牌：</strong>添加带有您的标志或品牌名称的水印可以提高可见性和品牌认知度。</li>
+            <li><strong>安全分享在线内容：</strong>在社交媒体、博客或网站上分享图片时，水印可以帮助保护您的知识产权。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our Watermarking Tool</h2>
-        <p>Our watermarking tool is easy to use and helps you quickly add a watermark to your images. Follow these steps:</p>
+        <h2>如何使用我们的水印工具</h2>
+        <p>我们的水印工具操作简单，可帮助您快速在图像上添加水印。请按照以下步骤操作：</p>
         <ul>
-            <li>Click the "Upload from Computer" button to upload your image.</li>
-            <li>Enter the text or upload your logo to be used as a watermark.</li>
-            <li>Adjust the size, opacity, and position of your watermark to your liking.</li>
-            <li>Once you are satisfied, click "Download Watermarked Image" to save your protected image to your device.</li>
+            <li>点击“从电脑上传”按钮上传您的图片。</li>
+            <li>输入文字或上传标志作为水印。</li>
+            <li>调整水印的大小、透明度和位置。</li>
+            <li>满意后，点击“下载带水印的图片”将受保护的图片保存到您的设备。</li>
         </ul>
-        <p>Our tool supports various image formats, including PNG, JPG, and BMP, and ensures that the quality of your image is maintained.</p>
+        <p>我们的工具支持多种图像格式，包括 PNG、JPG 和 BMP，并确保图像质量保持不变。</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our Watermarking Tool</h2>
-        <p>Here are the top benefits of using our watermarking tool:</p>
+        <h2>使用我们水印工具的好处</h2>
+        <p>使用我们的水印工具有以下主要好处：</p>
         <ul>
-            <li><strong>Quick and Easy:</strong> Add a watermark to your images in just a few clicks, no design skills needed.</li>
-            <li><strong>Customizable Watermarks:</strong> Choose the text, font, size, and placement that best suits your needs.</li>
-            <li><strong>Protect Your Images:</strong> Make sure your images are protected and recognized as your work online.</li>
-            <li><strong>Free to Use:</strong> Our tool is free and accessible, with no software downloads required.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Use Cases for Image Watermarking</h2>
-        <p>Watermarking is useful in many situations, such as:</p>
-        <ul>
-            <li><strong>Photographers:</strong> Protect your photography from unauthorized use by adding your name or logo.</li>
-            <li><strong>Graphic Designers:</strong> Add a watermark to your digital artwork to prevent others from claiming it as their own.</li>
-            <li><strong>Businesses and Brands:</strong> Use watermarks to promote your brand and ensure your images are recognized as your own.</li>
-            <li><strong>Content Creators:</strong> Ensure your original content is protected when sharing on social media or websites.</li>
+            <li><strong>快速简便：</strong>只需点击几下即可为图像添加水印，无需设计技能。</li>
+            <li><strong>可定制水印：</strong>选择符合您需求的文字、字体、大小和位置。</li>
+            <li><strong>保护您的图片：</strong>确保您的图片在网络上受到保护，并能被识别为您的作品。</li>
+            <li><strong>免费使用：</strong>我们的工具免费提供，无需下载软件。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>Why Watermarking Your Images is Important</h2>
-        <p>Watermarking helps protect your images from being stolen or misused. Here’s why it’s important:</p>
+        <h2>图片水印的常见应用场景</h2>
+        <p>水印在许多情况下非常实用，例如：</p>
         <ul>
-            <li><strong>Copyright Protection:</strong> Watermarks act as a deterrent to those who might try to use your images without permission.</li>
-            <li><strong>Increase Brand Awareness:</strong> When your watermark includes your logo or brand name, it helps spread awareness of your business as your images are shared online.</li>
-            <li><strong>Keep Your Work Safe:</strong> Whether you’re a photographer, designer, or content creator, watermarking ensures that your hard work is credited to you, wherever it’s displayed.</li>
+            <li><strong>摄影师：</strong>通过添加您的名字或标志保护您的摄影作品免受未经授权的使用。</li>
+            <li><strong>平面设计师：</strong>在您的数字艺术品上添加水印，以防止他人声称为己有。</li>
+            <li><strong>企业和品牌：</strong>使用水印推广您的品牌，确保您的图片被识别为您的作品。</li>
+            <li><strong>内容创作者：</strong>在社交媒体或网站上分享内容时，确保您的原创内容受到保护。</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>为什么为您的图片添加水印很重要</h2>
+        <p>水印可以防止您的图片被盗用或滥用。以下是重要原因：</p>
+        <ul>
+            <li><strong>版权保护：</strong>水印可以阻止试图未经授权使用您图片的人。</li>
+            <li><strong>提高品牌意识：</strong>当水印包含您的标志或品牌名称时，它可以在您的图片在线传播时帮助提高品牌知名度。</li>
+            <li><strong>保护您的作品：</strong>无论您是摄影师、设计师还是内容创作者，水印都能确保您的辛勤劳动始终归属于您。</li>
         </ul>
     </div>
 </div>
-
-
 
 <style>
 

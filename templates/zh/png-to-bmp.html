@@ -1,80 +1,80 @@
-{% extends "en/base.html" %}
+{% extends "zh/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert PNG to BMP images with ToolsForImage. Free, fast, and secure online PNG to BMP converter for high-quality image transformations.">
+<meta name="description" content="使用ToolsForImage轻松将PNG图像转换为BMP。快速、安全的在线PNG到BMP转换器，提供高质量的图像转换。">
 {% endblock %}
 
-{% block title %}Online PNG to BMP converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}在线PNG到BMP转换器 | ToolsForImage | 免费在线图像转换器{% endblock %}
 
 {% block content %}
-<h1>Free Online PNG to BMP Converter</h1>
-<p>Easily convert your images from PNG to BMP format. Upload a PNG image and we'll convert it to BMP for you.</p>
+<h1>免费在线PNG到BMP转换器</h1>
+<p>轻松将您的PNG图像转换为BMP格式。上传PNG图像，我们将为您将其转换为BMP。</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/png" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload PNG Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">上传PNG图像</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="图像预览" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="png">
     <input type="hidden" name="output_format" value="bmp">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to BMP</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">转换为BMP</button>
 </form>
 <div class="info-container">
     <div class="info-section">
-        <h2>What is PNG to BMP Conversion?</h2>
-        <p>PNG to BMP conversion is the process of changing image files from PNG format to BMP format. BMP (Bitmap) is a raster graphics format used for storing digital images. Converting PNG images to BMP can be helpful when you need to use a simple, uncompressed image format that retains high quality for editing or printing purposes.</p>
+        <h2>什么是PNG到BMP的转换？</h2>
+        <p>PNG到BMP的转换是将图像文件从PNG格式转换为BMP格式的过程。BMP（位图）是一种用于存储数字图像的光栅图形格式。将PNG图像转换为BMP格式有助于在需要使用简单、未压缩的图像格式时，保持高质量以便进行编辑或打印。</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert PNG to BMP?</h2>
-        <p>There are several reasons to convert PNG images to BMP:</p>
+        <h2>为什么要将PNG转换为BMP？</h2>
+        <p>将PNG图像转换为BMP有几个原因：</p>
         <ul>
-            <li><strong>High-Quality Images:</strong> BMP files maintain excellent image quality without compression, making them ideal for professional applications.</li>
-            <li><strong>Editing Flexibility:</strong> BMP format is often preferred for editing and graphic design due to its simplicity and lack of compression artifacts.</li>
-            <li><strong>Compatibility:</strong> BMP files are widely supported by many software applications, ensuring easy access and use across different platforms.</li>
+            <li><strong>高质量图像：</strong>BMP文件保持出色的图像质量，没有压缩，非常适合专业应用。</li>
+            <li><strong>编辑灵活性：</strong>由于没有压缩伪影，BMP格式通常更适合用于图形设计和编辑。</li>
+            <li><strong>兼容性：</strong>BMP文件被许多软件应用广泛支持，确保在不同平台上都能轻松访问和使用。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our PNG to BMP Converter</h2>
-        <p>Our PNG to BMP conversion tool is designed to be user-friendly and straightforward. Here’s how you can use it:</p>
+        <h2>如何使用我们的PNG到BMP转换器</h2>
+        <p>我们的PNG到BMP转换工具设计简单易用，操作直观。以下是使用方法：</p>
         <ul>
-            <li>Click the "Upload PNG File" button to select the PNG image you want to convert.</li>
-            <li>Once the image is uploaded, our tool will automatically process the conversion to BMP format.</li>
-            <li>After the conversion is complete, click "Download BMP" to save your new image to your device.</li>
+            <li>点击“上传PNG文件”按钮，选择您要转换的PNG图像。</li>
+            <li>上传图像后，我们的工具会自动将其转换为BMP格式。</li>
+            <li>转换完成后，点击“下载BMP”将新图像保存到您的设备。</li>
         </ul>
-        <p>Our converter supports a variety of PNG files, ensuring a smooth conversion experience every time.</p>
+        <p>我们的转换器支持各种PNG文件，确保每次转换都顺畅。</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our PNG to BMP Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>使用我们的PNG到BMP转换器的优势</h2>
+        <p>以下是使用我们转换工具的一些优点：</p>
         <ul>
-            <li><strong>Fast and Efficient:</strong> Convert your PNG images to BMP quickly and easily, without any complicated steps.</li>
-            <li><strong>No Loss of Quality:</strong> Enjoy high-quality output with no compression, ensuring that your images look their best.</li>
-            <li><strong>Free and Online:</strong> Use our tool for free, directly in your web browser, with no need for software downloads.</li>
-            <li><strong>User-Friendly Interface:</strong> Designed for everyone, our tool is simple and easy to navigate, making it accessible for all users.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for PNG to BMP Conversion</h2>
-        <p>Here are some situations where converting PNG to BMP can be beneficial:</p>
-        <ul>
-            <li><strong>Graphic Design:</strong> Use BMP images for graphic design projects where high-quality and uncompressed images are required.</li>
-            <li><strong>Image Editing:</strong> Convert PNG files to BMP for easier editing in various software applications.</li>
-            <li><strong>Printing:</strong> Use BMP images for printing purposes, as they retain high quality without compression artifacts.</li>
-            <li><strong>Archiving:</strong> Store images in BMP format for long-term archival, preserving their quality over time.</li>
+            <li><strong>快速高效：</strong>快速轻松地将您的PNG图像转换为BMP，无需复杂步骤。</li>
+            <li><strong>无质量损失：</strong>享受高质量输出，无压缩，确保您的图像保持最佳状态。</li>
+            <li><strong>免费在线：</strong>直接在您的浏览器中免费使用我们的工具，无需下载任何软件。</li>
+            <li><strong>用户友好界面：</strong>我们的工具设计简单，易于操作，适合所有用户。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting PNG to BMP Can Help</h2>
-        <p>Converting your PNG images to BMP can enhance their usability and performance in various applications. Here’s how:</p>
+        <h2>PNG到BMP转换的常见用途</h2>
+        <p>以下是一些情况下将PNG转换为BMP可能会带来好处的场景：</p>
         <ul>
-            <li><strong>Better Editing Experience:</strong> BMP images are easier to work with in graphic design software, making your editing process smoother.</li>
-            <li><strong>Improved Print Quality:</strong> Use BMP files to ensure your printed images maintain their sharpness and clarity.</li>
-            <li><strong>Easy Access:</strong> BMP format is compatible with many applications, ensuring that your images can be used wherever you need them.</li>
+            <li><strong>图形设计：</strong>在图形设计项目中使用BMP图像，要求高质量且无压缩的图像。</li>
+            <li><strong>图像编辑：</strong>将PNG文件转换为BMP，以便在各种软件中进行更方便的编辑。</li>
+            <li><strong>打印：</strong>使用BMP图像进行打印，因为它们保持高质量，无压缩伪影。</li>
+            <li><strong>归档：</strong>将图像存储为BMP格式，便于长期存档，保持图像质量。</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>将PNG转换为BMP如何帮助您</h2>
+        <p>将PNG图像转换为BMP可以增强它们在各种应用中的可用性和性能。以下是如何帮助您的方式：</p>
+        <ul>
+            <li><strong>更好的编辑体验：</strong>BMP图像在图形设计软件中更容易处理，使您的编辑过程更顺畅。</li>
+            <li><strong>改进的打印质量：</strong>使用BMP文件确保打印的图像保持清晰锐利。</li>
+            <li><strong>轻松访问：</strong>BMP格式与许多应用兼容，确保您的图像可以在需要的地方使用。</li>
         </ul>
     </div>
 </div>

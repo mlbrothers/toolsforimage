@@ -1,81 +1,81 @@
-{% extends "en/base.html" %}
+{% extends "zh/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert JPG to WEBP images with ToolsForImage. Free, fast, and secure online JPG to WEBP converter for high-quality image transformations.">
+<meta name="description" content="轻松使用 ToolsForImage 将 JPG 转换为 WEBP 图像。免费、快速、安全的在线 JPG 到 WEBP 转换器，提供高质量的图像转换。">
 {% endblock %}
 
-{% block title %}Online JPG to WEBP converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}在线 JPG 到 WEBP 转换器 | ToolsForImage | 免费在线图像转换器{% endblock %}
 
 {% block content %}
-<h1>Free Online JPG to WEBP Converter</h1>
-<p>Easily convert your images from JPG to WebP format. Upload a JPG image and we'll convert it to WebP for you.</p>
+<h1>免费在线 JPG 到 WEBP 转换器</h1>
+<p>轻松将您的图像从 JPG 格式转换为 WebP 格式。上传 JPG 图像，我们将为您将其转换为 WebP。</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/jpg" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload JPG Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">上传 JPG 图像</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="图像预览" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="jpg">
     <input type="hidden" name="output_format" value="webp">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to WebP</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">转换为 WebP</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is JPG to WebP Conversion?</h2>
-        <p>JPG to WebP conversion is the process of changing image files from JPG format to WebP format. WebP is a modern image format developed by Google that provides superior compression techniques, allowing for smaller file sizes without losing quality. This conversion is essential for optimizing images for web use, ensuring faster load times and better performance.</p>
+        <h2>什么是 JPG 到 WebP 转换？</h2>
+        <p>JPG 到 WebP 转换是将图像文件从 JPG 格式转换为 WebP 格式的过程。WebP 是 Google 开发的现代图像格式，它提供了更高效的压缩技术，可以在不丢失质量的情况下减小文件大小。此转换对于优化网络使用的图像至关重要，确保更快的加载速度和更好的性能。</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert JPG to WebP?</h2>
-        <p>There are several reasons to convert JPG images to WebP:</p>
+        <h2>为什么要将 JPG 转换为 WebP？</h2>
+        <p>将 JPG 图像转换为 WebP 有几个理由：</p>
         <ul>
-            <li><strong>Reduced File Size:</strong> WebP images are smaller than JPGs, which helps in reducing storage space and improving loading speeds on websites.</li>
-            <li><strong>Enhanced Image Quality:</strong> WebP maintains high image quality while compressing files, resulting in clear and vibrant visuals.</li>
-            <li><strong>Support for Transparency:</strong> Unlike JPG, WebP supports transparent backgrounds, making it ideal for logos and graphics.</li>
+            <li><strong>减小文件大小：</strong>WebP 图像比 JPG 更小，有助于减少存储空间并提高网站加载速度。</li>
+            <li><strong>增强图像质量：</strong>WebP 在压缩文件的同时保持高图像质量，呈现清晰和生动的视觉效果。</li>
+            <li><strong>支持透明度：</strong>与 JPG 不同，WebP 支持透明背景，非常适合用作徽标和图形。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our JPG to WebP Converter</h2>
-        <p>Our JPG to WebP conversion tool is user-friendly and straightforward. Here’s how to use it:</p>
+        <h2>如何使用我们的 JPG 到 WebP 转换器</h2>
+        <p>我们的 JPG 到 WebP 转换工具简单易用。使用方法如下：</p>
         <ul>
-            <li>Click the "Upload JPG File" button to select the JPG image you want to convert.</li>
-            <li>After uploading, our tool will process the conversion to WebP format automatically.</li>
-            <li>Once the conversion is complete, click "Download WebP" to save your new image to your device.</li>
+            <li>点击“上传 JPG 文件”按钮，选择您要转换的 JPG 图像。</li>
+            <li>上传后，我们的工具将自动处理转换为 WebP 格式。</li>
+            <li>转换完成后，点击“下载 WebP”按钮，将新图像保存到您的设备。</li>
         </ul>
-        <p>Our converter works seamlessly with various JPG files, ensuring a smooth conversion experience every time.</p>
+        <p>我们的转换器支持各种 JPG 文件，确保每次都有顺畅的转换体验。</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our JPG to WebP Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>使用我们的 JPG 到 WebP 转换器的优势</h2>
+        <p>使用我们转换工具的优势包括：</p>
         <ul>
-            <li><strong>Fast and Efficient:</strong> Convert your JPG images to WebP in just a few clicks, without any hassle.</li>
-            <li><strong>Quality Preservation:</strong> Enjoy high-quality output while reducing file sizes significantly.</li>
-            <li><strong>Free and Online:</strong> Use our converter for free, directly in your web browser, with no software downloads needed.</li>
-            <li><strong>Easy to Use:</strong> Designed for all users, our tool is simple and intuitive, making it accessible for everyone.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for JPG to WebP Conversion</h2>
-        <p>Here are some situations where converting JPG to WebP can be beneficial:</p>
-        <ul>
-            <li><strong>Website Optimization:</strong> Use WebP images on your website to improve loading speeds and enhance user experience.</li>
-            <li><strong>Mobile Applications:</strong> Optimize images for mobile apps to ensure faster downloads and better performance.</li>
-            <li><strong>Social Media Sharing:</strong> Share WebP images on social media platforms for quicker uploads and downloads.</li>
-            <li><strong>Image Galleries:</strong> Use WebP format for online galleries to showcase images with reduced load times.</li>
+            <li><strong>快速高效：</strong>仅需几次点击即可将 JPG 图像转换为 WebP，无需麻烦。</li>
+            <li><strong>保持质量：</strong>在大幅减小文件大小的同时，确保输出图像的高质量。</li>
+            <li><strong>免费且在线：</strong>您可以在浏览器中免费使用我们的转换器，无需下载任何软件。</li>
+            <li><strong>简单易用：</strong>我们的工具为所有用户设计，操作简单直观，人人都能轻松使用。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting JPG to WebP Can Help</h2>
-        <p>Converting your JPG images to WebP can enhance their usability and performance. Here’s how:</p>
+        <h2>JPG 到 WebP 转换的常见用途</h2>
+        <p>以下是一些将 JPG 转换为 WebP 可能有帮助的场景：</p>
         <ul>
-            <li><strong>Faster Loading:</strong> WebP images load faster on websites, improving overall performance and user satisfaction.</li>
-            <li><strong>Better Image Management:</strong> Smaller file sizes make it easier to manage and store images, especially for large collections.</li>
-            <li><strong>Improved SEO:</strong> Faster loading times can lead to better search engine rankings, helping your content reach a wider audience.</li>
+            <li><strong>网站优化：</strong>在网站上使用 WebP 图像可以提高加载速度，增强用户体验。</li>
+            <li><strong>移动应用：</strong>为移动应用优化图像，确保更快的下载速度和更好的性能。</li>
+            <li><strong>社交媒体分享：</strong>在社交媒体平台上分享 WebP 图像，以便更快速的上传和下载。</li>
+            <li><strong>图像画廊：</strong>在在线画廊中使用 WebP 格式，展示加载速度更快的图像。</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>如何将 JPG 转换为 WebP 带来的帮助</h2>
+        <p>将您的 JPG 图像转换为 WebP 可以提高其可用性和性能。以下是一些好处：</p>
+        <ul>
+            <li><strong>更快的加载：</strong>WebP 图像在网站上加载速度更快，提升整体性能和用户满意度。</li>
+            <li><strong>更好的图像管理：</strong>更小的文件大小使得图像管理和存储更加容易，尤其是对于大量图像文件。</li>
+            <li><strong>改善 SEO：</strong>更快的加载时间可以提高搜索引擎排名，帮助您的内容吸引更多观众。</li>
         </ul>
     </div>
 </div>

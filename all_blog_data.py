@@ -526,5 +526,181 @@ blogs_list = {
             'description': 'Comment convertir vos images png au format jpeg gratuitement en ligne',
             'image': 'jpeg-to-jpg-blog.svg',
         },
+    ],
+    'zh': [
+        {
+            "slug": "how-to-convert-image-from-jpeg-to-jpg",
+            "title": "如何将JPEG转换为JPG免费在线转换",
+            "description": "如何将您的JPEG图像免费在线转换为JPG格式",
+            "image": "jpeg-to-jpg-blog.svg"
+        },
+        {
+            "slug": "how-to-blur-face-on-images-online-for-free",
+            "title": "如何在图片上应用模糊效果",
+            "description": "发现如何在图片中免费在线应用模糊效果",
+            "image": "blur-face-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-bmp-to-jpeg",
+            "title": "如何将位图/BMP转换为JPEG免费在线转换",
+            "description": "如何将您的位图图像免费在线转换为JPEG格式",
+            "image": "bitmap-to-jpeg-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-webp-to-tiff",
+            "title": "如何将WEBP转换为TIFF免费在线转换",
+            "description": "如何将您的WEBP图像免费在线转换为TIFF格式",
+            "image": "webp-to-tiff-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-webp-to-jpeg",
+            "title": "如何将WEBP转换为JPEG免费在线转换",
+            "description": "如何将您的WEBP图像免费在线转换为JPEG格式",
+            "image": "webp-to-jpeg-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-bmp-to-png",
+            "title": "如何将BMP转换为PNG免费在线转换",
+            "description": "如何将您的BMP图像免费在线转换为PNG格式",
+            "image": "bmp-to-png-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-webp-to-png",
+            "title": "如何将WEBP转换为PNG免费在线转换",
+            "description": "如何将您的WEBP图像免费在线转换为PNG格式",
+            "image": "webp-to-png-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-bmp-to-tiff",
+            "title": "如何将BMP转换为TIFF免费在线转换",
+            "description": "如何将您的BMP图像免费在线转换为TIFF格式",
+            "image": "bmp-to-tiff-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-webp-to-jpg",
+            "title": "如何将WEBP转换为JPG免费在线转换",
+            "description": "如何将您的WEBP图像免费在线转换为JPG格式",
+            "image": "webp-to-jpg-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-png-to-jpg",
+            "title": "如何将PNG转换为JPG免费在线转换",
+            "description": "如何将您的PNG图像免费在线转换为JPG格式",
+            "image": "png-to-jpg-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-bmp-to-webp",
+            "title": "如何将位图/BMP转换为WEBP免费在线转换",
+            "description": "如何将您的位图图像免费在线转换为WEBP格式",
+            "image": "bmp-to-webp-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-png-to-bmp",
+            "title": "如何将PNG转换为BMP免费在线转换",
+            "description": "如何将您的PNG图像免费在线转换为BMP格式",
+            "image": "png-to-bmp-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-png-to-tiff",
+            "title": "如何将PNG转换为TIFF免费在线转换",
+            "description": "如何将您的PNG图像免费在线转换为TIFF格式",
+            "image": "png-to-tiff-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-webp-to-bmp",
+            "title": "如何将WEBP转换为BMP免费在线转换",
+            "description": "如何将您的WEBP图像免费在线转换为BMP格式",
+            "image": "bmp-to-png-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-png-to-webp",
+            "title": "如何将PNG转换为WEBP免费在线转换",
+            "description": "如何将您的PNG图像免费在线转换为WEBP格式",
+            "image": "webp-to-jpeg-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-tiff-to-jpg",
+            "title": "如何将TIFF转换为JPG免费在线转换",
+            "description": "如何将您的TIFF图像免费在线转换为JPG格式",
+            "image": "webp-to-tiff-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-jpg-to-webp",
+            "title": "如何将JPG转换为WEBP免费在线转换",
+            "description": "如何将您的JPG图像免费在线转换为WEBP格式",
+            "image": "webp-to-jpg-blog.svg"
+        },
+        {
+            "slug": "how-to-reduce-the-size-of-images-using-image-size-reducer",
+            "title": "如何免费在线压缩图像大小",
+            "description": "使用高效的图像大小压缩工具来有效地减少图像的大小",
+            "image": "image-size-reducer-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-jpg-to-jpeg",
+            "title": "如何将JPG转换为JPEG免费在线转换",
+            "description": "如何将您的JPG图像免费在线转换为JPEG格式",
+            "image": "jpeg-to-jpg-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-jpg-to-ico",
+            "title": "如何将JPG转换为ICO免费在线转换",
+            "description": "如何将您的JPG图像免费在线转换为ICO格式",
+            "image": "jpg-to-ico-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-bmp-to-jpg",
+            "title": "如何将BMP转换为JPG免费在线转换",
+            "description": "如何将您的BMP图像免费在线转换为JPG格式",
+            "image": "bmp-to-png-blog.svg"
+        },
+        {
+            "slug": "how-to-rotate-images-online-for-free",
+            "title": "如何免费在线旋转图像",
+            "description": "如何免费在线旋转图像",
+            "image": "image-rotate-blog.svg"
+        },
+        {
+            "slug": "how-to-crop-images-online-for-free",
+            "title": "如何免费在线裁剪图像",
+            "description": "如何免费在线裁剪图像",
+            "image": "crop-image-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-jpeg-to-png",
+            "title": "如何将JPEG转换为PNG免费在线转换",
+            "description": "如何将您的JPEG图像免费在线转换为PNG格式",
+            "image": "webp-to-png-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-jpeg-to-webp",
+            "title": "如何将JPEG转换为WEBP免费在线转换",
+            "description": "如何将您的JPEG图像免费在线转换为WEBP格式",
+            "image": "webp-to-jpeg-blog.svg"
+        },
+        {
+            "slug": "best-tools-to-blur-faces-in-photos",
+            "title": "最好的三种工具来模糊照片中的人脸",
+            "description": "三种最好的在线工具，帮助您在照片中模糊人脸或其他区域",
+            "image": "best-blur-face-tools-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-jpg-to-bmp",
+            "title": "如何将JPG转换为BMP免费在线转换",
+            "description": "如何将您的JPG图像免费在线转换为BMP格式",
+            "image": "bmp-to-png-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-jpg-to-png",
+            "title": "如何将JPG转换为PNG免费在线转换",
+            "description": "如何将您的JPG图像免费在线转换为PNG格式",
+            "image": "webp-to-png-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-png-to-jpeg",
+            "title": "如何将PNG转换为JPEG免费在线转换",
+            "description": "如何将您的PNG图像免费在线转换为JPEG格式",
+            "image": "jpeg-to-jpg-blog.svg"
+        },
     ]
 }

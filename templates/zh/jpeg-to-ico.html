@@ -1,81 +1,81 @@
-{% extends "en/base.html" %}
+{% extends "zh/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert JPEG to ICO images with ToolsForImage. Free, fast, and secure online JPEG to ICO converter for high-quality image transformations.">
+<meta name="description" content="使用 ToolsForImage 轻松将 JPEG 转换为 ICO 图像。免费、快速、安全的在线 JPEG 转 ICO 转换器，实现高质量的图像转换。">
 {% endblock %}
 
-{% block title %}Online JPEG to ICO converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}在线 JPEG 转 ICO 转换器 | ToolsForImage | 免费在线图像转换器{% endblock %}
 
 {% block content %}
-<h1>Free Online JPEG to ICO Converter</h1>
-<p>Easily convert your images from JPEG to ICO format. Upload a JPEG image and we'll convert it to ICO for you.</p>
+<h1>免费在线 JPEG 转 ICO 转换器</h1>
+<p>轻松将您的图像从 JPEG 格式转换为 ICO 格式。上传 JPEG 图像，我们将为您转换为 ICO 文件。</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/jpeg" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload JPEG Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">上传 JPEG 图像</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="图像预览" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="jpeg">
     <input type="hidden" name="output_format" value="ico">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to ICO</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">转换为 ICO</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is JPEG to ICO Conversion?</h2>
-        <p>JPEG to ICO conversion is the process of changing image files from JPEG format to ICO format. ICO is a file format used for icons in Microsoft Windows. This conversion is useful when you need to create icons for Windows applications, websites, or favicons.</p>
+        <h2>什么是 JPEG 转 ICO 转换？</h2>
+        <p>JPEG 转 ICO 转换是将图像文件从 JPEG 格式转换为 ICO 格式的过程。ICO 是用于 Microsoft Windows 图标的文件格式。当您需要为 Windows 应用程序、网站或网站图标创建图标时，这种转换非常有用。</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert JPEG to ICO?</h2>
-        <p>There are several reasons to convert JPEG images to ICO:</p>
+        <h2>为什么将 JPEG 转换为 ICO？</h2>
+        <p>将 JPEG 图像转换为 ICO 有以下几个原因：</p>
         <ul>
-            <li><strong>Create Windows Icons:</strong> ICO is the standard format for Windows application icons.</li>
-            <li><strong>Website Favicons:</strong> ICO is commonly used for website favicons, the small icons displayed in browser tabs.</li>
-            <li><strong>Multiple Sizes:</strong> ICO files can contain multiple image sizes in one file, useful for different display scenarios.</li>
+            <li><strong>创建 Windows 图标：</strong> ICO 是 Windows 应用程序图标的标准格式。</li>
+            <li><strong>网站图标：</strong> ICO 常用于网站图标（favicon），显示在浏览器标签页中。</li>
+            <li><strong>多尺寸支持：</strong> ICO 文件可以在一个文件中包含多种图像尺寸，适用于不同的显示场景。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our JPEG to ICO Converter</h2>
-        <p>Using our JPEG to ICO conversion tool is simple and quick. Here's how it works:</p>
+        <h2>如何使用我们的 JPEG 转 ICO 转换器</h2>
+        <p>使用我们的 JPEG 转 ICO 转换工具简单快捷。操作步骤如下：</p>
         <ul>
-            <li>Click the "Upload JPEG File" button to select the JPEG image you want to convert.</li>
-            <li>Once your image is uploaded, our tool will automatically start converting it to ICO format.</li>
-            <li>After the conversion is complete, click "Download ICO" to save your new icon file to your device.</li>
+            <li>点击“上传 JPEG 文件”按钮选择您要转换的 JPEG 图像。</li>
+            <li>图像上传后，我们的工具会自动将其转换为 ICO 格式。</li>
+            <li>转换完成后，点击“下载 ICO”将新的图标文件保存到您的设备。</li>
         </ul>
-        <p>Our converter supports various JPEG files, ensuring a smooth and efficient conversion experience for all users.</p>
+        <p>我们的转换器支持各种 JPEG 文件，为所有用户提供顺畅高效的转换体验。</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our JPEG to ICO Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>使用我们的 JPEG 转 ICO 转换器的优势</h2>
+        <p>使用我们的转换工具有以下优势：</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Convert your JPEG images to ICO quickly with just a few clicks.</li>
-            <li><strong>High Quality:</strong> Maintain image quality during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, with no downloads or installations needed.</li>
-            <li><strong>User-Friendly Interface:</strong> Our tool is designed to be intuitive and easy to navigate for everyone.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for JPEG to ICO Conversion</h2>
-        <p>Here are some common situations where converting JPEG to ICO can be helpful:</p>
-        <ul>
-            <li><strong>Application Development:</strong> Create icons for Windows applications.</li>
-            <li><strong>Web Design:</strong> Generate favicons for websites to display in browser tabs and bookmarks.</li>
-            <li><strong>Custom Folder Icons:</strong> Create personalized icons for Windows folders.</li>
-            <li><strong>Desktop Shortcuts:</strong> Design custom icons for desktop shortcuts.</li>
+            <li><strong>快速简便：</strong> 只需几步即可快速将 JPEG 图像转换为 ICO。</li>
+            <li><strong>高质量：</strong> 转换过程中保持图像质量。</li>
+            <li><strong>免费且易访问：</strong> 在线免费使用我们的工具，无需下载或安装。</li>
+            <li><strong>用户友好的界面：</strong> 我们的工具设计直观，适合所有用户轻松使用。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting JPEG to ICO Can Help</h2>
-        <p>Converting your JPEG images to ICO can enhance their usability in specific contexts. Here's how:</p>
+        <h2>JPEG 转 ICO 转换的常见用途</h2>
+        <p>以下是一些 JPEG 转换为 ICO 的常见场景：</p>
         <ul>
-            <li><strong>Windows Compatibility:</strong> ICO is the native icon format for Windows, ensuring proper display.</li>
-            <li><strong>Web Standards:</strong> ICO is widely supported as the favicon format across different browsers.</li>
-            <li><strong>Multiple Resolutions:</strong> ICO files can store multiple image sizes, useful for different display scenarios.</li>
+            <li><strong>应用程序开发：</strong> 创建适用于 Windows 应用程序的图标。</li>
+            <li><strong>网页设计：</strong> 生成网站 favicon，在浏览器标签页和书签中显示。</li>
+            <li><strong>自定义文件夹图标：</strong> 创建个性化的 Windows 文件夹图标。</li>
+            <li><strong>桌面快捷方式：</strong> 为桌面快捷方式设计自定义图标。</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>将 JPEG 转换为 ICO 的好处</h2>
+        <p>将 JPEG 图像转换为 ICO 可以在特定情况下提高其可用性。以下是一些好处：</p>
+        <ul>
+            <li><strong>Windows 兼容性：</strong> ICO 是 Windows 原生图标格式，确保正确显示。</li>
+            <li><strong>网页标准：</strong> ICO 是浏览器中广泛支持的 favicon 格式。</li>
+            <li><strong>多分辨率支持：</strong> ICO 文件可存储多种图像尺寸，适用于不同的显示场景。</li>
         </ul>
     </div>
 </div>

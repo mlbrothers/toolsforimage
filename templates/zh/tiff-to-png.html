@@ -1,82 +1,82 @@
-{% extends "en/base.html" %}
+{% extends "zh/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert TIFF to PNG images with ToolsForImage. Free, fast, and secure online TIFF to PNG converter for high-quality image transformations.">
+<meta name="description" content="轻松使用 ToolsForImage 将 TIFF 转换为 PNG 图像。免费的、快速且安全的在线 TIFF 转 PNG 转换器，提供高质量的图像转换服务。">
 {% endblock %}
 
-{% block title %}Online TIFF to PNG converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}在线 TIFF 转 PNG 转换器 | ToolsForImage | 免费在线图像转换器{% endblock %}
 
 {% block content %}
-<h1>Free Online TIFF to PNG Converter</h1>
-<p>Easily convert your images from TIFF to PNG format. Upload a TIFF image and we'll convert it to PNG for you.</p>
+<h1>免费在线 TIFF 转 PNG 转换器</h1>
+<p>轻松将您的图像从 TIFF 格式转换为 PNG 格式。上传 TIFF 图像，我们将为您转换为 PNG。</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/tiff" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload TIFF Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">上传 TIFF 图像</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="图像预览" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="tiff">
     <input type="hidden" name="output_format" value="png">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to PNG</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">转换为 PNG</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is TIFF to PNG Conversion?</h2>
-        <p>TIFF to PNG conversion is the process of changing images from TIFF (Tagged Image File Format) to PNG (Portable Network Graphics) format. TIFF files are known for their high quality and are often used in professional photography and publishing. PNG files, on the other hand, are popular for their lossless compression, allowing for high-quality images without sacrificing clarity. Converting TIFF images to PNG enables you to maintain image quality while benefiting from PNG's wide compatibility and transparency support.</p>
+        <h2>什么是 TIFF 转 PNG 转换？</h2>
+        <p>TIFF 转 PNG 转换是将图像从 TIFF（标记图像文件格式）转换为 PNG（便携式网络图形）格式的过程。TIFF 文件以其高质量而闻名，通常用于专业摄影和出版。另一方面，PNG 文件因其无损压缩而广受欢迎，可在不牺牲清晰度的情况下保持高质量图像。将 TIFF 图像转换为 PNG，可以在保持图像质量的同时享受 PNG 的广泛兼容性和透明度支持。</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert TIFF to PNG?</h2>
-        <p>There are several reasons to convert TIFF images to PNG:</p>
+        <h2>为什么要将 TIFF 转换为 PNG？</h2>
+        <p>将 TIFF 图像转换为 PNG 有以下几个原因：</p>
         <ul>
-            <li><strong>Lossless Quality:</strong> PNG maintains the original quality of your images without compression loss, making it ideal for graphics and images with text.</li>
-            <li><strong>Transparency Support:</strong> PNG format allows for transparent backgrounds, perfect for logos and web graphics.</li>
-            <li><strong>Wider Compatibility:</strong> PNG is widely supported across all platforms and browsers, ensuring your images look great everywhere.</li>
-            <li><strong>Efficient for Web Use:</strong> PNG files are suitable for web use, providing high-quality visuals that enhance user experience.</li>
+            <li><strong>无损质量：</strong>PNG 在没有压缩损失的情况下保持图像的原始质量，非常适合带有文字的图形和图像。</li>
+            <li><strong>支持透明度：</strong>PNG 格式支持透明背景，非常适合用于标志和网页图形。</li>
+            <li><strong>更广泛的兼容性：</strong>PNG 得到了所有平台和浏览器的广泛支持，确保您的图像在任何地方都能呈现良好效果。</li>
+            <li><strong>适合网页使用：</strong>PNG 文件非常适合网页使用，提供高质量的视觉效果，提升用户体验。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our TIFF to PNG Converter</h2>
-        <p>Our TIFF to PNG conversion tool is designed for ease of use. Here’s how it works:</p>
+        <h2>如何使用我们的 TIFF 转 PNG 转换器</h2>
+        <p>我们的 TIFF 转 PNG 转换工具设计简单易用。以下是使用方法：</p>
         <ul>
-            <li>Click the "Upload TIFF File" button to select the TIFF image you want to convert.</li>
-            <li>Once the upload is complete, the conversion will start automatically.</li>
-            <li>After conversion, click "Download PNG" to save the new PNG image to your device.</li>
+            <li>点击“上传 TIFF 文件”按钮，选择您想转换的 TIFF 图像。</li>
+            <li>上传完成后，转换将自动开始。</li>
+            <li>转换完成后，点击“下载 PNG”将新的 PNG 图像保存到您的设备。</li>
         </ul>
-        <p>Our tool supports various TIFF formats, ensuring you can convert your images hassle-free.</p>
+        <p>我们的工具支持多种 TIFF 格式，确保您可以无障碍地转换图像。</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our TIFF to PNG Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>使用我们的 TIFF 转 PNG 转换器的好处</h2>
+        <p>以下是使用我们转换工具的一些优势：</p>
         <ul>
-            <li><strong>Quick and Simple:</strong> Convert your TIFF images to PNG in just a few clicks.</li>
-            <li><strong>No Quality Loss:</strong> Enjoy high-quality results with no degradation during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, without any downloads or installations required.</li>
-            <li><strong>User-Friendly Interface:</strong> Our tool is intuitive and easy to navigate, ensuring a smooth experience.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for TIFF to PNG Conversion</h2>
-        <p>Converting TIFF to PNG is useful in many scenarios:</p>
-        <ul>
-            <li><strong>Graphic Design:</strong> Use PNG for high-quality graphics that need transparency or clarity.</li>
-            <li><strong>Web Content:</strong> Enhance websites with crisp images that load quickly and look professional.</li>
-            <li><strong>Social Media:</strong> Share images that retain quality and look great across various platforms.</li>
-            <li><strong>Archiving:</strong> Save images in a lossless format for long-term storage and easy access.</li>
+            <li><strong>快速简单：</strong>只需几次点击即可将 TIFF 图像转换为 PNG。</li>
+            <li><strong>无质量损失：</strong>享受高质量的转换结果，图像不会在转换过程中受到损害。</li>
+            <li><strong>免费且可访问：</strong>我们的工具可以免费在线使用，无需下载或安装软件。</li>
+            <li><strong>用户友好界面：</strong>我们的工具直观易用，确保您拥有流畅的使用体验。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting TIFF to PNG Can Help</h2>
-        <p>Converting your TIFF images to PNG can improve usability and performance. Here’s how:</p>
+        <h2>TIFF 转 PNG 转换的常见用途</h2>
+        <p>在许多情况下，将 TIFF 转换为 PNG 非常有用：</p>
         <ul>
-            <li><strong>Enhanced Quality:</strong> PNG files retain the original image quality, making them suitable for detailed graphics.</li>
-            <li><strong>Improved Sharing:</strong> PNG format is widely accepted, ensuring your images look good when shared online.</li>
-            <li><strong>Greater Flexibility:</strong> PNG’s support for transparency allows for versatile graphic use in various projects.</li>
+            <li><strong>平面设计：</strong>使用 PNG 进行高质量的图形设计，支持透明或清晰的图像。</li>
+            <li><strong>网页内容：</strong>用清晰的图像美化网站，这些图像加载快且显得专业。</li>
+            <li><strong>社交媒体：</strong>分享保持质量的图像，在各个平台上都能呈现良好效果。</li>
+            <li><strong>存档：</strong>将图像保存为无损格式，便于长期存储和访问。</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>将 TIFF 转换为 PNG 的好处</h2>
+        <p>将您的 TIFF 图像转换为 PNG 可以提高其可用性和性能。以下是方式：</p>
+        <ul>
+            <li><strong>增强质量：</strong>PNG 文件保留了原始图像质量，非常适合细节丰富的图形。</li>
+            <li><strong>改善共享：</strong>PNG 格式被广泛接受，确保您的图像在在线共享时效果良好。</li>
+            <li><strong>更大灵活性：</strong>PNG 对透明度的支持使其在各种项目中使用更具灵活性。</li>
         </ul>
     </div>
 </div>

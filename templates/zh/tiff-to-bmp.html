@@ -1,82 +1,82 @@
-{% extends "en/base.html" %}
+{% extends "zh/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert TIFF to BMP images with ToolsForImage. Free, fast, and secure online TIFF to BMP converter for high-quality image transformations.">
+<meta name="description" content="使用ToolsForImage轻松将TIFF图像转换为BMP格式。免费的、快速的、安全的在线TIFF到BMP转换器，提供高质量的图像转换。">
 {% endblock %}
 
-{% block title %}Online TIFF to BMP converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}在线TIFF到BMP转换器 | ToolsForImage | 免费在线图像转换器{% endblock %}
 
 {% block content %}
-<h1>Free Online TIFF to BMP Converter</h1>
-<p>Easily convert your images from TIFF to BMP format. Upload a TIFF image and we'll convert it to BMP for you.</p>
+<h1>免费在线TIFF到BMP转换器</h1>
+<p>轻松将您的图像从TIFF格式转换为BMP格式。上传TIFF图像，我们将为您将其转换为BMP格式。</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/tiff" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload TIFF Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">上传TIFF图像</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="图像预览" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="tiff">
     <input type="hidden" name="output_format" value="bmp">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to BMP</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">转换为BMP</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is TIFF to BMP Conversion?</h2>
-        <p>TIFF to BMP conversion is the process of changing image files from TIFF format to BMP format. TIFF (Tagged Image File Format) is known for its high quality and is often used in professional photography and graphic design. BMP (Bitmap) is a simple image format that offers easy compatibility with various applications. Converting TIFF images to BMP can help you use your images in more versatile environments while retaining their quality.</p>
+        <h2>什么是TIFF到BMP转换？</h2>
+        <p>TIFF到BMP转换是将图像文件从TIFF格式转换为BMP格式的过程。TIFF（标记图像文件格式）以其高质量著称，通常用于专业摄影和图形设计。而BMP（位图）是一种简单的图像格式，提供与各种应用程序的兼容性。将TIFF图像转换为BMP可以帮助您在更多通用的环境中使用图像，同时保持其质量。</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert TIFF to BMP?</h2>
-        <p>There are several reasons to convert TIFF images to BMP:</p>
+        <h2>为什么要将TIFF转换为BMP？</h2>
+        <p>将TIFF图像转换为BMP有多个原因：</p>
         <ul>
-            <li><strong>Wider Compatibility:</strong> BMP files are widely supported across many software and platforms, making them easier to use in different applications.</li>
-            <li><strong>Simplicity:</strong> BMP files are straightforward and don’t require complex decoding, which can be beneficial for quick edits.</li>
-            <li><strong>High Quality:</strong> BMP preserves the quality of the original TIFF image, ensuring your visuals look great.</li>
-            <li><strong>No Compression:</strong> BMP format is uncompressed, which means it retains all image details without losing information.</li>
+            <li><strong>更广泛的兼容性：</strong>BMP文件在许多软件和平台上得到广泛支持，使其在不同的应用程序中更易于使用。</li>
+            <li><strong>简单性：</strong>BMP文件直接且不需要复杂的解码，这对于快速编辑非常有益。</li>
+            <li><strong>高质量：</strong>BMP格式保持TIFF图像的原始质量，确保您的视觉效果看起来非常棒。</li>
+            <li><strong>无压缩：</strong>BMP格式是无压缩的，这意味着它保留所有图像细节，而不会丢失信息。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our TIFF to BMP Converter</h2>
-        <p>Our TIFF to BMP conversion tool is easy to use and efficient. Here’s how to convert your images:</p>
+        <h2>如何使用我们的TIFF到BMP转换器</h2>
+        <p>我们的TIFF到BMP转换工具简单易用且高效。以下是如何转换图像：</p>
         <ul>
-            <li>Click the "Upload TIFF File" button to select the TIFF image you want to convert.</li>
-            <li>After the upload, our tool will automatically begin converting the image to BMP format.</li>
-            <li>Once the conversion is complete, click "Download BMP" to save the new image to your device.</li>
+            <li>点击“上传TIFF文件”按钮选择您要转换的TIFF图像。</li>
+            <li>上传后，我们的工具将自动开始将图像转换为BMP格式。</li>
+            <li>转换完成后，点击“下载BMP”将新图像保存到您的设备。</li>
         </ul>
-        <p>Our converter supports various TIFF files, ensuring a seamless experience for all users.</p>
+        <p>我们的转换器支持各种TIFF文件，确保为所有用户提供无缝体验。</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our TIFF to BMP Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>使用我们的TIFF到BMP转换器的好处</h2>
+        <p>以下是使用我们转换工具的一些优势：</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Convert your TIFF images to BMP quickly with just a few clicks.</li>
-            <li><strong>No Quality Loss:</strong> Enjoy high-quality results with no degradation during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, without needing to install any software.</li>
-            <li><strong>User-Friendly Interface:</strong> Our tool is designed to be intuitive and easy to navigate, ensuring a smooth experience.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for TIFF to BMP Conversion</h2>
-        <p>Here are some scenarios where converting TIFF to BMP can be beneficial:</p>
-        <ul>
-            <li><strong>Graphic Design:</strong> Use BMP images for quick edits or when working with software that supports only BMP format.</li>
-            <li><strong>Photography:</strong> Convert high-resolution TIFF images for easier viewing or sharing without loss of quality.</li>
-            <li><strong>Web Applications:</strong> Incorporate BMP images into web applications that require easy compatibility.</li>
-            <li><strong>Document Creation:</strong> Use BMP files in documents or presentations where simplicity and compatibility are key.</li>
+            <li><strong>快速简便：</strong>只需几次点击即可快速将您的TIFF图像转换为BMP。</li>
+            <li><strong>无质量损失：</strong>在转换过程中，确保没有质量下降，您将获得高质量的结果。</li>
+            <li><strong>免费且可访问：</strong>在线免费使用我们的工具，无需安装任何软件。</li>
+            <li><strong>用户友好的界面：</strong>我们的工具设计直观且易于操作，确保平稳的体验。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting TIFF to BMP Can Help</h2>
-        <p>Converting your TIFF images to BMP can enhance their usability and performance. Here’s how:</p>
+        <h2>TIFF到BMP转换的常见用途</h2>
+        <p>以下是将TIFF转换为BMP的几种场景：</p>
         <ul>
-            <li><strong>Increased Compatibility:</strong> BMP files can be easily opened and edited in various applications, making them more versatile.</li>
-            <li><strong>Simplified Editing:</strong> BMP’s uncompressed nature allows for easier manipulation and editing of images.</li>
-            <li><strong>Preserved Quality:</strong> Converting to BMP ensures that the high-quality details of your TIFF images remain intact.</li>
+            <li><strong>图形设计：</strong>将BMP图像用于快速编辑或当使用仅支持BMP格式的软件时。</li>
+            <li><strong>摄影：</strong>转换高分辨率TIFF图像，方便查看或分享，且不会损失质量。</li>
+            <li><strong>Web应用程序：</strong>将BMP图像嵌入需要兼容性的Web应用程序中。</li>
+            <li><strong>文档创建：</strong>在文档或演示文稿中使用BMP文件，在这些场景中，简易性和兼容性至关重要。</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>将TIFF转换为BMP的帮助</h2>
+        <p>将您的TIFF图像转换为BMP可以增强其可用性和性能。以下是一些帮助：</p>
+        <ul>
+            <li><strong>增加兼容性：</strong>BMP文件可以轻松地在各种应用程序中打开和编辑，使它们更具通用性。</li>
+            <li><strong>简化编辑：</strong>BMP的无压缩性质使图像的操作和编辑更加容易。</li>
+            <li><strong>保留质量：</strong>转换为BMP可确保TIFF图像的高质量细节保持完整。</li>
         </ul>
     </div>
 </div>

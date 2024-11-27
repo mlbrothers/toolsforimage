@@ -1,28 +1,29 @@
 <nav>
-    <div class="nav-logo"><a href="/" style="text-decoration: none; color: inherit;">ToolsForImage</a></div>
+    <div class="nav-logo"><a href="/{{ g.lang }}/" style="text-decoration: none; color: inherit;">ToolsForImage</a></div>
     <div class="hamburger" id="hamburger">
         <div></div>
         <div></div>
         <div></div>
     </div>
     <ul class="nav-links" id="nav-links">
-        <li><a href="/image-compression">Compress Image</a></li>
-        <li><a href="/image-resize">Resize Image</a></li>
-        <li><a href="/convert-image-format">Convert Image</a></li>
-        <li><a href="/image-rotate">Rotate Image</a></li>
+        <li><a href="/{{ g.lang }}/image-compression">压缩图片</a></li>
+        <li><a href="/{{ g.lang }}/image-resize">调整图片大小</a></li>
+        <li><a href="/{{ g.lang }}/convert-image-format">转换图片格式</a></li>
+        <li><a href="/{{ g.lang }}/image-rotate">旋转图片</a></li>
         <li class="more-menu">
-            <a href="javascript:void(0)" class="more-menu-button">More</a>
+            <a href="javascript:void(0)" class="more-menu-button">更多</a>
             <div class="more-menu-content">
-                <a href="/image-watermarking">Watermark</a>
-                <a href="/image-effects">Image Effects</a>
-                <a href="/image-crop">Crop Image</a>
-                <a href="/blur-face">Blur Face</a>
-                <a href="/remove-background">Remove Background</a>
-                <a href="/blur-background">Blur Background</a>
+                <a href="/{{ g.lang }}/image-watermarking">添加水印</a>
+                <a href="/{{ g.lang }}/image-effects">图片特效</a>
+                <a href="/{{ g.lang }}/image-crop">裁剪图片</a>
+                <a href="/{{ g.lang }}/blur-face">模糊人脸</a>
+                <a href="/{{ g.lang }}/remove-background">去除背景</a>
+                <a href="/{{ g.lang }}/blur-background">模糊背景</a>
             </div>
         </li>
     </ul>
 </nav>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {

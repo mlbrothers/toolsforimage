@@ -19,7 +19,7 @@ app = Flask(__name__)
 hti = Html2Image()
 
 # At the top of your file, add:
-supported_languages = ['en', 'hi', 'es', 'fr', 'de']  # Add more as needed
+supported_languages = ['en', 'hi', 'fr', 'zh']  # Add more as needed
 
 @app.before_request
 def before_request():

@@ -1,81 +1,81 @@
-{% extends "en/base.html" %}
+{% extends "zh/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert TIFF to ICO images with ToolsForImage. Free, fast, and secure online TIFF to ICO converter for high-quality image transformations.">
+<meta name="description" content="使用ToolsForImage轻松将TIFF转换为ICO图像。免费的、快速且安全的在线TIFF到ICO转换器，提供高质量的图像转换。">
 {% endblock %}
 
-{% block title %}Online TIFF to ICO converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}在线TIFF到ICO转换器 | ToolsForImage | 免费在线图像转换器{% endblock %}
 
 {% block content %}
-<h1>Free Online TIFF to ICO Converter</h1>
-<p>Easily convert your images from TIFF to ICO format. Upload a TIFF image and we'll convert it to ICO for you.</p>
+<h1>免费在线TIFF到ICO转换器</h1>
+<p>轻松将您的图像从TIFF格式转换为ICO格式。上传一个TIFF图像，我们会将其转换为ICO格式。</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/tiff" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload TIFF Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">上传TIFF图像</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="图像预览" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="tiff">
     <input type="hidden" name="output_format" value="ico">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to ICO</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">转换为ICO</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is TIFF to ICO Conversion?</h2>
-        <p>TIFF to ICO conversion is the process of changing image files from TIFF format to ICO format. ICO is a file format used for icons in Microsoft Windows. This conversion is useful when you need to create icons for Windows applications, websites, or favicons.</p>
+        <h2>什么是TIFF到ICO转换？</h2>
+        <p>TIFF到ICO转换是将TIFF格式的图像文件转换为ICO格式的过程。ICO是用于Microsoft Windows中图标的文件格式。当您需要为Windows应用程序、网站或网页图标（favicon）创建图标时，此转换非常有用。</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert TIFF to ICO?</h2>
-        <p>There are several reasons to convert TIFF images to ICO:</p>
+        <h2>为什么将TIFF转换为ICO？</h2>
+        <p>将TIFF图像转换为ICO有以下几个原因：</p>
         <ul>
-            <li><strong>Create Windows Icons:</strong> ICO is the standard format for Windows application icons.</li>
-            <li><strong>Website Favicons:</strong> ICO is commonly used for website favicons, the small icons displayed in browser tabs.</li>
-            <li><strong>Multiple Sizes:</strong> ICO files can contain multiple image sizes in one file, useful for different display scenarios.</li>
+            <li><strong>创建Windows图标：</strong>ICO是Windows应用程序图标的标准格式。</li>
+            <li><strong>网站Favicon：</strong>ICO常用于网站的favicon图标，即浏览器标签页中显示的小图标。</li>
+            <li><strong>多种尺寸：</strong>ICO文件可以在一个文件中包含多种图像尺寸，适用于不同的显示场景。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our TIFF to ICO Converter</h2>
-        <p>Using our TIFF to ICO conversion tool is simple and quick. Here's how it works:</p>
+        <h2>如何使用我们的TIFF到ICO转换器</h2>
+        <p>使用我们的TIFF到ICO转换工具简单且快速。以下是操作步骤：</p>
         <ul>
-            <li>Click the "Upload TIFF File" button to select the TIFF image you want to convert.</li>
-            <li>Once your image is uploaded, our tool will automatically start converting it to ICO format.</li>
-            <li>After the conversion is complete, click "Download ICO" to save your new icon file to your device.</li>
+            <li>点击“上传TIFF文件”按钮选择您要转换的TIFF图像。</li>
+            <li>上传图像后，我们的工具将自动开始将其转换为ICO格式。</li>
+            <li>转换完成后，点击“下载ICO”将新生成的图标文件保存到您的设备。</li>
         </ul>
-        <p>Our converter supports various TIFF files, ensuring a smooth and efficient conversion experience for all users.</p>
+        <p>我们的转换器支持各种TIFF文件，确保为所有用户提供顺畅高效的转换体验。</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our TIFF to ICO Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>使用我们的TIFF到ICO转换器的好处</h2>
+        <p>以下是使用我们转换工具的一些优势：</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Convert your TIFF images to ICO quickly with just a few clicks.</li>
-            <li><strong>High Quality:</strong> Maintain image quality during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, with no downloads or installations needed.</li>
-            <li><strong>User-Friendly Interface:</strong> Our tool is designed to be intuitive and easy to navigate for everyone.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for TIFF to ICO Conversion</h2>
-        <p>Here are some common situations where converting TIFF to ICO can be helpful:</p>
-        <ul>
-            <li><strong>Application Development:</strong> Create icons for Windows applications.</li>
-            <li><strong>Web Design:</strong> Generate favicons for websites to display in browser tabs and bookmarks.</li>
-            <li><strong>Custom Folder Icons:</strong> Create personalized icons for Windows folders.</li>
-            <li><strong>Desktop Shortcuts:</strong> Design custom icons for desktop shortcuts.</li>
+            <li><strong>快速且简单：</strong>只需几次点击即可快速将TIFF图像转换为ICO。</li>
+            <li><strong>高质量：</strong>在转换过程中保持图像质量。</li>
+            <li><strong>免费且易于访问：</strong>无需下载或安装任何软件，在线免费使用我们的工具。</li>
+            <li><strong>用户友好界面：</strong>我们的工具设计直观，便于每个人使用。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting TIFF to ICO Can Help</h2>
-        <p>Converting your TIFF images to ICO can enhance their usability in specific contexts. Here's how:</p>
+        <h2>TIFF到ICO转换的常见用途</h2>
+        <p>以下是一些转换TIFF为ICO有用的常见场景：</p>
         <ul>
-            <li><strong>Windows Compatibility:</strong> ICO is the native icon format for Windows, ensuring proper display.</li>
-            <li><strong>Web Standards:</strong> ICO is widely supported as the favicon format across different browsers.</li>
-            <li><strong>Multiple Resolutions:</strong> ICO files can store multiple image sizes, useful for different display scenarios.</li>
+            <li><strong>应用程序开发：</strong>为Windows应用程序创建图标。</li>
+            <li><strong>网页设计：</strong>为网站生成favicon，在浏览器标签页和书签中显示。</li>
+            <li><strong>自定义文件夹图标：</strong>为Windows文件夹创建个性化图标。</li>
+            <li><strong>桌面快捷方式：</strong>为桌面快捷方式设计自定义图标。</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>将TIFF转换为ICO的好处</h2>
+        <p>将TIFF图像转换为ICO可以在特定情况下提高其可用性。以下是一些好处：</p>
+        <ul>
+            <li><strong>Windows兼容性：</strong>ICO是Windows的原生图标格式，确保正确显示。</li>
+            <li><strong>网页标准：</strong>ICO格式在不同浏览器中广泛支持作为favicon格式。</li>
+            <li><strong>多种分辨率：</strong>ICO文件可以存储多种图像尺寸，适用于不同的显示场景。</li>
         </ul>
     </div>
 </div>

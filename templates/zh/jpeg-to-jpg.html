@@ -1,114 +1,96 @@
-{% extends "en/base.html" %}
+{% extends "zh/base.html" %}
 
 {% block meta_description %}
 <meta name="description"
-    content="Easily convert JPEG to JPG images with ToolsForImage. Free, fast, and secure online JPEG to JPG converter for high-quality image transformations.">
+    content="轻松使用 ToolsForImage 将 JPEG 转换为 JPG 图像。免费的、快速的和安全的在线 JPEG 转 JPG 转换器，为您提供高质量的图像转换服务。">
 {% endblock %}
 
-{% block title %}Online JPEG to JPG converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}在线 JPEG 转 JPG 转换器 | ToolsForImage | 免费在线图像转换器{% endblock %}
 
 {% block content %}
-<h1>Free Online JPEG to JPG Converter</h1>
-<p>Easily convert your images from JPEG to JPG format. Upload a JPEG image and we'll convert it to JPG for you.</p>
+<h1>免费在线 JPEG 转 JPG 转换器</h1>
+<p>轻松将您的图像从 JPEG 格式转换为 JPG 格式。上传一张 JPEG 图像，我们将为您转换为 JPG。</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/jpeg" style="display: none;"
         onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload JPEG
-        Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">上传 JPEG 图像</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="图像预览" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="jpeg">
     <input type="hidden" name="output_format" value="jpg">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to JPG</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">转换为 JPG</button>
 </form>
 
 <section>
-    <h2>Step by step conversion guide from JPEG to JPG</h2>
+    <h2>JPEG 转 JPG 的分步转换指南</h2>
     <div class="step-container">
-        <div class="step">Step 1: Select a jpeg to convert the frames to individual JPG images</div>
+        <div class="step">步骤 1: 选择一张 JPEG 图像以将其转换为单独的 JPG 图像</div>
         <div class="arrow">↓</div>
-        <div class="step">Step 2: Upload a jpeg and begin the conversion process</div>
+        <div class="step">步骤 2: 上传 JPEG 图像并开始转换过程</div>
         <div class="arrow">↓</div>
-        <div class="step">Step 3: Download the JPG files</div>
+        <div class="step">步骤 3: 下载 JPG 文件</div>
     </div>
 </section>
 
 <div class="faq-container">
-    <h2>FAQs (Frequently Asked Questions)</h2>
+    <h2>常见问题 (FAQs)</h2>
     <div class="info-container">
         <div class="info-section">
-            <h2>What is JPEG to JPG Conversion?</h2>
-            <p>JPEG to JPG conversion is the process of changing image files from JPEG (Joint Photographic Experts
-                Group) format to JPG (a commonly used abbreviation of JPEG). Despite the different file extensions, both
-                formats are essentially the same, utilizing lossy compression for high-quality images. Our tool makes it
-                easy to convert your JPEG files to JPG quickly and efficiently.</p>
+            <h2>什么是 JPEG 转 JPG 转换？</h2>
+            <p>JPEG 转 JPG 转换是将图像文件从 JPEG（联合图像专家组）格式更改为 JPG（JPEG 的常用缩写）格式的过程。尽管文件扩展名不同，但两种格式本质上是相同的，均使用有损压缩以实现高质量的图像。我们的工具让您能够快速高效地将 JPEG 文件转换为 JPG。</p>
         </div>
 
         <div class="info-section">
-            <h2>Why Convert JPEG to JPG?</h2>
-            <p>There are a few reasons why you might want to convert JPEG images to JPG:</p>
+            <h2>为什么要将 JPEG 转换为 JPG？</h2>
+            <p>您可能需要将 JPEG 图像转换为 JPG 的一些原因：</p>
             <ul>
-                <li><strong>File Compatibility:</strong> Some software or platforms prefer JPG files over JPEG.
-                    Converting ensures compatibility with various applications.</li>
-                <li><strong>File Name Shortening:</strong> Using JPG instead of JPEG can make file names shorter, which
-                    is useful for organizing large collections of images.</li>
-                <li><strong>Uniformity:</strong> If you have a mix of JPEG and JPG files, converting them to one format
-                    can help maintain consistency across your image library.</li>
+                <li><strong>文件兼容性：</strong>某些软件或平台更偏好 JPG 文件。转换确保了与各种应用程序的兼容性。</li>
+                <li><strong>文件名简化：</strong>使用 JPG 而不是 JPEG 可以使文件名更短，这对于组织大量图像很有帮助。</li>
+                <li><strong>一致性：</strong>如果您有混合的 JPEG 和 JPG 文件，将它们转换为同一格式有助于保持图像库的统一性。</li>
             </ul>
         </div>
 
         <div class="info-section">
-            <h2>How to Use Our JPEG to JPG Converter</h2>
-            <p>Our JPEG to JPG conversion tool is designed to be user-friendly. Here's how to use it:</p>
+            <h2>如何使用我们的 JPEG 转 JPG 转换器</h2>
+            <p>我们的 JPEG 转 JPG 转换工具设计为用户友好。以下是使用方法：</p>
             <ul>
-                <li>Click the "Upload JPEG File" button to choose the JPEG image you want to convert.</li>
-                <li>After the image is uploaded, our tool will automatically convert it to JPG format.</li>
-                <li>Once the conversion is complete, click "Download JPG" to save your new file to your device.</li>
+                <li>点击“上传 JPEG 文件”按钮选择您要转换的 JPEG 图像。</li>
+                <li>图像上传后，我们的工具将自动将其转换为 JPG 格式。</li>
+                <li>转换完成后，点击“下载 JPG”将新文件保存到您的设备。</li>
             </ul>
-            <p>Our converter supports various JPEG files, ensuring a smooth conversion experience every time.</p>
+            <p>我们的转换器支持多种 JPEG 文件，确保每次都能顺利完成转换。</p>
         </div>
 
         <div class="info-section">
-            <h2>Benefits of Using Our JPEG to JPG Converter</h2>
-            <p>Here are some advantages of using our conversion tool:</p>
+            <h2>使用我们的 JPEG 转 JPG 转换器的优势</h2>
+            <p>以下是使用我们转换工具的一些好处：</p>
             <ul>
-                <li><strong>Quick and Easy:</strong> Convert your JPEG images to JPG in just a few clicks, without any
-                    hassle.</li>
-                <li><strong>No Loss of Quality:</strong> Enjoy high-quality images with our lossless conversion feature.
-                </li>
-                <li><strong>Free and Accessible:</strong> Use our online converter for free, without needing to download
-                    any software.</li>
-                <li><strong>User-Friendly Interface:</strong> Designed for everyone, our tool makes it easy to convert
-                    images, regardless of your technical skills.</li>
+                <li><strong>快速简便：</strong>只需几次点击即可轻松将 JPEG 图像转换为 JPG，无需繁琐操作。</li>
+                <li><strong>质量无损：</strong>通过我们的无损转换功能，享受高质量的图像。</li>
+                <li><strong>免费且可访问：</strong>使用我们的在线转换器是免费的，无需下载任何软件。</li>
+                <li><strong>用户友好的界面：</strong>我们的工具适合所有人，无论技术水平如何，都能轻松使用。</li>
             </ul>
         </div>
 
         <div class="info-section">
-            <h2>Common Uses for JPEG to JPG Conversion</h2>
-            <p>Here are a few situations where converting JPEG to JPG can be helpful:</p>
+            <h2>JPEG 转 JPG 转换的常见用途</h2>
+            <p>以下是一些 JPEG 转 JPG 转换可能有帮助的场景：</p>
             <ul>
-                <li><strong>File Management:</strong> Convert images for better organization, especially if you have
-                    many JPEG files to sort.</li>
-                <li><strong>Web Uploads:</strong> Some websites or applications prefer JPG files, so converting ensures
-                    seamless uploads.</li>
-                <li><strong>Sharing with Others:</strong> Ensure that your images are in the preferred format for
-                    friends, family, or colleagues.</li>
-                <li><strong>Social Media:</strong> Prepare your images for social media platforms that may favor JPG
-                    files over JPEG.</li>
+                <li><strong>文件管理：</strong>转换图像以便更好地组织，特别是当您有许多 JPEG 文件需要分类时。</li>
+                <li><strong>网页上传：</strong>某些网站或应用程序更喜欢 JPG 文件，因此转换可以确保无缝上传。</li>
+                <li><strong>与他人分享：</strong>确保您的图像采用他人偏好的格式，方便共享。</li>
+                <li><strong>社交媒体：</strong>为社交媒体平台准备您的图像，这些平台可能更喜欢 JPG 文件。</li>
             </ul>
         </div>
 
         <div class="info-section">
-            <h2>How Converting JPEG to JPG Can Enhance Your Images</h2>
-            <p>Converting your JPEG images to JPG can improve their usability and accessibility. Here's how:</p>
+            <h2>将 JPEG 转换为 JPG 如何提升您的图像</h2>
+            <p>将 JPEG 图像转换为 JPG 可以提高其可用性和兼容性。以下是一些具体方式：</p>
             <ul>
-                <li><strong>Increased Compatibility:</strong> Ensure that your images work smoothly with a variety of
-                    applications and platforms.</li>
-                <li><strong>Efficient Storage:</strong> JPG files are typically smaller, making them easier to store and
-                    share.</li>
-                <li><strong>Consistent File Naming:</strong> Standardize your files with JPG extension for easier
-                    identification and retrieval.</li>
+                <li><strong>提高兼容性：</strong>确保您的图像能与各种应用程序和平台无缝配合。</li>
+                <li><strong>高效存储：</strong>JPG 文件通常更小，更易于存储和共享。</li>
+                <li><strong>一致的文件命名：</strong>用 JPG 扩展名标准化文件，便于识别和检索。</li>
             </ul>
         </div>
     </div>

@@ -1,82 +1,82 @@
-{% extends "en/base.html" %}
+{% extends "zh/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert WEBP to BMP images with ToolsForImage. Free, fast, and secure online WEBP to BMP converter for high-quality image transformations.">
+<meta name="description" content="轻松使用 ToolsForImage 将 WEBP 图像转换为 BMP。免费、快速且安全的在线 WEBP 到 BMP 转换工具，提供高质量图像转换。">
 {% endblock %}
 
-{% block title %}Online WEBP to BMP converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}在线 WEBP 到 BMP 转换工具 | ToolsForImage | 免费在线图像转换器{% endblock %}
 
 {% block content %}
-<h1>Free Online WEBP to BMP Converter</h1>
-<p>Easily convert your images from WEBP to BMP format. Upload a webp image and we'll convert it to BMP for you.</p>
+<h1>免费在线 WEBP 到 BMP 转换工具</h1>
+<p>轻松将图像从 WEBP 格式转换为 BMP 格式。上传一个 WEBP 图像，我们将为您转换为 BMP 格式。</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/webp" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload webp Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">上传 WEBP 图像</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="图像预览" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="webp">
     <input type="hidden" name="output_format" value="bmp">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to BMP</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">转换为 BMP</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is WebP to BMP Conversion?</h2>
-        <p>WebP to BMP conversion is the process of changing image files from WebP format to BMP (Bitmap) format. WebP is a modern image format that offers excellent compression and quality, while BMP is a traditional format known for its simplicity and high-quality representation of images. Converting WebP images to BMP can be useful when you need images with uncompressed quality for printing or editing purposes.</p>
+        <h2>什么是 WebP 到 BMP 转换？</h2>
+        <p>WebP 到 BMP 转换是将图像文件从 WebP 格式更改为 BMP（位图）格式的过程。WebP 是一种现代图像格式，具有出色的压缩和质量，而 BMP 是一种传统格式，以其简单性和高质量的图像表示而闻名。将 WebP 图像转换为 BMP 格式在您需要用于打印或编辑的无压缩高质量图像时非常有用。</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert WebP to BMP?</h2>
-        <p>There are several reasons to convert WebP images to BMP format:</p>
+        <h2>为什么要将 WebP 转换为 BMP？</h2>
+        <p>将 WebP 图像转换为 BMP 格式有多种原因：</p>
         <ul>
-            <li><strong>High Image Quality:</strong> BMP files retain the highest quality as they are uncompressed, making them ideal for professional use.</li>
-            <li><strong>Simplicity:</strong> BMP format is straightforward and widely supported by many applications, ensuring compatibility across different platforms.</li>
-            <li><strong>Editing Flexibility:</strong> Converting to BMP allows for easier editing in various graphics software that may not support WebP.</li>
-            <li><strong>No Loss of Detail:</strong> BMP preserves all image details, making it perfect for situations where image fidelity is crucial.</li>
+            <li><strong>高图像质量：</strong> BMP 文件保留最高质量，因为它们是无压缩的，非常适合专业使用。</li>
+            <li><strong>简单性：</strong> BMP 格式简单且被许多应用程序广泛支持，确保在不同平台上的兼容性。</li>
+            <li><strong>编辑灵活性：</strong> 转换为 BMP 使其更易于在可能不支持 WebP 的各种图形软件中进行编辑。</li>
+            <li><strong>无细节丢失：</strong> BMP 保留所有图像细节，非常适合需要图像保真度的情况。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our WebP to BMP Converter</h2>
-        <p>Using our WebP to BMP conversion tool is simple and user-friendly. Here’s how to get started:</p>
+        <h2>如何使用我们的 WebP 到 BMP 转换器</h2>
+        <p>使用我们的 WebP 到 BMP 转换工具简单且用户友好。以下是开始的步骤：</p>
         <ul>
-            <li>Click the "Upload WebP File" button to select the WebP image you want to convert.</li>
-            <li>After the upload is complete, our tool will automatically start the conversion process.</li>
-            <li>Once the conversion is done, click "Download BMP" to save your new BMP image to your device.</li>
+            <li>点击“上传 WEBP 文件”按钮选择您要转换的 WEBP 图像。</li>
+            <li>上传完成后，我们的工具将自动开始转换过程。</li>
+            <li>转换完成后，点击“下载 BMP”以将新的 BMP 图像保存到您的设备。</li>
         </ul>
-        <p>Our tool supports multiple WebP formats, allowing you to convert your images with ease.</p>
+        <p>我们的工具支持多种 WebP 格式，让您轻松完成图像转换。</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our WebP to BMP Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>使用我们 WebP 到 BMP 转换器的好处</h2>
+        <p>以下是使用我们转换工具的一些优势：</p>
         <ul>
-            <li><strong>Fast and Efficient:</strong> Convert your WebP images to BMP in just a few clicks, saving you time.</li>
-            <li><strong>No Quality Loss:</strong> Enjoy high-quality BMP images without sacrificing any detail during conversion.</li>
-            <li><strong>Free and Online:</strong> Our tool is available for free online, with no downloads or installations required.</li>
-            <li><strong>User-Friendly Interface:</strong> Designed for ease of use, our tool simplifies the conversion process.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for WebP to BMP Conversion</h2>
-        <p>Converting WebP to BMP can be beneficial in various scenarios:</p>
-        <ul>
-            <li><strong>Printing:</strong> Use BMP images for high-quality print projects where clarity is essential.</li>
-            <li><strong>Graphic Design:</strong> Ensure compatibility with design software that works best with BMP files.</li>
-            <li><strong>Image Archiving:</strong> Store images in BMP format for future editing and high-quality reference.</li>
-            <li><strong>Personal Use:</strong> Easily convert images for family albums or photo collections that require high resolution.</li>
+            <li><strong>快速高效：</strong> 只需几次点击即可将您的 WebP 图像转换为 BMP，节省时间。</li>
+            <li><strong>无质量损失：</strong> 在转换过程中，享受高质量的 BMP 图像而不会牺牲任何细节。</li>
+            <li><strong>免费在线：</strong> 我们的工具是免费的，无需下载或安装软件。</li>
+            <li><strong>用户友好的界面：</strong> 我们的工具简化了转换过程，便于使用。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting WebP to BMP Can Help</h2>
-        <p>Converting your WebP images to BMP format can enhance usability and compatibility. Here’s how:</p>
+        <h2>WebP 到 BMP 转换的常见用途</h2>
+        <p>将 WebP 转换为 BMP 在多种情况下非常有用：</p>
         <ul>
-            <li><strong>Improved Compatibility:</strong> BMP is supported by a wide range of applications, making your images more accessible for editing.</li>
-            <li><strong>Uncompressed Quality:</strong> BMP files retain all image details, ensuring your images look sharp and clear.</li>
-            <li><strong>Easier Editing:</strong> Work with uncompressed BMP files in your favorite graphics software without quality loss.</li>
+            <li><strong>打印：</strong> 将 BMP 图像用于高质量的打印项目，这些项目对清晰度有严格要求。</li>
+            <li><strong>图形设计：</strong> 确保与最好支持 BMP 文件的设计软件的兼容性。</li>
+            <li><strong>图像归档：</strong> 将图像存储为 BMP 格式，以供将来编辑和高质量参考。</li>
+            <li><strong>个人使用：</strong> 轻松转换图像，用于家庭相册或需要高分辨率的照片收藏。</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>WebP 转换为 BMP 的优势</h2>
+        <p>将 WebP 图像转换为 BMP 格式可以提高可用性和兼容性。以下是好处：</p>
+        <ul>
+            <li><strong>改进的兼容性：</strong> BMP 被广泛支持，使您的图像更易于进行编辑。</li>
+            <li><strong>无压缩质量：</strong> BMP 文件保留所有图像细节，确保图像清晰且锐利。</li>
+            <li><strong>更易于编辑：</strong> 在您喜欢的图形软件中使用无压缩的 BMP 文件，无需担心质量损失。</li>
         </ul>
     </div>
 </div>

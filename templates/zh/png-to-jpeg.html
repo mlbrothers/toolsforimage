@@ -1,85 +1,84 @@
-{% extends "en/base.html" %}
+{% extends "zh/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert PNG to JPEG images with ToolsForImage. Free, fast, and secure online PNG to JPEG converter for high-quality image transformations.">
+<meta name="description" content="使用ToolsForImage轻松将PNG转换为JPEG图像。免费、快速、安全的在线PNG到JPEG转换器，提供高质量的图像转换。">
 {% endblock %}
 
-{% block title %}Online PNG to JPEG converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}在线PNG到JPEG转换器 | ToolsForImage | 免费在线图像转换器{% endblock %}
 
 {% block content %}
-<h1>Free Online PNG to JPEG Converter</h1>
-<p>Easily convert your images from PNG to JPEG format. Upload a PNG image and we'll convert it to JPEG for you.</p>
+<h1>免费在线PNG到JPEG转换器</h1>
+<p>轻松将您的PNG图像转换为JPEG格式。上传PNG图像，我们将为您转换为JPEG。</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/png" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload PNG Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">上传PNG图像</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="图像预览" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="png">
     <input type="hidden" name="output_format" value="jpeg">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to JPEG</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">转换为JPEG</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is PNG to JPEG Conversion?</h2>
-        <p>PNG to JPEG conversion is the process of changing image files from PNG format to JPEG format. JPEG (Joint Photographic Experts Group) is a widely used image format that uses compression to reduce file size while maintaining decent image quality. Converting PNG images to JPEG is beneficial when you want smaller files for sharing on the web or social media.</p>
+        <h2>什么是PNG到JPEG转换？</h2>
+        <p>PNG到JPEG转换是将图像文件从PNG格式转换为JPEG格式的过程。JPEG（联合图像专家组）是一种广泛使用的图像格式，采用压缩技术减小文件大小，同时保持良好的图像质量。当您希望减少文件大小以便在网络或社交媒体上分享时，将PNG转换为JPEG非常有用。</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert PNG to JPEG?</h2>
-        <p>There are several reasons to convert PNG images to JPEG:</p>
+        <h2>为什么要将PNG转换为JPEG？</h2>
+        <p>将PNG图像转换为JPEG有几个原因：</p>
         <ul>
-            <li><strong>Smaller File Size:</strong> JPEG files are generally smaller than PNG files, making them easier to upload and share online.</li>
-            <li><strong>Web Optimization:</strong> JPEG is the preferred format for web images due to its balance of quality and file size, which enhances page loading speeds.</li>
-            <li><strong>Wide Compatibility:</strong> JPEG files are supported by most software and devices, ensuring your images can be easily viewed and shared.</li>
+            <li><strong>更小的文件大小：</strong>JPEG文件通常比PNG文件小，更容易上传和在线分享。</li>
+            <li><strong>网页优化：</strong>由于JPEG格式在质量和文件大小之间取得了平衡，因此是网页图像的首选格式，有助于提高页面加载速度。</li>
+            <li><strong>广泛兼容性：</strong>JPEG文件被大多数软件和设备支持，确保您的图像可以轻松查看和分享。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our PNG to JPEG Converter</h2>
-        <p>Our PNG to JPEG conversion tool is designed for ease of use. Here’s how it works:</p>
+        <h2>如何使用我们的PNG到JPEG转换器</h2>
+        <p>我们的PNG到JPEG转换工具设计简单易用。以下是操作步骤：</p>
         <ul>
-            <li>Click the "Upload PNG File" button to select the PNG image you want to convert.</li>
-            <li>Once your image is uploaded, our tool will automatically start converting it to JPEG format.</li>
-            <li>After the conversion is complete, click "Download JPEG" to save your new image to your device.</li>
+            <li>点击“上传PNG文件”按钮，选择您想转换的PNG图像。</li>
+            <li>上传图像后，我们的工具将自动开始转换为JPEG格式。</li>
+            <li>转换完成后，点击“下载JPEG”将新图像保存到您的设备。</li>
         </ul>
-        <p>Our converter supports various PNG files, ensuring a smooth conversion experience for all users.</p>
+        <p>我们的转换器支持各种PNG文件，确保所有用户都能顺利完成转换体验。</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our PNG to JPEG Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>使用我们的PNG到JPEG转换器的好处</h2>
+        <p>使用我们转换工具的优势如下：</p>
         <ul>
-            <li><strong>Fast and Simple:</strong> Convert your PNG images to JPEG quickly and without hassle.</li>
-            <li><strong>No Quality Loss:</strong> Enjoy high-quality output with minimal quality loss during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, without needing to download any software.</li>
-            <li><strong>User-Friendly Interface:</strong> Our tool is designed for everyone, making it easy to navigate and use.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for PNG to JPEG Conversion</h2>
-        <p>Here are some common scenarios where converting PNG to JPEG can be useful:</p>
-        <ul>
-            <li><strong>Web Design:</strong> Use JPEG images for websites to optimize loading times and improve user experience.</li>
-            <li><strong>Social Media:</strong> Share smaller JPEG images on social media platforms for quicker uploads and better engagement.</li>
-            <li><strong>Photography:</strong> Convert PNG images to JPEG for easier storage and sharing while maintaining good quality.</li>
-            <li><strong>Email Attachments:</strong> Send JPEG images as email attachments, as they have smaller file sizes compared to PNGs.</li>
+            <li><strong>快速简便：</strong>将PNG图像快速转换为JPEG，无需繁琐操作。</li>
+            <li><strong>无质量损失：</strong>在转换过程中尽量保持图像质量，确保输出效果优质。</li>
+            <li><strong>免费且易于访问：</strong>可以在线免费使用我们的工具，无需下载任何软件。</li>
+            <li><strong>用户友好的界面：</strong>我们的工具设计直观，易于导航和使用。</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting PNG to JPEG Can Help</h2>
-        <p>Converting your PNG images to JPEG can enhance their usability and performance. Here’s how:</p>
+        <h2>PNG到JPEG转换的常见用途</h2>
+        <p>以下是一些将PNG转换为JPEG的常见场景：</p>
         <ul>
-            <li><strong>Optimized File Size:</strong> JPEG images are smaller, making them faster to upload and download.</li>
-            <li><strong>Improved Sharing:</strong> JPEG format is ideal for sharing images on the web, as it ensures compatibility with most platforms.</li>
-            <li><strong>Easy Editing:</strong> JPEG images can be easily edited in various software, providing flexibility for your projects.</li>
+            <li><strong>网页设计：</strong>使用JPEG图像优化网页加载时间，提升用户体验。</li>
+            <li><strong>社交媒体：</strong>在社交媒体平台上分享较小的JPEG图像，快速上传并提高互动性。</li>
+            <li><strong>摄影：</strong>将PNG图像转换为JPEG，便于存储和分享，同时保持良好质量。</li>
+            <li><strong>电子邮件附件：</strong>以JPEG格式发送电子邮件附件，相比PNG文件大小更小。</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>将PNG转换为JPEG如何帮助您</h2>
+        <p>将PNG图像转换为JPEG可以提高其可用性和性能。以下是一些优势：</p>
+        <ul>
+            <li><strong>优化的文件大小：</strong>JPEG图像较小，上传和下载速度更快。</li>
+            <li><strong>改善分享：</strong>JPEG格式适用于网络分享，确保与大多数平台兼容。</li>
+            <li><strong>易于编辑：</strong>JPEG图像可以在各种软件中轻松编辑，为您的项目提供更多灵活性。</li>
         </ul>
     </div>
 </div>
-
 
 <style>
     h1 {
