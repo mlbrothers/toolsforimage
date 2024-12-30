@@ -829,6 +829,13 @@ def tools(lang='en'):
         return redirect('/en/tools')
     return render_template(f'{lang}/tools.html')
 
+@app.route('/privacy_policy')
+@app.route('/<lang>/privacy_policy')
+def privacy_policy(lang='en'):
+    if lang not in supported_languages:
+        return redirect('/en/privacy_policy')
+    return render_template(f'{lang}/privacy_policy.html')
+
 @app.route('/sitemap.xml')
 def sitemap():
     return send_from_directory('static', 'sitemap.xml')
