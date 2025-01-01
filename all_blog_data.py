@@ -174,6 +174,12 @@ blogs_list = {
             'description': 'How to convert your png images to jpeg format for free online',
             'image': 'jpeg-to-jpg-blog.svg',
         },
+        {
+            'slug': 'how-to-make-twitter-banner',
+            'title': 'How to create the best twitter banner with right tools',
+            'description': 'Create the best twitter banner with the optimized tools and important points to keep in mind for the twitter banner',
+            'image': 'twitter-banner-blog.svg',
+        },
     ],
     'hi': [
         {
@@ -349,6 +355,12 @@ blogs_list = {
             'title': 'PNG को JPEG में ऑनलाइन मुफ्त में कैसे बदलें',
             'description': 'कैसे अपने PNG चित्रों को JPEG प्रारूप में मुफ्त में ऑनलाइन बदलें',
             'image': 'jpeg-to-jpg-blog.svg',
+        },
+        {
+            'slug': 'twitter-ka-banner-image-kaise-banayein',
+            'title': 'सही टूल्स के साथ सर्वश्रेष्ठ ट्विटर बैनर कैसे बनाएं',
+            'description': 'ट्विटर बैनर के लिए महत्वपूर्ण बिंदुओं और अनुकूलित टूल्स का उपयोग करके सर्वश्रेष्ठ ट्विटर बैनर बनाएं',
+            'image': 'twitter-banner-blog.svg',
         },
     ],
     'fr': [
@@ -526,6 +538,12 @@ blogs_list = {
             'description': 'Comment convertir vos images png au format jpeg gratuitement en ligne',
             'image': 'jpeg-to-jpg-blog.svg',
         },
+        {
+            'slug': 'Comment-creer-une-bannière-twitter',
+            'title': 'Comment créer la meilleure bannière Twitter avec les bons outils',
+            'description': 'Créez la meilleure bannière Twitter avec des outils optimisés et les points importants à garder à l\'esprit pour la bannière Twitter',
+            'image': 'twitter-banner-blog.svg',
+        },
     ],
     'zh': [
         {
@@ -702,5 +720,11 @@ blogs_list = {
             "description": "如何将您的PNG图像免费在线转换为JPEG格式",
             "image": "jpeg-to-jpg-blog.svg"
         },
+        {
+            'slug': 'how-to-make-twitter-banner',
+            'title': '如何使用正确的工具创建最佳Twitter横幅',
+            'description': '使用优化工具和需要注意的重要事项创建最佳Twitter横幅',
+            'image': 'twitter-banner-blog.svg',
+        }
     ]
 }
