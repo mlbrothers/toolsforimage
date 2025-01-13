@@ -1,85 +1,84 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert JPEG to PNG images with ToolsForImage. Free, fast, and secure online JPEG to PNG converter for high-quality image transformations.">
+<meta name="description" content="Convierte fácilmente imágenes JPEG a PNG con ToolsForImage. Conversor en línea gratuito, rápido y seguro de JPEG a PNG para transformaciones de imágenes de alta calidad.">
 {% endblock %}
 
-{% block title %}Online JPEG to PNG converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}Conversor en línea de JPEG a PNG | ToolsForImage | Conversor de imágenes gratuito en línea{% endblock %}
 
 {% block content %}
-<h1>Free Online JPEG to PNG Converter</h1>
-<p>Easily convert your images from JPEG to PNG format. Upload a JPEG image and we'll convert it to PNG for you.</p>
+<h1>Conversor Gratuito en Línea de JPEG a PNG</h1>
+<p>Convierte fácilmente tus imágenes de formato JPEG a PNG. Sube una imagen JPEG y la convertiremos a PNG por ti.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/jpeg" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload JPEG Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir Imagen JPEG</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="Vista previa de la imagen" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="jpeg">
     <input type="hidden" name="output_format" value="png">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to PNG</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convertir a PNG</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is JPEG to PNG Conversion?</h2>
-        <p>JPEG to PNG conversion is the process of changing image files from JPEG (Joint Photographic Experts Group) format to PNG (Portable Network Graphics) format. This conversion is useful for preserving image quality and transparency. Our tool allows you to easily convert your JPEG images to PNG with just a few clicks.</p>
+        <h2>¿Qué es la Conversión de JPEG a PNG?</h2>
+        <p>La conversión de JPEG a PNG es el proceso de cambiar archivos de imagen de formato JPEG (Joint Photographic Experts Group) a formato PNG (Portable Network Graphics). Esta conversión es útil para preservar la calidad de la imagen y la transparencia. Nuestra herramienta te permite convertir fácilmente tus imágenes JPEG a PNG con solo unos clics.</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert JPEG to PNG?</h2>
-        <p>There are several reasons to convert JPEG images to PNG:</p>
+        <h2>¿Por Qué Convertir JPEG a PNG?</h2>
+        <p>Hay varias razones para convertir imágenes JPEG a PNG:</p>
         <ul>
-            <li><strong>Lossless Compression:</strong> PNG format uses lossless compression, which means your images maintain their original quality without any loss.</li>
-            <li><strong>Transparency Support:</strong> PNG files support transparent backgrounds, making them ideal for web graphics and logos.</li>
-            <li><strong>Better for Editing:</strong> If you plan to edit your images, PNG format is preferred because it preserves details better than JPEG.</li>
+            <li><strong>Compresión sin Pérdida:</strong> El formato PNG utiliza compresión sin pérdida, lo que significa que tus imágenes mantienen su calidad original sin pérdida de detalles.</li>
+            <li><strong>Soporte para Transparencia:</strong> Los archivos PNG admiten fondos transparentes, lo que los hace ideales para gráficos web y logotipos.</li>
+            <li><strong>Mejor para Edición:</strong> Si planeas editar tus imágenes, el formato PNG es preferible porque conserva mejor los detalles que JPEG.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our JPEG to PNG Converter</h2>
-        <p>Our JPEG to PNG conversion tool is simple to use. Here’s how:</p>
+        <h2>Cómo Usar Nuestro Conversor de JPEG a PNG</h2>
+        <p>Nuestra herramienta de conversión de JPEG a PNG es fácil de usar. Así es cómo se hace:</p>
         <ul>
-            <li>Click the "Upload JPEG File" button to choose the JPEG image you want to convert.</li>
-            <li>After the image is uploaded, our tool will automatically convert it to PNG format.</li>
-            <li>Once the conversion is complete, click "Download PNG" to save your new image to your device.</li>
+            <li>Haz clic en el botón "Subir Archivo JPEG" para elegir la imagen JPEG que deseas convertir.</li>
+            <li>Después de que la imagen se suba, nuestra herramienta la convertirá automáticamente a formato PNG.</li>
+            <li>Una vez que la conversión esté completa, haz clic en "Descargar PNG" para guardar tu nueva imagen en tu dispositivo.</li>
         </ul>
-        <p>Our converter supports various JPEG files, ensuring a smooth conversion experience every time.</p>
+        <p>Nuestro conversor admite varios archivos JPEG, asegurando una experiencia de conversión fluida cada vez.</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our JPEG to PNG Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>Beneficios de Usar Nuestro Conversor de JPEG a PNG</h2>
+        <p>Aquí hay algunas ventajas de usar nuestra herramienta de conversión:</p>
         <ul>
-            <li><strong>Quick and Easy:</strong> Convert your JPEG images to PNG in just a few clicks, without any hassle.</li>
-            <li><strong>No Loss of Quality:</strong> Enjoy high-quality images with our lossless conversion feature.</li>
-            <li><strong>Free and Accessible:</strong> Use our online converter for free, without needing to download any software.</li>
-            <li><strong>User-Friendly Interface:</strong> Designed for everyone, our tool makes it easy to convert images, regardless of your technical skills.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for JPEG to PNG Conversion</h2>
-        <p>Here are a few situations where converting JPEG to PNG can be helpful:</p>
-        <ul>
-            <li><strong>Web Graphics:</strong> Use PNG files for website images that require transparency or crisp details.</li>
-            <li><strong>Logos and Icons:</strong> PNG is ideal for logos and icons that need a transparent background.</li>
-            <li><strong>Image Editing:</strong> If you plan to make adjustments to your images, PNG files preserve quality better than JPEGs.</li>
-            <li><strong>Social Media:</strong> Ensure your images look great on social media with high-quality PNG format.</li>
+            <li><strong>Rápido y Fácil:</strong> Convierte tus imágenes JPEG a PNG con solo unos clics, sin complicaciones.</li>
+            <li><strong>Sin Pérdida de Calidad:</strong> Disfruta de imágenes de alta calidad con nuestra función de conversión sin pérdida.</li>
+            <li><strong>Gratuito y Accesible:</strong> Usa nuestro conversor en línea de forma gratuita, sin necesidad de descargar software.</li>
+            <li><strong>Interfaz Amigable:</strong> Diseñada para todos, nuestra herramienta facilita la conversión de imágenes, independientemente de tus habilidades técnicas.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting JPEG to PNG Can Enhance Your Images</h2>
-        <p>Converting your JPEG images to PNG can significantly improve their usability and accessibility. Here’s how:</p>
+        <h2>Usos Comunes para la Conversión de JPEG a PNG</h2>
+        <p>Aquí hay algunas situaciones donde convertir JPEG a PNG puede ser útil:</p>
         <ul>
-            <li><strong>Preserving Quality:</strong> PNG files retain more detail and clarity, making your images look better in any application.</li>
-            <li><strong>Enhanced Transparency:</strong> The ability to have transparent backgrounds allows for versatile use in design and web applications.</li>
-            <li><strong>Consistent File Handling:</strong> Standardizing your images to PNG can simplify your workflow, especially in graphic design projects.</li>
+            <li><strong>Gráficos Web:</strong> Usa archivos PNG para imágenes de sitios web que requieren transparencia o detalles nítidos.</li>
+            <li><strong>Logotipos e Iconos:</strong> PNG es ideal para logotipos e iconos que necesitan un fondo transparente.</li>
+            <li><strong>Edición de Imágenes:</strong> Si planeas hacer ajustes a tus imágenes, los archivos PNG conservan mejor la calidad que los JPEG.</li>
+            <li><strong>Redes Sociales:</strong> Asegúrate de que tus imágenes se vean geniales en redes sociales con el formato PNG de alta calidad.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Cómo Convertir JPEG a PNG Puede Mejorar Tus Imágenes</h2>
+        <p>Convertir tus imágenes JPEG a PNG puede mejorar significativamente su usabilidad y accesibilidad. Aquí te explicamos cómo:</p>
+        <ul>
+            <li><strong>Preservar la Calidad:</strong> Los archivos PNG retienen más detalles y claridad, haciendo que tus imágenes se vean mejor en cualquier aplicación.</li>
+            <li><strong>Transparencia Mejorada:</strong> La capacidad de tener fondos transparentes permite un uso versátil en diseño y aplicaciones web.</li>
+            <li><strong>Manejo Consistente de Archivos:</strong> Estandarizar tus imágenes a PNG puede simplificar tu flujo de trabajo, especialmente en proyectos de diseño gráfico.</li>
         </ul>
     </div>
 </div>
-
 
 <style>
     h1 {

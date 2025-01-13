@@ -1,83 +1,83 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert ICO to WEBP images with ToolsForImage. Free, fast, and secure online ICO to WEBP converter for high-quality image transformations.">
+<meta name="description" content="Convierte fácilmente imágenes ICO a WEBP con ToolsForImage. Conversor en línea gratuito, rápido y seguro de ICO a WEBP para transformaciones de imágenes de alta calidad.">
 {% endblock %}
 
-{% block title %}Online ICO to WEBP converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}Conversor en línea de ICO a WEBP | ToolsForImage | Conversor de imágenes gratuito en línea{% endblock %}
 
 {% block content %}
-<h1>Free Online ICO to WEBP Converter</h1>
-<p>Easily convert your images from ICO to WebP format. Upload an ICO image and we'll convert it to WebP for you.</p>
+<h1>Conversor Gratuito en Línea de ICO a WEBP</h1>
+<p>Convierte fácilmente tus imágenes de formato ICO a WebP. Sube una imagen ICO y la convertiremos a WebP por ti.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/x-icon" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload ICO Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir Imagen ICO</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="Vista previa de la imagen" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="ico">
     <input type="hidden" name="output_format" value="webp">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to WebP</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convertir a WebP</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is ICO to WebP Conversion?</h2>
-        <p>ICO to WebP conversion is the process of changing image files from ICO format to WebP format. WebP is a modern image format developed by Google that provides superior compression and quality compared to many other formats. This conversion is useful when you need to use icon images in contexts where WebP is preferred or required.</p>
+        <h2>¿Qué es la Conversión de ICO a WebP?</h2>
+        <p>La conversión de ICO a WebP es el proceso de cambiar archivos de imagen de formato ICO a formato WebP. WebP es un formato de imagen moderno desarrollado por Google que ofrece una compresión y calidad superiores en comparación con muchos otros formatos. Esta conversión es útil cuando necesitas usar imágenes de iconos en contextos donde se prefiere o requiere WebP.</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert ICO to WebP?</h2>
-        <p>There are several reasons to convert ICO images to WebP:</p>
+        <h2>¿Por Qué Convertir ICO a WebP?</h2>
+        <p>Hay varias razones para convertir imágenes ICO a WebP:</p>
         <ul>
-            <li><strong>Smaller File Size:</strong> WebP offers better compression than many other formats, resulting in smaller file sizes.</li>
-            <li><strong>Faster Loading Times:</strong> Smaller file sizes lead to faster loading times, especially important for web applications.</li>
-            <li><strong>Quality Retention:</strong> WebP maintains high image quality even at lower file sizes.</li>
-            <li><strong>Transparency Support:</strong> Like PNG, WebP supports alpha channel transparency.</li>
+            <li><strong>Tamaño de Archivo Más Pequeño:</strong> WebP ofrece una mejor compresión que muchos otros formatos, lo que resulta en tamaños de archivo más pequeños.</li>
+            <li><strong>Tiempos de Carga Más Rápidos:</strong> Los tamaños de archivo más pequeños conducen a tiempos de carga más rápidos, especialmente importantes para aplicaciones web.</li>
+            <li><strong>Retención de Calidad:</strong> WebP mantiene una alta calidad de imagen incluso con tamaños de archivo más pequeños.</li>
+            <li><strong>Soporte para Transparencia:</strong> Al igual que PNG, WebP admite transparencia de canal alfa.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our ICO to WebP Converter</h2>
-        <p>Using our ICO to WebP conversion tool is simple and quick. Here's how it works:</p>
+        <h2>Cómo Usar Nuestro Conversor de ICO a WebP</h2>
+        <p>Usar nuestra herramienta de conversión de ICO a WebP es simple y rápido. Así es como funciona:</p>
         <ul>
-            <li>Click the "Upload ICO File" button to select the ICO image you want to convert.</li>
-            <li>Once your image is uploaded, our tool will automatically start converting it to WebP format.</li>
-            <li>After the conversion is complete, click "Download WebP" to save your new image file to your device.</li>
+            <li>Haz clic en el botón "Subir Archivo ICO" para seleccionar la imagen ICO que deseas convertir.</li>
+            <li>Una vez que tu imagen esté subida, nuestra herramienta comenzará automáticamente a convertirla a formato WebP.</li>
+            <li>Después de que la conversión esté completa, haz clic en "Descargar WebP" para guardar tu nuevo archivo de imagen en tu dispositivo.</li>
         </ul>
-        <p>Our converter supports various ICO files, ensuring a smooth and efficient conversion experience for all users.</p>
+        <p>Nuestro conversor admite varios archivos ICO, asegurando una experiencia de conversión fluida y eficiente para todos los usuarios.</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our ICO to WebP Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>Beneficios de Usar Nuestro Conversor de ICO a WebP</h2>
+        <p>Aquí hay algunas ventajas de usar nuestra herramienta de conversión:</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Convert your ICO images to WebP quickly with just a few clicks.</li>
-            <li><strong>High Quality:</strong> Maintain image quality during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, with no downloads or installations needed.</li>
-            <li><strong>User-Friendly Interface:</strong> Our tool is designed to be intuitive and easy to navigate for everyone.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for ICO to WebP Conversion</h2>
-        <p>Here are some common situations where converting ICO to WebP can be helpful:</p>
-        <ul>
-            <li><strong>Web Development:</strong> Use icon images in web projects where WebP is preferred for its superior compression.</li>
-            <li><strong>Mobile Apps:</strong> Utilize WebP images in mobile applications to reduce data usage and improve load times.</li>
-            <li><strong>E-commerce:</strong> Optimize product images and icons for faster page loading and better user experience.</li>
-            <li><strong>Digital Marketing:</strong> Use WebP images in online advertisements for faster loading and better performance.</li>
+            <li><strong>Rápido y Fácil:</strong> Convierte tus imágenes ICO a WebP rápidamente con solo unos clics.</li>
+            <li><strong>Alta Calidad:</strong> Mantén la calidad de la imagen durante el proceso de conversión.</li>
+            <li><strong>Gratuito y Accesible:</strong> Usa nuestra herramienta en línea de forma gratuita, sin necesidad de descargas o instalaciones.</li>
+            <li><strong>Interfaz Amigable:</strong> Nuestra herramienta está diseñada para ser intuitiva y fácil de navegar para todos.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting ICO to WebP Can Help</h2>
-        <p>Converting your ICO images to WebP can enhance their usability in various contexts. Here's how:</p>
+        <h2>Usos Comunes para la Conversión de ICO a WebP</h2>
+        <p>Aquí hay algunas situaciones comunes donde convertir ICO a WebP puede ser útil:</p>
         <ul>
-            <li><strong>Improved Website Performance:</strong> WebP images load faster, improving overall website speed.</li>
-            <li><strong>Reduced Bandwidth Usage:</strong> Smaller file sizes mean less data transfer, beneficial for both users and servers.</li>
-            <li><strong>Better User Experience:</strong> Faster loading times and high-quality images contribute to a better user experience.</li>
-            <li><strong>SEO Benefits:</strong> Faster websites tend to rank better in search engine results.</li>
+            <li><strong>Desarrollo Web:</strong> Usa imágenes de iconos en proyectos web donde WebP es preferido por su compresión superior.</li>
+            <li><strong>Aplicaciones Móviles:</strong> Utiliza imágenes WebP en aplicaciones móviles para reducir el uso de datos y mejorar los tiempos de carga.</li>
+            <li><strong>Comercio Electrónico:</strong> Optimiza imágenes de productos e iconos para una carga más rápida de la página y una mejor experiencia de usuario.</li>
+            <li><strong>Marketing Digital:</strong> Usa imágenes WebP en anuncios en línea para una carga más rápida y un mejor rendimiento.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Cómo Convertir ICO a WebP Puede Ayudar</h2>
+        <p>Convertir tus imágenes ICO a WebP puede mejorar su usabilidad en varios contextos. Aquí te explicamos cómo:</p>
+        <ul>
+            <li><strong>Mejora del Rendimiento del Sitio Web:</strong> Las imágenes WebP se cargan más rápido, mejorando la velocidad general del sitio web.</li>
+            <li><strong>Reducción del Uso de Ancho de Banda:</strong> Los tamaños de archivo más pequeños significan menos transferencia de datos, lo que beneficia tanto a los usuarios como a los servidores.</li>
+            <li><strong>Mejor Experiencia de Usuario:</strong> Los tiempos de carga más rápidos y las imágenes de alta calidad contribuyen a una mejor experiencia de usuario.</li>
+            <li><strong>Beneficios SEO:</strong> Los sitios web más rápidos tienden a rankear mejor en los resultados de los motores de búsqueda.</li>
         </ul>
     </div>
 </div>

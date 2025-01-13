@@ -1,82 +1,82 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert PNG to WEBP images with ToolsForImage. Free, fast, and secure online PNG to WEBP converter for high-quality image transformations.">
+<meta name="description" content="Convierte fácilmente imágenes PNG a WEBP con ToolsForImage. Conversor online gratuito, rápido y seguro de PNG a WEBP para transformaciones de imágenes de alta calidad.">
 {% endblock %}
 
-{% block title %}Online PNG to WEBP converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}Conversor online de PNG a WEBP | ToolsForImage | Conversor de imágenes online gratuito{% endblock %}
 
 {% block content %}
-<h1>Free Online PNG to WEBP Converter</h1>
-<p>Easily convert your images from PNG to WebP format. Upload a PNG image and we'll convert it to WebP for you.</p>
+<h1>Conversor Gratuito Online de PNG a WEBP</h1>
+<p>Convierte fácilmente tus imágenes de PNG a formato WebP. Sube una imagen PNG y la convertiremos a WebP por ti.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/png" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload PNG Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir Imagen PNG</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="Vista previa de la imagen" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="png">
     <input type="hidden" name="output_format" value="webp">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to WebP</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convertir a WebP</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is PNG to WebP Conversion?</h2>
-        <p>PNG to WebP conversion is the process of changing image files from PNG format to WebP format. WebP is a modern image format developed by Google that provides superior compression for images, resulting in smaller file sizes without sacrificing quality. Converting PNG images to WebP can help optimize your images for web use, making them load faster and saving storage space.</p>
+        <h2>¿Qué es la Conversión de PNG a WebP?</h2>
+        <p>La conversión de PNG a WebP es el proceso de cambiar archivos de imagen de formato PNG a formato WebP. WebP es un formato de imagen moderno desarrollado por Google que ofrece una compresión superior para las imágenes, lo que resulta en tamaños de archivo más pequeños sin sacrificar la calidad. Convertir imágenes PNG a WebP puede ayudar a optimizar tus imágenes para uso web, haciendo que se carguen más rápido y ahorrando espacio de almacenamiento.</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert PNG to WebP?</h2>
-        <p>There are several reasons to convert PNG images to WebP:</p>
+        <h2>¿Por Qué Convertir PNG a WebP?</h2>
+        <p>Hay varias razones para convertir imágenes PNG a WebP:</p>
         <ul>
-            <li><strong>Smaller File Size:</strong> WebP images are often significantly smaller than PNG files, which helps improve website loading times.</li>
-            <li><strong>High Quality:</strong> WebP maintains high image quality, ensuring your visuals remain sharp and vibrant.</li>
-            <li><strong>Support for Transparency:</strong> Like PNG, WebP supports transparency, making it ideal for graphics and logos.</li>
-            <li><strong>Improved Web Performance:</strong> Using WebP can enhance user experience on websites by reducing image loading times.</li>
+            <li><strong>Tamaño de Archivo Más Pequeño:</strong> Las imágenes WebP suelen ser significativamente más pequeñas que los archivos PNG, lo que ayuda a mejorar los tiempos de carga de los sitios web.</li>
+            <li><strong>Alta Calidad:</strong> WebP mantiene una alta calidad de imagen, asegurando que tus visuales permanezcan nítidos y vibrantes.</li>
+            <li><strong>Soporte para Transparencia:</strong> Al igual que PNG, WebP soporta transparencia, lo que lo hace ideal para gráficos y logotipos.</li>
+            <li><strong>Mejor Rendimiento Web:</strong> Usar WebP puede mejorar la experiencia del usuario en los sitios web al reducir los tiempos de carga de las imágenes.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our PNG to WebP Converter</h2>
-        <p>Using our PNG to WebP conversion tool is simple and fast. Here’s how:</p>
+        <h2>Cómo Usar Nuestro Conversor de PNG a WebP</h2>
+        <p>Usar nuestra herramienta de conversión de PNG a WebP es simple y rápido. Aquí te explicamos cómo:</p>
         <ul>
-            <li>Click the "Upload PNG File" button to choose the PNG image you want to convert.</li>
-            <li>Once your image is uploaded, our tool will automatically start converting it to WebP format.</li>
-            <li>After the conversion is complete, click "Download WebP" to save your new image to your device.</li>
+            <li>Haz clic en el botón "Subir Archivo PNG" para elegir la imagen PNG que deseas convertir.</li>
+            <li>Una vez que tu imagen esté subida, nuestra herramienta comenzará automáticamente a convertirla a formato WebP.</li>
+            <li>Después de que la conversión esté completa, haz clic en "Descargar WebP" para guardar tu nueva imagen en tu dispositivo.</li>
         </ul>
-        <p>Our converter supports various PNG files, making the process seamless for all users.</p>
+        <p>Nuestro conversor soporta varios archivos PNG, haciendo el proceso sencillo para todos los usuarios.</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our PNG to WebP Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>Beneficios de Usar Nuestro Conversor de PNG a WebP</h2>
+        <p>Aquí hay algunas ventajas de usar nuestra herramienta de conversión:</p>
         <ul>
-            <li><strong>Fast and Efficient:</strong> Convert your PNG images to WebP quickly and easily with just a few clicks.</li>
-            <li><strong>No Quality Loss:</strong> Enjoy high-quality results with no degradation during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, without needing to download any software.</li>
-            <li><strong>User-Friendly Interface:</strong> Our tool is designed to be intuitive and easy to navigate, ensuring a smooth experience.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for PNG to WebP Conversion</h2>
-        <p>Here are some situations where converting PNG to WebP can be beneficial:</p>
-        <ul>
-            <li><strong>Web Design:</strong> Use WebP images on your website to enhance performance and loading speeds.</li>
-            <li><strong>Mobile Applications:</strong> Optimize images for mobile apps to ensure faster loading and better user experience.</li>
-            <li><strong>Social Media:</strong> Share images that load quickly and look great on social platforms.</li>
-            <li><strong>Graphic Design:</strong> Create graphics and images that retain quality while being lightweight.</li>
+            <li><strong>Rápido y Eficiente:</strong> Convierte tus imágenes PNG a WebP de manera rápida y fácil con solo unos clics.</li>
+            <li><strong>Sin Pérdida de Calidad:</strong> Disfruta de resultados de alta calidad sin degradación durante el proceso de conversión.</li>
+            <li><strong>Gratuito y Accesible:</strong> Usa nuestra herramienta en línea de forma gratuita, sin necesidad de descargar ningún software.</li>
+            <li><strong>Interfaz Amigable:</strong> Nuestra herramienta está diseñada para ser intuitiva y fácil de navegar, asegurando una experiencia fluida.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting PNG to WebP Can Help</h2>
-        <p>Converting your PNG images to WebP can enhance their usability and performance. Here’s how:</p>
+        <h2>Usos Comunes para la Conversión de PNG a WebP</h2>
+        <p>Aquí hay algunas situaciones en las que convertir PNG a WebP puede ser beneficioso:</p>
         <ul>
-            <li><strong>Faster Loading Times:</strong> Smaller WebP files help your website load faster, improving user satisfaction.</li>
-            <li><strong>Improved Storage Efficiency:</strong> Reduce the space images take up on your server by using WebP.</li>
-            <li><strong>Better Compatibility:</strong> WebP is supported by most modern browsers, ensuring your images are viewable by a wide audience.</li>
+            <li><strong>Diseño Web:</strong> Usa imágenes WebP en tu sitio web para mejorar el rendimiento y la velocidad de carga.</li>
+            <li><strong>Aplicaciones Móviles:</strong> Optimiza imágenes para aplicaciones móviles para asegurar una carga más rápida y una mejor experiencia de usuario.</li>
+            <li><strong>Redes Sociales:</strong> Comparte imágenes que se carguen rápidamente y se vean genial en las plataformas sociales.</li>
+            <li><strong>Diseño Gráfico:</strong> Crea gráficos e imágenes que mantengan la calidad mientras son livianos.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Cómo Convertir PNG a WebP Puede Ayudar</h2>
+        <p>Convertir tus imágenes PNG a WebP puede mejorar su usabilidad y rendimiento. Aquí te explicamos cómo:</p>
+        <ul>
+            <li><strong>Tiempos de Carga Más Rápidos:</strong> Los archivos WebP más pequeños ayudan a que tu sitio web cargue más rápido, mejorando la satisfacción del usuario.</li>
+            <li><strong>Mejor Eficiencia de Almacenamiento:</strong> Reduce el espacio que ocupan las imágenes en tu servidor usando WebP.</li>
+            <li><strong>Mejor Compatibilidad:</strong> WebP es compatible con la mayoría de los navegadores modernos, asegurando que tus imágenes sean visibles para una amplia audiencia.</li>
         </ul>
     </div>
 </div>

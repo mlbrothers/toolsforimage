@@ -1,51 +1,49 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Get help and support for ToolsForImage - Your comprehensive resource for image compression, resizing, cropping, format conversion, rotation, watermarking, face blurring, and more. Find answers to common questions and learn how to use our image enhancement tools effectively.">
+<meta name="description" content="Obtén ayuda y soporte para ToolsForImage: tu recurso integral para compresión de imágenes, redimensionamiento, recorte, conversión de formatos, rotación, marca de agua, difuminado de rostros y más. Encuentra respuestas a preguntas comunes y aprende a usar nuestras herramientas de mejora de imágenes de manera efectiva.">
 {% endblock %}
 
-{% block title %}Help | ToolsForImage | Comprehensive Free Online Tools for Blur Faces, Image Conversion, Editing, Resizing, Remove Background, Blur background and More{% endblock %}
+{% block title %}Ayuda | ToolsForImage | Herramientas Gratuitas Integrales para Difuminar Rostros, Conversión de Imágenes, Edición, Redimensionar, Eliminar Fondo, Difuminar Fondo y Más{% endblock %}
 
 {% block content %}
-<h1>Help Center - ToolsForImage</h1>
+<h1>Centro de Ayuda - ToolsForImage</h1>
 
 <div class="help-section">
-    <h2>Getting Started</h2>
-    <p>Welcome to ToolsForImage! Here's how to get started:</p>
+    <h2>Comenzar</h2>
+    <p>¡Bienvenido a ToolsForImage! Aquí te explicamos cómo empezar:</p>
     <ol>
-        <li>1 - Choose the tool you need from our navigation menu.</li>
-        <li>2 - Upload your image using the provided interface.</li>
-        <li>3 - Adjust settings as needed.</li>
-        <li>4 - Process your image and download the result.</li>
+        <li>1 - Elige la herramienta que necesitas en nuestro menú de navegación.</li>
+        <li>2 - Sube tu imagen utilizando la interfaz proporcionada.</li>
+        <li>3 - Ajusta la configuración según sea necesario.</li>
+        <li>4 - Procesa tu imagen y descarga el resultado.</li>
     </ol>
 </div>
 
 <div class="help-section">
-    <h2>Frequently Asked Questions</h2>
-    <p>For a comprehensive list of FAQs, please visit our <a href="/faq">FAQ page</a>.</p>
+    <h2>Preguntas Frecuentes</h2>
+    <p>Para una lista completa de preguntas frecuentes, visita nuestra <a href="{{ g.lang }}/faq">página de preguntas frecuentes</a>.</p>
 </div>
 
 <div class="help-section">
-    <h2>Tool-specific Help</h2>
+    <h2>Ayuda Específica por Herramienta</h2>
     <ul>
-        <li><a href="/image-compression">Image Compression</a> - Reduce file size while maintaining quality</li>
-        <li><a href="/image-resize">Image Resize</a> - Change image dimensions</li>
-        <li><a href="/convert-image-format">Format Conversion</a> - Convert between different image formats</li>
-        <li><a href="/image-rotate">Image Rotation</a> - Rotate or flip your images</li>
-        <li><a href="/image-watermarking">Watermarking</a> - Add text or image watermarks</li>
-        <li><a href="/image-effects">Image Effects</a> - Apply various filters and effects</li>
-        <li><a href="/image-crop">Image Cropping</a> - Cut out portions of your image</li>
-        <li><a href="/blur-face">Face Blurring</a> - Automatically detect and blur faces in images</li>
-        <li class="all-tools-li"><a href="/tools">All tools</a></li>
+        <li><a href="{{ g.lang }}/image-compression">Compresión de Imágenes</a> - Reduce el tamaño del archivo manteniendo la calidad</li>
+        <li><a href="{{ g.lang }}/image-resize">Redimensionamiento de Imágenes</a> - Cambia las dimensiones de la imagen</li>
+        <li><a href="{{ g.lang }}/convert-image-format">Conversión de Formatos</a> - Convierte entre diferentes formatos de imagen</li>
+        <li><a href="{{ g.lang }}/image-rotate">Rotación de Imágenes</a> - Rota o voltea tus imágenes</li>
+        <li><a href="{{ g.lang }}/image-watermarking">Marca de Agua</a> - Agrega marcas de agua de texto o imagen</li>
+        <li><a href="{{ g.lang }}/image-effects">Efectos de Imágenes</a> - Aplica varios filtros y efectos</li>
+        <li><a href="{{ g.lang }}/image-crop">Recorte de Imágenes</a> - Recorta partes de tu imagen</li>
+        <li><a href="{{ g.lang }}/blur-face">Difuminado de Rostros</a> - Detecta y difumina automáticamente los rostros en las imágenes</li>
+        <li class="all-tools-li"><a href="{{ g.lang }}/tools">Todas las herramientas</a></li>
     </ul>
 </div>
 
 <div class="help-section">
-    <h2>Contact Support</h2>
-    <p>If you need further assistance, please don't hesitate to contact our support team at <a href="mailto:mlbrothers2024@gmail.com">mlbrothers2024@gmail.com</a>.</p>
+    <h2>Contactar al Soporte</h2>
+    <p>Si necesitas más ayuda, no dudes en contactar a nuestro equipo de soporte en <a href="mailto:mlbrothers2024@gmail.com">mlbrothers2024@gmail.com</a>.</p>
 </div>
-
-
 
 <style>
     main {

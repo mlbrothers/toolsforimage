@@ -1,105 +1,107 @@
-{% extends 'en/base.html' %}
+{% extends 'es/base.html' %}
 
-{% block title %}BMP to JPEG online | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}Convertir BMP a JPEG en línea | ToolsForImage | Conversor de imágenes gratuito en línea{% endblock %}
 
 {% block meta_description %}
 <meta name="description"
-    content="Easily convert BMP to JPEG images with ToolsForImage. Free, fast, and secure online BMP to JPEG converter for high-quality image transformations.">
+    content="Convierte fácilmente imágenes BMP a JPEG con ToolsForImage. Conversor en línea gratuito, rápido y seguro para transformaciones de imágenes de alta calidad.">
 {% endblock %}
 
 {% block content %}
-<h1>Free Online BMP to JPEG Converter</h1>
-<p>Easily convert your images from BMP to JPEG format. Upload a BMP image and we'll convert it to JPEG for you.</p>
+<h1>Conversor Gratuito de BMP a JPEG en Línea</h1>
+<p>Convierte fácilmente tus imágenes de formato BMP a JPEG. Sube una imagen BMP y la convertiremos a JPEG por ti.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/bmp" style="display: none;"
         onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload BMP
-        Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir Imagen
+        BMP</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="Vista Previa de la Imagen" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="bmp">
     <input type="hidden" name="output_format" value="jpeg">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to JPEG</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convertir a JPEG</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is BMP to JPEG Conversion?</h2>
-        <p>BMP to JPEG conversion is the process of changing images from the BMP (Bitmap) format to the JPEG (Joint
-            Photographic Experts Group) format. BMP files are known for their high quality and uncompressed nature,
-            while JPEG files are more compressed, making them easier to share and store. Our tool allows you to quickly
-            and efficiently convert BMP images to JPEG, ensuring you maintain quality while optimizing file size.</p>
+        <h2>¿Qué es la Conversión de BMP a JPEG?</h2>
+        <p>La conversión de BMP a JPEG es el proceso de cambiar imágenes del formato BMP (Bitmap) al formato JPEG (Joint
+            Photographic Experts Group). Los archivos BMP son conocidos por su alta calidad y naturaleza no comprimida,
+            mientras que los archivos JPEG están más comprimidos, lo que los hace más fáciles de compartir y almacenar.
+            Nuestra herramienta te permite convertir rápidamente imágenes BMP a JPEG, asegurando que mantengas la
+            calidad mientras optimizas el tamaño del archivo.</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert BMP to JPEG?</h2>
-        <p>There are several compelling reasons to convert BMP images to JPEG:</p>
+        <h2>¿Por qué Convertir BMP a JPEG?</h2>
+        <p>Hay varias razones convincentes para convertir imágenes BMP a JPEG:</p>
         <ul>
-            <li><strong>Reduced File Size:</strong> JPEG files are significantly smaller than BMP files, making them
-                easier to upload, download, and share.</li>
-            <li><strong>Improved Compatibility:</strong> JPEG is one of the most widely supported image formats,
-                ensuring your images can be viewed across various devices and platforms.</li>
-            <li><strong>Faster Loading Times:</strong> Smaller file sizes lead to faster loading times for web pages and
-                applications, enhancing user experience.</li>
+            <li><strong>Reducción del Tamaño del Archivo:</strong> Los archivos JPEG son significativamente más pequeños
+                que los archivos BMP, lo que los hace más fáciles de subir, descargar y compartir.</li>
+            <li><strong>Mejor Compatibilidad:</strong> JPEG es uno de los formatos de imagen más ampliamente
+                compatibles, asegurando que tus imágenes puedan verse en varios dispositivos y plataformas.</li>
+            <li><strong>Tiempos de Carga Más Rápidos:</strong> Los tamaños de archivo más pequeños conducen a tiempos de
+                carga más rápidos para páginas web y aplicaciones, mejorando la experiencia del usuario.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our BMP to JPEG Converter</h2>
-        <p>Our BMP to JPEG conversion tool is designed for simplicity and ease of use. Here’s how it works:</p>
+        <h2>Cómo Usar Nuestro Conversor de BMP a JPEG</h2>
+        <p>Nuestra herramienta de conversión de BMP a JPEG está diseñada para ser simple y fácil de usar. Así es como
+            funciona:</p>
         <ul>
-            <li>Click the "Upload BMP File" button to select the BMP image you want to convert.</li>
-            <li>Once uploaded, the tool will automatically convert your BMP image to JPEG format.</li>
-            <li>Click "Download JPEG" to save the converted image to your device.</li>
+            <li>Haz clic en el botón "Subir Archivo BMP" para seleccionar la imagen BMP que deseas convertir.</li>
+            <li>Una vez cargada, la herramienta convertirá automáticamente tu imagen BMP a formato JPEG.</li>
+            <li>Haz clic en "Descargar JPEG" para guardar la imagen convertida en tu dispositivo.</li>
         </ul>
-        <p>Our converter supports various BMP formats, ensuring a smooth conversion process.</p>
+        <p>Nuestro conversor admite varios formatos BMP, asegurando un proceso de conversión fluido.</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our BMP to JPEG Converter</h2>
-        <p>Here are the advantages of using our conversion tool:</p>
+        <h2>Beneficios de Usar Nuestro Conversor de BMP a JPEG</h2>
+        <p>Aquí están las ventajas de usar nuestra herramienta de conversión:</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Convert BMP images to JPEG in just a few clicks, without complicated
-                software.</li>
-            <li><strong>No Loss of Quality:</strong> Our tool maintains the quality of your images during the conversion
-                process.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, with no downloads or installations
-                required.</li>
-            <li><strong>Supports Multiple Formats:</strong> Convert BMP images of various sizes and resolutions easily.
-            </li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Use Cases for BMP to JPEG Conversion</h2>
-        <p>Converting BMP to JPEG is useful in many scenarios, including:</p>
-        <ul>
-            <li><strong>Web Publishing:</strong> Prepare images for websites and blogs, ensuring they load quickly and
-                look great.</li>
-            <li><strong>Social Media Sharing:</strong> Optimize images for sharing on social media platforms where JPEG
-                is the preferred format.</li>
-            <li><strong>Storage Efficiency:</strong> Save storage space on your device or cloud by converting large BMP
-                files to smaller JPEG files.</li>
-            <li><strong>Graphic Design:</strong> Easily manage and share images in a format that is compatible with
-                design software.</li>
+            <li><strong>Rápido y Fácil:</strong> Convierte imágenes BMP a JPEG en solo unos clics, sin software
+                complicado.</li>
+            <li><strong>Sin Pérdida de Calidad:</strong> Nuestra herramienta mantiene la calidad de tus imágenes durante
+                el proceso de conversión.</li>
+            <li><strong>Gratuito y Accesible:</strong> Usa nuestra herramienta en línea de forma gratuita, sin necesidad
+                de descargas o instalaciones.</li>
+            <li><strong>Admite Múltiples Formatos:</strong> Convierte imágenes BMP de varios tamaños y resoluciones
+                fácilmente.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting BMP to JPEG Can Enhance Your Images</h2>
-        <p>Converting BMP to JPEG can significantly improve how you manage and share your images. Here’s how:</p>
+        <h2>Casos de Uso Comunes para la Conversión de BMP a JPEG</h2>
+        <p>Convertir BMP a JPEG es útil en muchos escenarios, incluyendo:</p>
         <ul>
-            <li><strong>Better Usability:</strong> JPEG files are more convenient for everyday use, making them ideal
-                for online sharing and storage.</li>
-            <li><strong>Improved Aesthetics:</strong> JPEG compression can enhance the visual appeal of images, making
-                them more vibrant and engaging.</li>
-            <li><strong>Increased Accessibility:</strong> By converting to JPEG, your images become accessible on more
-                devices, ensuring everyone can view your content.</li>
+            <li><strong>Publicación en la Web:</strong> Prepara imágenes para sitios web y blogs, asegurando que se
+                carguen rápidamente y se vean geniales.</li>
+            <li><strong>Compartir en Redes Sociales:</strong> Optimiza imágenes para compartir en plataformas de redes
+                sociales donde JPEG es el formato preferido.</li>
+            <li><strong>Eficiencia de Almacenamiento:</strong> Ahorra espacio de almacenamiento en tu dispositivo o en la
+                nube convirtiendo archivos BMP grandes a archivos JPEG más pequeños.</li>
+            <li><strong>Diseño Gráfico:</strong> Gestiona y comparte imágenes fácilmente en un formato compatible con
+                software de diseño.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Cómo Convertir BMP a JPEG Puede Mejorar Tus Imágenes</h2>
+        <p>Convertir BMP a JPEG puede mejorar significativamente cómo gestionas y compartes tus imágenes. Aquí te
+            explicamos cómo:</p>
+        <ul>
+            <li><strong>Mejor Usabilidad:</strong> Los archivos JPEG son más convenientes para el uso diario, lo que los
+                hace ideales para compartir y almacenar en línea.</li>
+            <li><strong>Estética Mejorada:</strong> La compresión JPEG puede mejorar el atractivo visual de las imágenes,
+                haciéndolas más vibrantes y atractivas.</li>
+            <li><strong>Mayor Accesibilidad:</strong> Al convertir a JPEG, tus imágenes se vuelven accesibles en más
+                dispositivos, asegurando que todos puedan ver tu contenido.</li>
         </ul>
     </div>
 </div>
-
 
 
 

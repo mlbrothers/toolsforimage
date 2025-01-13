@@ -1,46 +1,44 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Meet the talented team behind ToolsForImage - experts in image compression, resizing, format conversion, and more. Learn about our developers and visionaries who make our free online image editing tools possible.">
+<meta name="description" content="Conoce al talentoso equipo detrás de ToolsForImage: expertos en compresión de imágenes, redimensionamiento, conversión de formatos y más. Descubre a nuestros desarrolladores y visionarios que hacen posibles nuestras herramientas gratuitas de edición de imágenes en línea.">
 {% endblock %}
 
-{% block title %}Our Team | ToolsForImage | Comprehensive Free Online Tools for Blur Faces, Image Conversion, Editing, Resizing, Remove Background, Blur background and More{% endblock %}
+{% block title %}Nuestro Equipo | ToolsForImage | Herramientas en línea gratuitas para desenfocar caras, conversión de imágenes, edición, redimensionamiento, eliminar fondos, desenfocar fondos y más{% endblock %}
 
 {% block content %}
-<h1>Meet Our Team</h1>
-<p>At ToolsForImage, we're passionate about providing the best free online image editing tools. Our team of experts works tirelessly to bring you top-notch solutions for image compression, resizing, format conversion, and more.</p>
+<h1>Conoce a Nuestro Equipo</h1>
+<p>En ToolsForImage, nos apasiona ofrecer las mejores herramientas gratuitas de edición de imágenes en línea. Nuestro equipo de expertos trabaja incansablemente para brindarte soluciones de primera clase para compresión de imágenes, redimensionamiento, conversión de formatos y más.</p>
 
 <div class="team-grid">
     <div class="team-member">
         <img src="{{ url_for('static', filename='sid.svg') }}" alt="Siddharth">
         <h2>Siddharth</h2>
-        <p>Lead Developer</p>
-        <p>Siddharth is our coding wizard, specializing in image processing algorithms and optimization techniques. He's the brains behind our powerful image compression and resizing tools.</p>
+        <p>Desarrollador Principal</p>
+        <p>Siddharth es nuestro mago de la codificación, especializado en algoritmos de procesamiento de imágenes y técnicas de optimización. Es el cerebro detrás de nuestras potentes herramientas de compresión y redimensionamiento de imágenes.</p>
     </div>
 
     <div class="team-member">
         <img src="{{ url_for('static', filename='nandan.svg') }}" alt="Nandan">
         <h2>Nandan</h2>
-        <p>Frontend Developer</p>
-        <p>Nandan crafts our user-friendly interfaces, ensuring that our image editing tools are accessible and easy to use for everyone, from beginners to professionals.</p>
+        <p>Desarrollador Frontend</p>
+        <p>Nandan crea nuestras interfaces fáciles de usar, asegurando que nuestras herramientas de edición de imágenes sean accesibles y sencillas para todos, desde principiantes hasta profesionales.</p>
     </div>
 
     <div class="team-member">
         <img src="{{ url_for('static', filename='jeni.svg') }}" alt="Jenish">
         <h2>Jenish</h2>
-        <p>Product Visionary</p>
-        <p>Jenish is our idea generator, constantly exploring new ways to enhance our image editing suite. From watermarking to face blurring, he's always pushing the boundaries of what's possible.</p>
+        <p>Visionario de Producto</p>
+        <p>Jenish es nuestro generador de ideas, explorando constantemente nuevas formas de mejorar nuestra suite de edición de imágenes. Desde la marca de agua hasta el desenfoque de caras, siempre está empujando los límites de lo posible.</p>
     </div>
 
     <div class="team-member">
         <img src="{{ url_for('static', filename='viraj.svg') }}" alt="Viraj">
         <h2>Viraj</h2>
-        <p>Quality Assurance</p>
-        <p>Viraj ensures that all our image tools, from format conversion to rotation, meet the highest standards of quality and reliability. He's the guardian of your image editing experience.</p>
+        <p>Control de Calidad</p>
+        <p>Viraj se asegura de que todas nuestras herramientas de imágenes, desde la conversión de formatos hasta la rotación, cumplan con los más altos estándares de calidad y confiabilidad. Es el guardián de tu experiencia de edición de imágenes.</p>
     </div>
 </div>
-
-
 
 <style>
     .team-grid {

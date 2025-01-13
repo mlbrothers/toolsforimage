@@ -1,82 +1,82 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert TIFF to BMP images with ToolsForImage. Free, fast, and secure online TIFF to BMP converter for high-quality image transformations.">
+<meta name="description" content="Convierte fácilmente imágenes TIFF a BMP con ToolsForImage. Conversor online gratuito, rápido y seguro de TIFF a BMP para transformaciones de imágenes de alta calidad.">
 {% endblock %}
 
-{% block title %}Online TIFF to BMP converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}Conversor online de TIFF a BMP | ToolsForImage | Conversor de imágenes online gratuito{% endblock %}
 
 {% block content %}
-<h1>Free Online TIFF to BMP Converter</h1>
-<p>Easily convert your images from TIFF to BMP format. Upload a TIFF image and we'll convert it to BMP for you.</p>
+<h1>Conversor Gratuito Online de TIFF a BMP</h1>
+<p>Convierte fácilmente tus imágenes de TIFF a formato BMP. Sube una imagen TIFF y la convertiremos a BMP por ti.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/tiff" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload TIFF Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir Imagen TIFF</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="Vista previa de la imagen" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="tiff">
     <input type="hidden" name="output_format" value="bmp">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to BMP</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convertir a BMP</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is TIFF to BMP Conversion?</h2>
-        <p>TIFF to BMP conversion is the process of changing image files from TIFF format to BMP format. TIFF (Tagged Image File Format) is known for its high quality and is often used in professional photography and graphic design. BMP (Bitmap) is a simple image format that offers easy compatibility with various applications. Converting TIFF images to BMP can help you use your images in more versatile environments while retaining their quality.</p>
+        <h2>¿Qué es la Conversión de TIFF a BMP?</h2>
+        <p>La conversión de TIFF a BMP es el proceso de cambiar archivos de imagen de formato TIFF a formato BMP. TIFF (Tagged Image File Format) es conocido por su alta calidad y se utiliza a menudo en fotografía profesional y diseño gráfico. BMP (Bitmap) es un formato de imagen simple que ofrece una fácil compatibilidad con diversas aplicaciones. Convertir imágenes TIFF a BMP puede ayudarte a utilizar tus imágenes en entornos más versátiles manteniendo su calidad.</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert TIFF to BMP?</h2>
-        <p>There are several reasons to convert TIFF images to BMP:</p>
+        <h2>¿Por Qué Convertir TIFF a BMP?</h2>
+        <p>Hay varias razones para convertir imágenes TIFF a BMP:</p>
         <ul>
-            <li><strong>Wider Compatibility:</strong> BMP files are widely supported across many software and platforms, making them easier to use in different applications.</li>
-            <li><strong>Simplicity:</strong> BMP files are straightforward and don’t require complex decoding, which can be beneficial for quick edits.</li>
-            <li><strong>High Quality:</strong> BMP preserves the quality of the original TIFF image, ensuring your visuals look great.</li>
-            <li><strong>No Compression:</strong> BMP format is uncompressed, which means it retains all image details without losing information.</li>
+            <li><strong>Mayor Compatibilidad:</strong> Los archivos BMP son ampliamente compatibles con muchos programas y plataformas, lo que facilita su uso en diferentes aplicaciones.</li>
+            <li><strong>Sencillez:</strong> Los archivos BMP son sencillos y no requieren decodificación compleja, lo que puede ser beneficioso para ediciones rápidas.</li>
+            <li><strong>Alta Calidad:</strong> BMP preserva la calidad de la imagen TIFF original, asegurando que tus visuales se vean genial.</li>
+            <li><strong>Sin Compresión:</strong> El formato BMP no está comprimido, lo que significa que retiene todos los detalles de la imagen sin perder información.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our TIFF to BMP Converter</h2>
-        <p>Our TIFF to BMP conversion tool is easy to use and efficient. Here’s how to convert your images:</p>
+        <h2>Cómo Usar Nuestro Conversor de TIFF a BMP</h2>
+        <p>Nuestra herramienta de conversión de TIFF a BMP es fácil de usar y eficiente. Así es como puedes convertir tus imágenes:</p>
         <ul>
-            <li>Click the "Upload TIFF File" button to select the TIFF image you want to convert.</li>
-            <li>After the upload, our tool will automatically begin converting the image to BMP format.</li>
-            <li>Once the conversion is complete, click "Download BMP" to save the new image to your device.</li>
+            <li>Haz clic en el botón "Subir Archivo TIFF" para seleccionar la imagen TIFF que deseas convertir.</li>
+            <li>Después de la subida, nuestra herramienta comenzará automáticamente a convertir la imagen a formato BMP.</li>
+            <li>Una vez que la conversión esté completa, haz clic en "Descargar BMP" para guardar la nueva imagen en tu dispositivo.</li>
         </ul>
-        <p>Our converter supports various TIFF files, ensuring a seamless experience for all users.</p>
+        <p>Nuestro conversor admite varios archivos TIFF, asegurando una experiencia sin problemas para todos los usuarios.</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our TIFF to BMP Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>Beneficios de Usar Nuestro Conversor de TIFF a BMP</h2>
+        <p>Aquí hay algunas ventajas de usar nuestra herramienta de conversión:</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Convert your TIFF images to BMP quickly with just a few clicks.</li>
-            <li><strong>No Quality Loss:</strong> Enjoy high-quality results with no degradation during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, without needing to install any software.</li>
-            <li><strong>User-Friendly Interface:</strong> Our tool is designed to be intuitive and easy to navigate, ensuring a smooth experience.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for TIFF to BMP Conversion</h2>
-        <p>Here are some scenarios where converting TIFF to BMP can be beneficial:</p>
-        <ul>
-            <li><strong>Graphic Design:</strong> Use BMP images for quick edits or when working with software that supports only BMP format.</li>
-            <li><strong>Photography:</strong> Convert high-resolution TIFF images for easier viewing or sharing without loss of quality.</li>
-            <li><strong>Web Applications:</strong> Incorporate BMP images into web applications that require easy compatibility.</li>
-            <li><strong>Document Creation:</strong> Use BMP files in documents or presentations where simplicity and compatibility are key.</li>
+            <li><strong>Rápido y Fácil:</strong> Convierte tus imágenes TIFF a BMP rápidamente con solo unos clics.</li>
+            <li><strong>Sin Pérdida de Calidad:</strong> Disfruta de resultados de alta calidad sin degradación durante el proceso de conversión.</li>
+            <li><strong>Gratuito y Accesible:</strong> Usa nuestra herramienta en línea de forma gratuita, sin necesidad de instalar ningún software.</li>
+            <li><strong>Interfaz Amigable:</strong> Nuestra herramienta está diseñada para ser intuitiva y fácil de navegar, asegurando una experiencia fluida.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting TIFF to BMP Can Help</h2>
-        <p>Converting your TIFF images to BMP can enhance their usability and performance. Here’s how:</p>
+        <h2>Usos Comunes para la Conversión de TIFF a BMP</h2>
+        <p>Aquí hay algunos escenarios en los que convertir TIFF a BMP puede ser beneficioso:</p>
         <ul>
-            <li><strong>Increased Compatibility:</strong> BMP files can be easily opened and edited in various applications, making them more versatile.</li>
-            <li><strong>Simplified Editing:</strong> BMP’s uncompressed nature allows for easier manipulation and editing of images.</li>
-            <li><strong>Preserved Quality:</strong> Converting to BMP ensures that the high-quality details of your TIFF images remain intact.</li>
+            <li><strong>Diseño Gráfico:</strong> Usa imágenes BMP para ediciones rápidas o cuando trabajes con software que solo admite formato BMP.</li>
+            <li><strong>Fotografía:</strong> Convierte imágenes TIFF de alta resolución para una visualización o compartición más fácil sin pérdida de calidad.</li>
+            <li><strong>Aplicaciones Web:</strong> Incorpora imágenes BMP en aplicaciones web que requieren una fácil compatibilidad.</li>
+            <li><strong>Creación de Documentos:</strong> Usa archivos BMP en documentos o presentaciones donde la simplicidad y la compatibilidad son clave.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Cómo Convertir TIFF a BMP Puede Ayudar</h2>
+        <p>Convertir tus imágenes TIFF a BMP puede mejorar su usabilidad y rendimiento. Aquí te explicamos cómo:</p>
+        <ul>
+            <li><strong>Mayor Compatibilidad:</strong> Los archivos BMP pueden abrirse y editarse fácilmente en varias aplicaciones, lo que los hace más versátiles.</li>
+            <li><strong>Edición Simplificada:</strong> La naturaleza no comprimida de BMP permite una manipulación y edición más fácil de las imágenes.</li>
+            <li><strong>Calidad Preservada:</strong> Convertir a BMP asegura que los detalles de alta calidad de tus imágenes TIFF permanezcan intactos.</li>
         </ul>
     </div>
 </div>

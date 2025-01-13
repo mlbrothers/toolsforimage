@@ -1,87 +1,87 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
-{% block title %}Apply Image Effects online on images | ToolsForImage | Comprehensive Free Online Tools for Blur Faces, Image Conversion, Editing, Resizing, Remove Background, Blur background and More{% endblock %}
+{% block title %}Aplica efectos de imagen en línea | ToolsForImage | Herramientas gratuitas y completas para difuminar caras, conversión de imágenes, edición, redimensionamiento, eliminar fondos, difuminar fondos y más{% endblock %}
 
 {% block meta_description %}
-<meta name="description" content="Apply various effects to your images with ToolsForImage. Enhance your photos with filters like grayscale, blur, sharpen, and more.">
+<meta name="description" content="Aplica varios efectos a tus imágenes con ToolsForImage. Mejora tus fotos con filtros como escala de grises, desenfoque, nitidez y más.">
 {% endblock %}
 
 {% block content %}
-<h1>Free Image Effects Tool</h1>
-<p>Enhance your images with various effects using ToolsForImage. Upload an image, apply effects, and download the result.</p>
-<p>Upload your image file and apply effects instantly. Choose your image:</p>
+<h1>Herramienta Gratuita de Efectos de Imagen</h1>
+<p>Mejora tus imágenes con varios efectos usando ToolsForImage. Sube una imagen, aplica efectos y descarga el resultado.</p>
+<p>Sube tu archivo de imagen y aplica efectos al instante. Elige tu imagen:</p>
 <form id="effects-form" action="/apply-effects" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload from Computer</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir desde la Computadora</button>
     <br>
     <canvas id="canvas"></canvas>
     <br>
     <div class="effects-container">
-        <button type="button" class="effect-button" onclick="toggleEffect('grayscale')">Black and White</button>
-        <button type="button" class="effect-button" onclick="toggleEffect('blur')">Blur</button>
-        <button type="button" class="effect-button" onclick="toggleEffect('sharpen')">Sharpen</button>
+        <button type="button" class="effect-button" onclick="toggleEffect('grayscale')">Blanco y Negro</button>
+        <button type="button" class="effect-button" onclick="toggleEffect('blur')">Desenfoque</button>
+        <button type="button" class="effect-button" onclick="toggleEffect('sharpen')">Nitidez</button>
         <button type="button" class="effect-button" onclick="toggleEffect('sepia')">Sepia</button>
-        <button type="button" class="effect-button" onclick="toggleEffect('invert')">Invert</button>
-        <button type="button" class="effect-button" onclick="toggleEffect('brightness')">Brightness</button>
-        <button type="button" class="effect-button" onclick="toggleEffect('contrast')">Contrast</button>
-        <button type="button" class="effect-button" onclick="toggleEffect('saturation')">Saturation</button>
+        <button type="button" class="effect-button" onclick="toggleEffect('invert')">Invertir</button>
+        <button type="button" class="effect-button" onclick="toggleEffect('brightness')">Brillo</button>
+        <button type="button" class="effect-button" onclick="toggleEffect('contrast')">Contraste</button>
+        <button type="button" class="effect-button" onclick="toggleEffect('saturation')">Saturación</button>
     </div>
     <br>
     <input type="hidden" id="effect-applied" name="effect" value="">
-    <button type="submit" class="download-button" onclick="return validateImageSelection();">Download Edited Image</button>
+    <button type="submit" class="download-button" onclick="return validateImageSelection();">Descargar Imagen Editada</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What Are Image Effects?</h2>
-        <p>Image effects are filters or adjustments applied to photos to enhance their appearance or create a specific visual style. By using different effects, you can modify an image's colors, sharpness, brightness, and more, giving it a whole new look. Whether you're aiming for a vintage feel or a sharp modern edge, image effects allow you to transform your photos in creative ways.</p>
+        <h2>¿Qué son los Efectos de Imagen?</h2>
+        <p>Los efectos de imagen son filtros o ajustes aplicados a las fotos para mejorar su apariencia o crear un estilo visual específico. Al usar diferentes efectos, puedes modificar los colores, la nitidez, el brillo y más de una imagen, dándole un aspecto completamente nuevo. Ya sea que busques un estilo vintage o un toque moderno y definido, los efectos de imagen te permiten transformar tus fotos de manera creativa.</p>
     </div>
     <div class="info-section">
-        <h2>Why Apply Image Effects?</h2>
-        <p>Applying effects to your images can bring out the best in your photos. Effects like black and white or sepia can evoke certain emotions or time periods, while others like brightness and contrast adjustments help fine-tune the overall image quality. Image effects are useful in creating aesthetic consistency, enhancing mood, and making images stand out, whether for personal use, social media, or professional projects. By applying effects, you can give your images the perfect look for any occasion.</p>
+        <h2>¿Por Qué Aplicar Efectos de Imagen?</h2>
+        <p>Aplicar efectos a tus imágenes puede resaltar lo mejor de tus fotos. Efectos como el blanco y negro o el sepia pueden evocar ciertas emociones o épocas, mientras que otros, como los ajustes de brillo y contraste, ayudan a afinar la calidad general de la imagen. Los efectos de imagen son útiles para crear consistencia estética, mejorar el estado de ánimo y hacer que las imágenes destaquen, ya sea para uso personal, redes sociales o proyectos profesionales. Al aplicar efectos, puedes darle a tus imágenes el aspecto perfecto para cualquier ocasión.</p>
     </div>
     <div class="info-section">
-        <h2>How to Use Our Image Effects Tool</h2>
-        <p>Our image effects tool is easy to use. Simply upload your photo, choose one or more effects from the available options, and click to apply! You can enhance your images with a variety of effects:</p>
+        <h2>Cómo Usar Nuestra Herramienta de Efectos de Imagen</h2>
+        <p>Nuestra herramienta de efectos de imagen es fácil de usar. Simplemente sube tu foto, elige uno o más efectos de las opciones disponibles y haz clic para aplicarlos. Puedes mejorar tus imágenes con una variedad de efectos:</p>
         <ul>
-            <li><strong>Black and White (Grayscale):</strong> Remove all colors from your image, giving it a classic monochrome look.</li>
-            <li><strong>Blur:</strong> Apply a soft focus effect, making the image appear smoother or highlighting specific areas by blurring others.</li>
-            <li><strong>Sharpen:</strong> Increase the definition of the image, making edges crisper and improving clarity.</li>
-            <li><strong>Sepia:</strong> Add a warm brown tone to your image, evoking a vintage, nostalgic feel.</li>
+            <li><strong>Blanco y Negro (Escala de Grises):</strong> Elimina todos los colores de tu imagen, dándole un aspecto monocromático clásico.</li>
+            <li><strong>Desenfoque:</strong> Aplica un efecto de enfoque suave, haciendo que la imagen parezca más suave o resaltando áreas específicas al desenfocar otras.</li>
+            <li><strong>Nitidez:</strong> Aumenta la definición de la imagen, haciendo que los bordes sean más nítidos y mejorando la claridad.</li>
+            <li><strong>Sepia:</strong> Añade un tono marrón cálido a tu imagen, evocando una sensación vintage y nostálgica.</li>
         </ul>
     </div>
     
     <div class="info-section">
-        <h2>More Effects You Can Apply</h2>
-        <p>Explore additional options to fine-tune your images and achieve the desired look:</p>
+        <h2>Más Efectos que Puedes Aplicar</h2>
+        <p>Explora opciones adicionales para ajustar tus imágenes y lograr el aspecto deseado:</p>
         <ul>
-            <li><strong>Invert:</strong> Flip the colors in your image for a striking negative effect.</li>
-            <li><strong>Brightness:</strong> Adjust the light levels in your image to make it brighter or darker, depending on the desired mood.</li>
-            <li><strong>Contrast:</strong> Change the balance between light and dark areas, giving your photo a more dramatic or subtle look.</li>
-            <li><strong>Saturation:</strong> Control the intensity of colors, making them more vibrant or muted, depending on the visual impact you want.</li>
+            <li><strong>Invertir:</strong> Invierte los colores de tu imagen para un efecto negativo impactante.</li>
+            <li><strong>Brillo:</strong> Ajusta los niveles de luz en tu imagen para hacerla más brillante o más oscura, dependiendo del estado de ánimo deseado.</li>
+            <li><strong>Contraste:</strong> Cambia el equilibrio entre las áreas claras y oscuras, dando a tu foto un aspecto más dramático o sutil.</li>
+            <li><strong>Saturación:</strong> Controla la intensidad de los colores, haciéndolos más vibrantes o apagados, dependiendo del impacto visual que desees.</li>
         </ul>
-        <p>Our tool works across all devices and ensures that your photos retain their quality while applying these effects, giving you full control over the final result.</p>
+        <p>Nuestra herramienta funciona en todos los dispositivos y asegura que tus fotos mantengan su calidad mientras aplicas estos efectos, dándote control total sobre el resultado final.</p>
     </div>
     
     <div class="info-section">
-        <h2>Benefits of Using Our Image Effects Tool</h2>
-        <p>By using our image effects tool, you can enjoy a wide range of benefits:</p>
+        <h2>Beneficios de Usar Nuestra Herramienta de Efectos de Imagen</h2>
+        <p>Al usar nuestra herramienta de efectos de imagen, puedes disfrutar de una amplia gama de beneficios:</p>
         <ul>
-            <li><strong>Creative Control:</strong> Experiment with various effects to achieve your desired artistic style.</li>
-            <li><strong>Easy-to-Use Interface:</strong> Apply and adjust effects effortlessly with a user-friendly design.</li>
-            <li><strong>No Software Needed:</strong> Access the tool directly from your browser without the need for additional software.</li>
-            <li><strong>Instant Preview:</strong> See how your photo looks with each effect applied in real time.</li>
-            <li><strong>High-Quality Output:</strong> Ensure your photos maintain sharpness and detail, even after applying effects.</li>
+            <li><strong>Control Creativo:</strong> Experimenta con varios efectos para lograr tu estilo artístico deseado.</li>
+            <li><strong>Interfaz Fácil de Usar:</strong> Aplica y ajusta efectos de manera sencilla con un diseño intuitivo.</li>
+            <li><strong>Sin Necesidad de Software:</strong> Accede a la herramienta directamente desde tu navegador sin necesidad de software adicional.</li>
+            <li><strong>Vista Previa Instantánea:</strong> Ve cómo se ve tu foto con cada efecto aplicado en tiempo real.</li>
+            <li><strong>Salida de Alta Calidad:</strong> Asegura que tus fotos mantengan nitidez y detalle, incluso después de aplicar efectos.</li>
         </ul>
     </div>
     <div class="info-section">
-        <h2>Common Use Cases for Image Effects</h2>
-        <p>Image effects are commonly used in various scenarios, such as:</p>
+        <h2>Casos Comunes de Uso para Efectos de Imagen</h2>
+        <p>Los efectos de imagen se usan comúnmente en varios escenarios, como:</p>
         <ul>
-            <li><strong>Social Media Content:</strong> Enhance your photos with effects that make them stand out on platforms like Instagram and Facebook.</li>
-            <li><strong>Photography Editing:</strong> Apply finishing touches to professional photography projects to enhance their visual impact.</li>
-            <li><strong>Marketing and Advertising:</strong> Adjust the tone and mood of images to align with branding and promotional content.</li>
-            <li><strong>Personal Projects:</strong> Transform your personal photos into artistic pieces by experimenting with different effects.</li>
+            <li><strong>Contenido para Redes Sociales:</strong> Mejora tus fotos con efectos que las hagan destacar en plataformas como Instagram y Facebook.</li>
+            <li><strong>Edición Fotográfica:</strong> Aplica toques finales a proyectos de fotografía profesional para mejorar su impacto visual.</li>
+            <li><strong>Marketing y Publicidad:</strong> Ajusta el tono y el estado de ánimo de las imágenes para alinearlos con el contenido de marca y promocional.</li>
+            <li><strong>Proyectos Personales:</strong> Transforma tus fotos personales en piezas artísticas experimentando con diferentes efectos.</li>
         </ul>
     </div>
 </div>

@@ -1,84 +1,83 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert PNG to BMP images with ToolsForImage. Free, fast, and secure online PNG to BMP converter for high-quality image transformations.">
+<meta name="description" content="Convierte fácilmente imágenes PNG a BMP con ToolsForImage. Conversor online gratuito, rápido y seguro de PNG a BMP para transformaciones de imágenes de alta calidad.">
 {% endblock %}
 
-{% block title %}Online PNG to BMP converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}Conversor online de PNG a BMP | ToolsForImage | Conversor de imágenes online gratuito{% endblock %}
 
 {% block content %}
-<h1>Free Online PNG to BMP Converter</h1>
-<p>Easily convert your images from PNG to BMP format. Upload a PNG image and we'll convert it to BMP for you.</p>
+<h1>Conversor Gratuito Online de PNG a BMP</h1>
+<p>Convierte fácilmente tus imágenes de formato PNG a BMP. Sube una imagen PNG y la convertiremos a BMP por ti.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/png" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload PNG Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir Imagen PNG</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="Vista previa de la imagen" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="png">
     <input type="hidden" name="output_format" value="bmp">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to BMP</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convertir a BMP</button>
 </form>
 <div class="info-container">
     <div class="info-section">
-        <h2>What is PNG to BMP Conversion?</h2>
-        <p>PNG to BMP conversion is the process of changing image files from PNG format to BMP format. BMP (Bitmap) is a raster graphics format used for storing digital images. Converting PNG images to BMP can be helpful when you need to use a simple, uncompressed image format that retains high quality for editing or printing purposes.</p>
+        <h2>¿Qué es la Conversión de PNG a BMP?</h2>
+        <p>La conversión de PNG a BMP es el proceso de cambiar archivos de imágenes de formato PNG a BMP. BMP (Bitmap) es un formato de gráficos rasterizados utilizado para almacenar imágenes digitales. Convertir imágenes PNG a BMP puede ser útil cuando necesitas usar un formato de imagen simple y sin compresión que mantenga una alta calidad para edición o impresión.</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert PNG to BMP?</h2>
-        <p>There are several reasons to convert PNG images to BMP:</p>
+        <h2>¿Por Qué Convertir PNG a BMP?</h2>
+        <p>Hay varias razones para convertir imágenes PNG a BMP:</p>
         <ul>
-            <li><strong>High-Quality Images:</strong> BMP files maintain excellent image quality without compression, making them ideal for professional applications.</li>
-            <li><strong>Editing Flexibility:</strong> BMP format is often preferred for editing and graphic design due to its simplicity and lack of compression artifacts.</li>
-            <li><strong>Compatibility:</strong> BMP files are widely supported by many software applications, ensuring easy access and use across different platforms.</li>
+            <li><strong>Imágenes de Alta Calidad:</strong> Los archivos BMP mantienen una excelente calidad de imagen sin compresión, lo que los hace ideales para aplicaciones profesionales.</li>
+            <li><strong>Flexibilidad de Edición:</strong> El formato BMP es preferido para la edición y el diseño gráfico debido a su simplicidad y falta de artefactos de compresión.</li>
+            <li><strong>Compatibilidad:</strong> Los archivos BMP son ampliamente compatibles con muchas aplicaciones de software, lo que garantiza un acceso y uso fácil en diferentes plataformas.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our PNG to BMP Converter</h2>
-        <p>Our PNG to BMP conversion tool is designed to be user-friendly and straightforward. Here’s how you can use it:</p>
+        <h2>Cómo Usar Nuestro Conversor de PNG a BMP</h2>
+        <p>Nuestra herramienta de conversión de PNG a BMP está diseñada para ser fácil de usar y directa. Así es como puedes usarla:</p>
         <ul>
-            <li>Click the "Upload PNG File" button to select the PNG image you want to convert.</li>
-            <li>Once the image is uploaded, our tool will automatically process the conversion to BMP format.</li>
-            <li>After the conversion is complete, click "Download BMP" to save your new image to your device.</li>
+            <li>Haz clic en el botón "Subir Archivo PNG" para seleccionar la imagen PNG que deseas convertir.</li>
+            <li>Una vez que la imagen esté subida, nuestra herramienta procesará automáticamente la conversión a formato BMP.</li>
+            <li>Después de que la conversión esté completa, haz clic en "Descargar BMP" para guardar tu nueva imagen en tu dispositivo.</li>
         </ul>
-        <p>Our converter supports a variety of PNG files, ensuring a smooth conversion experience every time.</p>
+        <p>Nuestro conversor admite una variedad de archivos PNG, garantizando una experiencia de conversión fluida cada vez.</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our PNG to BMP Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>Beneficios de Usar Nuestro Conversor de PNG a BMP</h2>
+        <p>Aquí hay algunas ventajas de usar nuestra herramienta de conversión:</p>
         <ul>
-            <li><strong>Fast and Efficient:</strong> Convert your PNG images to BMP quickly and easily, without any complicated steps.</li>
-            <li><strong>No Loss of Quality:</strong> Enjoy high-quality output with no compression, ensuring that your images look their best.</li>
-            <li><strong>Free and Online:</strong> Use our tool for free, directly in your web browser, with no need for software downloads.</li>
-            <li><strong>User-Friendly Interface:</strong> Designed for everyone, our tool is simple and easy to navigate, making it accessible for all users.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for PNG to BMP Conversion</h2>
-        <p>Here are some situations where converting PNG to BMP can be beneficial:</p>
-        <ul>
-            <li><strong>Graphic Design:</strong> Use BMP images for graphic design projects where high-quality and uncompressed images are required.</li>
-            <li><strong>Image Editing:</strong> Convert PNG files to BMP for easier editing in various software applications.</li>
-            <li><strong>Printing:</strong> Use BMP images for printing purposes, as they retain high quality without compression artifacts.</li>
-            <li><strong>Archiving:</strong> Store images in BMP format for long-term archival, preserving their quality over time.</li>
+            <li><strong>Rápido y Eficiente:</strong> Convierte tus imágenes PNG a BMP de manera rápida y sencilla, sin pasos complicados.</li>
+            <li><strong>Sin Pérdida de Calidad:</strong> Disfruta de una salida de alta calidad sin compresión, asegurando que tus imágenes se vean lo mejor posible.</li>
+            <li><strong>Gratuito y Online:</strong> Usa nuestra herramienta de forma gratuita, directamente en tu navegador web, sin necesidad de descargar software.</li>
+            <li><strong>Interfaz Amigable:</strong> Diseñada para todos, nuestra herramienta es simple y fácil de navegar, haciéndola accesible para todos los usuarios.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting PNG to BMP Can Help</h2>
-        <p>Converting your PNG images to BMP can enhance their usability and performance in various applications. Here’s how:</p>
+        <h2>Usos Comunes para la Conversión de PNG a BMP</h2>
+        <p>Aquí hay algunas situaciones en las que convertir PNG a BMP puede ser beneficioso:</p>
         <ul>
-            <li><strong>Better Editing Experience:</strong> BMP images are easier to work with in graphic design software, making your editing process smoother.</li>
-            <li><strong>Improved Print Quality:</strong> Use BMP files to ensure your printed images maintain their sharpness and clarity.</li>
-            <li><strong>Easy Access:</strong> BMP format is compatible with many applications, ensuring that your images can be used wherever you need them.</li>
+            <li><strong>Diseño Gráfico:</strong> Usa imágenes BMP para proyectos de diseño gráfico donde se requieren imágenes de alta calidad y sin compresión.</li>
+            <li><strong>Edición de Imágenes:</strong> Convierte archivos PNG a BMP para facilitar la edición en varias aplicaciones de software.</li>
+            <li><strong>Impresión:</strong> Usa imágenes BMP para impresión, ya que mantienen una alta calidad sin artefactos de compresión.</li>
+            <li><strong>Archivado:</strong> Almacena imágenes en formato BMP para archivado a largo plazo, preservando su calidad con el tiempo.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Cómo Convertir PNG a BMP Puede Ayudar</h2>
+        <p>Convertir tus imágenes PNG a BMP puede mejorar su usabilidad y rendimiento en varias aplicaciones. Aquí te explicamos cómo:</p>
+        <ul>
+            <li><strong>Mejor Experiencia de Edición:</strong> Las imágenes BMP son más fáciles de trabajar en software de diseño gráfico, haciendo que tu proceso de edición sea más fluido.</li>
+            <li><strong>Mejor Calidad de Impresión:</strong> Usa archivos BMP para asegurarte de que tus imágenes impresas mantengan su nitidez y claridad.</li>
+            <li><strong>Acceso Fácil:</strong> El formato BMP es compatible con muchas aplicaciones, asegurando que tus imágenes puedan usarse donde las necesites.</li>
         </ul>
     </div>
 </div>
-
 
 <style>
     h1 {

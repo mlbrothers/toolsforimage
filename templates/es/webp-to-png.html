@@ -1,82 +1,82 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert WEBP to PNG images with ToolsForImage. Free, fast, and secure online WEBP to PNG converter for high-quality image transformations.">
+<meta name="description" content="Convierte fácilmente imágenes WEBP a PNG con ToolsForImage. Conversor online gratuito, rápido y seguro de WEBP a PNG para transformaciones de imágenes de alta calidad.">
 {% endblock %}
 
-{% block title %}Online WEBP to PNG converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}Conversor online de WEBP a PNG | ToolsForImage | Conversor de imágenes online gratuito{% endblock %}
 
 {% block content %}
-<h1>Free Online WEBP to PNG Converter</h1>
-<p>Easily convert your images from WEBP to PNG format. Upload a webp image and we'll convert it to PNG for you.</p>
+<h1>Conversor Gratuito Online de WEBP a PNG</h1>
+<p>Convierte fácilmente tus imágenes de WEBP a formato PNG. Sube una imagen WEBP y la convertiremos a PNG para ti.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/webp" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload webp Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir imagen WEBP</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="Vista previa de la imagen" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="webp">
     <input type="hidden" name="output_format" value="png">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to PNG</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convertir a PNG</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is WebP to PNG Conversion?</h2>
-        <p>WebP to PNG conversion is the process of changing images from WebP format to PNG format. While WebP offers excellent compression and quality, PNG is a lossless format that maintains image clarity and supports transparency. This conversion is essential for users needing high-quality images without losing details or for specific applications that require PNG format.</p>
+        <h2>¿Qué es la conversión de WebP a PNG?</h2>
+        <p>La conversión de WebP a PNG es el proceso de cambiar imágenes del formato WebP al formato PNG. Mientras que WebP ofrece una excelente compresión y calidad, PNG es un formato sin pérdida que mantiene la claridad de la imagen y admite transparencias. Esta conversión es esencial para usuarios que necesitan imágenes de alta calidad sin perder detalles o para aplicaciones específicas que requieren el formato PNG.</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert WebP to PNG?</h2>
-        <p>There are several reasons to convert WebP images to PNG:</p>
+        <h2>¿Por qué convertir WebP a PNG?</h2>
+        <p>Hay varias razones para convertir imágenes WebP a PNG:</p>
         <ul>
-            <li><strong>Lossless Quality:</strong> PNG format retains all image details without compression loss, making it ideal for graphics and images with text.</li>
-            <li><strong>Transparency Support:</strong> PNG supports transparent backgrounds, which is useful for logos, icons, and overlays.</li>
-            <li><strong>Wider Compatibility:</strong> PNG is widely accepted in various applications and platforms, ensuring your images are easily accessible.</li>
-            <li><strong>Ideal for Graphics:</strong> If you’re working with graphics that require high fidelity and clarity, PNG is the preferred choice.</li>
+            <li><strong>Calidad sin pérdida:</strong> El formato PNG conserva todos los detalles de la imagen sin pérdida por compresión, lo que lo hace ideal para gráficos e imágenes con texto.</li>
+            <li><strong>Soporte para transparencias:</strong> PNG admite fondos transparentes, lo que es útil para logotipos, iconos y superposiciones.</li>
+            <li><strong>Amplia compatibilidad:</strong> PNG es ampliamente aceptado en varias aplicaciones y plataformas, lo que garantiza que tus imágenes sean fácilmente accesibles.</li>
+            <li><strong>Ideal para gráficos:</strong> Si trabajas con gráficos que requieren alta fidelidad y claridad, PNG es la opción preferida.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our WebP to PNG Converter</h2>
-        <p>Using our WebP to PNG conversion tool is simple and fast. Here’s how it works:</p>
+        <h2>Cómo usar nuestro conversor de WebP a PNG</h2>
+        <p>Usar nuestra herramienta de conversión de WebP a PNG es simple y rápido. Así es como funciona:</p>
         <ul>
-            <li>Click the "Upload WebP File" button to select the WebP image you wish to convert.</li>
-            <li>After uploading, the tool will automatically convert the image to PNG format.</li>
-            <li>Once the conversion is complete, click "Download PNG" to save your new PNG image to your device.</li>
+            <li>Haz clic en el botón "Subir archivo WEBP" para seleccionar la imagen WebP que deseas convertir.</li>
+            <li>Después de subirla, la herramienta convertirá automáticamente la imagen a formato PNG.</li>
+            <li>Una vez completada la conversión, haz clic en "Descargar PNG" para guardar tu nueva imagen PNG en tu dispositivo.</li>
         </ul>
-        <p>Our converter supports various WebP images, ensuring a smooth and effective conversion process.</p>
+        <p>Nuestro conversor admite varias imágenes WebP, lo que garantiza un proceso de conversión fluido y efectivo.</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our WebP to PNG Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>Beneficios de usar nuestro conversor de WebP a PNG</h2>
+        <p>Aquí tienes algunas ventajas de usar nuestra herramienta de conversión:</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Convert your WebP images to PNG in just a few clicks, saving you time.</li>
-            <li><strong>No Quality Loss:</strong> Enjoy high-quality PNG images with no loss of detail during the conversion.</li>
-            <li><strong>Free and Accessible:</strong> Our tool is available online for free, requiring no downloads or installations.</li>
-            <li><strong>User-Friendly Interface:</strong> Designed for ease of use, our tool simplifies the conversion process for everyone.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for WebP to PNG Conversion</h2>
-        <p>Converting WebP to PNG can be beneficial in various scenarios:</p>
-        <ul>
-            <li><strong>Web Design:</strong> Use PNG images for web design projects that require transparent backgrounds.</li>
-            <li><strong>Graphic Design:</strong> Save logos and graphics in PNG format to ensure clarity and detail.</li>
-            <li><strong>Image Editing:</strong> Use PNG images in editing software that supports lossless formats.</li>
-            <li><strong>Social Media:</strong> Share high-quality images on social platforms without losing detail.</li>
+            <li><strong>Rápido y fácil:</strong> Convierte tus imágenes WebP a PNG en solo unos clics, ahorrándote tiempo.</li>
+            <li><strong>Sin pérdida de calidad:</strong> Disfruta de imágenes PNG de alta calidad sin pérdida de detalles durante la conversión.</li>
+            <li><strong>Gratuito y accesible:</strong> Nuestra herramienta está disponible en línea de forma gratuita, sin necesidad de descargas ni instalaciones.</li>
+            <li><strong>Interfaz fácil de usar:</strong> Diseñada para ser intuitiva, nuestra herramienta simplifica el proceso de conversión para todos.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting WebP to PNG Can Help You</h2>
-        <p>Converting WebP images to PNG format can enhance usability and sharing. Here’s how:</p>
+        <h2>Usos comunes de la conversión de WebP a PNG</h2>
+        <p>Convertir WebP a PNG puede ser beneficioso en varios escenarios:</p>
         <ul>
-            <li><strong>Improved Image Quality:</strong> PNG images retain all visual details, making them perfect for high-quality projects.</li>
-            <li><strong>Flexibility with Transparency:</strong> PNG’s transparency feature allows for versatile designs, including overlays and watermarks.</li>
-            <li><strong>Easy Sharing:</strong> PNG files are compatible with most platforms, ensuring seamless sharing and accessibility.</li>
+            <li><strong>Diseño web:</strong> Usa imágenes PNG para proyectos de diseño web que requieren fondos transparentes.</li>
+            <li><strong>Diseño gráfico:</strong> Guarda logotipos y gráficos en formato PNG para garantizar claridad y detalle.</li>
+            <li><strong>Edición de imágenes:</strong> Usa imágenes PNG en software de edición que admita formatos sin pérdida.</li>
+            <li><strong>Redes sociales:</strong> Comparte imágenes de alta calidad en plataformas sociales sin perder detalles.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Cómo puede ayudarte convertir WebP a PNG</h2>
+        <p>Convertir imágenes WebP a formato PNG puede mejorar su usabilidad y facilidad de compartición. Aquí te explicamos cómo:</p>
+        <ul>
+            <li><strong>Mejor calidad de imagen:</strong> Las imágenes PNG conservan todos los detalles visuales, lo que las hace perfectas para proyectos de alta calidad.</li>
+            <li><strong>Flexibilidad con transparencias:</strong> La función de transparencia de PNG permite diseños versátiles, como superposiciones y marcas de agua.</li>
+            <li><strong>Compartir fácilmente:</strong> Los archivos PNG son compatibles con la mayoría de las plataformas, lo que garantiza un intercambio y acceso sin problemas.</li>
         </ul>
     </div>
 </div>

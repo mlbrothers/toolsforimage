@@ -726,5 +726,187 @@ blogs_list = {
             'description': '使用优化工具和需要注意的重要事项创建最佳Twitter横幅',
             'image': 'twitter-banner-blog.svg',
         }
+    ],
+    'es': [
+        {
+            "slug": "cómo-convertir-imagen-de-jpeg-a-jpg",
+            "title": "Cómo convertir JPEG a JPG gratis en línea",
+            "description": "Cómo convertir tus imágenes JPEG a formato JPG gratis en línea",
+            "image": "jpeg-to-jpg-blog.svg"
+        },
+        {
+            "slug": "cómo-desenfocar-caras-en-imágenes-en-línea-gratis",
+            "title": "Cómo aplicar un filtro de desenfoque en caras en imágenes",
+            "description": "Descubre cómo aplicar un efecto de desenfoque en caras en imágenes gratis en línea",
+            "image": "blur-face-blog.svg"
+        },
+        {
+            "slug": "cómo-convertir-imagen-de-bmp-a-jpeg",
+            "title": "Cómo convertir bitmap/bmp a JPEG gratis en línea",
+            "description": "Cómo convertir tus imágenes bitmap a formato JPEG gratis en línea",
+            "image": "bitmap-to-jpeg-blog.svg"
+        },
+        {
+            "slug": "cómo-convertir-imagen-de-webp-a-tiff",
+            "title": "Cómo convertir webp a tiff gratis en línea",
+            "description": "Cómo convertir tus imágenes webp a formato tiff gratis en línea",
+            "image": "webp-to-tiff-blog.svg"
+        },
+        {
+            "slug": "cómo-convertir-imagen-de-webp-a-jpeg",
+            "title": "Cómo convertir webp a jpeg gratis en línea",
+            "description": "Cómo convertir tus imágenes webp a formato jpeg gratis en línea",
+            "image": "webp-to-jpeg-blog.svg"
+        },
+        {
+            "slug": "cómo-convertir-imagen-de-bmp-a-png",
+            "title": "Cómo convertir bmp a png gratis en línea",
+            "description": "Cómo convertir tus imágenes bmp a formato png gratis en línea",
+            "image": "bmp-to-png-blog.svg"
+        },
+        {
+            "slug": "cómo-convertir-imagen-de-webp-a-png",
+            "title": "Cómo convertir webp a png gratis en línea",
+            "description": "Cómo convertir tus imágenes webp a formato png gratis en línea",
+            "image": "webp-to-png-blog.svg"
+        },
+        {
+            "slug": "cómo-convertir-imagen-de-bmp-a-tiff",
+            "title": "Cómo convertir bmp a tiff gratis en línea",
+            "description": "Cómo convertir tus imágenes bmp a formato tiff gratis en línea",
+            "image": "bmp-to-tiff-blog.svg"
+        },
+        {
+            "slug": "cómo-convertir-imagen-de-webp-a-jpg",
+            "title": "Cómo convertir webp a jpg gratis en línea",
+            "description": "Cómo convertir tus imágenes webp a formato jpg gratis en línea",
+            "image": "webp-to-jpg-blog.svg"
+        },
+        {
+            "slug": "cómo-convertir-imagen-de-png-a-jpg",
+            "title": "Cómo convertir png a jpg gratis en línea",
+            "description": "Cómo convertir tus imágenes png a formato jpg gratis en línea",
+            "image": "png-to-jpg-blog.svg"
+        },
+        {
+            "slug": "cómo-convertir-imagen-de-bmp-a-webp",
+            "title": "Cómo convertir bitmap/bmp a WEBP gratis en línea",
+            "description": "Cómo convertir tus imágenes bitmap a formato WEBP gratis en línea",
+            "image": "bmp-to-webp-blog.svg"
+        },
+        {
+            "slug": "cómo-convertir-imagen-de-png-a-bmp",
+            "title": "Cómo convertir png a bmp gratis en línea",
+            "description": "Cómo convertir tus imágenes png a formato bmp gratis en línea",
+            "image": "png-to-bmp-blog.svg"
+        },
+        {
+            "slug": "cómo-convertir-imagen-de-png-a-tiff",
+            "title": "Cómo convertir png a tiff gratis en línea",
+            "description": "Cómo convertir tus imágenes png a formato tiff gratis en línea",
+            "image": "png-to-tiff-blog.svg"
+        },
+        {
+            "slug": "cómo-convertir-imagen-de-webp-a-bmp",
+            "title": "Cómo convertir webp a bmp gratis en línea",
+            "description": "Cómo convertir tus imágenes webp a formato bmp gratis en línea",
+            "image": "bmp-to-png-blog.svg"
+        },
+        {
+            "slug": "cómo-convertir-imagen-de-png-a-webp",
+            "title": "Cómo convertir png a webp gratis en línea",
+            "description": "Cómo convertir tus imágenes png a formato webp gratis en línea",
+            "image": "webp-to-jpeg-blog.svg"
+        },
+        {
+            "slug": "cómo-convertir-imagen-de-tiff-a-jpg",
+            "title": "Cómo convertir tiff a jpg gratis en línea",
+            "description": "Cómo convertir tus imágenes tiff a formato jpg gratis en línea",
+            "image": "webp-to-tiff-blog.svg"
+        },
+        {
+            "slug": "cómo-convertir-imagen-de-jpg-a-webp",
+            "title": "Cómo convertir jpg a webp gratis en línea",
+            "description": "Cómo convertir tus imágenes jpg a formato webp gratis en línea",
+            "image": "webp-to-jpg-blog.svg"
+        },
+        {
+            "slug": "cómo-reducir-el-tamaño-de-imágenes-con-reductor-de-tamaño-de-imágenes",
+            "title": "Cómo reducir el tamaño de imágenes gratis en línea",
+            "description": "Reduce eficientemente el tamaño de tus imágenes usando una herramienta eficaz para reducir el tamaño de imágenes",
+            "image": "image-size-reducer-blog.svg"
+        },
+        {
+            "slug": "cómo-convertir-imagen-de-jpg-a-jpeg",
+            "title": "Cómo convertir JPG a JPEG gratis en línea",
+            "description": "Cómo convertir tus imágenes JPG a formato JPEG gratis en línea",
+            "image": "jpeg-to-jpg-blog.svg"
+        },
+        {
+            "slug": "cómo-convertir-imagen-de-jpg-a-ico",
+            "title": "Cómo convertir JPG a ICO gratis en línea",
+            "description": "Cómo convertir tus imágenes JPG a formato ICO gratis en línea",
+            "image": "jpg-to-ico-blog.svg"
+        },
+        {
+            "slug": "cómo-convertir-imagen-de-bmp-a-jpg",
+            "title": "Cómo convertir bmp a jpg gratis en línea",
+            "description": "Cómo convertir tus imágenes bmp a formato jpg gratis en línea",
+            "image": "bmp-to-png-blog.svg"
+        },
+        {
+            "slug": "cómo-rotar-imágenes-en-línea-gratis",
+            "title": "Cómo rotar imágenes gratis en línea",
+            "description": "Cómo rotar imágenes gratis en línea",
+            "image": "image-rotate-blog.svg"
+        },
+        {
+            "slug": "cómo-recortar-imágenes-en-línea-gratis",
+            "title": "Cómo recortar imágenes gratis en línea",
+            "description": "Cómo recortar imágenes gratis en línea",
+            "image": "crop-image-blog.svg"
+        },
+        {
+            "slug": "cómo-convertir-imagen-de-jpeg-a-png",
+            "title": "Cómo convertir jpeg a png gratis en línea",
+            "description": "Cómo convertir tus imágenes jpeg a formato png gratis en línea",
+            "image": "webp-to-png-blog.svg"
+        },
+        {
+            "slug": "cómo-convertir-imagen-de-jpeg-a-webp",
+            "title": "Cómo convertir jpeg a webp gratis en línea",
+            "description": "Cómo convertir tus imágenes jpeg a formato webp gratis en línea",
+            "image": "webp-to-jpeg-blog.svg"
+        },
+        {
+            "slug": "mejores-herramientas-para-desenfocar-caras-en-fotos",
+            "title": "Top 3 herramientas para desenfocar caras o áreas en fotos",
+            "description": "Top 3 herramientas para desenfocar caras o áreas en fotos gratis en línea",
+            "image": "best-blur-face-tools-blog.svg"
+        },
+        {
+            "slug": "cómo-convertir-imagen-de-jpg-a-bmp",
+            "title": "Cómo convertir jpg a bmp gratis en línea",
+            "description": "Cómo convertir tus imágenes jpg a formato bmp gratis en línea",
+            "image": "bmp-to-png-blog.svg"
+        },
+        {
+            "slug": "cómo-convertir-imagen-de-jpg-a-png",
+            "title": "Cómo convertir jpg a png gratis en línea",
+            "description": "Cómo convertir tus imágenes jpg a formato png gratis en línea",
+            "image": "webp-to-png-blog.svg"
+        },
+        {
+            "slug": "cómo-convertir-imagen-de-png-a-jpeg",
+            "title": "Cómo convertir png a jpeg gratis en línea",
+            "description": "Cómo convertir tus imágenes png a formato jpeg gratis en línea",
+            "image": "jpeg-to-jpg-blog.svg"
+        },
+        {
+            "slug": "cómo-crear-banner-de-twitter",
+            "title": "Cómo crear el mejor banner de Twitter con las herramientas adecuadas",
+            "description": "Crea el mejor banner de Twitter con herramientas optimizadas y puntos importantes a tener en cuenta para el banner de Twitter",
+            "image": "twitter-banner-blog.svg"
+        }
     ]
 }

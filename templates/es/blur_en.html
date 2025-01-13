@@ -1,20 +1,19 @@
-{% extends 'en/base.html' %}
+{% extends 'es/base.html' %}
 
-{% block title %}Blur Faces Free online | ToolsForImage | Comprehensive Free Online Tools for Blur Faces, Image Conversion, Editing, Resizing, Remove Background, Blur background and More{% endblock %}
+{% block title %}Difuminar Rostros Gratis en Línea | ToolsForImage | Herramientas Gratuitas en Línea para Difuminar Rostros, Conversión de Imágenes, Edición, Redimensionamiento, Eliminar Fondo, Difuminar Fondo y Más{% endblock %}
 
 {% block meta_description %}
 <meta name="description"
-    content="Blur faces or specific areas in your images for free online easily. Free tool to blur faces in photos at ToolsForImage. Protect privacy by selectively blurring parts of your photos. Blur the faces with single click.">
+    content="Difumina rostros o áreas específicas en tus imágenes de forma gratuita y fácil en línea. Herramienta gratuita para difuminar rostros en fotos en ToolsForImage. Protege la privacidad difuminando selectivamente partes de tus fotos. Difumina rostros con un solo clic.">
 {% endblock %}
 
 {% block content %}
 
-
 <div class="container">
-    <h1>Blur face online free</h1>
-    <p>Free Online blur effect on the face of your images</p>
+    <h1>Difuminar rostros en línea gratis</h1>
+    <p>Efecto de difuminado gratuito en línea para rostros en tus imágenes</p>
     <input type="file" id="image-upload" accept="image/*" style="display: none;">
-    <button class="upload-button" onclick="document.getElementById('image-upload').click();">Upload Image</button>
+    <button class="upload-button" onclick="document.getElementById('image-upload').click();">Subir Imagen</button>
     <div id="canvas-container">
         <canvas id="canvas"></canvas>
         <div id="blur-box">
@@ -24,66 +23,66 @@
             <div class="resize-handle se"></div>
         </div>
     </div>
-    <button id="apply-blur">Apply blur effect</button>
+    <button id="apply-blur">Aplicar efecto de difuminado</button>
     <div id="error-message"></div>
 </div>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is Face Blurring?</h2>
-        <p>Face blurring is the process of obscuring or pixelating faces in images or videos to protect the identities of individuals. This technique is essential for maintaining privacy and anonymity, especially when sharing personal content online. Our face-blurring tool allows you to easily and quickly blur faces, ensuring that your images comply with privacy standards while still being visually appealing.</p>
+        <h2>¿Qué es el Difuminado de Rostros?</h2>
+        <p>El difuminado de rostros es el proceso de ocultar o pixelar rostros en imágenes o videos para proteger la identidad de las personas. Esta técnica es esencial para mantener la privacidad y el anonimato, especialmente al compartir contenido personal en línea. Nuestra herramienta de difuminado de rostros te permite difuminar rostros de manera fácil y rápida, asegurando que tus imágenes cumplan con los estándares de privacidad mientras siguen siendo visualmente atractivas.</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Blur Faces in Images or Videos?</h2>
-        <p>There are several important reasons to blur faces in your content:</p>
+        <h2>¿Por qué Difuminar Rostros en Imágenes o Videos?</h2>
+        <p>Hay varias razones importantes para difuminar rostros en tu contenido:</p>
         <ul>
-            <li><strong>Protect Privacy:</strong> Blurring faces helps safeguard the privacy of individuals, especially in sensitive situations like events, protests, or public gatherings.</li>
-            <li><strong>Comply with Laws:</strong> Many jurisdictions require consent for using identifiable images of individuals. Blurring faces can help you stay compliant with privacy laws.</li>
-            <li><strong>Focus on the Subject:</strong> By blurring faces, you can direct attention to the main subject or action in your image or video without distractions.</li>
+            <li><strong>Proteger la Privacidad:</strong> Difuminar rostros ayuda a salvaguardar la privacidad de las personas, especialmente en situaciones sensibles como eventos, protestas o reuniones públicas.</li>
+            <li><strong>Cumplir con las Leyes:</strong> Muchas jurisdicciones requieren consentimiento para usar imágenes identificables de personas. Difuminar rostros puede ayudarte a cumplir con las leyes de privacidad.</li>
+            <li><strong>Enfocarse en el Tema Principal:</strong> Al difuminar rostros, puedes dirigir la atención al tema principal o acción en tu imagen o video sin distracciones.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our free online Face Blurring Tool</h2>
-        <p>Our free online face-blurring tool is designed for ease of use, enabling you to protect identities in just a few steps:</p>
+        <h2>Cómo Usar Nuestra Herramienta Gratuita de Difuminado de Rostros en Línea</h2>
+        <p>Nuestra herramienta gratuita de difuminado de rostros en línea está diseñada para ser fácil de usar, permitiéndote proteger identidades en solo unos pasos:</p>
         <ul>
-            <li>Click the "Upload from Computer" button to upload your image or video.</li>
-            <li>The face blur tool will apply blur effect in your content. You can choose which faces to blur.</li>
-            <li>Once you're satisfied with the adjustments, click "Apply blur effect" to save your protected content to your device.</li>
+            <li>Haz clic en el botón "Subir desde la Computadora" para cargar tu imagen o video.</li>
+            <li>La herramienta de difuminado aplicará el efecto de difuminado en tu contenido. Puedes elegir qué rostros difuminar.</li>
+            <li>Una vez que estés satisfecho con los ajustes, haz clic en "Aplicar efecto de difuminado" para guardar tu contenido protegido en tu dispositivo.</li>
         </ul>
-        <p>Our tool supports various formats, ensuring compatibility with your images and videos.</p>
+        <p>Nuestra herramienta admite varios formatos, asegurando la compatibilidad con tus imágenes y videos.</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our free online Face Blurring Tool</h2>
-        <p>Here are the key benefits of using our face-blurring tool:</p>
+        <h2>Beneficios de Usar Nuestra Herramienta Gratuita de Difuminado de Rostros en Línea</h2>
+        <p>Estos son los beneficios clave de usar nuestra herramienta de difuminado de rostros:</p>
         <ul>
-            <li><strong>Quick and Efficient:</strong> Easily blur faces in just a few clicks without the need for complex software.</li>
-            <li><strong>Automatic Detection:</strong> The tool automatically identifies faces, making the process faster and more convenient.</li>
-            <li><strong>Maintain Quality:</strong> Ensure that your images and videos retain their quality while protecting privacy.</li>
-            <li><strong>Free and Accessible:</strong> Our tool is available online for free, with no downloads or installations required.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Use Cases for Face Blurring</h2>
-        <p>Face blurring is useful in various scenarios, such as:</p>
-        <ul>
-            <li><strong>Event Photography:</strong> Protect the identities of individuals in photos taken at public events or gatherings.</li>
-            <li><strong>Documentaries and News Reports:</strong> Blur faces in interviews or footage where individuals have not given consent for their identity to be revealed.</li>
-            <li><strong>Social Media Sharing:</strong> Share images or videos online while ensuring the privacy of those featured in your content.</li>
-            <li><strong>Family Photos:</strong> Blur faces of children or relatives when sharing personal images on public platforms.</li>
+            <li><strong>Rápido y Eficiente:</strong> Difumina rostros en solo unos clics sin necesidad de software complejo.</li>
+            <li><strong>Detección Automática:</strong> La herramienta identifica automáticamente los rostros, haciendo el proceso más rápido y conveniente.</li>
+            <li><strong>Mantén la Calidad:</strong> Asegúrate de que tus imágenes y videos mantengan su calidad mientras proteges la privacidad.</li>
+            <li><strong>Gratuito y Accesible:</strong> Nuestra herramienta está disponible en línea de forma gratuita, sin necesidad de descargas o instalaciones.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Blurring Faces Can Help Protect Privacy</h2>
-        <p>Blurring faces is an effective way to ensure the privacy and security of individuals. Here's how it can help:</p>
+        <h2>Casos de Uso Comunes para el Difuminado de Rostros</h2>
+        <p>El difuminado de rostros es útil en varios escenarios, como:</p>
         <ul>
-            <li><strong>Prevent Unauthorized Use:</strong> Blurring faces prevents others from using your images or videos to identify individuals without their consent.</li>
-            <li><strong>Enhance Safety:</strong> Protecting the identities of individuals in sensitive situations helps maintain their safety and security.</li>
-            <li><strong>Promote Ethical Content Sharing:</strong> By using our face-blurring tool, you promote responsible sharing of content that respects individuals' privacy rights.</li>
+            <li><strong>Fotografía de Eventos:</strong> Protege las identidades de las personas en fotos tomadas en eventos públicos o reuniones.</li>
+            <li><strong>Documentales y Reportajes:</strong> Difumina rostros en entrevistas o grabaciones donde las personas no han dado su consentimiento para revelar su identidad.</li>
+            <li><strong>Compartir en Redes Sociales:</strong> Comparte imágenes o videos en línea mientras aseguras la privacidad de quienes aparecen en tu contenido.</li>
+            <li><strong>Fotos Familiares:</strong> Difumina rostros de niños o familiares al compartir imágenes personales en plataformas públicas.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Cómo el Difuminado de Rostros Puede Ayudar a Proteger la Privacidad</h2>
+        <p>Difuminar rostros es una forma efectiva de garantizar la privacidad y seguridad de las personas. Aquí te explicamos cómo puede ayudar:</p>
+        <ul>
+            <li><strong>Prevenir el Uso No Autorizado:</strong> Difuminar rostros evita que otros usen tus imágenes o videos para identificar personas sin su consentimiento.</li>
+            <li><strong>Mejorar la Seguridad:</strong> Proteger las identidades de las personas en situaciones sensibles ayuda a mantener su seguridad.</li>
+            <li><strong>Promover el Compartir Ético de Contenido:</strong> Al usar nuestra herramienta de difuminado, promueves el compartir responsable de contenido que respeta los derechos de privacidad de las personas.</li>
         </ul>
     </div>
 </div>
@@ -286,7 +285,7 @@
                 newTop = Math.max(0, startTop + dy);
             }
 
-            // Ensure minimum size for blur box
+            // Asegurar un tamaño mínimo para la caja de difuminado
             const minSize = 20;
             newWidth = Math.max(newWidth, minSize);
             newHeight = Math.max(newHeight, minSize);
@@ -319,14 +318,14 @@
             height: blurBox.offsetHeight / canvas.height
         };
 
-        // Ensure blur region is valid
+        // Asegurar que la región de difuminado sea válida
         if (blurData.width <= 0 || blurData.height <= 0) {
-            errorMessage.textContent = 'Invalid blur region. Please select a larger area.';
+            errorMessage.textContent = 'Región de difuminado inválida. Por favor, selecciona un área más grande.';
             errorMessage.style.display = 'block';
             return;
         }
 
-        // Convert canvas to base64 image
+        // Convertir el canvas a una imagen en base64
         const imageData = canvas.toDataURL('image/png');
 
         fetch('/apply-blur', {
@@ -345,19 +344,19 @@
                 const a = document.createElement('a');
                 a.style.display = 'none';
                 a.href = url;
-                a.download = 'blurred_image.png';
+                a.download = 'imagen_difuminada.png';
                 document.body.appendChild(a);
                 a.click();
                 window.URL.revokeObjectURL(url);
 
-                // Reload the page after download
+                // Recargar la página después de la descarga
                 setTimeout(() => {
                     window.location.reload();
                 }, 100);
             })
             .catch((error) => {
                 console.error('Error:', error);
-                errorMessage.textContent = 'An error occurred while processing the image.';
+                errorMessage.textContent = 'Ocurrió un error al procesar la imagen.';
                 errorMessage.style.display = 'block';
             });
     });

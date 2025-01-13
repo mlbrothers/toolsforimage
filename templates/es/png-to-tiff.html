@@ -1,81 +1,81 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert PNG to TIFF images with ToolsForImage. Free, fast, and secure online PNG to TIFF converter for high-quality image transformations.">
+<meta name="description" content="Convierte fácilmente imágenes PNG a TIFF con ToolsForImage. Conversor online gratuito, rápido y seguro de PNG a TIFF para transformaciones de imágenes de alta calidad.">
 {% endblock %}
 
-{% block title %}Online PNG to TIFF converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}Conversor online de PNG a TIFF | ToolsForImage | Conversor de imágenes online gratuito{% endblock %}
 
 {% block content %}
-<h1>Free Online PNG to TIFF Converter</h1>
-<p>Easily convert your images from PNG to TIFF format. Upload a PNG image and we'll convert it to TIFF for you.</p>
+<h1>Conversor Gratuito Online de PNG a TIFF</h1>
+<p>Convierte fácilmente tus imágenes de formato PNG a TIFF. Sube una imagen PNG y la convertiremos a TIFF por ti.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/png" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload PNG Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir Imagen PNG</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="Vista previa de la imagen" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="png">
     <input type="hidden" name="output_format" value="tiff">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to TIFF</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convertir a TIFF</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is PNG to TIFF Conversion?</h2>
-        <p>PNG to TIFF conversion is the process of changing image files from PNG format to TIFF format. TIFF (Tagged Image File Format) is known for its high quality and is commonly used in professional photography and printing. Converting PNG images to TIFF can help preserve image details and colors, making it ideal for high-resolution projects.</p>
+        <h2>¿Qué es la Conversión de PNG a TIFF?</h2>
+        <p>La conversión de PNG a TIFF es el proceso de cambiar archivos de imágenes de formato PNG a TIFF. TIFF (Tagged Image File Format) es conocido por su alta calidad y se utiliza comúnmente en fotografía profesional e impresión. Convertir imágenes PNG a TIFF puede ayudar a preservar los detalles y colores de la imagen, lo que lo hace ideal para proyectos de alta resolución.</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert PNG to TIFF?</h2>
-        <p>There are several reasons to convert PNG images to TIFF:</p>
+        <h2>¿Por Qué Convertir PNG a TIFF?</h2>
+        <p>Hay varias razones para convertir imágenes PNG a TIFF:</p>
         <ul>
-            <li><strong>High Quality:</strong> TIFF files retain more image data, providing better quality for printing and editing.</li>
-            <li><strong>Lossless Compression:</strong> TIFF supports lossless compression, ensuring that your images do not lose quality during the conversion.</li>
-            <li><strong>Professional Use:</strong> TIFF is preferred in industries like photography, graphic design, and publishing for its high fidelity.</li>
+            <li><strong>Alta Calidad:</strong> Los archivos TIFF retienen más datos de la imagen, proporcionando una mejor calidad para impresión y edición.</li>
+            <li><strong>Compresión sin Pérdida:</strong> TIFF admite compresión sin pérdida, lo que garantiza que tus imágenes no pierdan calidad durante la conversión.</li>
+            <li><strong>Uso Profesional:</strong> TIFF es preferido en industrias como la fotografía, el diseño gráfico y la publicación por su alta fidelidad.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our PNG to TIFF Converter</h2>
-        <p>Using our PNG to TIFF conversion tool is easy and fast. Here’s how to do it:</p>
+        <h2>Cómo Usar Nuestro Conversor de PNG a TIFF</h2>
+        <p>Usar nuestra herramienta de conversión de PNG a TIFF es fácil y rápido. Así es como hacerlo:</p>
         <ul>
-            <li>Click the "Upload PNG File" button to select the PNG image you want to convert.</li>
-            <li>Once your image is uploaded, our tool will automatically start converting it to TIFF format.</li>
-            <li>After the conversion is complete, click "Download TIFF" to save your new image to your device.</li>
+            <li>Haz clic en el botón "Subir Archivo PNG" para seleccionar la imagen PNG que deseas convertir.</li>
+            <li>Una vez que tu imagen esté subida, nuestra herramienta comenzará automáticamente a convertirla a formato TIFF.</li>
+            <li>Después de que la conversión esté completa, haz clic en "Descargar TIFF" para guardar tu nueva imagen en tu dispositivo.</li>
         </ul>
-        <p>Our converter supports various PNG files, making the process seamless for all users.</p>
+        <p>Nuestro conversor admite varios archivos PNG, lo que hace que el proceso sea fluido para todos los usuarios.</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our PNG to TIFF Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>Beneficios de Usar Nuestro Conversor de PNG a TIFF</h2>
+        <p>Aquí hay algunas ventajas de usar nuestra herramienta de conversión:</p>
         <ul>
-            <li><strong>Fast and Efficient:</strong> Convert your PNG images to TIFF quickly with just a few clicks.</li>
-            <li><strong>No Quality Loss:</strong> Enjoy high-quality results with no degradation during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, without needing to download any software.</li>
-            <li><strong>User-Friendly Interface:</strong> Our tool is designed to be intuitive and easy to navigate, ensuring a smooth experience.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for PNG to TIFF Conversion</h2>
-        <p>Here are some situations where converting PNG to TIFF can be useful:</p>
-        <ul>
-            <li><strong>Professional Printing:</strong> Use TIFF files for high-quality prints in photography or graphic design.</li>
-            <li><strong>Archiving:</strong> Save important images in TIFF format for long-term storage without losing quality.</li>
-            <li><strong>Graphic Design:</strong> Create designs that require detailed and high-resolution images.</li>
-            <li><strong>Scanning:</strong> Convert scanned images from PNG to TIFF for better quality and editing options.</li>
+            <li><strong>Rápido y Eficiente:</strong> Convierte tus imágenes PNG a TIFF rápidamente con solo unos clics.</li>
+            <li><strong>Sin Pérdida de Calidad:</strong> Disfruta de resultados de alta calidad sin degradación durante el proceso de conversión.</li>
+            <li><strong>Gratuito y Accesible:</strong> Usa nuestra herramienta en línea de forma gratuita, sin necesidad de descargar software.</li>
+            <li><strong>Interfaz Amigable:</strong> Nuestra herramienta está diseñada para ser intuitiva y fácil de navegar, asegurando una experiencia fluida.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting PNG to TIFF Can Help</h2>
-        <p>Converting your PNG images to TIFF can enhance their usability and performance. Here’s how:</p>
+        <h2>Usos Comunes para la Conversión de PNG a TIFF</h2>
+        <p>Aquí hay algunas situaciones en las que convertir PNG a TIFF puede ser útil:</p>
         <ul>
-            <li><strong>Enhanced Detail:</strong> TIFF files capture more details, making them perfect for professional use.</li>
-            <li><strong>Flexible Editing:</strong> TIFF images are easier to edit in professional software, providing versatility for your projects.</li>
-            <li><strong>Better Color Representation:</strong> TIFF files support a wider color range, ensuring your images look vibrant and true to life.</li>
+            <li><strong>Impresión Profesional:</strong> Usa archivos TIFF para impresiones de alta calidad en fotografía o diseño gráfico.</li>
+            <li><strong>Archivado:</strong> Guarda imágenes importantes en formato TIFF para almacenamiento a largo plazo sin perder calidad.</li>
+            <li><strong>Diseño Gráfico:</strong> Crea diseños que requieran imágenes detalladas y de alta resolución.</li>
+            <li><strong>Escaneo:</strong> Convierte imágenes escaneadas de PNG a TIFF para una mejor calidad y opciones de edición.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Cómo Convertir PNG a TIFF Puede Ayudar</h2>
+        <p>Convertir tus imágenes PNG a TIFF puede mejorar su usabilidad y rendimiento. Aquí te explicamos cómo:</p>
+        <ul>
+            <li><strong>Detalles Mejorados:</strong> Los archivos TIFF capturan más detalles, lo que los hace perfectos para uso profesional.</li>
+            <li><strong>Edición Flexible:</strong> Las imágenes TIFF son más fáciles de editar en software profesional, proporcionando versatilidad para tus proyectos.</li>
+            <li><strong>Mejor Representación de Colores:</strong> Los archivos TIFF admiten una gama de colores más amplia, asegurando que tus imágenes se vean vibrantes y fieles a la realidad.</li>
         </ul>
     </div>
 </div>

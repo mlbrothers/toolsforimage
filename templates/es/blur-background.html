@@ -1,59 +1,59 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
-{% block title %}Free online Blur background with AI | ToolsForImage | Comprehensive Free Online Tools for Blur Faces, Image Conversion, Editing, Resizing, Remove Background, Blur background and More{% endblock %}
+{% block title %}Difuminar fondos en línea gratis con IA | ToolsForImage | Herramientas Gratuitas en Línea para Difuminar Rostros, Conversión de Imágenes, Edición, Redimensionamiento, Eliminar Fondo, Difuminar Fondo y Más{% endblock %}
 
 {% block meta_description %}
-<meta name="description" content="Blur image backgrounds easily online for free with ToolsForImage's AI-powered background blur tool. Free online background blurring using artificial intelligence.">
+<meta name="description" content="Difumina fondos de imágenes fácilmente en línea y gratis con la herramienta de difuminado de fondos con IA de ToolsForImage. Difuminado de fondos en línea gratis utilizando inteligencia artificial.">
 {% endblock %}
 
 {% block content %}
-<h1>Free online AI-Powered Background Blur Tool</h1>
-<p>Easily blur the background of your images using our advanced artificial intelligence algorithm. Upload an image and let our AI do the work for you!</p>
+<h1>Herramienta Gratuita de Difuminado de Fondos con IA</h1>
+<p>Difumina fácilmente el fondo de tus imágenes utilizando nuestro avanzado algoritmo de inteligencia artificial. ¡Sube una imagen y deja que nuestra IA haga el trabajo por ti!</p>
 <form id="blur-form" action="/apply-background-blur" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir Imagen</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="Vista Previa de la Imagen" style="display: none;">
     <br>
-    <button type="submit" class="blur-button" onclick="return validateImageSelection();">Apply AI Background Blur</button>
+    <button type="submit" class="blur-button" onclick="return validateImageSelection();">Aplicar Difuminado de Fondo con IA</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is AI-Powered Background Blur?</h2>
-        <p>Our AI-powered background blur tool uses advanced artificial intelligence algorithms to automatically detect the main subject in your image and apply a blur effect to the background. This creates a professional-looking depth-of-field effect, similar to what you might achieve with a high-end camera.</p>
+        <h2>¿Qué es el Difuminado de Fondos con IA?</h2>
+        <p>Nuestra herramienta de difuminado de fondos con IA utiliza algoritmos avanzados de inteligencia artificial para detectar automáticamente el sujeto principal en tu imagen y aplicar un efecto de difuminado al fondo. Esto crea un efecto de profundidad de campo profesional, similar al que podrías lograr con una cámara de alta gama.</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Use AI to Blur Image Backgrounds?</h2>
-        <p>There are several benefits to using our AI-powered background blur tool:</p>
+        <h2>¿Por qué Usar IA para Difuminar Fondos de Imágenes?</h2>
+        <p>Hay varios beneficios al usar nuestra herramienta de difuminado de fondos con IA:</p>
         <ul>
-            <li><strong>Professional Look:</strong> Create stunning, professional-looking images with a blurred background that draws attention to the main subject.</li>
-            <li><strong>Time-Saving:</strong> Our AI does the work for you, eliminating the need for manual editing or complex software.</li>
-            <li><strong>Enhance Privacy:</strong> Blur out sensitive information or distracting elements in the background of your photos.</li>
-            <li><strong>Artistic Effect:</strong> Add a creative, artistic touch to your images with a beautifully blurred background.</li>
+            <li><strong>Apariencia Profesional:</strong> Crea imágenes impresionantes y profesionales con un fondo difuminado que atrae la atención al sujeto principal.</li>
+            <li><strong>Ahorro de Tiempo:</strong> Nuestra IA hace el trabajo por ti, eliminando la necesidad de edición manual o software complejo.</li>
+            <li><strong>Mejora la Privacidad:</strong> Difumina información sensible o elementos distractores en el fondo de tus fotos.</li>
+            <li><strong>Efecto Artístico:</strong> Añade un toque creativo y artístico a tus imágenes con un fondo bellamente difuminado.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our AI Background Blur Tool</h2>
-        <p>Using our artificial intelligence-powered background blur tool is quick and easy:</p>
+        <h2>Cómo Usar Nuestra Herramienta de Difuminado de Fondos con IA</h2>
+        <p>Usar nuestra herramienta de difuminado de fondos con inteligencia artificial es rápido y fácil:</p>
         <ol>
-            <li>Click the "Upload Image" button to select the image you want to edit.</li>
-            <li>Once your image is uploaded, click "Apply AI Background Blur" to start the process.</li>
-            <li>Our AI will analyze your image, detect the main subject, and apply a blur effect to the background.</li>
-            <li>After processing, you can download your newly edited image with a beautifully blurred background.</li>
+            <li>Haz clic en el botón "Subir Imagen" para seleccionar la imagen que deseas editar.</li>
+            <li>Una vez que tu imagen esté cargada, haz clic en "Aplicar Difuminado de Fondo con IA" para iniciar el proceso.</li>
+            <li>Nuestra IA analizará tu imagen, detectará el sujeto principal y aplicará un efecto de difuminado al fondo.</li>
+            <li>Después del procesamiento, podrás descargar tu imagen recién editada con un fondo bellamente difuminado.</li>
         </ol>
     </div>
 
     <div class="info-section">
-        <h2>Applications of AI Background Blur</h2>
-        <p>Our AI-powered background blur tool can be useful in various scenarios:</p>
+        <h2>Aplicaciones del Difuminado de Fondos con IA</h2>
+        <p>Nuestra herramienta de difuminado de fondos con IA puede ser útil en varios escenarios:</p>
         <ul>
-            <li><strong>Portrait Photography:</strong> Enhance portrait photos by blurring distracting backgrounds.</li>
-            <li><strong>Product Photography:</strong> Make products stand out by blurring the background in product shots.</li>
-            <li><strong>Social Media:</strong> Create eye-catching social media posts with professionally blurred backgrounds.</li>
-            <li><strong>Privacy Protection:</strong> Blur sensitive information in the background of images before sharing.</li>
+            <li><strong>Fotografía de Retratos:</strong> Mejora las fotos de retratos difuminando fondos distractores.</li>
+            <li><strong>Fotografía de Productos:</strong> Haz que los productos destaquen difuminando el fondo en las fotos de productos.</li>
+            <li><strong>Redes Sociales:</strong> Crea publicaciones llamativas en redes sociales con fondos profesionalmente difuminados.</li>
+            <li><strong>Protección de Privacidad:</strong> Difumina información sensible en el fondo de las imágenes antes de compartirlas.</li>
         </ul>
     </div>
 </div>

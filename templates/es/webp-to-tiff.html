@@ -1,82 +1,82 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert WEBP to TIFF images with ToolsForImage. Free, fast, and secure online WEBP to TIFF converter for high-quality image transformations.">
+<meta name="description" content="Convierte fácilmente imágenes WEBP a TIFF con ToolsForImage. Conversor online gratuito, rápido y seguro de WEBP a TIFF para transformaciones de imágenes de alta calidad.">
 {% endblock %}
 
-{% block title %}Online WEBP to TIFF converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}Conversor online de WEBP a TIFF | ToolsForImage | Conversor de imágenes online gratuito{% endblock %}
 
 {% block content %}
-<h1>Free Online WEBP to TIFF Converter</h1>
-<p>Easily convert your images from WEBP to TIFF format. Upload a webp image and we'll convert it to TIFF for you.</p>
+<h1>Conversor Gratuito Online de WEBP a TIFF</h1>
+<p>Convierte fácilmente tus imágenes de WEBP a formato TIFF. Sube una imagen WEBP y la convertiremos a TIFF para ti.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/webp" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload webp Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir imagen WEBP</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="Vista previa de la imagen" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="webp">
     <input type="hidden" name="output_format" value="tiff">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to TIFF</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convertir a TIFF</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is WebP to TIFF Conversion?</h2>
-        <p>WebP to TIFF conversion is the process of changing images from WebP format to TIFF format. WebP is known for its efficient compression and quality, while TIFF is a high-quality image format used primarily in professional photography and graphic design. Converting WebP to TIFF allows you to maintain high resolution and detail in your images, making it perfect for archival purposes and high-quality prints.</p>
+        <h2>¿Qué es la conversión de WebP a TIFF?</h2>
+        <p>La conversión de WebP a TIFF es el proceso de cambiar imágenes del formato WebP al formato TIFF. WebP es conocido por su compresión eficiente y calidad, mientras que TIFF es un formato de imagen de alta calidad utilizado principalmente en fotografía profesional y diseño gráfico. Convertir WebP a TIFF te permite mantener una alta resolución y detalle en tus imágenes, lo que lo hace perfecto para fines de archivo e impresiones de alta calidad.</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert WebP to TIFF?</h2>
-        <p>There are several reasons to convert WebP images to TIFF:</p>
+        <h2>¿Por qué convertir WebP a TIFF?</h2>
+        <p>Hay varias razones para convertir imágenes WebP a TIFF:</p>
         <ul>
-            <li><strong>High-Quality Images:</strong> TIFF is a lossless format, meaning it retains all the details of your images without compression artifacts.</li>
-            <li><strong>Professional Use:</strong> TIFF is widely used in printing and publishing, making it ideal for professional photographers and designers.</li>
-            <li><strong>Flexibility:</strong> TIFF supports various color spaces and is compatible with many editing and printing applications.</li>
-            <li><strong>Archiving:</strong> Use TIFF for long-term storage of images due to its high quality and ability to handle large file sizes.</li>
+            <li><strong>Imágenes de alta calidad:</strong> TIFF es un formato sin pérdida, lo que significa que conserva todos los detalles de tus imágenes sin artefactos de compresión.</li>
+            <li><strong>Uso profesional:</strong> TIFF es ampliamente utilizado en impresión y publicación, lo que lo hace ideal para fotógrafos y diseñadores profesionales.</li>
+            <li><strong>Flexibilidad:</strong> TIFF admite varios espacios de color y es compatible con muchas aplicaciones de edición e impresión.</li>
+            <li><strong>Archivado:</strong> Usa TIFF para el almacenamiento a largo plazo de imágenes debido a su alta calidad y capacidad para manejar archivos grandes.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our WebP to TIFF Converter</h2>
-        <p>Our WebP to TIFF conversion tool is easy to use. Follow these simple steps:</p>
+        <h2>Cómo usar nuestro conversor de WebP a TIFF</h2>
+        <p>Nuestra herramienta de conversión de WebP a TIFF es fácil de usar. Sigue estos sencillos pasos:</p>
         <ul>
-            <li>Click the "Upload WebP File" button to select the WebP image you want to convert.</li>
-            <li>Once uploaded, our tool will automatically convert your image to TIFF format.</li>
-            <li>After the conversion is complete, click "Download TIFF" to save your new TIFF image to your device.</li>
+            <li>Haz clic en el botón "Subir archivo WEBP" para seleccionar la imagen WebP que deseas convertir.</li>
+            <li>Una vez subida, nuestra herramienta convertirá automáticamente tu imagen a formato TIFF.</li>
+            <li>Después de completar la conversión, haz clic en "Descargar TIFF" para guardar tu nueva imagen TIFF en tu dispositivo.</li>
         </ul>
-        <p>Our converter supports a variety of WebP images, ensuring a smooth and efficient conversion process.</p>
+        <p>Nuestro conversor admite una variedad de imágenes WebP, lo que garantiza un proceso de conversión fluido y eficiente.</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our WebP to TIFF Converter</h2>
-        <p>Using our conversion tool offers numerous advantages:</p>
+        <h2>Beneficios de usar nuestro conversor de WebP a TIFF</h2>
+        <p>Usar nuestra herramienta de conversión ofrece numerosas ventajas:</p>
         <ul>
-            <li><strong>Fast and Convenient:</strong> Convert your WebP images to TIFF in just a few clicks, making it quick and hassle-free.</li>
-            <li><strong>No Quality Loss:</strong> Enjoy the highest quality TIFF images with no loss of detail during the conversion.</li>
-            <li><strong>Free and Accessible:</strong> Our tool is available online for free, requiring no downloads or installations.</li>
-            <li><strong>User-Friendly Design:</strong> Our easy-to-navigate interface makes the conversion process straightforward for everyone.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for WebP to TIFF Conversion</h2>
-        <p>Converting WebP to TIFF can be helpful in various scenarios:</p>
-        <ul>
-            <li><strong>Photography:</strong> Preserve high-resolution images for professional use and printing.</li>
-            <li><strong>Graphic Design:</strong> Create high-quality images for brochures, posters, and other marketing materials.</li>
-            <li><strong>Archiving:</strong> Store images in a lossless format for long-term preservation.</li>
-            <li><strong>Artwork and Illustration:</strong> Use TIFF for illustrations that require detailed reproduction.</li>
+            <li><strong>Rápido y conveniente:</strong> Convierte tus imágenes WebP a TIFF en solo unos clics, haciéndolo rápido y sin complicaciones.</li>
+            <li><strong>Sin pérdida de calidad:</strong> Disfruta de imágenes TIFF de la más alta calidad sin pérdida de detalles durante la conversión.</li>
+            <li><strong>Gratuito y accesible:</strong> Nuestra herramienta está disponible en línea de forma gratuita, sin necesidad de descargas ni instalaciones.</li>
+            <li><strong>Diseño fácil de usar:</strong> Nuestra interfaz intuitiva hace que el proceso de conversión sea sencillo para todos.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting WebP to TIFF Can Help You</h2>
-        <p>Converting WebP images to TIFF format can greatly enhance usability and quality. Here are some ways it can help:</p>
+        <h2>Usos comunes de la conversión de WebP a TIFF</h2>
+        <p>Convertir WebP a TIFF puede ser útil en varios escenarios:</p>
         <ul>
-            <li><strong>Improved Image Quality:</strong> TIFF retains all image details, making it suitable for high-quality prints and professional use.</li>
-            <li><strong>Flexibility in Editing:</strong> TIFF files are widely supported by image editing software, allowing for easier modifications.</li>
-            <li><strong>Ideal for Archival:</strong> TIFF’s lossless nature makes it perfect for long-term storage of important images.</li>
+            <li><strong>Fotografía:</strong> Conserva imágenes de alta resolución para uso profesional e impresión.</li>
+            <li><strong>Diseño gráfico:</strong> Crea imágenes de alta calidad para folletos, carteles y otros materiales de marketing.</li>
+            <li><strong>Archivado:</strong> Almacena imágenes en un formato sin pérdida para su preservación a largo plazo.</li>
+            <li><strong>Arte e ilustración:</strong> Usa TIFF para ilustraciones que requieren una reproducción detallada.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Cómo puede ayudarte convertir WebP a TIFF</h2>
+        <p>Convertir imágenes WebP a formato TIFF puede mejorar significativamente la usabilidad y la calidad. Aquí te explicamos cómo:</p>
+        <ul>
+            <li><strong>Mejor calidad de imagen:</strong> TIFF conserva todos los detalles de la imagen, lo que lo hace adecuado para impresiones de alta calidad y uso profesional.</li>
+            <li><strong>Flexibilidad en la edición:</strong> Los archivos TIFF son ampliamente compatibles con software de edición de imágenes, lo que permite modificaciones más fáciles.</li>
+            <li><strong>Ideal para archivo:</strong> La naturaleza sin pérdida de TIFF lo hace perfecto para el almacenamiento a largo plazo de imágenes importantes.</li>
         </ul>
     </div>
 </div>

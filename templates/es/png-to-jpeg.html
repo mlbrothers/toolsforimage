@@ -1,85 +1,84 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert PNG to JPEG images with ToolsForImage. Free, fast, and secure online PNG to JPEG converter for high-quality image transformations.">
+<meta name="description" content="Convierte fácilmente imágenes PNG a JPEG con ToolsForImage. Conversor online gratuito, rápido y seguro de PNG a JPEG para transformaciones de imágenes de alta calidad.">
 {% endblock %}
 
-{% block title %}Online PNG to JPEG converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}Conversor online de PNG a JPEG | ToolsForImage | Conversor de imágenes online gratuito{% endblock %}
 
 {% block content %}
-<h1>Free Online PNG to JPEG Converter</h1>
-<p>Easily convert your images from PNG to JPEG format. Upload a PNG image and we'll convert it to JPEG for you.</p>
+<h1>Conversor Gratuito Online de PNG a JPEG</h1>
+<p>Convierte fácilmente tus imágenes de formato PNG a JPEG. Sube una imagen PNG y la convertiremos a JPEG por ti.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/png" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload PNG Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir Imagen PNG</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="Vista previa de la imagen" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="png">
     <input type="hidden" name="output_format" value="jpeg">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to JPEG</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convertir a JPEG</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is PNG to JPEG Conversion?</h2>
-        <p>PNG to JPEG conversion is the process of changing image files from PNG format to JPEG format. JPEG (Joint Photographic Experts Group) is a widely used image format that uses compression to reduce file size while maintaining decent image quality. Converting PNG images to JPEG is beneficial when you want smaller files for sharing on the web or social media.</p>
+        <h2>¿Qué es la Conversión de PNG a JPEG?</h2>
+        <p>La conversión de PNG a JPEG es el proceso de cambiar archivos de imágenes de formato PNG a JPEG. JPEG (Joint Photographic Experts Group) es un formato de imagen ampliamente utilizado que utiliza compresión para reducir el tamaño del archivo mientras mantiene una calidad de imagen decente. Convertir imágenes PNG a JPEG es beneficioso cuando deseas archivos más pequeños para compartir en la web o redes sociales.</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert PNG to JPEG?</h2>
-        <p>There are several reasons to convert PNG images to JPEG:</p>
+        <h2>¿Por Qué Convertir PNG a JPEG?</h2>
+        <p>Hay varias razones para convertir imágenes PNG a JPEG:</p>
         <ul>
-            <li><strong>Smaller File Size:</strong> JPEG files are generally smaller than PNG files, making them easier to upload and share online.</li>
-            <li><strong>Web Optimization:</strong> JPEG is the preferred format for web images due to its balance of quality and file size, which enhances page loading speeds.</li>
-            <li><strong>Wide Compatibility:</strong> JPEG files are supported by most software and devices, ensuring your images can be easily viewed and shared.</li>
+            <li><strong>Tamaño de Archivo Más Pequeño:</strong> Los archivos JPEG son generalmente más pequeños que los archivos PNG, lo que los hace más fáciles de subir y compartir en línea.</li>
+            <li><strong>Optimización para la Web:</strong> JPEG es el formato preferido para imágenes web debido a su equilibrio entre calidad y tamaño de archivo, lo que mejora la velocidad de carga de las páginas.</li>
+            <li><strong>Amplia Compatibilidad:</strong> Los archivos JPEG son compatibles con la mayoría de los programas y dispositivos, lo que garantiza que tus imágenes se puedan ver y compartir fácilmente.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our PNG to JPEG Converter</h2>
-        <p>Our PNG to JPEG conversion tool is designed for ease of use. Here’s how it works:</p>
+        <h2>Cómo Usar Nuestro Conversor de PNG a JPEG</h2>
+        <p>Nuestra herramienta de conversión de PNG a JPEG está diseñada para ser fácil de usar. Así es como funciona:</p>
         <ul>
-            <li>Click the "Upload PNG File" button to select the PNG image you want to convert.</li>
-            <li>Once your image is uploaded, our tool will automatically start converting it to JPEG format.</li>
-            <li>After the conversion is complete, click "Download JPEG" to save your new image to your device.</li>
+            <li>Haz clic en el botón "Subir Archivo PNG" para seleccionar la imagen PNG que deseas convertir.</li>
+            <li>Una vez que tu imagen esté subida, nuestra herramienta comenzará automáticamente a convertirla a formato JPEG.</li>
+            <li>Después de que la conversión esté completa, haz clic en "Descargar JPEG" para guardar tu nueva imagen en tu dispositivo.</li>
         </ul>
-        <p>Our converter supports various PNG files, ensuring a smooth conversion experience for all users.</p>
+        <p>Nuestro conversor admite varios archivos PNG, garantizando una experiencia de conversión fluida para todos los usuarios.</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our PNG to JPEG Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>Beneficios de Usar Nuestro Conversor de PNG a JPEG</h2>
+        <p>Aquí hay algunas ventajas de usar nuestra herramienta de conversión:</p>
         <ul>
-            <li><strong>Fast and Simple:</strong> Convert your PNG images to JPEG quickly and without hassle.</li>
-            <li><strong>No Quality Loss:</strong> Enjoy high-quality output with minimal quality loss during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, without needing to download any software.</li>
-            <li><strong>User-Friendly Interface:</strong> Our tool is designed for everyone, making it easy to navigate and use.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for PNG to JPEG Conversion</h2>
-        <p>Here are some common scenarios where converting PNG to JPEG can be useful:</p>
-        <ul>
-            <li><strong>Web Design:</strong> Use JPEG images for websites to optimize loading times and improve user experience.</li>
-            <li><strong>Social Media:</strong> Share smaller JPEG images on social media platforms for quicker uploads and better engagement.</li>
-            <li><strong>Photography:</strong> Convert PNG images to JPEG for easier storage and sharing while maintaining good quality.</li>
-            <li><strong>Email Attachments:</strong> Send JPEG images as email attachments, as they have smaller file sizes compared to PNGs.</li>
+            <li><strong>Rápido y Sencillo:</strong> Convierte tus imágenes PNG a JPEG rápidamente y sin complicaciones.</li>
+            <li><strong>Sin Pérdida de Calidad:</strong> Disfruta de una salida de alta calidad con una pérdida mínima de calidad durante el proceso de conversión.</li>
+            <li><strong>Gratuito y Accesible:</strong> Usa nuestra herramienta en línea de forma gratuita, sin necesidad de descargar software.</li>
+            <li><strong>Interfaz Amigable:</strong> Nuestra herramienta está diseñada para todos, lo que la hace fácil de navegar y usar.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting PNG to JPEG Can Help</h2>
-        <p>Converting your PNG images to JPEG can enhance their usability and performance. Here’s how:</p>
+        <h2>Usos Comunes para la Conversión de PNG a JPEG</h2>
+        <p>Aquí hay algunos escenarios comunes en los que convertir PNG a JPEG puede ser útil:</p>
         <ul>
-            <li><strong>Optimized File Size:</strong> JPEG images are smaller, making them faster to upload and download.</li>
-            <li><strong>Improved Sharing:</strong> JPEG format is ideal for sharing images on the web, as it ensures compatibility with most platforms.</li>
-            <li><strong>Easy Editing:</strong> JPEG images can be easily edited in various software, providing flexibility for your projects.</li>
+            <li><strong>Diseño Web:</strong> Usa imágenes JPEG para sitios web para optimizar los tiempos de carga y mejorar la experiencia del usuario.</li>
+            <li><strong>Redes Sociales:</strong> Comparte imágenes JPEG más pequeñas en plataformas de redes sociales para cargas más rápidas y una mejor interacción.</li>
+            <li><strong>Fotografía:</strong> Convierte imágenes PNG a JPEG para un almacenamiento y compartición más fáciles mientras mantienes una buena calidad.</li>
+            <li><strong>Adjuntos de Correo Electrónico:</strong> Envía imágenes JPEG como adjuntos de correo electrónico, ya que tienen tamaños de archivo más pequeños en comparación con los PNG.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Cómo Convertir PNG a JPEG Puede Ayudar</h2>
+        <p>Convertir tus imágenes PNG a JPEG puede mejorar su usabilidad y rendimiento. Aquí te explicamos cómo:</p>
+        <ul>
+            <li><strong>Tamaño de Archivo Optimizado:</strong> Las imágenes JPEG son más pequeñas, lo que las hace más rápidas de subir y descargar.</li>
+            <li><strong>Mejor Compartición:</strong> El formato JPEG es ideal para compartir imágenes en la web, ya que garantiza la compatibilidad con la mayoría de las plataformas.</li>
+            <li><strong>Edición Fácil:</strong> Las imágenes JPEG se pueden editar fácilmente en varios programas, lo que brinda flexibilidad para tus proyectos.</li>
         </ul>
     </div>
 </div>
-
 
 <style>
     h1 {

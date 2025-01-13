@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block meta_description %}
-    <meta name="description" content="Your default description here.">
+    <meta name="description" content="Tu descripción predeterminada aquí.">
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
@@ -14,7 +14,7 @@
     <title>{% block title %}ToolsForImage{% endblock %}</title>
 </head>
 <body>
-    {% include 'en/navbar.html' %}
+    {% include 'es/navbar.html' %}
     <main>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-PR74FHGP0L"></script>
         <script>
@@ -26,11 +26,10 @@
         {% block content %}{% endblock %}
         {% set excluded_endpoints = ['index', 'tools'] %}
         {% if request.endpoint not in excluded_endpoints %}
-            {% include 'en/our_all_tools.html' %}
+            {% include 'es/our_all_tools.html' %}
         {% endif %}
-
     </main>
-    {% include 'en/navigation_tools.html' %}
-    {% include 'en/footer.html' %}
+    {% include 'es/navigation_tools.html' %}
+    {% include 'es/footer.html' %}
 </body>
 </html>

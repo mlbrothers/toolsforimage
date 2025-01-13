@@ -1,81 +1,81 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert ICO to PNG images with ToolsForImage. Free, fast, and secure online ICO to PNG converter for high-quality image transformations.">
+<meta name="description" content="Convierte fácilmente imágenes ICO a PNG con ToolsForImage. Conversor en línea gratuito, rápido y seguro de ICO a PNG para transformaciones de imágenes de alta calidad.">
 {% endblock %}
 
-{% block title %}Online ICO to PNG converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}Conversor en línea de ICO a PNG | ToolsForImage | Conversor de imágenes gratuito en línea{% endblock %}
 
 {% block content %}
-<h1>Free Online ICO to PNG Converter</h1>
-<p>Easily convert your images from ICO to PNG format. Upload an ICO image and we'll convert it to PNG for you.</p>
+<h1>Conversor Gratuito en Línea de ICO a PNG</h1>
+<p>Convierte fácilmente tus imágenes de formato ICO a PNG. Sube una imagen ICO y la convertiremos a PNG por ti.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/x-icon" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload ICO Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir Imagen ICO</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="Vista previa de la imagen" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="ico">
     <input type="hidden" name="output_format" value="png">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to PNG</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convertir a PNG</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is ICO to PNG Conversion?</h2>
-        <p>ICO to PNG conversion is the process of changing image files from ICO format to PNG format. PNG (Portable Network Graphics) is a widely-used, lossless image format that supports transparency. This conversion is useful when you need to use icon images in contexts where PNG is preferred or required.</p>
+        <h2>¿Qué es la Conversión de ICO a PNG?</h2>
+        <p>La conversión de ICO a PNG es el proceso de cambiar archivos de imagen de formato ICO a formato PNG. PNG (Portable Network Graphics) es un formato de imagen ampliamente utilizado, sin pérdida de calidad, que admite transparencia. Esta conversión es útil cuando necesitas usar imágenes de iconos en contextos donde se prefiere o requiere PNG.</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert ICO to PNG?</h2>
-        <p>There are several reasons to convert ICO images to PNG:</p>
+        <h2>¿Por Qué Convertir ICO a PNG?</h2>
+        <p>Hay varias razones para convertir imágenes ICO a PNG:</p>
         <ul>
-            <li><strong>Wider Compatibility:</strong> PNG is more widely supported across different platforms and applications.</li>
-            <li><strong>Editing Flexibility:</strong> PNG files are easier to edit in most image editing software.</li>
-            <li><strong>Web Usage:</strong> PNG is commonly used for web graphics due to its support for transparency and wide color range.</li>
+            <li><strong>Mayor Compatibilidad:</strong> PNG es más ampliamente compatible en diferentes plataformas y aplicaciones.</li>
+            <li><strong>Flexibilidad de Edición:</strong> Los archivos PNG son más fáciles de editar en la mayoría de los programas de edición de imágenes.</li>
+            <li><strong>Uso en la Web:</strong> PNG se usa comúnmente para gráficos web debido a su soporte para transparencia y una amplia gama de colores.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our ICO to PNG Converter</h2>
-        <p>Using our ICO to PNG conversion tool is simple and quick. Here's how it works:</p>
+        <h2>Cómo Usar Nuestro Conversor de ICO a PNG</h2>
+        <p>Usar nuestra herramienta de conversión de ICO a PNG es simple y rápido. Así es como funciona:</p>
         <ul>
-            <li>Click the "Upload ICO File" button to select the ICO image you want to convert.</li>
-            <li>Once your image is uploaded, our tool will automatically start converting it to PNG format.</li>
-            <li>After the conversion is complete, click "Download PNG" to save your new image file to your device.</li>
+            <li>Haz clic en el botón "Subir Archivo ICO" para seleccionar la imagen ICO que deseas convertir.</li>
+            <li>Una vez que tu imagen esté subida, nuestra herramienta comenzará automáticamente a convertirla a formato PNG.</li>
+            <li>Después de que la conversión esté completa, haz clic en "Descargar PNG" para guardar tu nuevo archivo de imagen en tu dispositivo.</li>
         </ul>
-        <p>Our converter supports various ICO files, ensuring a smooth and efficient conversion experience for all users.</p>
+        <p>Nuestro conversor admite varios archivos ICO, asegurando una experiencia de conversión fluida y eficiente para todos los usuarios.</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our ICO to PNG Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>Beneficios de Usar Nuestro Conversor de ICO a PNG</h2>
+        <p>Aquí hay algunas ventajas de usar nuestra herramienta de conversión:</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Convert your ICO images to PNG quickly with just a few clicks.</li>
-            <li><strong>High Quality:</strong> Maintain image quality during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, with no downloads or installations needed.</li>
-            <li><strong>User-Friendly Interface:</strong> Our tool is designed to be intuitive and easy to navigate for everyone.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for ICO to PNG Conversion</h2>
-        <p>Here are some common situations where converting ICO to PNG can be helpful:</p>
-        <ul>
-            <li><strong>Web Development:</strong> Use icon images in web projects where PNG is preferred.</li>
-            <li><strong>Graphic Design:</strong> Incorporate icon images into larger design projects.</li>
-            <li><strong>App Development:</strong> Use icon images in multi-platform applications where PNG is more suitable.</li>
-            <li><strong>Document Creation:</strong> Include icon images in documents or presentations.</li>
+            <li><strong>Rápido y Fácil:</strong> Convierte tus imágenes ICO a PNG rápidamente con solo unos clics.</li>
+            <li><strong>Alta Calidad:</strong> Mantén la calidad de la imagen durante el proceso de conversión.</li>
+            <li><strong>Gratuito y Accesible:</strong> Usa nuestra herramienta en línea de forma gratuita, sin necesidad de descargas o instalaciones.</li>
+            <li><strong>Interfaz Amigable:</strong> Nuestra herramienta está diseñada para ser intuitiva y fácil de navegar para todos.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting ICO to PNG Can Help</h2>
-        <p>Converting your ICO images to PNG can enhance their usability in various contexts. Here's how:</p>
+        <h2>Usos Comunes para la Conversión de ICO a PNG</h2>
+        <p>Aquí hay algunas situaciones comunes donde convertir ICO a PNG puede ser útil:</p>
         <ul>
-            <li><strong>Improved Compatibility:</strong> PNG is widely supported across different platforms and software.</li>
-            <li><strong>Better Scaling:</strong> PNG images can be scaled more easily without loss of quality.</li>
-            <li><strong>Transparency Support:</strong> PNG supports alpha channel transparency, allowing for flexible use in various designs.</li>
+            <li><strong>Desarrollo Web:</strong> Usa imágenes de iconos en proyectos web donde PNG es preferido.</li>
+            <li><strong>Diseño Gráfico:</strong> Incorpora imágenes de iconos en proyectos de diseño más grandes.</li>
+            <li><strong>Desarrollo de Aplicaciones:</strong> Usa imágenes de iconos en aplicaciones multiplataforma donde PNG es más adecuado.</li>
+            <li><strong>Creación de Documentos:</strong> Incluye imágenes de iconos en documentos o presentaciones.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Cómo Convertir ICO a PNG Puede Ayudar</h2>
+        <p>Convertir tus imágenes ICO a PNG puede mejorar su usabilidad en varios contextos. Aquí te explicamos cómo:</p>
+        <ul>
+            <li><strong>Compatibilidad Mejorada:</strong> PNG es ampliamente compatible en diferentes plataformas y software.</li>
+            <li><strong>Escalado Mejorado:</strong> Las imágenes PNG se pueden escalar más fácilmente sin pérdida de calidad.</li>
+            <li><strong>Soporte para Transparencia:</strong> PNG admite transparencia de canal alfa, lo que permite un uso flexible en varios diseños.</li>
         </ul>
     </div>
 </div>

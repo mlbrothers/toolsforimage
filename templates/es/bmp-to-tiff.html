@@ -1,88 +1,85 @@
-{% extends 'en/base.html' %}
+{% extends 'es/base.html' %}
 
-{% block title %}BMP to TIFF online | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}BMP a TIFF en línea | ToolsForImage | Conversor de imágenes gratuito en línea{% endblock %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert BMP to TIFF images with ToolsForImage. Free, fast, and secure online BMP to TIFF converter for high-quality image transformations.">
+<meta name="description" content="Convierte fácilmente imágenes BMP a TIFF con ToolsForImage. Conversor en línea gratuito, rápido y seguro para transformaciones de imágenes de alta calidad.">
 {% endblock %}
 
 {% block content %}
 
-
-    <h1>Free Online BMP to TIFF Converter</h1>
-    <p>Easily convert your images from BMP to TIFF format. Upload a BMP image and we'll convert it to TIFF for you.</p>
+    <h1>Conversor Gratuito en Línea de BMP a TIFF</h1>
+    <p>Convierte fácilmente tus imágenes de formato BMP a TIFF. Sube una imagen BMP y la convertiremos a TIFF por ti.</p>
     <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
         <input type="file" id="image-upload" name="image" accept="image/bmp" style="display: none;" onchange="previewImage(event)">
-        <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload BMP Image</button>
+        <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir Imagen BMP</button>
         <br>
-        <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+        <img id="image-preview" class="image-preview" src="#" alt="Vista Previa de la Imagen" style="display: none;">
         <br>
         <input type="hidden" name="input_format" value="bmp">
         <input type="hidden" name="output_format" value="tiff">
-        <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to TIFF</button>
+        <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convertir a TIFF</button>
     </form>
 
     <div class="info-container">
         <div class="info-section">
-            <h2>What is BMP to TIFF Conversion?</h2>
-            <p>BMP to TIFF conversion is the process of changing image files from BMP (Bitmap) format to TIFF (Tagged Image File Format). BMP files are high-quality but can be large, while TIFF files offer excellent quality and are widely used in professional settings, especially for printing and archiving. Our tool simplifies this conversion, allowing you to get the best of both formats with ease.</p>
+            <h2>¿Qué es la Conversión de BMP a TIFF?</h2>
+            <p>La conversión de BMP a TIFF es el proceso de cambiar archivos de imagen del formato BMP (Bitmap) al formato TIFF (Tagged Image File Format). Los archivos BMP son de alta calidad pero pueden ser grandes, mientras que los archivos TIFF ofrecen una excelente calidad y son ampliamente utilizados en entornos profesionales, especialmente para impresión y archivado. Nuestra herramienta simplifica esta conversión, permitiéndote obtener lo mejor de ambos formatos con facilidad.</p>
         </div>
     
         <div class="info-section">
-            <h2>Why Convert BMP to TIFF?</h2>
-            <p>Converting BMP images to TIFF has several advantages:</p>
+            <h2>¿Por Qué Convertir BMP a TIFF?</h2>
+            <p>Convertir imágenes BMP a TIFF tiene varias ventajas:</p>
             <ul>
-                <li><strong>High Quality:</strong> TIFF files are known for their superior image quality, making them ideal for printing and professional photography.</li>
-                <li><strong>Multiple Color Depths:</strong> TIFF supports various color depths, which is useful for detailed images and graphics.</li>
-                <li><strong>Lossless Compression:</strong> TIFF files can be compressed without losing quality, making them suitable for archiving images.</li>
+                <li><strong>Alta Calidad:</strong> Los archivos TIFF son conocidos por su calidad de imagen superior, lo que los hace ideales para impresión y fotografía profesional.</li>
+                <li><strong>Múltiples Profundidades de Color:</strong> TIFF admite varias profundidades de color, lo que es útil para imágenes y gráficos detallados.</li>
+                <li><strong>Compresión sin Pérdida:</strong> Los archivos TIFF pueden comprimirse sin perder calidad, lo que los hace adecuados para archivar imágenes.</li>
             </ul>
         </div>
     
         <div class="info-section">
-            <h2>How to Use Our BMP to TIFF Converter</h2>
-            <p>Our BMP to TIFF conversion tool is designed for simplicity. Just follow these easy steps:</p>
+            <h2>Cómo Usar Nuestro Conversor de BMP a TIFF</h2>
+            <p>Nuestra herramienta de conversión de BMP a TIFF está diseñada para ser sencilla. Solo sigue estos pasos:</p>
             <ul>
-                <li>Click on the "Upload BMP File" button to select the BMP image you wish to convert.</li>
-                <li>Once the image is uploaded, our tool will automatically process the conversion to TIFF format.</li>
-                <li>After the conversion is complete, click "Download TIFF" to save your new image to your device.</li>
+                <li>Haz clic en el botón "Subir Imagen BMP" para seleccionar la imagen BMP que deseas convertir.</li>
+                <li>Una vez que la imagen esté subida, nuestra herramienta la convertirá automáticamente a formato TIFF.</li>
+                <li>Después de que se complete la conversión, haz clic en "Descargar TIFF" para guardar la nueva imagen en tu dispositivo.</li>
             </ul>
-            <p>Our tool supports various BMP files, ensuring a hassle-free conversion experience every time.</p>
+            <p>Nuestra herramienta admite varios archivos BMP, asegurando una experiencia de conversión sin complicaciones cada vez.</p>
         </div>
     
         <div class="info-section">
-            <h2>Benefits of Using Our BMP to TIFF Converter</h2>
-            <p>Here are some advantages of using our conversion tool:</p>
+            <h2>Beneficios de Usar Nuestro Conversor de BMP a TIFF</h2>
+            <p>Aquí hay algunas ventajas de usar nuestra herramienta de conversión:</p>
             <ul>
-                <li><strong>Fast and Efficient:</strong> Convert your BMP images to TIFF quickly and easily.</li>
-                <li><strong>No Loss of Quality:</strong> Enjoy high-resolution images with our lossless conversion process.</li>
-                <li><strong>Free and Accessible:</strong> Use our online converter for free, with no downloads or installations needed.</li>
-                <li><strong>User-Friendly:</strong> Designed for everyone, our intuitive interface makes it easy to convert images, regardless of your technical skills.</li>
-            </ul>
-        </div>
-    
-        <div class="info-section">
-            <h2>Common Uses for BMP to TIFF Conversion</h2>
-            <p>There are many scenarios where converting BMP to TIFF is beneficial:</p>
-            <ul>
-                <li><strong>Professional Printing:</strong> Use TIFF images for high-quality prints that require detailed color and clarity.</li>
-                <li><strong>Archiving:</strong> Store important images in TIFF format for long-term preservation without quality loss.</li>
-                <li><strong>Graphic Design:</strong> Create graphics and illustrations with enhanced detail for design projects.</li>
-                <li><strong>Medical Imaging:</strong> TIFF is often used in medical applications for its ability to handle large images without losing detail.</li>
+                <li><strong>Rápido y Eficiente:</strong> Convierte tus imágenes BMP a TIFF de manera rápida y sencilla.</li>
+                <li><strong>Sin Pérdida de Calidad:</strong> Disfruta de imágenes de alta resolución con nuestro proceso de conversión sin pérdida.</li>
+                <li><strong>Gratuito y Accesible:</strong> Usa nuestro conversor en línea de forma gratuita, sin necesidad de descargas o instalaciones.</li>
+                <li><strong>Fácil de Usar:</strong> Diseñada para todos, nuestra interfaz intuitiva hace que la conversión de imágenes sea fácil, sin importar tus habilidades técnicas.</li>
             </ul>
         </div>
     
         <div class="info-section">
-            <h2>How Converting BMP to TIFF Enhances Your Images</h2>
-            <p>Transforming your BMP images to TIFF can greatly improve their usability and quality. Here’s how:</p>
+            <h2>Usos Comunes para la Conversión de BMP a TIFF</h2>
+            <p>Hay muchos escenarios en los que convertir BMP a TIFF es beneficioso:</p>
             <ul>
-                <li><strong>Superior Image Quality:</strong> TIFF files retain more detail, making them ideal for professional use.</li>
-                <li><strong>Versatile File Use:</strong> TIFF format is accepted by most image editing software, providing flexibility in your projects.</li>
-                <li><strong>Better Archiving:</strong> TIFF's lossless compression makes it a preferred choice for preserving important images over time.</li>
+                <li><strong>Impresión Profesional:</strong> Usa imágenes TIFF para impresiones de alta calidad que requieren colores detallados y claridad.</li>
+                <li><strong>Archivado:</strong> Almacena imágenes importantes en formato TIFF para preservarlas a largo plazo sin pérdida de calidad.</li>
+                <li><strong>Diseño Gráfico:</strong> Crea gráficos e ilustraciones con detalles mejorados para proyectos de diseño.</li>
+                <li><strong>Imágenes Médicas:</strong> TIFF se usa a menudo en aplicaciones médicas por su capacidad para manejar imágenes grandes sin perder detalles.</li>
+            </ul>
+        </div>
+    
+        <div class="info-section">
+            <h2>Cómo Convertir BMP a TIFF Mejora Tus Imágenes</h2>
+            <p>Transformar tus imágenes BMP a TIFF puede mejorar significativamente su usabilidad y calidad. Aquí te decimos cómo:</p>
+            <ul>
+                <li><strong>Calidad de Imagen Superior:</strong> Los archivos TIFF conservan más detalles, lo que los hace ideales para uso profesional.</li>
+                <li><strong>Uso Versátil:</strong> El formato TIFF es aceptado por la mayoría del software de edición de imágenes, brindando flexibilidad en tus proyectos.</li>
+                <li><strong>Mejor Archivado:</strong> La compresión sin pérdida de TIFF lo convierte en una opción preferida para preservar imágenes importantes a lo largo del tiempo.</li>
             </ul>
         </div>
     </div>
-    
-
     
 
     <script>

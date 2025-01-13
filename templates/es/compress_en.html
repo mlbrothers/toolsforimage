@@ -1,44 +1,45 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
-{% block title %}Compress Image online | ToolsForImage | Comprehensive Free Online Tools for Blur Faces, Image Conversion, Editing, Resizing, Remove Background, Blur background and More{% endblock %}
+{% block title %}Comprimir Imágenes en línea | ToolsForImage | Herramientas Gratuitas Integrales para Difuminar Rostros, Conversión de Imágenes, Edición, Redimensionar, Eliminar Fondo, Difuminar Fondo y Más{% endblock %}
 
 {% block meta_description %}
-<meta name="description" content="Compress your images using powerful online tools from ToolsForImage. Reduce file size efficiently without compromising quality for better web performance.">
+<meta name="description" content="Comprime tus imágenes utilizando las potentes herramientas en línea de ToolsForImage. Reduce el tamaño de los archivos de manera eficiente sin comprometer la calidad para un mejor rendimiento web.">
 {% endblock %}
 
 {% block content %}
-<h1>Free Online Image Compressor</h1>
-<p>Effortlessly compress a single <strong>JPG/JPEG</strong>, <strong>PNG</strong>, or <strong>WEBP</strong> image with top-notch quality and optimal compression.</p>
+<h1>Compresor de Imágenes Gratuito en Línea</h1>
+<p>Comprime fácilmente una imagen <strong>JPG/JPEG</strong>, <strong>PNG</strong> o <strong>WEBP</strong> con calidad superior y compresión óptima.</p>
 
-<p>Upload your image file and compress it instantly. Choose your image:</p>
+<p>Sube tu archivo de imagen y comprímelo al instante. Elige tu imagen:</p>
 
 <form id="compression-form" action="/compress-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload from Computer</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir desde la Computadora</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="Vista Previa de la Imagen" style="display: none;">
     <br>
-    <button type="submit" class="compress-button" onclick="return validateImageSelection();">Compress!</button>
+    <button type="submit" class="compress-button" onclick="return validateImageSelection();">¡Comprimir!</button>
 </form>
 
-<p>Your image will be compressed to achieve the best quality and smallest file size.</p>
+<p>Tu imagen se comprimirá para lograr la mejor calidad y el menor tamaño de archivo.</p>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is Image Compression?</h2>
-        <p>Image compression is an important method that reduces the file size of digital images while keeping their quality as good as possible. It uses special techniques to remove unnecessary data and organize image files more efficiently, which helps save storage space. There are two main types of image compression: lossless and lossy. Lossless compression keeps all the original data, so you can get back the exact image, while lossy compression removes some data to make the file smaller, which can help web pages load faster. Knowing about image compression is important for anyone working with digital images, as it helps improve the performance of websites and online services.</p>
+        <h2>¿Qué es la Compresión de Imágenes?</h2>
+        <p>La compresión de imágenes es un método importante que reduce el tamaño de los archivos de imágenes digitales manteniendo su calidad lo mejor posible. Utiliza técnicas especiales para eliminar datos innecesarios y organizar los archivos de imagen de manera más eficiente, lo que ayuda a ahorrar espacio de almacenamiento. Hay dos tipos principales de compresión de imágenes: sin pérdida y con pérdida. La compresión sin pérdida conserva todos los datos originales, por lo que puedes recuperar la imagen exacta, mientras que la compresión con pérdida elimina algunos datos para reducir el tamaño del archivo, lo que puede ayudar a que las páginas web se carguen más rápido. Conocer la compresión de imágenes es importante para cualquier persona que trabaje con imágenes digitales, ya que ayuda a mejorar el rendimiento de los sitios web y los servicios en línea.</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Image Compression</h2>
-        <p>The benefits of image compression go beyond just making files smaller. One of the biggest advantages is that it helps websites run better. Compressed images load more quickly, which improves the user experience and keeps people from leaving the site. This is especially important for online shopping websites, where slow images can cause customers to abandon their carts and miss out on sales. Plus, search engines like Google look for fast-loading websites when ranking them, so using optimized images can help your site rank higher in search results. In the end, image compression makes browsing smoother and more enjoyable for users, leading to more interactions and sales.</p>
+        <h2>Beneficios de la Compresión de Imágenes</h2>
+        <p>Los beneficios de la compresión de imágenes van más allá de simplemente reducir el tamaño de los archivos. Una de las mayores ventajas es que ayuda a que los sitios web funcionen mejor. Las imágenes comprimidas se cargan más rápidamente, lo que mejora la experiencia del usuario y evita que las personas abandonen el sitio. Esto es especialmente importante para los sitios web de compras en línea, donde las imágenes lentas pueden hacer que los clientes abandonen sus carritos y pierdan ventas. Además, los motores de búsqueda como Google buscan sitios web de carga rápida al clasificarlos, por lo que el uso de imágenes optimizadas puede ayudar a que tu sitio se posicione mejor en los resultados de búsqueda. En resumen, la compresión de imágenes hace que la navegación sea más fluida y agradable para los usuarios, lo que lleva a más interacciones y ventas.</p>
     </div>
 
     <div class="info-section">
-        <h2>Use Cases of Image Compression</h2>
-        <p>Image compression is useful in many different areas and platforms. For example, social media sites use image compression to allow users to upload and share photos quickly and easily. Websites that show a lot of images, like galleries or news websites, benefit from compressed images to keep their pages loading fast and manage data efficiently. Additionally, mobile apps that display images often use compression to reduce data usage and improve performance, especially in areas with slow internet. In short, image compression is an essential tool for making digital content better, meeting the needs of both businesses and users by enhancing speed, user experience, and overall effectiveness online.</p>
+        <h2>Casos de Uso de la Compresión de Imágenes</h2>
+        <p>La compresión de imágenes es útil en muchas áreas y plataformas diferentes. Por ejemplo, los sitios de redes sociales utilizan la compresión de imágenes para permitir a los usuarios subir y compartir fotos de manera rápida y sencilla. Los sitios web que muestran muchas imágenes, como galerías o sitios de noticias, se benefician de las imágenes comprimidas para mantener sus páginas cargando rápidamente y gestionar los datos de manera eficiente. Además, las aplicaciones móviles que muestran imágenes suelen utilizar la compresión para reducir el uso de datos y mejorar el rendimiento, especialmente en áreas con internet lento. En resumen, la compresión de imágenes es una herramienta esencial para mejorar el contenido digital, satisfaciendo las necesidades tanto de las empresas como de los usuarios al mejorar la velocidad, la experiencia del usuario y la eficacia general en línea.</p>
     </div>
 </div>
+
 
 <script>
     function validateImageSelection() {

@@ -1,81 +1,81 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert JPG to TIFF images with ToolsForImage. Free, fast, and secure online JPG to TIFF converter for high-quality image transformations.">
+<meta name="description" content="Convierte fácilmente imágenes JPG a TIFF con ToolsForImage. Conversor online gratuito, rápido y seguro de JPG a TIFF para transformaciones de imágenes de alta calidad.">
 {% endblock %}
 
-{% block title %}Online JPG to TIFF converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}Conversor online de JPG a TIFF | ToolsForImage | Conversor de imágenes online gratuito{% endblock %}
 
 {% block content %}
-<h1>Free Online JPG to TIFF Converter</h1>
-<p>Easily convert your images from JPG to TIFF format. Upload a JPG image and we'll convert it to TIFF for you.</p>
+<h1>Conversor Gratuito Online de JPG a TIFF</h1>
+<p>Convierte fácilmente tus imágenes de formato JPG a TIFF. Sube una imagen JPG y la convertiremos a TIFF por ti.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/jpg" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload JPG Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir Imagen JPG</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="Vista previa de la imagen" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="jpg">
     <input type="hidden" name="output_format" value="tiff">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to TIFF</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convertir a TIFF</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is JPG to TIFF Conversion?</h2>
-        <p>JPG to TIFF conversion is the process of changing image files from JPG format to TIFF (Tagged Image File Format). JPG is commonly used for photographs, while TIFF is known for its high quality and versatility in professional settings. Our tool makes it easy to convert JPG images to TIFF format quickly and efficiently.</p>
+        <h2>¿Qué es la Conversión de JPG a TIFF?</h2>
+        <p>La conversión de JPG a TIFF es el proceso de cambiar archivos de imágenes de formato JPG a TIFF (Tagged Image File Format). JPG es comúnmente utilizado para fotografías, mientras que TIFF es conocido por su alta calidad y versatilidad en entornos profesionales. Nuestra herramienta facilita la conversión de imágenes JPG a TIFF de manera rápida y eficiente.</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert JPG to TIFF?</h2>
-        <p>There are several reasons to convert JPG images to TIFF:</p>
+        <h2>¿Por Qué Convertir JPG a TIFF?</h2>
+        <p>Hay varias razones para convertir imágenes JPG a TIFF:</p>
         <ul>
-            <li><strong>High-Quality Images:</strong> TIFF files support lossless compression, which preserves the quality of your images, making them ideal for printing and archiving.</li>
-            <li><strong>Better Editing Capabilities:</strong> TIFF format is widely used in professional editing software, allowing for more detailed and flexible image manipulation.</li>
-            <li><strong>Color Depth:</strong> TIFF files can store images with higher color depth, resulting in richer colors and smoother gradients.</li>
+            <li><strong>Imágenes de Alta Calidad:</strong> Los archivos TIFF admiten compresión sin pérdida, lo que preserva la calidad de tus imágenes, haciéndolas ideales para impresión y archivado.</li>
+            <li><strong>Mejores Capacidades de Edición:</strong> El formato TIFF es ampliamente utilizado en software de edición profesional, permitiendo una manipulación de imágenes más detallada y flexible.</li>
+            <li><strong>Profundidad de Color:</strong> Los archivos TIFF pueden almacenar imágenes con mayor profundidad de color, lo que resulta en colores más ricos y degradados más suaves.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our JPG to TIFF Converter</h2>
-        <p>Using our JPG to TIFF conversion tool is simple. Here’s how to do it:</p>
+        <h2>Cómo Usar Nuestro Conversor de JPG a TIFF</h2>
+        <p>Usar nuestra herramienta de conversión de JPG a TIFF es sencillo. Así es como hacerlo:</p>
         <ul>
-            <li>Click the "Upload JPG File" button to select the JPG image you want to convert.</li>
-            <li>After uploading, our tool will automatically process the conversion to TIFF format.</li>
-            <li>Once the conversion is complete, click "Download TIFF" to save your new image to your device.</li>
+            <li>Haz clic en el botón "Subir Archivo JPG" para seleccionar la imagen JPG que deseas convertir.</li>
+            <li>Después de subirla, nuestra herramienta procesará automáticamente la conversión a formato TIFF.</li>
+            <li>Una vez que la conversión esté completa, haz clic en "Descargar TIFF" para guardar tu nueva imagen en tu dispositivo.</li>
         </ul>
-        <p>Our converter supports a wide range of JPG files, ensuring a smooth conversion experience every time.</p>
+        <p>Nuestro conversor admite una amplia gama de archivos JPG, garantizando una experiencia de conversión fluida cada vez.</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our JPG to TIFF Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>Beneficios de Usar Nuestro Conversor de JPG a TIFF</h2>
+        <p>Aquí hay algunas ventajas de usar nuestra herramienta de conversión:</p>
         <ul>
-            <li><strong>Fast and Convenient:</strong> Convert your JPG images to TIFF in just a few clicks, without any hassle.</li>
-            <li><strong>Quality Preservation:</strong> Enjoy high-quality output without losing any details during the conversion.</li>
-            <li><strong>Free and Online:</strong> Use our converter for free, directly in your web browser, with no downloads required.</li>
-            <li><strong>User-Friendly Interface:</strong> Designed for ease of use, our tool is accessible to everyone, regardless of technical skills.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for JPG to TIFF Conversion</h2>
-        <p>Here are a few situations where converting JPG to TIFF can be beneficial:</p>
-        <ul>
-            <li><strong>Professional Photography:</strong> Photographers often use TIFF format for its high quality and ability to handle detailed images.</li>
-            <li><strong>Graphic Design:</strong> Designers may convert JPGs to TIFF for projects requiring high-resolution images and more color depth.</li>
-            <li><strong>Archiving:</strong> TIFF is a preferred format for archiving images, ensuring long-term storage without quality loss.</li>
-            <li><strong>Print Production:</strong> Use TIFF images for printing to achieve the best results in color accuracy and detail.</li>
+            <li><strong>Rápido y Conveniente:</strong> Convierte tus imágenes JPG a TIFF en solo unos clics, sin complicaciones.</li>
+            <li><strong>Preservación de la Calidad:</strong> Disfruta de una salida de alta calidad sin perder detalles durante la conversión.</li>
+            <li><strong>Gratuito y Online:</strong> Usa nuestro conversor de forma gratuita, directamente en tu navegador web, sin necesidad de descargas.</li>
+            <li><strong>Interfaz Amigable:</strong> Diseñado para ser fácil de usar, nuestra herramienta es accesible para todos, independientemente de sus habilidades técnicas.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting JPG to TIFF Can Help</h2>
-        <p>Converting your JPG images to TIFF can enhance their usability and appearance. Here’s how:</p>
+        <h2>Usos Comunes para la Conversión de JPG a TIFF</h2>
+        <p>Aquí hay algunas situaciones en las que convertir JPG a TIFF puede ser beneficioso:</p>
         <ul>
-            <li><strong>Improved Quality:</strong> TIFF files maintain high image quality, making them ideal for professional use.</li>
-            <li><strong>Better Editing:</strong> Use TIFF images in editing software to achieve precise and detailed adjustments.</li>
-            <li><strong>Increased Compatibility:</strong> TIFF is widely supported by various graphic and printing software, ensuring smooth workflows.</li>
+            <li><strong>Fotografía Profesional:</strong> Los fotógrafos suelen utilizar el formato TIFF por su alta calidad y capacidad para manejar imágenes detalladas.</li>
+            <li><strong>Diseño Gráfico:</strong> Los diseñadores pueden convertir JPG a TIFF para proyectos que requieren imágenes de alta resolución y mayor profundidad de color.</li>
+            <li><strong>Archivado:</strong> TIFF es un formato preferido para archivar imágenes, asegurando un almacenamiento a largo plazo sin pérdida de calidad.</li>
+            <li><strong>Producción de Impresión:</strong> Usa imágenes TIFF para impresión para obtener los mejores resultados en precisión de color y detalle.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Cómo Convertir JPG a TIFF Puede Ayudar</h2>
+        <p>Convertir tus imágenes JPG a TIFF puede mejorar su usabilidad y apariencia. Aquí te explicamos cómo:</p>
+        <ul>
+            <li><strong>Mejor Calidad:</strong> Los archivos TIFF mantienen una alta calidad de imagen, lo que los hace ideales para uso profesional.</li>
+            <li><strong>Edición Mejorada:</strong> Usa imágenes TIFF en software de edición para lograr ajustes precisos y detallados.</li>
+            <li><strong>Mayor Compatibilidad:</strong> TIFF es ampliamente compatible con varios programas de gráficos e impresión, asegurando flujos de trabajo fluidos.</li>
         </ul>
     </div>
 </div>

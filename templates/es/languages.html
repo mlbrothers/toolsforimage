@@ -1,31 +1,31 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Choose your preferred language for ToolsForImage - Access our image tools in English, Hindi, or French.">
+<meta name="description" content="Elige tu idioma preferido para ToolsForImage - Accede a nuestras herramientas de imágenes en inglés, hindi, francés, chino o español.">
 {% endblock %}
 
-{% block title %}Language Selection | ToolsForImage | Comprehensive Free Online Tools for Blur Faces, Image Conversion, Editing, Resizing, Remove Background, Blur background and More{% endblock %}
+{% block title %}Selección de Idioma | ToolsForImage | Herramientas gratuitas en línea para desenfocar caras, conversión de imágenes, edición, redimensionamiento, eliminar fondos, desenfocar fondos y más{% endblock %}
 
 {% block content %}
-<h1>Choose Your Language</h1>
-<p>Select your preferred language to use ToolsForImage:</p>
+<h1>Elige tu idioma</h1>
+<p>Selecciona tu idioma preferido para usar ToolsForImage:</p>
 <div class="language-container">
     <div class="language-box">
-        <a href="/en">English</a>
+        <a href="{{ g.lang }}/en">Inglés (English)</a>
     </div>
     <div class="language-box">
-        <a href="/hi">हिन्दी (Hindi)</a>
+        <a href="{{ g.lang }}/hi">हिन्दी (Hindi)</a>
     </div>
     <div class="language-box">
-        <a href="/fr">Français (French)</a>
+        <a href="{{ g.lang }}/fr">Francés (Français)</a>
     </div>
     <div class="language-box">
-        <a href="/zh">中文 (Chinese)</a>
+        <a href="{{ g.lang }}/zh">Chino (中文)</a>
+    </div>
+    <div class="language-box">
+        <a href="{{ g.lang }}/es">Español (Spanish)</a>
     </div>
 </div>
-
-
-
 
 <style>
     h1 {

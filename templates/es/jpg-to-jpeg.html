@@ -1,81 +1,81 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert JPG to JPEG images with ToolsForImage. Free, fast, and secure online JPG to JPEG converter for high-quality image transformations.">
+<meta name="description" content="Convierte fácilmente imágenes JPG a JPEG con ToolsForImage. Conversor online gratuito, rápido y seguro de JPG a JPEG para transformaciones de imágenes de alta calidad.">
 {% endblock %}
 
-{% block title %}Online JPG to JPEG converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}Conversor online de JPG a JPEG | ToolsForImage | Conversor de imágenes online gratuito{% endblock %}
 
 {% block content %}
-<h1>Free Online JPG to JPEG Converter</h1>
-<p>Easily convert your images from JPG to JPEG format. Upload a JPG image and we'll convert it to JPEG for you.</p>
+<h1>Conversor Gratuito Online de JPG a JPEG</h1>
+<p>Convierte fácilmente tus imágenes de formato JPG a JPEG. Sube una imagen JPG y la convertiremos a JPEG por ti.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/jpg" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload JPG Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir Imagen JPG</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="Vista previa de la imagen" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="jpg">
     <input type="hidden" name="output_format" value="jpeg">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to JPEG</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convertir a JPEG</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is JPG to JPEG Conversion?</h2>
-        <p>JPG to JPEG conversion is the process of changing image files from JPG format to JPEG (Joint Photographic Experts Group) format. While JPG and JPEG refer to the same image format, converting between them can be useful for ensuring compatibility with various applications and devices. Our tool makes it easy to convert JPG images to JPEG quickly and efficiently.</p>
+        <h2>¿Qué es la Conversión de JPG a JPEG?</h2>
+        <p>La conversión de JPG a JPEG es el proceso de cambiar archivos de imágenes de formato JPG a JPEG (Joint Photographic Experts Group). Aunque JPG y JPEG se refieren al mismo formato de imagen, la conversión entre ellos puede ser útil para garantizar la compatibilidad con diversas aplicaciones y dispositivos. Nuestra herramienta facilita la conversión de imágenes JPG a JPEG de manera rápida y eficiente.</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert JPG to JPEG?</h2>
-        <p>Although JPG and JPEG are essentially the same, there are a few reasons why you might want to convert JPG images to JPEG:</p>
+        <h2>¿Por Qué Convertir JPG a JPEG?</h2>
+        <p>Aunque JPG y JPEG son esencialmente lo mismo, hay algunas razones por las que podrías querer convertir imágenes JPG a JPEG:</p>
         <ul>
-            <li><strong>File Compatibility:</strong> Some software or platforms may specifically require the JPEG extension, so converting ensures your image works seamlessly.</li>
-            <li><strong>Standardization:</strong> Using the JPEG format can help maintain consistency across your image files, especially in professional settings.</li>
-            <li><strong>Ease of Use:</strong> Our converter simplifies the process, allowing you to convert your images in just a few clicks.</li>
+            <li><strong>Compatibilidad de Archivos:</strong> Algunos programas o plataformas pueden requerir específicamente la extensión JPEG, por lo que la conversión garantiza que tu imagen funcione sin problemas.</li>
+            <li><strong>Estandarización:</strong> Usar el formato JPEG puede ayudar a mantener la consistencia en tus archivos de imágenes, especialmente en entornos profesionales.</li>
+            <li><strong>Facilidad de Uso:</strong> Nuestro conversor simplifica el proceso, permitiéndote convertir tus imágenes con solo unos clics.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our JPG to JPEG Converter</h2>
-        <p>Using our JPG to JPEG conversion tool is simple and user-friendly. Here’s how it works:</p>
+        <h2>Cómo Usar Nuestro Conversor de JPG a JPEG</h2>
+        <p>Usar nuestra herramienta de conversión de JPG a JPEG es simple y fácil de usar. Así es como funciona:</p>
         <ul>
-            <li>Click the "Upload JPG File" button to select the JPG image you want to convert.</li>
-            <li>After uploading, our tool will automatically convert your image to JPEG format.</li>
-            <li>Once the conversion is complete, click "Download JPEG" to save your new image to your device.</li>
+            <li>Haz clic en el botón "Subir Archivo JPG" para seleccionar la imagen JPG que deseas convertir.</li>
+            <li>Después de subirla, nuestra herramienta convertirá automáticamente tu imagen a formato JPEG.</li>
+            <li>Una vez que la conversión esté completa, haz clic en "Descargar JPEG" para guardar tu nueva imagen en tu dispositivo.</li>
         </ul>
-        <p>Our converter supports various JPG files, ensuring a smooth conversion experience every time.</p>
+        <p>Nuestro conversor admite varios archivos JPG, garantizando una experiencia de conversión fluida cada vez.</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our JPG to JPEG Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>Beneficios de Usar Nuestro Conversor de JPG a JPEG</h2>
+        <p>Aquí hay algunas ventajas de usar nuestra herramienta de conversión:</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Convert your JPG images to JPEG in just a few clicks, with no complicated steps.</li>
-            <li><strong>Quality Preservation:</strong> Enjoy high-quality images during the conversion process, ensuring your images look great.</li>
-            <li><strong>Free and Accessible:</strong> Use our online converter for free, with no downloads or installations required.</li>
-            <li><strong>User-Friendly Interface:</strong> Designed for everyone, our tool is easy to navigate, regardless of your technical skills.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for JPG to JPEG Conversion</h2>
-        <p>Here are a few situations where converting JPG to JPEG can be beneficial:</p>
-        <ul>
-            <li><strong>Web Publishing:</strong> Ensure your images are in the JPEG format for better compatibility with web platforms.</li>
-            <li><strong>Image Sharing:</strong> Use JPEG files to share images easily across various social media and online platforms.</li>
-            <li><strong>Digital Photography:</strong> Standardize your photo library by using the JPEG format for all your images.</li>
-            <li><strong>Professional Use:</strong> Maintain consistency in file formats when working on projects requiring high-quality images.</li>
+            <li><strong>Rápido y Fácil:</strong> Convierte tus imágenes JPG a JPEG en solo unos clics, sin pasos complicados.</li>
+            <li><strong>Preservación de la Calidad:</strong> Disfruta de imágenes de alta calidad durante el proceso de conversión, asegurando que tus imágenes se vean geniales.</li>
+            <li><strong>Gratuito y Accesible:</strong> Usa nuestro conversor en línea de forma gratuita, sin necesidad de descargas o instalaciones.</li>
+            <li><strong>Interfaz Amigable:</strong> Diseñado para todos, nuestra herramienta es fácil de navegar, independientemente de tus habilidades técnicas.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting JPG to JPEG Can Help</h2>
-        <p>Converting your JPG images to JPEG can enhance their usability and compatibility. Here’s how:</p>
+        <h2>Usos Comunes para la Conversión de JPG a JPEG</h2>
+        <p>Aquí hay algunas situaciones en las que convertir JPG a JPEG puede ser beneficioso:</p>
         <ul>
-            <li><strong>Seamless Compatibility:</strong> Ensure that your images work perfectly across different platforms and applications.</li>
-            <li><strong>Consistent File Naming:</strong> Using the JPEG format can help keep your file naming consistent, making it easier to organize and find images.</li>
-            <li><strong>Simplified Workflow:</strong> Our tool makes it easy to manage your images, streamlining your editing or publishing process.</li>
+            <li><strong>Publicación en la Web:</strong> Asegúrate de que tus imágenes estén en formato JPEG para una mejor compatibilidad con plataformas web.</li>
+            <li><strong>Compartir Imágenes:</strong> Usa archivos JPEG para compartir imágenes fácilmente en varias redes sociales y plataformas en línea.</li>
+            <li><strong>Fotografía Digital:</strong> Estandariza tu biblioteca de fotos utilizando el formato JPEG para todas tus imágenes.</li>
+            <li><strong>Uso Profesional:</strong> Mantén la consistencia en los formatos de archivo cuando trabajes en proyectos que requieran imágenes de alta calidad.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Cómo Convertir JPG a JPEG Puede Ayudar</h2>
+        <p>Convertir tus imágenes JPG a JPEG puede mejorar su usabilidad y compatibilidad. Aquí te explicamos cómo:</p>
+        <ul>
+            <li><strong>Compatibilidad Perfecta:</strong> Asegúrate de que tus imágenes funcionen perfectamente en diferentes plataformas y aplicaciones.</li>
+            <li><strong>Nomenclatura Consistente:</strong> Usar el formato JPEG puede ayudar a mantener la consistencia en la nomenclatura de tus archivos, facilitando la organización y búsqueda de imágenes.</li>
+            <li><strong>Flujo de Trabajo Simplificado:</strong> Nuestra herramienta facilita la gestión de tus imágenes, optimizando tu proceso de edición o publicación.</li>
         </ul>
     </div>
 </div>

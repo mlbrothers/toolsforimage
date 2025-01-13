@@ -1,81 +1,81 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert ICO to TIFF images with ToolsForImage. Free, fast, and secure online ICO to TIFF converter for high-quality image transformations.">
+<meta name="description" content="Convierte fácilmente imágenes ICO a TIFF con ToolsForImage. Conversor en línea gratuito, rápido y seguro de ICO a TIFF para transformaciones de imágenes de alta calidad.">
 {% endblock %}
 
-{% block title %}Online ICO to TIFF converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}Conversor en línea de ICO a TIFF | ToolsForImage | Conversor de imágenes gratuito en línea{% endblock %}
 
 {% block content %}
-<h1>Free Online ICO to TIFF Converter</h1>
-<p>Easily convert your images from ICO to TIFF format. Upload an ICO image and we'll convert it to TIFF for you.</p>
+<h1>Conversor Gratuito en Línea de ICO a TIFF</h1>
+<p>Convierte fácilmente tus imágenes de formato ICO a TIFF. Sube una imagen ICO y la convertiremos a TIFF por ti.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/x-icon" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload ICO Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir Imagen ICO</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="Vista previa de la imagen" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="ico">
     <input type="hidden" name="output_format" value="tiff">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to TIFF</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convertir a TIFF</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is ICO to TIFF Conversion?</h2>
-        <p>ICO to TIFF conversion is the process of changing image files from ICO format to TIFF format. TIFF (Tagged Image File Format) is a flexible, adaptable file format for handling images and data within a single file. This conversion is useful when you need to use icon images in contexts where TIFF is preferred or required.</p>
+        <h2>¿Qué es la Conversión de ICO a TIFF?</h2>
+        <p>La conversión de ICO a TIFF es el proceso de cambiar archivos de imagen de formato ICO a formato TIFF. TIFF (Tagged Image File Format) es un formato de archivo flexible y adaptable para manejar imágenes y datos dentro de un solo archivo. Esta conversión es útil cuando necesitas usar imágenes de iconos en contextos donde se prefiere o requiere TIFF.</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert ICO to TIFF?</h2>
-        <p>There are several reasons to convert ICO images to TIFF:</p>
+        <h2>¿Por Qué Convertir ICO a TIFF?</h2>
+        <p>Hay varias razones para convertir imágenes ICO a TIFF:</p>
         <ul>
-            <li><strong>High Quality:</strong> TIFF is known for its high image quality and is often used in publishing and printing.</li>
-            <li><strong>Lossless Compression:</strong> TIFF supports lossless compression, preserving image quality.</li>
-            <li><strong>Flexibility:</strong> TIFF can store both bitmap and vector images, making it versatile for various uses.</li>
+            <li><strong>Alta Calidad:</strong> TIFF es conocido por su alta calidad de imagen y se usa a menudo en publicaciones e impresión.</li>
+            <li><strong>Compresión sin Pérdida:</strong> TIFF admite compresión sin pérdida, preservando la calidad de la imagen.</li>
+            <li><strong>Flexibilidad:</strong> TIFF puede almacenar tanto imágenes de mapa de bits como vectoriales, lo que lo hace versátil para varios usos.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our ICO to TIFF Converter</h2>
-        <p>Using our ICO to TIFF conversion tool is simple and quick. Here's how it works:</p>
+        <h2>Cómo Usar Nuestro Conversor de ICO a TIFF</h2>
+        <p>Usar nuestra herramienta de conversión de ICO a TIFF es simple y rápido. Así es como funciona:</p>
         <ul>
-            <li>Click the "Upload ICO File" button to select the ICO image you want to convert.</li>
-            <li>Once your image is uploaded, our tool will automatically start converting it to TIFF format.</li>
-            <li>After the conversion is complete, click "Download TIFF" to save your new image file to your device.</li>
+            <li>Haz clic en el botón "Subir Archivo ICO" para seleccionar la imagen ICO que deseas convertir.</li>
+            <li>Una vez que tu imagen esté subida, nuestra herramienta comenzará automáticamente a convertirla a formato TIFF.</li>
+            <li>Después de que la conversión esté completa, haz clic en "Descargar TIFF" para guardar tu nuevo archivo de imagen en tu dispositivo.</li>
         </ul>
-        <p>Our converter supports various ICO files, ensuring a smooth and efficient conversion experience for all users.</p>
+        <p>Nuestro conversor admite varios archivos ICO, asegurando una experiencia de conversión fluida y eficiente para todos los usuarios.</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our ICO to TIFF Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>Beneficios de Usar Nuestro Conversor de ICO a TIFF</h2>
+        <p>Aquí hay algunas ventajas de usar nuestra herramienta de conversión:</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Convert your ICO images to TIFF quickly with just a few clicks.</li>
-            <li><strong>High Quality:</strong> Maintain image quality during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, with no downloads or installations needed.</li>
-            <li><strong>User-Friendly Interface:</strong> Our tool is designed to be intuitive and easy to navigate for everyone.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for ICO to TIFF Conversion</h2>
-        <p>Here are some common situations where converting ICO to TIFF can be helpful:</p>
-        <ul>
-            <li><strong>Print Publishing:</strong> Use icon images in high-quality print materials.</li>
-            <li><strong>Professional Photography:</strong> Incorporate icon images into professional photo collections.</li>
-            <li><strong>Archiving:</strong> Store icon images in a high-quality, lossless format for long-term preservation.</li>
-            <li><strong>Medical Imaging:</strong> Use in medical imaging systems where TIFF is commonly used.</li>
+            <li><strong>Rápido y Fácil:</strong> Convierte tus imágenes ICO a TIFF rápidamente con solo unos clics.</li>
+            <li><strong>Alta Calidad:</strong> Mantén la calidad de la imagen durante el proceso de conversión.</li>
+            <li><strong>Gratuito y Accesible:</strong> Usa nuestra herramienta en línea de forma gratuita, sin necesidad de descargas o instalaciones.</li>
+            <li><strong>Interfaz Amigable:</strong> Nuestra herramienta está diseñada para ser intuitiva y fácil de navegar para todos.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting ICO to TIFF Can Help</h2>
-        <p>Converting your ICO images to TIFF can enhance their usability in various contexts. Here's how:</p>
+        <h2>Usos Comunes para la Conversión de ICO a TIFF</h2>
+        <p>Aquí hay algunas situaciones comunes donde convertir ICO a TIFF puede ser útil:</p>
         <ul>
-            <li><strong>Improved Quality:</strong> TIFF maintains high image quality, ideal for professional use.</li>
-            <li><strong>Better Compatibility:</strong> TIFF is widely supported in professional imaging and publishing software.</li>
-            <li><strong>Lossless Storage:</strong> TIFF's lossless compression ensures no data is lost during storage or editing.</li>
+            <li><strong>Publicación Impresa:</strong> Usa imágenes de iconos en materiales impresos de alta calidad.</li>
+            <li><strong>Fotografía Profesional:</strong> Incorpora imágenes de iconos en colecciones de fotos profesionales.</li>
+            <li><strong>Archivado:</strong> Almacena imágenes de iconos en un formato de alta calidad y sin pérdida para su preservación a largo plazo.</li>
+            <li><strong>Imágenes Médicas:</strong> Usa en sistemas de imágenes médicas donde TIFF es comúnmente utilizado.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Cómo Convertir ICO a TIFF Puede Ayudar</h2>
+        <p>Convertir tus imágenes ICO a TIFF puede mejorar su usabilidad en varios contextos. Aquí te explicamos cómo:</p>
+        <ul>
+            <li><strong>Calidad Mejorada:</strong> TIFF mantiene una alta calidad de imagen, ideal para uso profesional.</li>
+            <li><strong>Compatibilidad Mejorada:</strong> TIFF es ampliamente compatible en software profesional de imágenes y publicación.</li>
+            <li><strong>Almacenamiento sin Pérdida:</strong> La compresión sin pérdida de TIFF garantiza que no se pierdan datos durante el almacenamiento o la edición.</li>
         </ul>
     </div>
 </div>

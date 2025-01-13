@@ -1,81 +1,81 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert ICO to JPG images with ToolsForImage. Free, fast, and secure online BMP to ICO converter for high-quality image transformations.">
+<meta name="description" content="Convierte fácilmente imágenes ICO a JPG con ToolsForImage. Conversor en línea gratuito, rápido y seguro de ICO a JPG para transformaciones de imágenes de alta calidad.">
 {% endblock %}
 
-{% block title %}Online ICO to JPG converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}Conversor en línea de ICO a JPG | ToolsForImage | Conversor de imágenes gratuito en línea{% endblock %}
 
 {% block content %}
-<h1>Free Online ICO to JPG Converter</h1>
-<p>Easily convert your images from ICO to JPG format. Upload an ICO image and we'll convert it to JPG for you.</p>
+<h1>Conversor Gratuito en Línea de ICO a JPG</h1>
+<p>Convierte fácilmente tus imágenes de formato ICO a JPG. Sube una imagen ICO y la convertiremos a JPG por ti.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/x-icon" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload ICO Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir Imagen ICO</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="Vista previa de la imagen" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="ico">
     <input type="hidden" name="output_format" value="jpg">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to JPG</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convertir a JPG</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is ICO to JPG Conversion?</h2>
-        <p>ICO to JPG conversion is the process of changing image files from ICO format to JPG format. JPG (or JPEG) is a widely-used, lossy compression image format that's particularly suitable for photographs and complex images. This conversion is useful when you need to use icon images in contexts where JPG is preferred or required.</p>
+        <h2>¿Qué es la Conversión de ICO a JPG?</h2>
+        <p>La conversión de ICO a JPG es el proceso de cambiar archivos de imagen de formato ICO a formato JPG. JPG (o JPEG) es un formato de imagen ampliamente utilizado con compresión con pérdida, especialmente adecuado para fotografías e imágenes complejas. Esta conversión es útil cuando necesitas usar imágenes de iconos en contextos donde se prefiere o requiere JPG.</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert ICO to JPG?</h2>
-        <p>There are several reasons to convert ICO images to JPG:</p>
+        <h2>¿Por Qué Convertir ICO a JPG?</h2>
+        <p>Hay varias razones para convertir imágenes ICO a JPG:</p>
         <ul>
-            <li><strong>Smaller File Size:</strong> JPG files are typically smaller than ICO files, making them ideal for web use.</li>
-            <li><strong>Wide Compatibility:</strong> JPG is universally supported across different platforms and applications.</li>
-            <li><strong>Better for Complex Images:</strong> JPG is excellent for photographs and images with complex color gradients.</li>
+            <li><strong>Tamaño de Archivo Más Pequeño:</strong> Los archivos JPG suelen ser más pequeños que los ICO, lo que los hace ideales para uso web.</li>
+            <li><strong>Amplia Compatibilidad:</strong> JPG es universalmente compatible en diferentes plataformas y aplicaciones.</li>
+            <li><strong>Mejor para Imágenes Complejas:</strong> JPG es excelente para fotografías e imágenes con gradientes de color complejos.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our ICO to JPG Converter</h2>
-        <p>Using our ICO to JPG conversion tool is simple and quick. Here's how it works:</p>
+        <h2>Cómo Usar Nuestro Conversor de ICO a JPG</h2>
+        <p>Usar nuestra herramienta de conversión de ICO a JPG es simple y rápido. Así es como funciona:</p>
         <ul>
-            <li>Click the "Upload ICO File" button to select the ICO image you want to convert.</li>
-            <li>Once your image is uploaded, our tool will automatically start converting it to JPG format.</li>
-            <li>After the conversion is complete, click "Download JPG" to save your new image file to your device.</li>
+            <li>Haz clic en el botón "Subir Archivo ICO" para seleccionar la imagen ICO que deseas convertir.</li>
+            <li>Una vez que tu imagen esté subida, nuestra herramienta comenzará automáticamente a convertirla a formato JPG.</li>
+            <li>Después de que la conversión esté completa, haz clic en "Descargar JPG" para guardar tu nuevo archivo de imagen en tu dispositivo.</li>
         </ul>
-        <p>Our converter supports various ICO files, ensuring a smooth and efficient conversion experience for all users.</p>
+        <p>Nuestro conversor admite varios archivos ICO, asegurando una experiencia de conversión fluida y eficiente para todos los usuarios.</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our ICO to JPG Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>Beneficios de Usar Nuestro Conversor de ICO a JPG</h2>
+        <p>Aquí hay algunas ventajas de usar nuestra herramienta de conversión:</p>
         <ul>
-            <li><strong>Fast and Easy:</strong> Convert your ICO images to JPG quickly with just a few clicks.</li>
-            <li><strong>High Quality:</strong> Maintain image quality during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, with no downloads or installations needed.</li>
-            <li><strong>User-Friendly Interface:</strong> Our tool is designed to be intuitive and easy to navigate for everyone.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for ICO to JPG Conversion</h2>
-        <p>Here are some common situations where converting ICO to JPG can be helpful:</p>
-        <ul>
-            <li><strong>Web Development:</strong> Use icon images in web projects where JPG is preferred for its smaller file size.</li>
-            <li><strong>Email Marketing:</strong> Include icon images in email campaigns where JPG is widely supported.</li>
-            <li><strong>Document Creation:</strong> Incorporate icon images into documents or presentations where file size is a concern.</li>
-            <li><strong>Social Media:</strong> Use converted icons in social media posts where JPG is commonly used.</li>
+            <li><strong>Rápido y Fácil:</strong> Convierte tus imágenes ICO a JPG rápidamente con solo unos clics.</li>
+            <li><strong>Alta Calidad:</strong> Mantén la calidad de la imagen durante el proceso de conversión.</li>
+            <li><strong>Gratuito y Accesible:</strong> Usa nuestra herramienta en línea de forma gratuita, sin necesidad de descargas o instalaciones.</li>
+            <li><strong>Interfaz Amigable:</strong> Nuestra herramienta está diseñada para ser intuitiva y fácil de navegar para todos.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting ICO to JPG Can Help</h2>
-        <p>Converting your ICO images to JPG can enhance their usability in various contexts. Here's how:</p>
+        <h2>Usos Comunes para la Conversión de ICO a JPG</h2>
+        <p>Aquí hay algunas situaciones comunes donde convertir ICO a JPG puede ser útil:</p>
         <ul>
-            <li><strong>Reduced File Size:</strong> JPG compression can significantly reduce file size, improving load times for web pages.</li>
-            <li><strong>Broader Compatibility:</strong> JPG is universally supported, ensuring your images can be viewed on virtually any device or platform.</li>
-            <li><strong>Easier Sharing:</strong> Smaller file sizes make JPG images easier to share via email or messaging apps.</li>
+            <li><strong>Desarrollo Web:</strong> Usa imágenes de iconos en proyectos web donde JPG es preferido por su menor tamaño de archivo.</li>
+            <li><strong>Marketing por Correo Electrónico:</strong> Incluye imágenes de iconos en campañas de correo electrónico donde JPG es ampliamente compatible.</li>
+            <li><strong>Creación de Documentos:</strong> Incorpora imágenes de iconos en documentos o presentaciones donde el tamaño del archivo es una preocupación.</li>
+            <li><strong>Redes Sociales:</strong> Usa iconos convertidos en publicaciones de redes sociales donde JPG es comúnmente utilizado.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Cómo Convertir ICO a JPG Puede Ayudar</h2>
+        <p>Convertir tus imágenes ICO a JPG puede mejorar su usabilidad en varios contextos. Aquí te explicamos cómo:</p>
+        <ul>
+            <li><strong>Reducción del Tamaño del Archivo:</strong> La compresión JPG puede reducir significativamente el tamaño del archivo, mejorando los tiempos de carga en páginas web.</li>
+            <li><strong>Compatibilidad Más Amplia:</strong> JPG es universalmente compatible, asegurando que tus imágenes puedan verse en prácticamente cualquier dispositivo o plataforma.</li>
+            <li><strong>Compartir Más Fácil:</strong> Los tamaños de archivo más pequeños hacen que las imágenes JPG sean más fáciles de compartir por correo electrónico o aplicaciones de mensajería.</li>
         </ul>
     </div>
 </div>

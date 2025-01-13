@@ -1,82 +1,82 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert WEBP to JPEG images with ToolsForImage. Free, fast, and secure online WEBP to JPEG converter for high-quality image transformations.">
+<meta name="description" content="Convierte fácilmente imágenes WEBP a JPEG con ToolsForImage. Conversor online gratuito, rápido y seguro de WEBP a JPEG para transformaciones de imágenes de alta calidad.">
 {% endblock %}
 
-{% block title %}Online WEBP to JPEG converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}Conversor online de WEBP a JPEG | ToolsForImage | Conversor de imágenes online gratuito{% endblock %}
 
 {% block content %}
-<h1>Free Online WEBP to JPEG Converter</h1>
-<p>Easily convert your images from WebP to JPEG format. Upload a webp image and we'll convert it to JPEG for you.</p>
+<h1>Conversor Gratuito Online de WEBP a JPEG</h1>
+<p>Convierte fácilmente tus imágenes de WebP a formato JPEG. Sube una imagen WebP y la convertiremos a JPEG para ti.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/webp" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload webp Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir imagen WebP</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="Vista previa de la imagen" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="webp">
     <input type="hidden" name="output_format" value="jpeg">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to JPEG</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convertir a JPEG</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is WebP to JPEG Conversion?</h2>
-        <p>WebP to JPEG conversion is the process of changing image files from WebP format to JPEG format. WebP is a modern image format that provides excellent compression, while JPEG is a widely used format known for its balance of quality and file size. Converting WebP images to JPEG is helpful when you need images for websites, social media, or other applications that prefer the JPEG format.</p>
+        <h2>¿Qué es la conversión de WebP a JPEG?</h2>
+        <p>La conversión de WebP a JPEG es el proceso de cambiar archivos de imágenes del formato WebP al formato JPEG. WebP es un formato de imagen moderno que ofrece una excelente compresión, mientras que JPEG es un formato ampliamente utilizado conocido por su equilibrio entre calidad y tamaño de archivo. Convertir imágenes WebP a JPEG es útil cuando necesitas imágenes para sitios web, redes sociales u otras aplicaciones que prefieren el formato JPEG.</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert WebP to JPEG?</h2>
-        <p>There are several reasons to convert WebP images to JPEG format:</p>
+        <h2>¿Por qué convertir WebP a JPEG?</h2>
+        <p>Hay varias razones para convertir imágenes WebP a formato JPEG:</p>
         <ul>
-            <li><strong>Widespread Compatibility:</strong> JPEG is one of the most widely supported image formats, ensuring your images can be viewed on any device or software.</li>
-            <li><strong>Optimized for Web Use:</strong> JPEG images are ideal for web usage as they offer a good balance between quality and file size, making websites load faster.</li>
-            <li><strong>Easy Sharing:</strong> JPEG format is preferred for sharing images on social media and other platforms, making it easier to share your visuals.</li>
-            <li><strong>Good Compression:</strong> JPEG provides excellent compression capabilities, allowing for smaller file sizes without a significant loss in image quality.</li>
+            <li><strong>Compatibilidad generalizada:</strong> JPEG es uno de los formatos de imagen más ampliamente compatibles, lo que garantiza que tus imágenes puedan verse en cualquier dispositivo o software.</li>
+            <li><strong>Optimizado para uso web:</strong> Las imágenes JPEG son ideales para uso web, ya que ofrecen un buen equilibrio entre calidad y tamaño de archivo, lo que hace que los sitios web carguen más rápido.</li>
+            <li><strong>Compartir fácilmente:</strong> El formato JPEG es preferido para compartir imágenes en redes sociales y otras plataformas, lo que facilita compartir tus imágenes.</li>
+            <li><strong>Buena compresión:</strong> JPEG ofrece excelentes capacidades de compresión, permitiendo tamaños de archivo más pequeños sin una pérdida significativa de calidad.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our WebP to JPEG Converter</h2>
-        <p>Using our WebP to JPEG conversion tool is straightforward. Here’s how you can get started:</p>
+        <h2>Cómo usar nuestro conversor de WebP a JPEG</h2>
+        <p>Usar nuestra herramienta de conversión de WebP a JPEG es sencillo. Aquí te explicamos cómo empezar:</p>
         <ul>
-            <li>Click the "Upload WebP File" button to choose the WebP image you want to convert.</li>
-            <li>After uploading, our tool will automatically begin the conversion process.</li>
-            <li>Once the conversion is complete, click "Download JPEG" to save your new JPEG image to your device.</li>
+            <li>Haz clic en el botón "Subir archivo WebP" para elegir la imagen WebP que deseas convertir.</li>
+            <li>Después de subirla, nuestra herramienta comenzará automáticamente el proceso de conversión.</li>
+            <li>Una vez que la conversión esté completa, haz clic en "Descargar JPEG" para guardar tu nueva imagen JPEG en tu dispositivo.</li>
         </ul>
-        <p>Our converter supports various WebP formats, making it easy to convert your images quickly.</p>
+        <p>Nuestro conversor admite varios formatos WebP, lo que facilita la conversión rápida de tus imágenes.</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our WebP to JPEG Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>Beneficios de usar nuestro conversor de WebP a JPEG</h2>
+        <p>Aquí tienes algunas ventajas de usar nuestra herramienta de conversión:</p>
         <ul>
-            <li><strong>Fast and Efficient:</strong> Convert your WebP images to JPEG in just a few clicks, saving you time and effort.</li>
-            <li><strong>No Quality Loss:</strong> Enjoy high-quality JPEG images without losing important details during conversion.</li>
-            <li><strong>Free and Online:</strong> Our tool is accessible for free online, with no downloads or installations needed.</li>
-            <li><strong>User-Friendly Interface:</strong> Designed for ease of use, our tool simplifies the conversion process for everyone.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for WebP to JPEG Conversion</h2>
-        <p>Converting WebP to JPEG can be beneficial in various scenarios:</p>
-        <ul>
-            <li><strong>Websites:</strong> Use JPEG images to improve page load times and compatibility with all browsers.</li>
-            <li><strong>Social Media:</strong> Share images in JPEG format for better engagement and visibility on platforms like Facebook and Instagram.</li>
-            <li><strong>Digital Photography:</strong> Save and edit photos in JPEG format for easy sharing and storage.</li>
-            <li><strong>Personal Use:</strong> Convert images for family albums or scrapbooking projects that require a commonly used format.</li>
+            <li><strong>Rápido y eficiente:</strong> Convierte tus imágenes WebP a JPEG en solo unos clics, ahorrándote tiempo y esfuerzo.</li>
+            <li><strong>Sin pérdida de calidad:</strong> Disfruta de imágenes JPEG de alta calidad sin perder detalles importantes durante la conversión.</li>
+            <li><strong>Gratuito y online:</strong> Nuestra herramienta es accesible gratuitamente en línea, sin necesidad de descargas ni instalaciones.</li>
+            <li><strong>Interfaz fácil de usar:</strong> Diseñada para ser intuitiva, nuestra herramienta simplifica el proceso de conversión para todos.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting WebP to JPEG Can Help</h2>
-        <p>Converting your WebP images to JPEG format can enhance usability and sharing. Here’s how:</p>
+        <h2>Usos comunes de la conversión de WebP a JPEG</h2>
+        <p>Convertir WebP a JPEG puede ser beneficioso en varios escenarios:</p>
         <ul>
-            <li><strong>Improved Compatibility:</strong> JPEG is compatible with almost all devices and software, making your images easily accessible.</li>
-            <li><strong>Smaller File Sizes:</strong> JPEG images often have smaller file sizes, which helps with faster loading times on websites.</li>
-            <li><strong>Easier Sharing:</strong> JPEG files are the preferred choice for many online platforms, simplifying the sharing process.</li>
+            <li><strong>Sitios web:</strong> Usa imágenes JPEG para mejorar los tiempos de carga de las páginas y la compatibilidad con todos los navegadores.</li>
+            <li><strong>Redes sociales:</strong> Comparte imágenes en formato JPEG para una mejor participación y visibilidad en plataformas como Facebook e Instagram.</li>
+            <li><strong>Fotografía digital:</strong> Guarda y edita fotos en formato JPEG para facilitar su compartición y almacenamiento.</li>
+            <li><strong>Uso personal:</strong> Convierte imágenes para álbumes familiares o proyectos de scrapbooking que requieran un formato comúnmente utilizado.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Cómo puede ayudar convertir WebP a JPEG</h2>
+        <p>Convertir tus imágenes WebP a formato JPEG puede mejorar su usabilidad y facilidad de compartición. Aquí te explicamos cómo:</p>
+        <ul>
+            <li><strong>Mejor compatibilidad:</strong> JPEG es compatible con casi todos los dispositivos y software, lo que hace que tus imágenes sean fácilmente accesibles.</li>
+            <li><strong>Tamaños de archivo más pequeños:</strong> Las imágenes JPEG suelen tener tamaños de archivo más pequeños, lo que ayuda a que los sitios web carguen más rápido.</li>
+            <li><strong>Compartir más fácilmente:</strong> Los archivos JPEG son la opción preferida para muchas plataformas en línea, simplificando el proceso de compartir.</li>
         </ul>
     </div>
 </div>

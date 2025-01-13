@@ -1,118 +1,116 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Add watermarks to your images easily with our watermarking tool. Protect your images and add branding effortlessly.">
+<meta name="description" content="Agrega marcas de agua a tus imágenes fácilmente con nuestra herramienta de marca de agua. Protege tus imágenes y añade branding sin esfuerzo.">
 {% endblock %}
 
-{% block title %}Image Watermarking Tool online | ToolsForImage | Comprehensive Free Online Tools for Blur Faces, Image Conversion, Editing, Resizing, Remove Background, Blur background and More{% endblock %}
+{% block title %}Herramienta de Marca de Agua en Imágenes en línea | ToolsForImage | Herramientas en línea gratuitas para desenfocar caras, conversión de imágenes, edición, redimensionamiento, eliminar fondos, desenfocar fondos y más{% endblock %}
 
 {% block content %}
-<h1>Free Image Watermarking Tool</h1>
+<h1>Herramienta Gratuita de Marca de Agua en Imágenes</h1>
 
 <div class="watermark-editor">
     <div class="watermark-controls">
-        <label for="imageUpload">Upload Image:</label>
+        <label for="imageUpload">Subir Imagen:</label>
         <input type="file" id="imageUpload" accept="image/*">
         
-        <label for="watermarkText">Watermark Text:</label>
-        <input type="text" id="watermarkText" placeholder="Enter watermark text">
+        <label for="watermarkText">Texto de la Marca de Agua:</label>
+        <input type="text" id="watermarkText" placeholder="Ingresa el texto de la marca de agua">
         
-        <label for="watermarkColor">Watermark Color:</label>
+        <label for="watermarkColor">Color de la Marca de Agua:</label>
         <input type="color" id="watermarkColor" value="#000000">
         
-        <label for="watermarkOpacity">Watermark Opacity:</label>
+        <label for="watermarkOpacity">Opacidad de la Marca de Agua:</label>
         <input type="range" id="watermarkOpacity" min="0" max="1" step="0.1" value="0.5">
         
-        <label for="watermarkFontSize">Watermark Font Size:</label>
-        <input type="number" id="watermarkFontSize" min="8" value="20" placeholder="Font size">
+        <label for="watermarkFontSize">Tamaño de la Fuente de la Marca de Agua:</label>
+        <input type="number" id="watermarkFontSize" min="8" value="20" placeholder="Tamaño de la fuente">
         
-        <label for="watermarkPosition">Watermark Position:</label>
+        <label for="watermarkPosition">Posición de la Marca de Agua:</label>
         <select id="watermarkPosition">
-            <option value="top-left">Top Left</option>
-            <option value="top-right">Top Right</option>
-            <option value="bottom-left">Bottom Left</option>
-            <option value="bottom-right">Bottom Right</option>
-            <option value="center">Center</option>
+            <option value="top-left">Superior Izquierda</option>
+            <option value="top-right">Superior Derecha</option>
+            <option value="bottom-left">Inferior Izquierda</option>
+            <option value="bottom-right">Inferior Derecha</option>
+            <option value="center">Centro</option>
         </select>
         
-        <label for="watermarkFontStyle">Watermark Font Style:</label>
+        <label for="watermarkFontStyle">Estilo de la Fuente de la Marca de Agua:</label>
         <select id="watermarkFontStyle">
             <option value="normal">Normal</option>
-            <option value="bold">Bold</option>
-            <option value="italic">Italic</option>
-            <option value="bold-italic">Bold Italic</option>
+            <option value="bold">Negrita</option>
+            <option value="italic">Cursiva</option>
+            <option value="bold-italic">Negrita Cursiva</option>
         </select>
     </div>
 
     <div class="watermark-preview">
-        <img id="previewImage" src="" alt="Preview">
+        <img id="previewImage" src="" alt="Vista previa">
     </div>
 
-    <button class="button" id="downloadImage">Download Watermarked Image</button>
+    <button class="button" id="downloadImage">Descargar Imagen con Marca de Agua</button>
 </div>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is Image Watermarking?</h2>
-        <p>Image watermarking is the process of adding a logo, text, or symbol to your images to protect them from unauthorized use. A watermark can be a small, semi-transparent mark placed anywhere on the image. This tool helps you add watermarks easily, ensuring that your photos, graphics, or digital creations are protected and easily identified as yours.</p>
+        <h2>¿Qué es la Marca de Agua en Imágenes?</h2>
+        <p>La marca de agua en imágenes es el proceso de agregar un logotipo, texto o símbolo a tus imágenes para protegerlas del uso no autorizado. Una marca de agua puede ser una marca pequeña y semitransparente colocada en cualquier parte de la imagen. Esta herramienta te ayuda a agregar marcas de agua fácilmente, asegurando que tus fotos, gráficos o creaciones digitales estén protegidas y sean fácilmente identificables como tuyas.</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Use Watermarks on Your Images?</h2>
-        <p>Watermarking your images is important for several reasons:</p>
+        <h2>¿Por Qué Usar Marcas de Agua en tus Imágenes?</h2>
+        <p>Agregar marcas de agua a tus imágenes es importante por varias razones:</p>
         <ul>
-            <li><strong>Protect Your Work:</strong> Prevent others from stealing or using your images without permission by adding a watermark.</li>
-            <li><strong>Build Your Brand:</strong> Adding a watermark with your logo or brand name can increase visibility and brand recognition.</li>
-            <li><strong>Share Safely Online:</strong> When sharing images on social media, blogs, or websites, a watermark can help safeguard your intellectual property.</li>
+            <li><strong>Protege tu Trabajo:</strong> Evita que otros roben o usen tus imágenes sin permiso al agregar una marca de agua.</li>
+            <li><strong>Construye tu Marca:</strong> Agregar una marca de agua con tu logotipo o nombre de marca puede aumentar la visibilidad y el reconocimiento de tu marca.</li>
+            <li><strong>Comparte de Forma Segura en Línea:</strong> Al compartir imágenes en redes sociales, blogs o sitios web, una marca de agua puede ayudar a proteger tu propiedad intelectual.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our Watermarking Tool</h2>
-        <p>Our watermarking tool is easy to use and helps you quickly add a watermark to your images. Follow these steps:</p>
+        <h2>Cómo Usar Nuestra Herramienta de Marca de Agua</h2>
+        <p>Nuestra herramienta de marca de agua es fácil de usar y te ayuda a agregar una marca de agua a tus imágenes rápidamente. Sigue estos pasos:</p>
         <ul>
-            <li>Click the "Upload from Computer" button to upload your image.</li>
-            <li>Enter the text or upload your logo to be used as a watermark.</li>
-            <li>Adjust the size, opacity, and position of your watermark to your liking.</li>
-            <li>Once you are satisfied, click "Download Watermarked Image" to save your protected image to your device.</li>
+            <li>Haz clic en el botón "Subir desde Computadora" para cargar tu imagen.</li>
+            <li>Ingresa el texto o carga tu logotipo para usarlo como marca de agua.</li>
+            <li>Ajusta el tamaño, la opacidad y la posición de tu marca de agua según tus preferencias.</li>
+            <li>Una vez que estés satisfecho, haz clic en "Descargar Imagen con Marca de Agua" para guardar tu imagen protegida en tu dispositivo.</li>
         </ul>
-        <p>Our tool supports various image formats, including PNG, JPG, and BMP, and ensures that the quality of your image is maintained.</p>
+        <p>Nuestra herramienta admite varios formatos de imagen, incluidos PNG, JPG y BMP, y garantiza que se mantenga la calidad de tu imagen.</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our Watermarking Tool</h2>
-        <p>Here are the top benefits of using our watermarking tool:</p>
+        <h2>Beneficios de Usar Nuestra Herramienta de Marca de Agua</h2>
+        <p>Aquí están los principales beneficios de usar nuestra herramienta de marca de agua:</p>
         <ul>
-            <li><strong>Quick and Easy:</strong> Add a watermark to your images in just a few clicks, no design skills needed.</li>
-            <li><strong>Customizable Watermarks:</strong> Choose the text, font, size, and placement that best suits your needs.</li>
-            <li><strong>Protect Your Images:</strong> Make sure your images are protected and recognized as your work online.</li>
-            <li><strong>Free to Use:</strong> Our tool is free and accessible, with no software downloads required.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Use Cases for Image Watermarking</h2>
-        <p>Watermarking is useful in many situations, such as:</p>
-        <ul>
-            <li><strong>Photographers:</strong> Protect your photography from unauthorized use by adding your name or logo.</li>
-            <li><strong>Graphic Designers:</strong> Add a watermark to your digital artwork to prevent others from claiming it as their own.</li>
-            <li><strong>Businesses and Brands:</strong> Use watermarks to promote your brand and ensure your images are recognized as your own.</li>
-            <li><strong>Content Creators:</strong> Ensure your original content is protected when sharing on social media or websites.</li>
+            <li><strong>Rápido y Fácil:</strong> Agrega una marca de agua a tus imágenes con solo unos pocos clics, sin necesidad de habilidades de diseño.</li>
+            <li><strong>Marcas de Agua Personalizables:</strong> Elige el texto, la fuente, el tamaño y la ubicación que mejor se adapten a tus necesidades.</li>
+            <li><strong>Protege tus Imágenes:</strong> Asegúrate de que tus imágenes estén protegidas y sean reconocidas como tu trabajo en línea.</li>
+            <li><strong>Gratuito:</strong> Nuestra herramienta es gratuita y accesible, sin necesidad de descargar software.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>Why Watermarking Your Images is Important</h2>
-        <p>Watermarking helps protect your images from being stolen or misused. Here’s why it’s important:</p>
+        <h2>Casos Comunes de Uso para la Marca de Agua en Imágenes</h2>
+        <p>La marca de agua es útil en muchas situaciones, como:</p>
         <ul>
-            <li><strong>Copyright Protection:</strong> Watermarks act as a deterrent to those who might try to use your images without permission.</li>
-            <li><strong>Increase Brand Awareness:</strong> When your watermark includes your logo or brand name, it helps spread awareness of your business as your images are shared online.</li>
-            <li><strong>Keep Your Work Safe:</strong> Whether you’re a photographer, designer, or content creator, watermarking ensures that your hard work is credited to you, wherever it’s displayed.</li>
+            <li><strong>Fotógrafos:</strong> Protege tus fotografías del uso no autorizado agregando tu nombre o logotipo.</li>
+            <li><strong>Diseñadores Gráficos:</strong> Agrega una marca de agua a tu arte digital para evitar que otros lo reclamen como propio.</li>
+            <li><strong>Empresas y Marcas:</strong> Usa marcas de agua para promover tu marca y asegurarte de que tus imágenes sean reconocidas como tuyas.</li>
+            <li><strong>Creadores de Contenido:</strong> Asegúrate de que tu contenido original esté protegido al compartirlo en redes sociales o sitios web.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Por Qué es Importante la Marca de Agua en tus Imágenes</h2>
+        <p>La marca de agua ayuda a proteger tus imágenes de ser robadas o utilizadas indebidamente. Aquí te explicamos por qué es importante:</p>
+        <ul>
+            <li><strong>Protección de Derechos de Autor:</strong> Las marcas de agua actúan como un disuasivo para aquellos que podrían intentar usar tus imágenes sin permiso.</li>
+            <li><strong>Aumenta el Reconocimiento de la Marca:</strong> Cuando tu marca de agua incluye tu logotipo o nombre de marca, ayuda a difundir el conocimiento de tu negocio a medida que tus imágenes se comparten en línea.</li>
+            <li><strong>Mantén tu Trabajo Seguro:</strong> Ya seas fotógrafo, diseñador o creador de contenido, la marca de agua asegura que tu trabajo duro sea acreditado a ti, dondequiera que se muestre.</li>
         </ul>
     </div>
 </div>
-
-
 
 <style>
 

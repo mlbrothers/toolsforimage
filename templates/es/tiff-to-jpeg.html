@@ -1,82 +1,82 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert TIFF to JPEG images with ToolsForImage. Free, fast, and secure online TIFF to JPEG converter for high-quality image transformations.">
+<meta name="description" content="Convierte fácilmente imágenes TIFF a JPEG con ToolsForImage. Conversor online gratuito, rápido y seguro de TIFF a JPEG para transformaciones de imágenes de alta calidad.">
 {% endblock %}
 
-{% block title %}Online TIFF to JPEG converter | ToolsForImage | Free Online Image converter{% endblock %}
+{% block title %}Conversor online de TIFF a JPEG | ToolsForImage | Conversor de imágenes online gratuito{% endblock %}
 
 {% block content %}
-<h1>Free Online TIFF to JPEG Converter</h1>
-<p>Easily convert your images from TIFF to JPEG format. Upload a TIFF image and we'll convert it to JPEG for you.</p>
+<h1>Conversor Gratuito Online de TIFF a JPEG</h1>
+<p>Convierte fácilmente tus imágenes de TIFF a formato JPEG. Sube una imagen TIFF y la convertiremos a JPEG por ti.</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/tiff" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload TIFF Image</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir Imagen TIFF</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="Vista previa de la imagen" style="display: none;">
     <br>
     <input type="hidden" name="input_format" value="tiff">
     <input type="hidden" name="output_format" value="jpeg">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to JPEG</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convertir a JPEG</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is TIFF to JPEG Conversion?</h2>
-        <p>TIFF to JPEG conversion is the process of changing images from TIFF (Tagged Image File Format) to JPEG (Joint Photographic Experts Group) format. TIFF is known for its high quality and is often used in professional photography, while JPEG is a popular format for everyday use due to its smaller file size and good quality. Converting TIFF images to JPEG can help you save space and share your images easily.</p>
+        <h2>¿Qué es la Conversión de TIFF a JPEG?</h2>
+        <p>La conversión de TIFF a JPEG es el proceso de cambiar imágenes de formato TIFF (Tagged Image File Format) a formato JPEG (Joint Photographic Experts Group). TIFF es conocido por su alta calidad y se utiliza a menudo en fotografía profesional, mientras que JPEG es un formato popular para uso diario debido a su menor tamaño de archivo y buena calidad. Convertir imágenes TIFF a JPEG puede ayudarte a ahorrar espacio y compartir tus imágenes fácilmente.</p>
     </div>
 
     <div class="info-section">
-        <h2>Why Convert TIFF to JPEG?</h2>
-        <p>There are several reasons to convert TIFF images to JPEG:</p>
+        <h2>¿Por Qué Convertir TIFF a JPEG?</h2>
+        <p>Hay varias razones para convertir imágenes TIFF a JPEG:</p>
         <ul>
-            <li><strong>Smaller File Size:</strong> JPEG images are compressed, making them easier to store and share without taking up too much space.</li>
-            <li><strong>Wide Compatibility:</strong> JPEG is one of the most widely supported image formats, compatible with nearly all devices and software.</li>
-            <li><strong>Good Quality:</strong> JPEG format maintains good quality for photographs, making it ideal for web use and sharing.</li>
-            <li><strong>Fast Loading:</strong> JPEG files load quickly on websites, enhancing user experience for online viewing.</li>
+            <li><strong>Tamaño de Archivo Más Pequeño:</strong> Las imágenes JPEG están comprimidas, lo que las hace más fáciles de almacenar y compartir sin ocupar demasiado espacio.</li>
+            <li><strong>Amplia Compatibilidad:</strong> JPEG es uno de los formatos de imagen más ampliamente compatibles, compatible con casi todos los dispositivos y software.</li>
+            <li><strong>Buena Calidad:</strong> El formato JPEG mantiene una buena calidad para fotografías, lo que lo hace ideal para uso web y compartir.</li>
+            <li><strong>Carga Rápida:</strong> Los archivos JPEG se cargan rápidamente en los sitios web, mejorando la experiencia del usuario para la visualización en línea.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How to Use Our TIFF to JPEG Converter</h2>
-        <p>Our TIFF to JPEG conversion tool is designed for ease of use. Here’s how to convert your images:</p>
+        <h2>Cómo Usar Nuestro Conversor de TIFF a JPEG</h2>
+        <p>Nuestra herramienta de conversión de TIFF a JPEG está diseñada para ser fácil de usar. Así es como puedes convertir tus imágenes:</p>
         <ul>
-            <li>Click the "Upload TIFF File" button to select the TIFF image you want to convert.</li>
-            <li>After the upload, the conversion process will begin automatically.</li>
-            <li>Once the conversion is complete, click "Download JPEG" to save the new image to your device.</li>
+            <li>Haz clic en el botón "Subir Archivo TIFF" para seleccionar la imagen TIFF que deseas convertir.</li>
+            <li>Después de la subida, el proceso de conversión comenzará automáticamente.</li>
+            <li>Una vez que la conversión esté completa, haz clic en "Descargar JPEG" para guardar la nueva imagen en tu dispositivo.</li>
         </ul>
-        <p>Our converter supports various TIFF formats, ensuring a seamless experience for all users.</p>
+        <p>Nuestro conversor admite varios formatos TIFF, asegurando una experiencia sin problemas para todos los usuarios.</p>
     </div>
 
     <div class="info-section">
-        <h2>Benefits of Using Our TIFF to JPEG Converter</h2>
-        <p>Here are some advantages of using our conversion tool:</p>
+        <h2>Beneficios de Usar Nuestro Conversor de TIFF a JPEG</h2>
+        <p>Aquí hay algunas ventajas de usar nuestra herramienta de conversión:</p>
         <ul>
-            <li><strong>Quick and Easy:</strong> Convert your TIFF images to JPEG in just a few simple steps.</li>
-            <li><strong>No Quality Loss:</strong> Enjoy high-quality results without significant degradation during the conversion process.</li>
-            <li><strong>Free and Accessible:</strong> Use our tool online for free, without the need for software installation.</li>
-            <li><strong>User-Friendly Interface:</strong> Our tool is designed to be intuitive and easy to navigate, ensuring a smooth experience.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Common Uses for TIFF to JPEG Conversion</h2>
-        <p>Here are some scenarios where converting TIFF to JPEG can be beneficial:</p>
-        <ul>
-            <li><strong>Web Use:</strong> JPEG is ideal for images on websites and social media due to its small size and good quality.</li>
-            <li><strong>Photography:</strong> Share your photos easily with friends and family using the JPEG format.</li>
-            <li><strong>Document Creation:</strong> Use JPEG images in presentations or documents where file size and compatibility matter.</li>
-            <li><strong>Personal Use:</strong> Quickly convert personal photos to share on various platforms or to save space on your device.</li>
+            <li><strong>Rápido y Fácil:</strong> Convierte tus imágenes TIFF a JPEG en solo unos pocos pasos simples.</li>
+            <li><strong>Sin Pérdida de Calidad:</strong> Disfruta de resultados de alta calidad sin una degradación significativa durante el proceso de conversión.</li>
+            <li><strong>Gratuito y Accesible:</strong> Usa nuestra herramienta en línea de forma gratuita, sin necesidad de instalar software.</li>
+            <li><strong>Interfaz Amigable:</strong> Nuestra herramienta está diseñada para ser intuitiva y fácil de navegar, asegurando una experiencia fluida.</li>
         </ul>
     </div>
 
     <div class="info-section">
-        <h2>How Converting TIFF to JPEG Can Help</h2>
-        <p>Converting your TIFF images to JPEG can enhance their usability and performance. Here’s how:</p>
+        <h2>Usos Comunes para la Conversión de TIFF a JPEG</h2>
+        <p>Aquí hay algunos escenarios en los que convertir TIFF a JPEG puede ser beneficioso:</p>
         <ul>
-            <li><strong>Increased Accessibility:</strong> JPEG images can be easily shared across all devices and platforms.</li>
-            <li><strong>Efficient Storage:</strong> Reduce file sizes for easier management and storage on your device.</li>
-            <li><strong>Improved Sharing:</strong> JPEG format is preferred for online sharing, ensuring your images look great wherever they are viewed.</li>
+            <li><strong>Uso Web:</strong> JPEG es ideal para imágenes en sitios web y redes sociales debido a su pequeño tamaño y buena calidad.</li>
+            <li><strong>Fotografía:</strong> Comparte tus fotos fácilmente con amigos y familiares usando el formato JPEG.</li>
+            <li><strong>Creación de Documentos:</strong> Usa imágenes JPEG en presentaciones o documentos donde el tamaño del archivo y la compatibilidad son importantes.</li>
+            <li><strong>Uso Personal:</strong> Convierte rápidamente fotos personales para compartir en varias plataformas o para ahorrar espacio en tu dispositivo.</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <h2>Cómo Convertir TIFF a JPEG Puede Ayudar</h2>
+        <p>Convertir tus imágenes TIFF a JPEG puede mejorar su usabilidad y rendimiento. Aquí te explicamos cómo:</p>
+        <ul>
+            <li><strong>Mayor Accesibilidad:</strong> Las imágenes JPEG se pueden compartir fácilmente en todos los dispositivos y plataformas.</li>
+            <li><strong>Almacenamiento Eficiente:</strong> Reduce el tamaño de los archivos para una gestión y almacenamiento más fácil en tu dispositivo.</li>
+            <li><strong>Compartir Mejorado:</strong> El formato JPEG es preferido para compartir en línea, asegurando que tus imágenes se vean genial dondequiera que se vean.</li>
         </ul>
     </div>
 </div>

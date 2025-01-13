@@ -1,20 +1,20 @@
-{% extends "en/base.html" %}
+{% extends "es/base.html" %}
 
 {% block meta_description %}
-<meta name="description" content="Easily convert your images with ToolsForImage's free online tools. Change image formats quickly without losing quality for seamless file transformations.">
+<meta name="description" content="Convierte fácilmente tus imágenes con las herramientas gratuitas en línea de ToolsForImage. Cambia formatos de imagen rápidamente sin perder calidad para transformaciones de archivos sin problemas.">
 {% endblock %}
 
-{% block title %}Convert Image online | ToolsForImage | Comprehensive Free Online Tools for Blur Faces, Image Conversion, Editing, Resizing, Remove Background, Blur background and More{% endblock %}
+{% block title %}Convertir Imágenes en línea | ToolsForImage | Herramientas Gratuitas Integrales para Difuminar Rostros, Conversión de Imágenes, Edición, Redimensionar, Eliminar Fondo, Difuminar Fondo y Más{% endblock %}
 
 {% block content %}
-<h1>Free Online Image Format Converter</h1>
-<p>Effortlessly convert your image to a different format. Upload an image and select the desired output format.</p>
-<p>Supported formats: PNG, JPG, JPEG, BMP, TIFF, WEBP, ICO</p>
+<h1>Conversor de Formato de Imágenes Gratuito en Línea</h1>
+<p>Convierte fácilmente tu imagen a un formato diferente. Sube una imagen y selecciona el formato de salida deseado.</p>
+<p>Formatos admitidos: PNG, JPG, JPEG, BMP, TIFF, WEBP, ICO</p>
 <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload from Computer</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir desde la Computadora</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="Vista Previa de la Imagen" style="display: none;">
     <br>
     <select id="output-format" name="output_format" class="format-select">
         <option value="png">PNG</option>
@@ -26,42 +26,42 @@
         <option value="ico">ICO</option>
     </select>
     <br>
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert!</button>
+    <button type="submit" class="convert-button" onclick="return validateImageSelection();">¡Convertir!</button>
 </form>
 
 <div class="info-container">
     <div class="info-section">
-        <h2>What is Image Conversion?</h2>
-        <p>Image conversion is the process of changing an image file from one format to another. For example, you might want to convert a PNG file to a JPG file. Different formats have different uses, and choosing the right format can significantly impact your image quality and compatibility. By converting your images, you can ensure they are compatible with various devices, applications, and online platforms.</p>
+        <h2>¿Qué es la Conversión de Imágenes?</h2>
+        <p>La conversión de imágenes es el proceso de cambiar un archivo de imagen de un formato a otro. Por ejemplo, podrías querer convertir un archivo PNG a un archivo JPG. Diferentes formatos tienen diferentes usos, y elegir el formato correcto puede afectar significativamente la calidad y compatibilidad de tu imagen. Al convertir tus imágenes, puedes asegurarte de que sean compatibles con varios dispositivos, aplicaciones y plataformas en línea.</p>
     </div>
     <div class="info-section">
-        <h2>Why Convert Images?</h2>
-        <p>There are many reasons to convert images. Some formats, like PNG, are great for high-quality graphics, while others, like JPG, are better for photographs. Converting images can help reduce file sizes, making them load faster on websites, which is crucial for user experience and SEO. Additionally, smaller file sizes help save storage space. It also ensures your images look their best, whether you're sharing them online or preparing them for print. By converting images, you can also make them suitable for different applications, such as social media, email, or web design.</p>
+        <h2>¿Por Qué Convertir Imágenes?</h2>
+        <p>Hay muchas razones para convertir imágenes. Algunos formatos, como PNG, son excelentes para gráficos de alta calidad, mientras que otros, como JPG, son mejores para fotografías. Convertir imágenes puede ayudar a reducir el tamaño de los archivos, haciendo que se carguen más rápido en los sitios web, lo cual es crucial para la experiencia del usuario y el SEO. Además, los tamaños de archivo más pequeños ayudan a ahorrar espacio de almacenamiento. También asegura que tus imágenes se vean lo mejor posible, ya sea que las compartas en línea o las prepares para imprimir. Al convertir imágenes, también puedes hacerlas adecuadas para diferentes aplicaciones, como redes sociales, correo electrónico o diseño web.</p>
     </div>
     <div class="info-section">
-        <h2>How to Use Our Image Conversion Tool</h2>
-        <p>Using our image conversion tool is simple and straightforward. Just upload your image, choose the format you want, and click "Convert!" You can convert images to popular formats like PNG, JPG, JPEG, BMP, TIFF, and WEBP. Our tool ensures your images maintain their quality during conversion, so you don't have to worry about losing important details.</p>
-        <p>In addition, our image conversion tool is designed with user-friendliness in mind. Whether you are a professional photographer needing to convert a batch of images or a casual user wanting to change a single photo, our tool caters to all needs. Plus, it works across all devices, making it accessible anywhere, anytime.</p>
+        <h2>Cómo Usar Nuestra Herramienta de Conversión de Imágenes</h2>
+        <p>Usar nuestra herramienta de conversión de imágenes es simple y directo. Solo sube tu imagen, elige el formato que deseas y haz clic en "¡Convertir!". Puedes convertir imágenes a formatos populares como PNG, JPG, JPEG, BMP, TIFF y WEBP. Nuestra herramienta asegura que tus imágenes mantengan su calidad durante la conversión, por lo que no tienes que preocuparte por perder detalles importantes.</p>
+        <p>Además, nuestra herramienta de conversión de imágenes está diseñada pensando en la facilidad de uso. Ya seas un fotógrafo profesional que necesita convertir un lote de imágenes o un usuario casual que desea cambiar una sola foto, nuestra herramienta satisface todas las necesidades. Además, funciona en todos los dispositivos, lo que la hace accesible en cualquier lugar y en cualquier momento.</p>
     </div>
     <div class="info-section">
-        <h2>Benefits of Using Our Image Conversion Tool</h2>
-        <p>Our image conversion tool offers numerous benefits:</p>
+        <h2>Beneficios de Usar Nuestra Herramienta de Conversión de Imágenes</h2>
+        <p>Nuestra herramienta de conversión de imágenes ofrece numerosos beneficios:</p>
         <ul>
-            <li><strong>Fast and Efficient:</strong> Convert images quickly without compromising quality.</li>
-            <li><strong>Multiple Formats Supported:</strong> Easily switch between various formats to suit your needs.</li>
-            <li><strong>Online Accessibility:</strong> No software installation required. Access the tool directly from your web browser.</li>
-            <li><strong>User-Friendly Interface:</strong> Intuitive design that makes converting images easy for everyone.</li>
-            <li><strong>High-Quality Output:</strong> Ensure your images look sharp and vibrant after conversion.</li>
+            <li><strong>Rápida y Eficiente:</strong> Convierte imágenes rápidamente sin comprometer la calidad.</li>
+            <li><strong>Múltiples Formatos Admitidos:</strong> Cambia fácilmente entre varios formatos para satisfacer tus necesidades.</li>
+            <li><strong>Accesibilidad en Línea:</strong> No se requiere instalación de software. Accede a la herramienta directamente desde tu navegador web.</li>
+            <li><strong>Interfaz Amigable:</strong> Diseño intuitivo que hace que la conversión de imágenes sea fácil para todos.</li>
+            <li><strong>Salida de Alta Calidad:</strong> Asegura que tus imágenes se vean nítidas y vibrantes después de la conversión.</li>
         </ul>
     </div>
     <div class="info-section">
-        <h2>Common Use Cases for Image Conversion</h2>
-        <p>Image conversion is essential for various scenarios:</p>
+        <h2>Casos de Uso Comunes para la Conversión de Imágenes</h2>
+        <p>La conversión de imágenes es esencial para varios escenarios:</p>
         <ul>
-            <li><strong>Web Optimization:</strong> Convert images to formats that load quickly and improve website performance.</li>
-            <li><strong>Social Media Sharing:</strong> Adjust image sizes and formats to meet platform requirements.</li>
-            <li><strong>Professional Printing:</strong> Prepare images in high-quality formats for print projects.</li>
-            <li><strong>Digital Marketing:</strong> Enhance your visual content for ads and campaigns by using the right formats.</li>
+            <li><strong>Optimización Web:</strong> Convierte imágenes a formatos que se carguen rápidamente y mejoren el rendimiento del sitio web.</li>
+            <li><strong>Compartir en Redes Sociales:</strong> Ajusta el tamaño y formato de las imágenes para cumplir con los requisitos de la plataforma.</li>
+            <li><strong>Impresión Profesional:</strong> Prepara imágenes en formatos de alta calidad para proyectos de impresión.</li>
+            <li><strong>Marketing Digital:</strong> Mejora tu contenido visual para anuncios y campañas utilizando los formatos correctos.</li>
         </ul>
     </div>
 </div>
