@@ -2,21 +2,16 @@
 import base64
 from flask import Flask, abort, g, jsonify, redirect, render_template, request, send_file, send_from_directory, url_for
 from jinja2 import TemplateNotFound
-from PIL import Image, ImageEnhance, ImageFilter, ImageOps, ImageDraw, ImageFont, ImageColor
-from html2image import Html2Image
+from PIL import Image, ImageFilter
 from all_blog_data import blogs_list
 import io
 import time
 import uuid
 import os
-import numpy as np
-import json
-import cv2
 from rembg import remove
 
 
 app = Flask(__name__)
-hti = Html2Image()
 
 # At the top of your file, add:
 supported_languages = ['en', 'hi', 'fr', 'zh', 'es']  # Add more as needed
@@ -61,31 +56,6 @@ def localized_route(lang, subpath):
             return render_template(f'en/{subpath}.html')
         else:
             abort(404)
-
-def process_image(image_file):
-    try:
-        # Open the image file
-        image = Image.open(image_file)
-        img_format = image.format
-        
-        # Optionally resize the image to a smaller dimension (e.g., max width/height = 1024)
-        max_dimension = 1024
-        if max(image.size) > max_dimension:
-            ratio = max_dimension / float(max(image.size))
-            new_size = tuple([int(x * ratio) for x in image.size])
-            image = image.resize(new_size, Image.LANCZOS)
-
-        # Compress the image
-        img_io = io.BytesIO()
-        image.save(img_io, format=img_format, optimize=True, quality=50)
-        img_io.seek(0)
-
-        # Generate a unique filename
-        unique_filename = f"{uuid.uuid4().hex}_{int(time.time())}.{img_format.lower()}"
-
-        return img_io, img_format, unique_filename
-    except Exception as e:
-        raise e
 
 @app.route('/')
 @app.route('/<lang>/')

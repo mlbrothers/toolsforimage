@@ -1,9 +1,6 @@
 Flask
 Pillow
 uuid
-html2image
-numpy
-opencv-python
 onnxruntime
 rembg
 gunicorn
