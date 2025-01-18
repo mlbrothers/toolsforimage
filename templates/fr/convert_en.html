@@ -10,7 +10,7 @@
 <h1>Outil de Conversion de Format d'Image Gratuit</h1>
 <p>Convertissez facilement votre image dans un autre format. Téléchargez une image et sélectionnez le format de sortie souhaité.</p>
 <p>Formats pris en charge : PNG, JPG, JPEG, BMP, TIFF, WEBP</p>
-<form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
+<form id="conversion-form" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
     <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Télécharger depuis l'ordinateur</button>
     <br>
@@ -26,9 +26,8 @@
         <option value="ico">ICO</option>
     </select>
     <br>
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convertir !</button>
+    <button type="button" class="convert-button" onclick="convertImage()">Convertir !</button>
 </form>
-
 <div class="info-container">
     <div class="info-section">
         <h2>Qu'est-ce que la Conversion d'Image ?</h2>
@@ -66,6 +65,7 @@
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/gh/WangYuLue/image-conversion/build/conversion.js"></script>
 <script>
     function validateImageSelection() {
         const imageUpload = document.getElementById('image-upload');
@@ -86,6 +86,34 @@
                 imagePreview.style.display = 'block';
             }
             reader.readAsDataURL(file);
+        }
+    }
+
+    async function convertImage() {
+        const fileInput = document.getElementById('image-upload');
+        const outputFormat = document.getElementById('output-format').value;
+
+        if (!fileInput.files || fileInput.files.length === 0) {
+            alert('Please select an image to upload.');
+            return;
+        }
+
+        const file = fileInput.files[0];
+        const mimeType = `image/${outputFormat}`;
+
+        try {
+            const convertedBlob = await imageConversion.compress(file, {
+                type: mimeType,
+                quality: 0.95 // Adjust quality as needed
+            });
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(convertedBlob);
+            downloadLink.download = `converted_image.${outputFormat}`;
+            downloadLink.click();
+        } catch (error) {
+            console.error('Error converting image:', error);
+            alert('An error occurred while converting the image.');
         }
     }
 </script>

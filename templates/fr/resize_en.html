@@ -10,7 +10,7 @@
 <h1>Outil Gratuit de Redimensionnement d'Image</h1>
 <p>Redimensionnez votre image sans effort en spécifiant les dimensions en pixels ou en pourcentages. Vous pouvez choisir de maintenir ou d'ignorer le rapport d'aspect.</p>
 
-<form id="resize-form" action="/resize-image" method="post" enctype="multipart/form-data">
+<form id="resize-form" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
     <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Télécharger l'Image</button>
     <br>
@@ -24,17 +24,17 @@
             <input type="radio" name="resizeType" value="percentage" onchange="updateDimensionLabels()"> Pourcentage
         </label>
         <br><br>
-        <label for="width"><span id="widthLabel">Largeur (px) :</span></label>
+        <label for="width"><span id="widthLabel">Largeur (px):</span></label>
         <input type="number" id="width" name="width" min="1" required>
-        <label for="height"><span id="heightLabel">Hauteur (px) :</span></label>
+        <label for="height"><span id="heightLabel">Hauteur (px):</span></label>
         <input type="number" id="height" name="height" min="1" required>
         <br><br>
         <label>
-            <input type="checkbox" id="lockRatio" checked> Verrouiller le rapport d'aspect
+            <input type="checkbox" id="lockRatio" checked> Verrouiller le ratio d'aspect
         </label>
     </div>
     <br>
-    <button type="submit" class="resize-button" onclick="return validateImageSelection();">Redimensionner l'Image</button>
+    <button type="button" class="resize-button" onclick="resizeImage()">Redimensionner l'Image</button>
 </form>
 
 <div class="info-container">
@@ -227,6 +227,45 @@
             widthLabel.textContent = 'Width (%):';
             heightLabel.textContent = 'Height (%):';
         }
+    }
+
+    function resizeImage() {
+        const imagePreview = document.getElementById('image-preview');
+        if (!imagePreview.src) {
+            alert('Please upload an image first.');
+            return;
+        }
+
+        const resizeType = document.querySelector('input[name="resizeType"]:checked').value;
+        const widthInput = document.getElementById('width').value;
+        const heightInput = document.getElementById('height').value;
+
+        let newWidth, newHeight;
+
+        if (resizeType === 'pixel') {
+            newWidth = parseInt(widthInput, 10);
+            newHeight = parseInt(heightInput, 10);
+        } else {
+            const widthPercentage = parseFloat(widthInput) / 100;
+            const heightPercentage = parseFloat(heightInput) / 100;
+            newWidth = Math.round(originalWidth * widthPercentage);
+            newHeight = Math.round(originalHeight * heightPercentage);
+        }
+
+        const canvas = document.createElement('canvas');
+        canvas.width = newWidth;
+        canvas.height = newHeight;
+        const ctx = canvas.getContext('2d');
+
+        const img = new Image();
+        img.onload = function() {
+            ctx.drawImage(img, 0, 0, newWidth, newHeight);
+            const downloadLink = document.createElement('a');
+            downloadLink.href = canvas.toDataURL('image/png');
+            downloadLink.download = 'resized_image.png';
+            downloadLink.click();
+        }
+        img.src = imagePreview.src;
     }
 </script>
 {% endblock %}

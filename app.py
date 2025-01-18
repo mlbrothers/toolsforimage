@@ -101,67 +101,12 @@ def image_compression(lang='en'):
         return redirect('/en/image-compression')
     return render_template(f'{lang}/compress_en.html')
 
-@app.route('/compress-image', methods=['POST'])
-@app.route('/<lang>/compress-image', methods=['POST'])
-def compress_image(lang='en'):
-    if lang not in supported_languages:
-        return redirect('/en/compress-image')
-
-    if 'image' not in request.files:
-        return render_template(f'{lang}/error.html', error="No image file provided"), 400
-
-    image_file = request.files['image']
-    if image_file.filename == '':
-        return render_template(f'{lang}/error.html', error="No selected file"), 400
-
-    try:
-        img_io, img_format, unique_filename = process_image(image_file)
-        return send_file(img_io, mimetype=f'image/{img_format.lower()}', as_attachment=True, download_name=unique_filename)
-    except Exception as e:
-        return render_template(f'{lang}/error.html', error=str(e)), 500
-
 @app.route('/image-rotate')
 @app.route('/<lang>/image-rotate')
 def image_rotate(lang='en'):
     if lang not in supported_languages:
         return redirect('/en/image-rotate')
     return render_template(f'{lang}/rotate_en.html')
-
-@app.route('/rotate-image', methods=['POST'])
-@app.route('/<lang>/rotate-image', methods=['POST'])
-def rotate_image(lang='en'):
-    if lang not in supported_languages:
-        return redirect('/en/rotate-image')
-
-    if 'image' not in request.files:
-        return render_template(f'{lang}/error.html', error="No image file provided"), 400
-
-    image_file = request.files['image']
-    if image_file.filename == '':
-        return render_template(f'{lang}/error.html', error="No selected file"), 400
-
-    try:
-        # Open the image file
-        image = Image.open(image_file)
-        img_format = image.format
-
-        # Get rotation angle from form data
-        rotation = int(request.form.get('rotation', 0))
-
-        # Rotate the image
-        rotated_image = image.rotate(-rotation, expand=True)
-
-        # Save the rotated image
-        img_io = io.BytesIO()
-        rotated_image.save(img_io, format=img_format)
-        img_io.seek(0)
-
-        # Generate a unique filename
-        unique_filename = f"rotated_{uuid.uuid4().hex}_{int(time.time())}.{img_format.lower()}"
-
-        return send_file(img_io, mimetype=f'image/{img_format.lower()}', as_attachment=True, download_name=unique_filename)
-    except Exception as e:
-        return render_template(f'{lang}/error.html', error=str(e)), 500
 
 @app.route('/image-crop')
 @app.route('/<lang>/image-crop')
@@ -170,95 +115,6 @@ def image_crop(lang='en'):
         return redirect('/en/image-crop')
     return render_template(f'{lang}/crop_en.html')
 
-@app.route('/crop-image', methods=['POST'])
-@app.route('/<lang>/crop-image', methods=['POST'])
-def crop_image(lang='en'):
-    if lang not in supported_languages:
-        return redirect('/en/crop-image')
-
-    if 'image' not in request.files:
-        return render_template(f'{lang}/error.html', error="No image file provided"), 400
-
-    image_file = request.files['image']
-    if image_file.filename == '':
-        return render_template(f'{lang}/error.html', error="No selected file"), 400
-
-    try:
-        # Open the image file
-        image = Image.open(image_file)
-        img_format = image.format
-
-        # Get crop dimensions from form data
-        x = int(request.form.get('crop-x', 0))
-        y = int(request.form.get('crop-y', 0))
-        width = int(request.form.get('crop-width', 0))
-        height = int(request.form.get('crop-height', 0))
-
-        # Crop the image
-        cropped_image = image.crop((x, y, x + width, y + height))
-
-        # Save the cropped image
-        img_io = io.BytesIO()
-        cropped_image.save(img_io, format=img_format)
-        img_io.seek(0)
-
-        # Generate a unique filename
-        unique_filename = f"cropped_{uuid.uuid4().hex}_{int(time.time())}.{img_format.lower()}"
-
-        return send_file(img_io, mimetype=f'image/{img_format.lower()}', as_attachment=True, download_name=unique_filename)
-    except Exception as e:
-        return render_template(f'{lang}/error.html', error=str(e)), 500
-
-
-@app.route('/convert-url-to-image', methods=['POST'])
-@app.route('/<lang>/convert-url-to-image', methods=['POST'])
-def convert_url_to_image(lang='en'):
-    if lang not in supported_languages:
-        return redirect('/en/convert-url-to-image')
-
-    url = request.form.get('url')
-    if not url:
-        return render_template(f'{lang}/error.html', error="No URL provided"), 400
-
-    try:
-        # Generate a unique filename for download purposes
-        unique_filename = f"webpage_{uuid.uuid4().hex}_{int(time.time())}.png"
-
-        # Create a BytesIO object to store the image in memory
-        img_io = io.BytesIO()
-
-        # Convert URL to image directly into BytesIO using Html2Image
-        hti = Html2Image(
-            output_path='.'
-        )
-        
-        # Adding headless Chrome options to avoid dbus and GPU errors
-        hti.screenshot(
-            url=url, 
-            save_as=unique_filename
-        )
-        
-        # Write the generated image file to BytesIO
-        with open(unique_filename, 'rb') as f:
-            img_io.write(f.read())
-        
-        # Remove the temporary file after reading it
-        os.remove(unique_filename)
-
-        # Reset the pointer to the start of the BytesIO object
-        img_io.seek(0)
-        
-        # Send the image directly from BytesIO
-        return send_file(
-            img_io,
-            mimetype='image/png',
-            as_attachment=True,
-            download_name=unique_filename
-        )
-
-    except Exception as e:
-        return render_template(f'{lang}/error.html', error=str(e)), 500
-
 @app.route('/image-resize')
 @app.route('/<lang>/image-resize')
 def image_resize(lang='en'):
@@ -266,129 +122,12 @@ def image_resize(lang='en'):
         return redirect('/en/image-resize')
     return render_template(f'{lang}/resize_en.html')
 
-@app.route('/resize-image', methods=['POST'])
-@app.route('/<lang>/resize-image', methods=['POST'])
-def resize_image(lang='en'):
-    if lang not in supported_languages:
-        return redirect('/en/resize-image')
-
-    if 'image' not in request.files:
-        return render_template(f'{lang}/error.html', error="No image file provided"), 400
-
-    image_file = request.files['image']
-    if image_file.filename == '':
-        return render_template(f'{lang}/error.html', error="No selected file"), 400
-
-    try:
-        # Open the image file
-        image = Image.open(image_file)
-        img_format = image.format
-
-        # Get resize dimensions and type from form data
-        width = int(request.form.get('width', 0))
-        height = int(request.form.get('height', 0))
-        resize_type = request.form.get('resizeType', 'pixel')
-
-        # Resize the image
-        if resize_type == 'percentage':
-            width = int(image.width * (width / 100))
-            height = int(image.height * (height / 100))
-
-        resized_image = image.resize((width, height), Image.LANCZOS)
-
-        # Save the resized image
-        img_io = io.BytesIO()
-        resized_image.save(img_io, format=img_format)
-        img_io.seek(0)
-
-        # Generate a unique filename
-        unique_filename = f"resized_{uuid.uuid4().hex}_{int(time.time())}.{img_format.lower()}"
-
-        return send_file(img_io, mimetype=f'image/{img_format.lower()}', as_attachment=True, download_name=unique_filename)
-    except Exception as e:
-        return render_template(f'{lang}/error.html', error=str(e)), 500
-
 @app.route('/image-effects')
 @app.route('/<lang>/image-effects')
 def image_effects(lang='en'):
     if lang not in supported_languages:
         return redirect('/en/image-effects')
     return render_template(f'{lang}/image_effects_en.html')
-
-@app.route('/apply-effects', methods=['POST'])
-@app.route('/<lang>/apply-effects', methods=['POST'])
-def apply_effects(lang='en'):
-    if lang not in supported_languages:
-        return redirect('/en/apply-effects')
-
-    if 'image' not in request.files:
-        return render_template(f'{lang}/error.html', error="No image file provided"), 400
-
-    image_file = request.files['image']
-    if image_file.filename == '':
-        return render_template(f'{lang}/error.html', error="No selected file"), 400
-
-    try:
-        # Open the image file
-        image = Image.open(image_file)
-        img_format = image.format
-
-        # Get all active effects from the form data
-        active_effects = request.form.get('effect', '').split(',')
-        print(active_effects)
-        # Apply all active effects
-        if 'grayscale' in active_effects:
-            image = image.convert('L').convert('RGB')
-        
-        if 'blur' in active_effects:
-            image = image.filter(ImageFilter.GaussianBlur(radius=5))
-        
-        if 'sharpen' in active_effects:
-            enhancer = ImageEnhance.Sharpness(image)
-            image = enhancer.enhance(2.0)
-        
-        if 'sepia' in active_effects:
-            sepia_matrix = [
-                0.393, 0.769, 0.189, 0,
-                0.349, 0.686, 0.168, 0,
-                0.272, 0.534, 0.131, 0
-            ]
-            image = image.convert('RGB', matrix=sepia_matrix)
-        
-        if 'invert' in active_effects:
-            if image.mode == 'RGBA':
-                r, g, b, a = image.split()
-                rgb_image = Image.merge('RGB', (r, g, b))
-                inverted_image = ImageOps.invert(rgb_image)
-                r2, g2, b2 = inverted_image.split()
-                image = Image.merge('RGBA', (r2, g2, b2, a))
-            else:
-                image = ImageOps.invert(image)
-        
-        if 'brightness' in active_effects:
-            enhancer = ImageEnhance.Brightness(image)
-            image = enhancer.enhance(1.5)
-        
-        if 'contrast' in active_effects:
-            enhancer = ImageEnhance.Contrast(image)
-            image = enhancer.enhance(1.5)
-        
-        if 'saturation' in active_effects:
-            enhancer = ImageEnhance.Color(image)
-            image = enhancer.enhance(1.5)
-
-        # Save the edited image
-        img_io = io.BytesIO()
-        image.save(img_io, format=img_format)
-        img_io.seek(0)
-
-        # Generate a unique filename
-        effects_applied = '_'.join(active_effects) if active_effects else 'no_effect'
-        unique_filename = f"{effects_applied}_{uuid.uuid4().hex}_{int(time.time())}.{img_format.lower()}"
-
-        return send_file(img_io, mimetype=f'image/{img_format.lower()}', as_attachment=True, download_name=unique_filename)
-    except Exception as e:
-        return render_template(f'{lang}/error.html', error=str(e)), 500
 
 @app.route('/convert-image-format')
 @app.route('/<lang>/convert-image-format')
@@ -432,90 +171,6 @@ def image_watermarking(lang='en'):
         return redirect('/en/image-watermarking')
     return render_template(f'{lang}/watermark_en.html')
 
-@app.route('/watermark-image', methods=['POST'])
-@app.route('/<lang>/watermark-image', methods=['POST'])
-def watermark_image(lang='en'):
-    if lang not in supported_languages:
-        return redirect('/en/watermark-image')
-
-    if 'image' not in request.files:
-        return jsonify({'error': 'No image file provided'}), 400
-
-    image_file = request.files['image']
-    if image_file.filename == '':
-        return jsonify({'error': 'No selected file'}), 400
-
-    watermark_text = request.form.get('watermarkText', '')
-    watermark_color = request.form.get('watermarkColor', '#000000')
-    watermark_opacity = float(request.form.get('watermarkOpacity', 0.5))
-    watermark_font_size = int(request.form.get('watermarkFontSize', 20))
-    watermark_position = request.form.get('watermarkPosition', 'bottom-right')
-    watermark_font_style = request.form.get('watermarkFontStyle', 'normal')
-
-    try:
-        # Open the image file
-        image = Image.open(image_file)
-
-        # Create a drawing context
-        draw = ImageDraw.Draw(image)
-
-        # Set up the font
-        font = ImageFont.load_default()
-        font = font.font_variant(size=watermark_font_size)
-
-        # Calculate text size
-        text_bbox = draw.textbbox((0, 0), watermark_text, font=font)
-        text_width = text_bbox[2] - text_bbox[0]
-        text_height = text_bbox[3] - text_bbox[1]
-
-        # Calculate position
-        if watermark_position == 'top-left':
-            x, y = 10, 10
-        elif watermark_position == 'top-right':
-            x, y = image.width - text_width - 10, 10
-        elif watermark_position == 'bottom-left':
-            x, y = 10, image.height - text_height - 10
-        elif watermark_position == 'bottom-right':
-            x, y = image.width - text_width - 10, image.height - text_height - 10
-        else:  # center
-            x, y = (image.width - text_width) // 2, (image.height - text_height) // 2
-
-        # Apply watermark
-        color = ImageColor.getrgb(watermark_color)
-        opacity = int(255 * watermark_opacity)
-
-        # Create a new image for the watermark text
-        txt = Image.new('RGBA', image.size, (255, 255, 255, 0))
-        d = ImageDraw.Draw(txt)
-
-        # Draw the text
-        d.text((x, y), watermark_text, font=font, fill=color + (opacity,))
-
-        # Applying font style effects
-        if watermark_font_style == 'bold':
-            d.text((x-1, y), watermark_text, font=font, fill=color + (opacity,))
-            d.text((x+1, y), watermark_text, font=font, fill=color + (opacity,))
-        elif watermark_font_style == 'italic':
-            # Simulate italic by shearing the text
-            txt = txt.transform(txt.size, Image.AFFINE, (1, 0.2, 0, 0, 1, 0), resample=Image.BICUBIC)
-        elif watermark_font_style == 'bold-italic':
-            d.text((x-1, y), watermark_text, font=font, fill=color + (opacity,))
-            d.text((x+1, y), watermark_text, font=font, fill=color + (opacity,))
-            txt = txt.transform(txt.size, Image.AFFINE, (1, 0.2, 0, 0, 1, 0), resample=Image.BICUBIC)
-
-        # Combine the original image with the watermark text
-        watermarked = Image.alpha_composite(image.convert('RGBA'), txt)
-
-        # Save the image to a BytesIO object
-        img_io = io.BytesIO()
-        watermarked.convert('RGB').save(img_io, format='PNG')
-        img_io.seek(0)
-
-        return send_file(img_io, mimetype='image/png')
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-
-
 @app.route('/blur-face')
 @app.route('/<lang>/blur-face')
 def image_blur(lang='en'):
@@ -523,112 +178,12 @@ def image_blur(lang='en'):
         return redirect('/en/blur-face')
     return render_template(f'{lang}/blur_en.html')
 
-@app.route('/apply-blur', methods=['POST'])
-@app.route('/<lang>/apply-blur', methods=['POST'])
-def apply_blur(lang='en'):
-    if lang not in supported_languages:
-        return redirect('/en/apply-blur')
-
-    try:
-        # Get blur data from the request
-        blur_data = request.json
-        # Get the image data from the request
-        image_data = blur_data.get('image')
-        if not image_data:
-            return render_template(f'{lang}/error.html', error="No image data provided"), 400
-
-        # Strip base64 prefix if present and decode
-        try:
-            base64_data = image_data.split(',')[1] if ',' in image_data else image_data
-            image = Image.open(io.BytesIO(base64.b64decode(base64_data)))
-        except Exception as decode_err:
-            return render_template(f'{lang}/error.html', error=f"Error decoding base64 image data: {str(decode_err)}"), 500
-        
-        # Check the format of the image
-        img_format = image.format or 'PNG'  # Default to PNG if format is not detected
-
-        # Calculate blur coordinates
-        x = int(blur_data['x'] * image.width)
-        y = int(blur_data['y'] * image.height)
-        width = int(blur_data['width'] * image.width)
-        height = int(blur_data['height'] * image.height)
-
-        # Ensure the region to blur is within the image boundaries
-        x = max(0, min(x, image.width - 1))
-        y = max(0, min(y, image.height - 1))
-        width = max(1, min(width, image.width - x))
-        height = max(1, min(height, image.height - y))
-
-        # Convert PIL Image to OpenCV format
-        cv_image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
-
-        # Apply blur to the specified region
-        roi = cv_image[y:y+height, x:x+width]
-        if roi.size == 0:
-            return render_template(f'{lang}/error.html', error="Invalid blur region"), 400
-        blurred_roi = cv2.GaussianBlur(roi, (157, 157), 0)
-        cv_image[y:y+height, x:x+width] = blurred_roi
-
-        # Convert back to PIL Image
-        blurred_image = Image.fromarray(cv2.cvtColor(cv_image, cv2.COLOR_BGR2RGB))
-
-        # Save the image to a BytesIO stream
-        img_io = io.BytesIO()
-        blurred_image.save(img_io, format=img_format)
-        img_io.seek(0)
-
-        # Generate a unique filename
-        unique_filename = f"blurred_{uuid.uuid4().hex}_{int(time.time())}.{img_format.lower()}"
-
-        return send_file(img_io, mimetype=f'image/{img_format.lower()}', as_attachment=True, download_name=unique_filename)
-    except Exception as e:
-        print(f"Error in apply_blur function: {str(e)}")
-        return render_template(f'{lang}/error.html', error=str(e)), 500
-
-
 @app.route('/remove-background')
 @app.route('/<lang>/remove-background')
 def remove_background_page(lang='en'):
     if lang not in supported_languages:
         return redirect('/en/remove-background')
     return render_template(f'{lang}/remove-background.html')
-
-@app.route('/remove-background', methods=['POST'])
-@app.route('/<lang>/remove-background', methods=['POST'])
-def remove_background(lang='en'):
-    if lang not in supported_languages:
-        return redirect('/en/remove-background')
-
-    if 'image' not in request.files:
-        return render_template(f'{lang}/error.html', error="No image file provided"), 400
-
-    image_file = request.files['image']
-    if image_file.filename == '':
-        return render_template(f'{lang}/error.html', error="No selected file"), 400
-
-    try:
-        # Read the input image
-        input_image = image_file.read()
-
-        # Remove the background
-        output_image = remove(input_image)
-
-        # Create a BytesIO object to store the output image
-        img_io = io.BytesIO(output_image)
-        img_io.seek(0)
-
-        # Generate a unique filename
-        unique_filename = f"no_bg_{uuid.uuid4().hex}_{int(time.time())}.png"
-
-        return send_file(
-            img_io,
-            mimetype='image/png',
-            as_attachment=True,
-            download_name=unique_filename
-        )
-    except Exception as e:
-        return render_template(f'{lang}/error.html', error=str(e)), 500
-
 
 @app.route('/blur-background')
 @app.route('/<lang>/blur-background')

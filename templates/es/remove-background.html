@@ -9,13 +9,14 @@
 {% block content %}
 <h1>Eliminador de Fondos en Línea Gratuito con IA</h1>
 <p>Experimenta el poder de la inteligencia artificial en la edición de imágenes. Nuestros algoritmos avanzados de IA hacen que sea increíblemente fácil eliminar fondos de tus imágenes con una precisión y eficiencia sin igual. Simplemente sube una imagen y deja que nuestro modelo de aprendizaje automático de última generación haga el resto.</p>
-<form id="background-removal-form" action="/remove-background" method="post" enctype="multipart/form-data">
+<form id="remove-bg-form" action="#" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
     <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir Imagen</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Vista previa de la imagen" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="Vista Previa de la Imagen" style="display: none;">
+    <canvas id="canvas" style="display: none;"></canvas>
     <br>
-    <button type="submit" class="remove-bg-button" onclick="return validateImageSelection();">Eliminar Fondo con IA</button>
+    <button type="button" class="remove-bg-button" onclick="removeBackground()">Eliminar Fondo con IA</button>
 </form>
 
 <div class="info-container">
@@ -118,27 +119,74 @@
     }
 </style>
 
+<!-- Include MediaPipe Selfie Segmentation -->
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js"></script>
 <script>
-    function validateImageSelection() {
-        const imageUpload = document.getElementById('image-upload');
-        if (!imageUpload.value) {
-            alert('Please select an image to upload.');
-            return false;
-        }
-        return true;
-    }
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    let img;
 
+    // Initialize MediaPipe Selfie Segmentation
+    const selfieSegmentation = new SelfieSegmentation({
+        locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${file}`
+    });
+
+    selfieSegmentation.setOptions({
+        modelSelection: 1, // Use general model
+    });
+
+    selfieSegmentation.onResults((results) => {
+        // Draw the original image on the canvas
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        // Get the segmentation mask
+        const mask = results.segmentationMask;
+
+        // Apply blur to the background
+        ctx.globalCompositeOperation = 'destination-over';
+        ctx.filter = 'blur(10px)';
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        // Restore the foreground
+        ctx.globalCompositeOperation = 'destination-in';
+        ctx.drawImage(mask, 0, 0, canvas.width, canvas.height);
+
+        // Reset composite operation
+        ctx.globalCompositeOperation = 'source-over';
+    });
+
+    // Handle image upload
     function previewImage(event) {
         const imagePreview = document.getElementById('image-preview');
         const file = event.target.files[0];
         if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                imagePreview.src = e.target.result;
+            img = new Image();
+            img.onload = function () {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                imagePreview.src = img.src;
                 imagePreview.style.display = 'block';
             }
-            reader.readAsDataURL(file);
+            img.src = URL.createObjectURL(file);
         }
+    }
+
+    // Apply background blur
+    async function removeBackground() {
+        if (!img) {
+            alert('Please upload an image first.');
+            return;
+        }
+
+        // Send the image to MediaPipe for processing
+        await selfieSegmentation.send({ image: img });
+
+        // Download the blurred image
+        const imageData = canvas.toDataURL('image/png');
+        const a = document.createElement('a');
+        a.href = imageData;
+        a.download = 'remove_background.png';
+        a.click();
     }
 </script>
 {% endblock %}

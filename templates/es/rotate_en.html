@@ -11,19 +11,18 @@
 <h1>Herramienta Gratuita para Rotar Imágenes</h1>
 <p>Rota imágenes fácilmente con ToolsForImage. Sube una imagen, previsualiza la rotación y descarga el resultado.</p>
 <p>Sube tu archivo de imagen y rótalo al instante. Elige tu imagen:</p>
-<form id="rotation-form" action="/rotate-image" method="post" enctype="multipart/form-data">
+<form id="rotation-form" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;"
         onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir desde
-        Computadora</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir desde la Computadora</button>
     <br>
     <div class="image-preview-container">
-        <img id="image-preview" class="image-preview" src="#" alt="Vista previa de la imagen">
+        <img id="image-preview" class="image-preview" src="#" alt="Vista Previa de la Imagen">
     </div>
     <br>
     <div class="rotate-controls">
         <button type="button" class="rotate-button" onclick="rotateImage(-90)">
-            Rotar a la Izquierda
+            Girar a la Izquierda
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 style="vertical-align: -4px;">
@@ -32,7 +31,7 @@
             </svg>
         </button>
         <button type="button" class="rotate-button" onclick="rotateImage(90)">
-            Rotar a la Derecha
+            Girar a la Derecha
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 style="vertical-align: -4px;">
@@ -42,9 +41,7 @@
         </button>
     </div>
     <br>
-    <input type="hidden" id="rotation-angle" name="rotation" value="0">
-    <button type="submit" class="rotate-button" onclick="return validateImageSelection();">Descargar Imagen
-        Rotada</button>
+    <button type="button" class="rotate-button" onclick="downloadRotatedImage()">Descargar Imagen Rotada</button>
 </form>
 
 <div class="info-container">
@@ -206,6 +203,7 @@
 
 <script>
     let rotation = 0;
+    let img, canvas, ctx;
 
     function validateImageSelection() {
         const imageUpload = document.getElementById('image-upload');
@@ -224,17 +222,27 @@
             reader.onload = function (e) {
                 imagePreview.src = e.target.result;
                 imagePreview.style.display = 'block';
-                resetRotation();
+                img = new Image();
+                img.onload = function () {
+                    canvas = document.createElement('canvas');
+                    ctx = canvas.getContext('2d');
+                    resetRotation();
+                }
+                img.src = e.target.result;
             }
             reader.readAsDataURL(file);
         }
     }
 
     function rotateImage(degrees) {
-        const imagePreview = document.getElementById('image-preview');
+        if (!img) {
+            alert('Please upload an image first.');
+            return;
+        }
+
         rotation = (rotation + degrees) % 360;
+        const imagePreview = document.getElementById('image-preview');
         imagePreview.style.transform = `rotate(${rotation}deg)`;
-        document.getElementById('rotation-angle').value = rotation;
 
         // Adjust container size based on rotation
         const container = document.querySelector('.image-preview-container');
@@ -249,8 +257,33 @@
         rotation = 0;
         const imagePreview = document.getElementById('image-preview');
         imagePreview.style.transform = 'rotate(0deg)';
-        document.getElementById('rotation-angle').value = 0;
         document.querySelector('.image-preview-container').style.height = 'auto';
+    }
+
+    function downloadRotatedImage() {
+        if (!img) {
+            alert('Please upload an image first.');
+            return;
+        }
+
+        // Create a canvas to draw the rotated image
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Translate and rotate the canvas
+        ctx.translate(canvas.width / 2, canvas.height / 2);
+        ctx.rotate((rotation * Math.PI) / 180);
+        ctx.drawImage(img, -img.width / 2, -img.height / 2);
+
+        // Reset the canvas transformation
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+        // Download the rotated image
+        const downloadLink = document.createElement('a');
+        downloadLink.href = canvas.toDataURL('image/png');
+        downloadLink.download = 'rotated_image.png';
+        downloadLink.click();
     }
 </script>
 {% endblock %}

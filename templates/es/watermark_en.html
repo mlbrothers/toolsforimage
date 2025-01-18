@@ -15,7 +15,7 @@
         <input type="file" id="imageUpload" accept="image/*">
         
         <label for="watermarkText">Texto de la Marca de Agua:</label>
-        <input type="text" id="watermarkText" placeholder="Ingresa el texto de la marca de agua">
+        <input type="text" id="watermarkText" placeholder="Ingrese el texto de la marca de agua">
         
         <label for="watermarkColor">Color de la Marca de Agua:</label>
         <input type="color" id="watermarkColor" value="#000000">
@@ -24,14 +24,14 @@
         <input type="range" id="watermarkOpacity" min="0" max="1" step="0.1" value="0.5">
         
         <label for="watermarkFontSize">Tamaño de la Fuente de la Marca de Agua:</label>
-        <input type="number" id="watermarkFontSize" min="8" value="20" placeholder="Tamaño de la fuente">
+        <input type="number" id="watermarkFontSize" min="8" value="20" placeholder="Tamaño de fuente">
         
         <label for="watermarkPosition">Posición de la Marca de Agua:</label>
         <select id="watermarkPosition">
-            <option value="top-left">Superior Izquierda</option>
-            <option value="top-right">Superior Derecha</option>
-            <option value="bottom-left">Inferior Izquierda</option>
-            <option value="bottom-right">Inferior Derecha</option>
+            <option value="top-left">Arriba a la Izquierda</option>
+            <option value="top-right">Arriba a la Derecha</option>
+            <option value="bottom-left">Abajo a la Izquierda</option>
+            <option value="bottom-right">Abajo a la Derecha</option>
             <option value="center">Centro</option>
         </select>
         
@@ -45,7 +45,7 @@
     </div>
 
     <div class="watermark-preview">
-        <img id="previewImage" src="" alt="Vista previa">
+        <img id="previewImage" src="" alt="Vista Previa">
     </div>
 
     <button class="button" id="downloadImage">Descargar Imagen con Marca de Agua</button>

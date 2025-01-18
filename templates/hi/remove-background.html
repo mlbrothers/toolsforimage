@@ -9,13 +9,14 @@
 {% block content %}
 <h1>मुफ्त AI-संचालित पृष्ठभूमि हटाने का उपकरण</h1>
 <p>छवि संपादन में कृत्रिम बुद्धिमत्ता की शक्ति का अनुभव करें। हमारे उन्नत AI एल्गोरिदम आपकी छवियों से पृष्ठभूमियों को हटाना बेहद आसान बनाते हैं, बिना किसी पूर्वाग्रह के सटीकता और दक्षता के साथ। बस एक छवि अपलोड करें, और हमारे अत्याधुनिक मशीन लर्निंग मॉडल को बाकी करने दें।</p>
-<form id="background-removal-form" action="/remove-background" method="post" enctype="multipart/form-data">
+<form id="remove-bg-form" action="#" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
     <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">छवि अपलोड करें</button>
     <br>
     <img id="image-preview" class="image-preview" src="#" alt="छवि पूर्वावलोकन" style="display: none;">
+    <canvas id="canvas" style="display: none;"></canvas>
     <br>
-    <button type="submit" class="remove-bg-button" onclick="return validateImageSelection();">AI के साथ पृष्ठभूमि हटाएँ</button>
+    <button type="button" class="remove-bg-button" onclick="removeBackground()">AI के साथ पृष्ठभूमि हटाएं</button>
 </form>
 
 <div class="info-container">
@@ -118,27 +119,74 @@
     }
 </style>
 
+<!-- Include MediaPipe Selfie Segmentation -->
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js"></script>
 <script>
-    function validateImageSelection() {
-        const imageUpload = document.getElementById('image-upload');
-        if (!imageUpload.value) {
-            alert('Please select an image to upload.');
-            return false;
-        }
-        return true;
-    }
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    let img;
 
+    // Initialize MediaPipe Selfie Segmentation
+    const selfieSegmentation = new SelfieSegmentation({
+        locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${file}`
+    });
+
+    selfieSegmentation.setOptions({
+        modelSelection: 1, // Use general model
+    });
+
+    selfieSegmentation.onResults((results) => {
+        // Draw the original image on the canvas
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        // Get the segmentation mask
+        const mask = results.segmentationMask;
+
+        // Apply blur to the background
+        ctx.globalCompositeOperation = 'destination-over';
+        ctx.filter = 'blur(10px)';
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        // Restore the foreground
+        ctx.globalCompositeOperation = 'destination-in';
+        ctx.drawImage(mask, 0, 0, canvas.width, canvas.height);
+
+        // Reset composite operation
+        ctx.globalCompositeOperation = 'source-over';
+    });
+
+    // Handle image upload
     function previewImage(event) {
         const imagePreview = document.getElementById('image-preview');
         const file = event.target.files[0];
         if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                imagePreview.src = e.target.result;
+            img = new Image();
+            img.onload = function () {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                imagePreview.src = img.src;
                 imagePreview.style.display = 'block';
             }
-            reader.readAsDataURL(file);
+            img.src = URL.createObjectURL(file);
         }
+    }
+
+    // Apply background blur
+    async function removeBackground() {
+        if (!img) {
+            alert('Please upload an image first.');
+            return;
+        }
+
+        // Send the image to MediaPipe for processing
+        await selfieSegmentation.send({ image: img });
+
+        // Download the blurred image
+        const imageData = canvas.toDataURL('image/png');
+        const a = document.createElement('a');
+        a.href = imageData;
+        a.download = 'remove_background.png';
+        a.click();
     }
 </script>
 {% endblock %}

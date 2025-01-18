@@ -9,13 +9,14 @@
 {% block content %}
 <h1>使用AI的免费在线背景去除工具</h1>
 <p>体验图像编辑中的人工智能力量。我们先进的AI算法使得从图像中去除背景变得异常简单，精度和效率无与伦比。只需上传图像，让我们最先进的机器学习模型来完成其余的工作。</p>
-<form id="background-removal-form" action="/remove-background" method="post" enctype="multipart/form-data">
+<form id="remove-bg-form" action="#" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">上传图像</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">上传图片</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="图像预览" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="图片预览" style="display: none;">
+    <canvas id="canvas" style="display: none;"></canvas>
     <br>
-    <button type="submit" class="remove-bg-button" onclick="return validateImageSelection();">使用AI去除背景</button>
+    <button type="button" class="remove-bg-button" onclick="removeBackground()">使用AI移除背景</button>
 </form>
 
 <div class="info-container">
@@ -118,27 +119,74 @@
     }
 </style>
 
+<!-- Include MediaPipe Selfie Segmentation -->
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js"></script>
 <script>
-    function validateImageSelection() {
-        const imageUpload = document.getElementById('image-upload');
-        if (!imageUpload.value) {
-            alert('Please select an image to upload.');
-            return false;
-        }
-        return true;
-    }
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    let img;
 
+    // Initialize MediaPipe Selfie Segmentation
+    const selfieSegmentation = new SelfieSegmentation({
+        locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${file}`
+    });
+
+    selfieSegmentation.setOptions({
+        modelSelection: 1, // Use general model
+    });
+
+    selfieSegmentation.onResults((results) => {
+        // Draw the original image on the canvas
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        // Get the segmentation mask
+        const mask = results.segmentationMask;
+
+        // Apply blur to the background
+        ctx.globalCompositeOperation = 'destination-over';
+        ctx.filter = 'blur(10px)';
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        // Restore the foreground
+        ctx.globalCompositeOperation = 'destination-in';
+        ctx.drawImage(mask, 0, 0, canvas.width, canvas.height);
+
+        // Reset composite operation
+        ctx.globalCompositeOperation = 'source-over';
+    });
+
+    // Handle image upload
     function previewImage(event) {
         const imagePreview = document.getElementById('image-preview');
         const file = event.target.files[0];
         if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                imagePreview.src = e.target.result;
+            img = new Image();
+            img.onload = function () {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                imagePreview.src = img.src;
                 imagePreview.style.display = 'block';
             }
-            reader.readAsDataURL(file);
+            img.src = URL.createObjectURL(file);
         }
+    }
+
+    // Apply background blur
+    async function removeBackground() {
+        if (!img) {
+            alert('Please upload an image first.');
+            return;
+        }
+
+        // Send the image to MediaPipe for processing
+        await selfieSegmentation.send({ image: img });
+
+        // Download the blurred image
+        const imageData = canvas.toDataURL('image/png');
+        const a = document.createElement('a');
+        a.href = imageData;
+        a.download = 'remove_background.png';
+        a.click();
     }
 </script>
 {% endblock %}

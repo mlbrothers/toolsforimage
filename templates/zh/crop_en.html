@@ -10,7 +10,7 @@
 <h1>免费在线图片裁剪工具</h1>
 <p>轻松裁剪您的图片，选择所需的区域。实时预览您的更改。</p>
 
-<form id="crop-form" action="/crop-image" method="post" enctype="multipart/form-data">
+<form id="crop-form" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
     <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">上传图片</button>
     <br>
@@ -23,11 +23,7 @@
             <div class="resize-handle se"></div>
         </div>
     </div>
-    <input type="hidden" id="crop-x" name="crop-x">
-    <input type="hidden" id="crop-y" name="crop-y">
-    <input type="hidden" id="crop-width" name="crop-width">
-    <input type="hidden" id="crop-height" name="crop-height">
-    <button type="submit" class="crop-button" onclick="return validateImageSelection();">裁剪图片</button>
+    <button type="button" class="crop-button" onclick="cropImage()">裁剪图片</button>
 </form>
 
 <div class="info-container">
@@ -223,8 +219,6 @@
         resizeHandles.forEach(handle => {
             handle.addEventListener('mousedown', startResizing);
         });
-
-        updateCropValues();
     }
 
     function startDragging(e) {
@@ -253,8 +247,6 @@
 
         cropArea.style.left = newLeft + 'px';
         cropArea.style.top = newTop + 'px';
-
-        updateCropValues();
     }
 
     function stopDragging() {
@@ -312,8 +304,6 @@
         cropArea.style.height = `${newHeight}px`;
         if (newLeft !== undefined) cropArea.style.left = `${newLeft}px`;
         if (newTop !== undefined) cropArea.style.top = `${newTop}px`;
-
-        updateCropValues();
     }
 
     function stopResizing() {
@@ -322,26 +312,37 @@
         document.removeEventListener('mouseup', stopResizing);
     }
 
-    function updateCropValues() {
-        const containerRect = imagePreviewContainer.getBoundingClientRect();
+    function cropImage() {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
         const imageRect = imagePreview.getBoundingClientRect();
-        
+        const cropRect = cropArea.getBoundingClientRect();
+
         const scaleX = imagePreview.naturalWidth / imageRect.width;
         const scaleY = imagePreview.naturalHeight / imageRect.height;
 
-        const cropLeft = cropArea.offsetLeft - imageOffset.x;
-        const cropTop = cropArea.offsetTop - imageOffset.y;
+        const cropX = (cropRect.left - imageRect.left) * scaleX;
+        const cropY = (cropRect.top - imageRect.top) * scaleY;
+        const cropWidth = cropRect.width * scaleX;
+        const cropHeight = cropRect.height * scaleY;
 
-        document.getElementById('crop-x').value = Math.max(0, Math.round(cropLeft * scaleX));
-        document.getElementById('crop-y').value = Math.max(0, Math.round(cropTop * scaleY));
-        document.getElementById('crop-width').value = Math.min(
-            imagePreview.naturalWidth,
-            Math.round(cropArea.offsetWidth * scaleX)
+        canvas.width = cropWidth;
+        canvas.height = cropHeight;
+
+        ctx.drawImage(
+            imagePreview,
+            cropX, cropY, cropWidth, cropHeight,
+            0, 0, cropWidth, cropHeight
         );
-        document.getElementById('crop-height').value = Math.min(
-            imagePreview.naturalHeight,
-            Math.round(cropArea.offsetHeight * scaleY)
-        );
+
+        // Convert canvas to image and download
+        canvas.toBlob((blob) => {
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(blob);
+            downloadLink.download = 'cropped_image.png';
+            downloadLink.click();
+        }, 'image/png');
     }
 </script>
 {% endblock %}

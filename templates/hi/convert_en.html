@@ -10,7 +10,7 @@
 <h1>मुफ्त छवि फ़ॉर्मेट परिवर्तक उपकरण</h1>
 <p>आसानी से अपनी छवि को एक अलग फ़ॉर्मेट में परिवर्तित करें। एक छवि अपलोड करें और वांछित आउटपुट फ़ॉर्मेट चुनें।</p>
 <p>समर्थित फ़ॉर्मेट: PNG, JPG, JPEG, BMP, TIFF, WEBP</p>
-<form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
+<form id="conversion-form" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
     <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">कंप्यूटर से अपलोड करें</button>
     <br>
@@ -26,7 +26,7 @@
         <option value="ico">ICO</option>
     </select>
     <br>
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">परिवर्तित करें!</button>
+    <button type="button" class="convert-button" onclick="convertImage()">कन्वर्ट करें!</button>
 </form>
 
 <div class="info-container">
@@ -66,6 +66,7 @@
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/gh/WangYuLue/image-conversion/build/conversion.js"></script>
 <script>
     function validateImageSelection() {
         const imageUpload = document.getElementById('image-upload');
@@ -86,6 +87,34 @@
                 imagePreview.style.display = 'block';
             }
             reader.readAsDataURL(file);
+        }
+    }
+
+    async function convertImage() {
+        const fileInput = document.getElementById('image-upload');
+        const outputFormat = document.getElementById('output-format').value;
+
+        if (!fileInput.files || fileInput.files.length === 0) {
+            alert('Please select an image to upload.');
+            return;
+        }
+
+        const file = fileInput.files[0];
+        const mimeType = `image/${outputFormat}`;
+
+        try {
+            const convertedBlob = await imageConversion.compress(file, {
+                type: mimeType,
+                quality: 0.95 // Adjust quality as needed
+            });
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(convertedBlob);
+            downloadLink.download = `converted_image.${outputFormat}`;
+            downloadLink.click();
+        } catch (error) {
+            console.error('Error converting image:', error);
+            alert('An error occurred while converting the image.');
         }
     }
 </script>

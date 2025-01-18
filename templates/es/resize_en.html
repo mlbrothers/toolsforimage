@@ -10,11 +10,11 @@
 <h1>Herramienta Gratuita para Redimensionar Imágenes</h1>
 <p>Redimensiona tu imagen fácilmente especificando las dimensiones en píxeles o porcentajes. Puedes elegir mantener o ignorar la relación de aspecto.</p>
 
-<form id="resize-form" action="/resize-image" method="post" enctype="multipart/form-data">
+<form id="resize-form" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
     <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir Imagen</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Vista previa de la imagen" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="Vista Previa de la Imagen" style="display: none;">
     
     <div class="resize-options">
         <label>
@@ -34,7 +34,7 @@
         </label>
     </div>
     <br>
-    <button type="submit" class="resize-button" onclick="return validateImageSelection();">Redimensionar Imagen</button>
+    <button type="button" class="resize-button" onclick="resizeImage()">Redimensionar Imagen</button>
 </form>
 
 <div class="info-container">
@@ -227,6 +227,45 @@
             widthLabel.textContent = 'Width (%):';
             heightLabel.textContent = 'Height (%):';
         }
+    }
+
+    function resizeImage() {
+        const imagePreview = document.getElementById('image-preview');
+        if (!imagePreview.src) {
+            alert('Please upload an image first.');
+            return;
+        }
+
+        const resizeType = document.querySelector('input[name="resizeType"]:checked').value;
+        const widthInput = document.getElementById('width').value;
+        const heightInput = document.getElementById('height').value;
+
+        let newWidth, newHeight;
+
+        if (resizeType === 'pixel') {
+            newWidth = parseInt(widthInput, 10);
+            newHeight = parseInt(heightInput, 10);
+        } else {
+            const widthPercentage = parseFloat(widthInput) / 100;
+            const heightPercentage = parseFloat(heightInput) / 100;
+            newWidth = Math.round(originalWidth * widthPercentage);
+            newHeight = Math.round(originalHeight * heightPercentage);
+        }
+
+        const canvas = document.createElement('canvas');
+        canvas.width = newWidth;
+        canvas.height = newHeight;
+        const ctx = canvas.getContext('2d');
+
+        const img = new Image();
+        img.onload = function() {
+            ctx.drawImage(img, 0, 0, newWidth, newHeight);
+            const downloadLink = document.createElement('a');
+            downloadLink.href = canvas.toDataURL('image/png');
+            downloadLink.download = 'resized_image.png';
+            downloadLink.click();
+        }
+        img.src = imagePreview.src;
     }
 </script>
 {% endblock %}

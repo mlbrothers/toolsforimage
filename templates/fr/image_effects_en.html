@@ -10,16 +10,16 @@
 <h1>Outil Gratuit d'Effets d'Image</h1>
 <p>Améliorez vos images avec divers effets en utilisant ToolsForImage. Téléchargez une image, appliquez des effets et téléchargez le résultat.</p>
 <p>Téléchargez votre fichier image et appliquez des effets instantanément. Choisissez votre image :</p>
-<form id="effects-form" action="/apply-effects" method="post" enctype="multipart/form-data">
+<form id="effects-form" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Télécharger depuis l'Ordinateur</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Télécharger depuis l'ordinateur</button>
     <br>
     <canvas id="canvas"></canvas>
     <br>
     <div class="effects-container">
         <button type="button" class="effect-button" onclick="toggleEffect('grayscale')">Noir et Blanc</button>
         <button type="button" class="effect-button" onclick="toggleEffect('blur')">Flou</button>
-        <button type="button" class="effect-button" onclick="toggleEffect('sharpen')">Netteté</button>
+        <button type="button" class="effect-button" onclick="toggleEffect('sharpen')">Accentuation</button>
         <button type="button" class="effect-button" onclick="toggleEffect('sepia')">Sépia</button>
         <button type="button" class="effect-button" onclick="toggleEffect('invert')">Inverser</button>
         <button type="button" class="effect-button" onclick="toggleEffect('brightness')">Luminosité</button>
@@ -27,8 +27,7 @@
         <button type="button" class="effect-button" onclick="toggleEffect('saturation')">Saturation</button>
     </div>
     <br>
-    <input type="hidden" id="effect-applied" name="effect" value="">
-    <button type="submit" class="download-button" onclick="return validateImageSelection();">Télécharger l'Image Éditée</button>
+    <button type="button" class="download-button" onclick="downloadEditedImage()">Télécharger l'Image Modifiée</button>
 </form>
 
 <div class="info-container">
@@ -180,12 +179,7 @@
             alert('Please select an image to upload.');
             return false;
         }
-        document.getElementById('effect-applied').value = getAppliedEffects();
         return true;
-    }
-
-    function getAppliedEffects() {
-        return activeEffects.join(',');
     }
 
     function previewImage(event) {
@@ -228,7 +222,7 @@
         ctx.putImageData(originalImageData, 0, 0);
         let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         const data = imageData.data;
-        console.log("HI", applyEffects);
+
         if (activeEffects.includes('grayscale')) {
             for (let i = 0; i < data.length; i += 4) {
                 const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
@@ -237,36 +231,7 @@
         }
 
         if (activeEffects.includes('blur')) {
-            // Apply a simplified blur effect
-            const blurRadius = 3;
-            const width = canvas.width;
-            const height = canvas.height;
-            
-            for (let y = 0; y < height; y++) {
-                for (let x = 0; x < width; x++) {
-                    let r = 0, g = 0, b = 0, count = 0;
-                    
-                    for (let dy = -blurRadius; dy <= blurRadius; dy++) {
-                        for (let dx = -blurRadius; dx <= blurRadius; dx++) {
-                            const nx = x + dx;
-                            const ny = y + dy;
-                            
-                            if (nx >= 0 && nx < width && ny >= 0 && ny < height) {
-                                const i = (ny * width + nx) * 4;
-                                r += data[i];
-                                g += data[i + 1];
-                                b += data[i + 2];
-                                count++;
-                            }
-                        }
-                    }
-                    
-                    const i = (y * width + x) * 4;
-                    data[i] = r / count;
-                    data[i + 1] = g / count;
-                    data[i + 2] = b / count;
-                }
-            }
+            boxBlur(imageData, canvas.width, canvas.height, 3);
         }
 
         if (activeEffects.includes('sharpen')) {
@@ -390,6 +355,18 @@
         for (let i = 0; i < pixels.length; i++) {
             pixels[i] = temp[i];
         }
+    }
+
+    function downloadEditedImage() {
+        if (!canvas) {
+            alert('Please upload an image first.');
+            return;
+        }
+
+        const downloadLink = document.createElement('a');
+        downloadLink.href = canvas.toDataURL('image/png');
+        downloadLink.download = 'edited_image.png';
+        downloadLink.click();
     }
 </script>
 {% endblock %}
