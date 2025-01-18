@@ -12,18 +12,13 @@ endblock %}
 
 <h1>मुफ्त BMP से JPEG कनवर्ज़न टूल</h1>
 <p>अपने BMP इमेज को JPEG फॉर्मेट में आसानी से परिवर्तित करें। एक BMP इमेज अपलोड करें और हम इसे JPEG में बदल देंगे।</p>
-<form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
-    <input type="file" id="image-upload" name="image" accept="image/bmp" style="display: none;"
-        onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">BMP इमेज
-        अपलोड करें</button>
+<form id="conversion-form" method="post" enctype="multipart/form-data">
+    <input type="file" id="image-upload" name="image" accept="image/bmp" style="display: none;" onchange="previewImage(event)">
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">कंप्यूटर से अपलोड करें</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="इमेज प्रिव्यू" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="छवि पूर्वावलोकन" style="display: none;">
     <br>
-    <input type="hidden" name="input_format" value="bmp">
-    <input type="hidden" name="output_format" value="jpeg">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">JPEG में परिवर्तित
-        करें</button>
+    <button type="button" class="convert-button" onclick="convertImage()">कन्वर्ट करें!</button>
 </form>
 
 <div class="info-container">
@@ -108,11 +103,12 @@ endblock %}
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/gh/WangYuLue/image-conversion/build/conversion.js"></script>
 <script>
     function validateImageSelection() {
         const imageUpload = document.getElementById('image-upload');
         if (!imageUpload.value) {
-            alert('Please select a BMP image to upload.');
+            alert('Please select an image to upload.');
             return false;
         }
         return true;
@@ -123,11 +119,39 @@ endblock %}
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                 imagePreview.src = e.target.result;
                 imagePreview.style.display = 'block';
             }
             reader.readAsDataURL(file);
+        }
+    }
+
+    async function convertImage() {
+        const fileInput = document.getElementById('image-upload');
+        const outputFormat = 'jpeg';
+
+        if (!fileInput.files || fileInput.files.length === 0) {
+            alert('Please select an image to upload.');
+            return;
+        }
+
+        const file = fileInput.files[0];
+        const mimeType = `image/${outputFormat}`;
+
+        try {
+            const convertedBlob = await imageConversion.compress(file, {
+                type: mimeType,
+                quality: 0.95 // Adjust quality as needed
+            });
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(convertedBlob);
+            downloadLink.download = `converted_image.${outputFormat}`;
+            downloadLink.click();
+        } catch (error) {
+            console.error('Error converting image:', error);
+            alert('An error occurred while converting the image.');
         }
     }
 </script>

@@ -10,16 +10,13 @@
 {% block content %}
 <h1>免费在线 JPEG 转 JPG 转换器</h1>
 <p>轻松将您的图像从 JPEG 格式转换为 JPG 格式。上传一张 JPEG 图像，我们将为您转换为 JPG。</p>
-<form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
-    <input type="file" id="image-upload" name="image" accept="image/jpeg" style="display: none;"
-        onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">上传 JPEG 图像</button>
+<form id="conversion-form" method="post" enctype="multipart/form-data">
+    <input type="file" id="image-upload" name="image" accept="image/jpeg" style="display: none;" onchange="previewImage(event)">
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">从电脑上传</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="图像预览" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="图片预览" style="display: none;">
     <br>
-    <input type="hidden" name="input_format" value="jpeg">
-    <input type="hidden" name="output_format" value="jpg">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">转换为 JPG</button>
+    <button type="button" class="convert-button" onclick="convertImage()">转换！</button>
 </form>
 
 <section>
@@ -208,11 +205,12 @@
     }
 </style>
 
+<script src="https://cdn.jsdelivr.net/gh/WangYuLue/image-conversion/build/conversion.js"></script>
 <script>
     function validateImageSelection() {
         const imageUpload = document.getElementById('image-upload');
         if (!imageUpload.value) {
-            alert('Please select a JPEG image to upload.');
+            alert('Please select an image to upload.');
             return false;
         }
         return true;
@@ -223,11 +221,39 @@
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                 imagePreview.src = e.target.result;
                 imagePreview.style.display = 'block';
             }
             reader.readAsDataURL(file);
+        }
+    }
+
+    async function convertImage() {
+        const fileInput = document.getElementById('image-upload');
+        const outputFormat = 'jpg';
+
+        if (!fileInput.files || fileInput.files.length === 0) {
+            alert('Please select an image to upload.');
+            return;
+        }
+
+        const file = fileInput.files[0];
+        const mimeType = `image/${outputFormat}`;
+
+        try {
+            const convertedBlob = await imageConversion.compress(file, {
+                type: mimeType,
+                quality: 0.95 // Adjust quality as needed
+            });
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(convertedBlob);
+            downloadLink.download = `converted_image.${outputFormat}`;
+            downloadLink.click();
+        } catch (error) {
+            console.error('Error converting image:', error);
+            alert('An error occurred while converting the image.');
         }
     }
 </script>

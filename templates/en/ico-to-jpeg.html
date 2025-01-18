@@ -9,16 +9,15 @@
 {% block content %}
 <h1>Free Online ICO to JPEG Converter</h1>
 <p>Easily convert your images from ICO to JPEG format. Upload an ICO image and we'll convert it to JPEG for you.</p>
-<form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
-    <input type="file" id="image-upload" name="image" accept="image/x-icon" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload ICO Image</button>
+<form id="conversion-form" method="post" enctype="multipart/form-data">
+    <input type="file" id="image-upload" name="image" accept="image/ico" style="display: none;" onchange="previewImage(event)">
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload from Computer</button>
     <br>
     <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
     <br>
-    <input type="hidden" name="input_format" value="ico">
-    <input type="hidden" name="output_format" value="jpeg">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to JPEG</button>
+    <button type="button" class="convert-button" onclick="convertImage()">Convert!</button>
 </form>
+
 
 <div class="info-container">
     <div class="info-section">
@@ -80,6 +79,60 @@
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/gh/WangYuLue/image-conversion/build/conversion.js"></script>
+<script>
+    function validateImageSelection() {
+        const imageUpload = document.getElementById('image-upload');
+        if (!imageUpload.value) {
+            alert('Please select an image to upload.');
+            return false;
+        }
+        return true;
+    }
+
+    function previewImage(event) {
+        const imagePreview = document.getElementById('image-preview');
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
+    async function convertImage() {
+        const fileInput = document.getElementById('image-upload');
+        const outputFormat = 'jpeg';
+
+        if (!fileInput.files || fileInput.files.length === 0) {
+            alert('Please select an image to upload.');
+            return;
+        }
+
+        const file = fileInput.files[0];
+        const mimeType = `image/${outputFormat}`;
+
+        try {
+            const convertedBlob = await imageConversion.compress(file, {
+                type: mimeType,
+                quality: 0.95 // Adjust quality as needed
+            });
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(convertedBlob);
+            downloadLink.download = `converted_image.${outputFormat}`;
+            downloadLink.click();
+        } catch (error) {
+            console.error('Error converting image:', error);
+            alert('An error occurred while converting the image.');
+        }
+    }
+</script>
+
+
 <style>
     h1 {
         color: var(--secondary-color);
@@ -139,28 +192,4 @@
         text-align: center;
     }
 </style>
-
-<script>
-    function validateImageSelection() {
-        const imageUpload = document.getElementById('image-upload');
-        if (!imageUpload.value) {
-            alert('Please select an ICO image to upload.');
-            return false;
-        }
-        return true;
-    }
-
-    function previewImage(event) {
-        const imagePreview = document.getElementById('image-preview');
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                imagePreview.src = e.target.result;
-                imagePreview.style.display = 'block';
-            }
-            reader.readAsDataURL(file);
-        }
-    }
-</script>
 {% endblock %}

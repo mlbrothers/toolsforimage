@@ -397,47 +397,6 @@ def convert_image_format(lang='en'):
         return redirect('/en/convert-image-format')
     return render_template(f'{lang}/convert_en.html')
 
-@app.route('/convert-image', methods=['POST'])
-@app.route('/<lang>/convert-image', methods=['POST'])
-def convert_image(lang='en'):
-    if lang not in supported_languages:
-        return redirect('/en/convert-image')
-
-    if 'image' not in request.files:
-        return render_template(f'{lang}/error.html', error="No image file provided"), 400
-
-    image_file = request.files['image']
-    if image_file.filename == '':
-        return render_template(f'{lang}/error.html', error="No selected file"), 400
-
-    output_format = request.form.get('output_format', 'png').lower()
-
-    try:
-        # Open the image file
-        image = Image.open(image_file)
-
-        # Convert the image
-        img_io = io.BytesIO()
-        if output_format == 'jpg' or output_format == 'jpeg':
-            # Convert to RGB mode if necessary
-            if image.mode in ('RGBA', 'LA') or (image.mode == 'P' and 'transparency' in image.info):
-                image = image.convert('RGB')
-            image.save(img_io, format='JPEG', quality=95)
-        elif output_format == 'ico':
-            # For ICO format, we need to ensure the image is in RGBA mode
-            image = image.convert('RGBA')
-            image.save(img_io, format='ICO', sizes=[(32, 32)])
-        else:
-            image.save(img_io, format=output_format)
-        img_io.seek(0)
-
-        # Generate a unique filename
-        unique_filename = f"converted_{uuid.uuid4().hex}_{int(time.time())}.{output_format}"
-
-        return send_file(img_io, mimetype=f'image/{output_format}', as_attachment=True, download_name=unique_filename)
-    except Exception as e:
-        return render_template(f'{lang}/error.html', error=str(e)), 500
-
 @app.route('/convert/<from_format>-to-<to_format>')
 @app.route('/<lang>/convert/<from_format>-to-<to_format>')
 def convert_image_format_route(lang='en', from_format='', to_format=''):

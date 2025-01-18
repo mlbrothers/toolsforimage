@@ -12,13 +12,17 @@
 
 <p>Upload your image file and compress it instantly. Choose your image:</p>
 
-<form id="compression-form" action="/compress-image" method="post" enctype="multipart/form-data">
+<form id="compression-form" action="#" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
     <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload from Computer</button>
     <br>
     <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
     <br>
-    <button type="submit" class="compress-button" onclick="return validateImageSelection();">Compress!</button>
+    <label for="compression-level">File size after compression (%):</label>
+    <input type="range" id="compression-level" name="compression-level" min="1" max="100" value="50">
+    <span id="compression-value">50%</span>
+    <br>
+    <button type="button" class="compress-button" onclick="compressImage()">Compress!</button>
 </form>
 
 <p>Your image will be compressed to achieve the best quality and smallest file size.</p>
@@ -40,6 +44,7 @@
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/image-conversion/dist/image-conversion.min.js"></script>
 <script>
     function validateImageSelection() {
         const imageUpload = document.getElementById('image-upload');
@@ -60,6 +65,37 @@
                 imagePreview.style.display = 'block';
             }
             reader.readAsDataURL(file);
+        }
+    }
+
+    // Update the compression level display
+    const compressionLevelInput = document.getElementById('compression-level');
+    const compressionValueDisplay = document.getElementById('compression-value');
+    compressionLevelInput.addEventListener('input', function() {
+        compressionValueDisplay.textContent = `${this.value}%`;
+    });
+
+    async function compressImage() {
+        const file = document.getElementById('image-upload').files[0];
+        if (!file) {
+            alert('Please select an image to compress.');
+            return;
+        }
+
+        const compressionLevel = parseInt(document.getElementById('compression-level').value, 10);
+        const quality = compressionLevel / 100; // Convert percentage to a decimal (0.01 to 1.0)
+
+        try {
+            const compressedFile = await imageConversion.compress(file, { quality: quality });
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(compressedFile);
+            downloadLink.download = `compressed_image_${compressionLevel}%.jpg`; // Dynamic file name
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        } catch (error) {
+            console.error('Error compressing image:', error);
+            alert('An error occurred while compressing the image.');
         }
     }
 </script>
@@ -136,6 +172,17 @@
 
     li {
         line-height: 1.6;
+    }
+
+    /* Style for the range input */
+    input[type="range"] {
+        width: 200px;
+        margin: 10px 0;
+    }
+
+    #compression-value {
+        margin-left: 10px;
+        font-weight: bold;
     }
 </style>
 {% endblock %}

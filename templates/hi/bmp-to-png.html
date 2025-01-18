@@ -10,15 +10,13 @@
 
     <h1>फ्री BMP से PNG कन्वर्ज़न टूल</h1>
     <p>अपने BMP इमेज को PNG फ़ॉर्मेट में आसानी से कन्वर्ट करें। एक BMP इमेज अपलोड करें और हम इसे आपके लिए PNG में कन्वर्ट कर देंगे।</p>
-    <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
+    <form id="conversion-form" method="post" enctype="multipart/form-data">
         <input type="file" id="image-upload" name="image" accept="image/bmp" style="display: none;" onchange="previewImage(event)">
-        <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">BMP इमेज अपलोड करें</button>
+        <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">कंप्यूटर से अपलोड करें</button>
         <br>
         <img id="image-preview" class="image-preview" src="#" alt="छवि पूर्वावलोकन" style="display: none;">
         <br>
-        <input type="hidden" name="input_format" value="bmp">
-        <input type="hidden" name="output_format" value="png">
-        <button type="submit" class="convert-button" onclick="return validateImageSelection();">PNG में कन्वर्ट करें</button>
+        <button type="button" class="convert-button" onclick="convertImage()">कन्वर्ट करें!</button>
     </form>
 
     <div class="info-container">
@@ -81,29 +79,58 @@
         </div>
     </div>
     
-    <script>
-        function validateImageSelection() {
-            const imageUpload = document.getElementById('image-upload');
-            if (!imageUpload.value) {
-                alert('Please select a BMP image to upload.');
-                return false;
+    <script src="https://cdn.jsdelivr.net/gh/WangYuLue/image-conversion/build/conversion.js"></script>
+<script>
+    function validateImageSelection() {
+        const imageUpload = document.getElementById('image-upload');
+        if (!imageUpload.value) {
+            alert('Please select an image to upload.');
+            return false;
+        }
+        return true;
+    }
+
+    function previewImage(event) {
+        const imagePreview = document.getElementById('image-preview');
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = 'block';
             }
-            return true;
+            reader.readAsDataURL(file);
+        }
+    }
+
+    async function convertImage() {
+        const fileInput = document.getElementById('image-upload');
+        const outputFormat = 'png';
+
+        if (!fileInput.files || fileInput.files.length === 0) {
+            alert('Please select an image to upload.');
+            return;
         }
 
-        function previewImage(event) {
-            const imagePreview = document.getElementById('image-preview');
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    imagePreview.src = e.target.result;
-                    imagePreview.style.display = 'block';
-                }
-                reader.readAsDataURL(file);
-            }
+        const file = fileInput.files[0];
+        const mimeType = `image/${outputFormat}`;
+
+        try {
+            const convertedBlob = await imageConversion.compress(file, {
+                type: mimeType,
+                quality: 0.95 // Adjust quality as needed
+            });
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(convertedBlob);
+            downloadLink.download = `converted_image.${outputFormat}`;
+            downloadLink.click();
+        } catch (error) {
+            console.error('Error converting image:', error);
+            alert('An error occurred while converting the image.');
         }
-    </script>
+    }
+</script>
 
 <style>
     h1 {

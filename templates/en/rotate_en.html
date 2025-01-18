@@ -11,7 +11,7 @@
 <h1>Free Online Image Rotater</h1>
 <p>Easily rotate images with ToolsForImage. Upload an image, preview the rotation, and download the result.</p>
 <p>Upload your image file and rotate it instantly. Choose your image:</p>
-<form id="rotation-form" action="/rotate-image" method="post" enctype="multipart/form-data">
+<form id="rotation-form" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;"
         onchange="previewImage(event)">
     <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload from
@@ -42,9 +42,7 @@
         </button>
     </div>
     <br>
-    <input type="hidden" id="rotation-angle" name="rotation" value="0">
-    <button type="submit" class="rotate-button" onclick="return validateImageSelection();">Download Rotated
-        Image</button>
+    <button type="button" class="rotate-button" onclick="downloadRotatedImage()">Download Rotated Image</button>
 </form>
 
 <div class="info-container">
@@ -120,9 +118,7 @@
             <li><strong>Better Social Media Sharing:</strong> Social media platforms often prefer images in certain orientations. Rotating your images can help ensure they appear as intended, increasing engagement and shares.</li>
         </ul>
     </div>
-    
 </div>
-
 
 <style>
     h1 {
@@ -188,28 +184,20 @@
     .info-container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        /* Create three equal columns */
         gap: 20px;
-        /* Space between the grid items */
         margin: 20px auto;
-        /* Center the container */
     }
 
-    /* Center the last row when it has fewer than three items */
     .info-container> :nth-last-child(-n+3) {
         justify-self: center;
-        /* Center the items in the last row */
     }
 
-    /* Ensuring each section maintains its styling */
     .info-section {
         padding: 20px;
-        /* Padding for each section */
         border: 1px solid var(--secondary-color);
         border-radius: 5px;
         background-color: var(--light-background-color);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        /* Shadow for depth */
     }
 
     p {
@@ -220,12 +208,11 @@
     li {
         line-height: 1.6;
     }
-
-    
 </style>
 
 <script>
     let rotation = 0;
+    let img, canvas, ctx;
 
     function validateImageSelection() {
         const imageUpload = document.getElementById('image-upload');
@@ -244,17 +231,27 @@
             reader.onload = function (e) {
                 imagePreview.src = e.target.result;
                 imagePreview.style.display = 'block';
-                resetRotation();
+                img = new Image();
+                img.onload = function () {
+                    canvas = document.createElement('canvas');
+                    ctx = canvas.getContext('2d');
+                    resetRotation();
+                }
+                img.src = e.target.result;
             }
             reader.readAsDataURL(file);
         }
     }
 
     function rotateImage(degrees) {
-        const imagePreview = document.getElementById('image-preview');
+        if (!img) {
+            alert('Please upload an image first.');
+            return;
+        }
+
         rotation = (rotation + degrees) % 360;
+        const imagePreview = document.getElementById('image-preview');
         imagePreview.style.transform = `rotate(${rotation}deg)`;
-        document.getElementById('rotation-angle').value = rotation;
 
         // Adjust container size based on rotation
         const container = document.querySelector('.image-preview-container');
@@ -269,8 +266,33 @@
         rotation = 0;
         const imagePreview = document.getElementById('image-preview');
         imagePreview.style.transform = 'rotate(0deg)';
-        document.getElementById('rotation-angle').value = 0;
         document.querySelector('.image-preview-container').style.height = 'auto';
+    }
+
+    function downloadRotatedImage() {
+        if (!img) {
+            alert('Please upload an image first.');
+            return;
+        }
+
+        // Create a canvas to draw the rotated image
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Translate and rotate the canvas
+        ctx.translate(canvas.width / 2, canvas.height / 2);
+        ctx.rotate((rotation * Math.PI) / 180);
+        ctx.drawImage(img, -img.width / 2, -img.height / 2);
+
+        // Reset the canvas transformation
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+        // Download the rotated image
+        const downloadLink = document.createElement('a');
+        downloadLink.href = canvas.toDataURL('image/png');
+        downloadLink.download = 'rotated_image.png';
+        downloadLink.click();
     }
 </script>
 {% endblock %}

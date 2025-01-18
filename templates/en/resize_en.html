@@ -10,7 +10,7 @@
 <h1>Free Online Image Resize Tool</h1>
 <p>Effortlessly resize your image by specifying dimensions in pixels or percentages. You can choose to maintain or ignore the aspect ratio.</p>
 
-<form id="resize-form" action="/resize-image" method="post" enctype="multipart/form-data">
+<form id="resize-form" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/*" style="display: none;" onchange="previewImage(event)">
     <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload Image</button>
     <br>
@@ -34,7 +34,7 @@
         </label>
     </div>
     <br>
-    <button type="submit" class="resize-button" onclick="return validateImageSelection();">Resize Image</button>
+    <button type="button" class="resize-button" onclick="resizeImage()">Resize Image</button>
 </form>
 
 <div class="info-container">
@@ -74,7 +74,7 @@
         cursor: pointer;
         font-size: 20px;
         transition: transform 0.3s;
-        border-radius: 5px; /* Added border radius */
+        border-radius: 5px;
     }
 
     .upload-button:hover {
@@ -90,7 +90,7 @@
         font-size: 20px;
         transition: transform 0.3s;
         margin-top: 10px;
-        border-radius: 5px; /* Added border radius */
+        border-radius: 5px;
     }
 
     .image-preview {
@@ -125,20 +125,20 @@
 
     .info-container {
         display: flex;
-        justify-content: space-around; /* Space between boxes */
-        flex-wrap: wrap; /* Allows boxes to wrap in smaller screens */
-        margin: 20px auto; /* Center the container */
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin: 20px auto;
     }
 
     .info-section {
-        margin: 10px; /* Space around each box */
+        margin: 10px;
         padding: 15px;
         border: 1px solid var(--secondary-color);
         border-radius: 5px;
         background-color: var(--light-background-color);
-        flex: 1 1 300px; /* Flex-grow and shrink, with a base width */
-        max-width: 30%; /* Limit the max width of each box */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+        flex: 1 1 300px;
+        max-width: 30%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     p {
@@ -160,8 +160,6 @@
     li {
         line-height: 1.6;
     }
-
-    
 </style>
 
 <script>
@@ -227,6 +225,45 @@
             widthLabel.textContent = 'Width (%):';
             heightLabel.textContent = 'Height (%):';
         }
+    }
+
+    function resizeImage() {
+        const imagePreview = document.getElementById('image-preview');
+        if (!imagePreview.src) {
+            alert('Please upload an image first.');
+            return;
+        }
+
+        const resizeType = document.querySelector('input[name="resizeType"]:checked').value;
+        const widthInput = document.getElementById('width').value;
+        const heightInput = document.getElementById('height').value;
+
+        let newWidth, newHeight;
+
+        if (resizeType === 'pixel') {
+            newWidth = parseInt(widthInput, 10);
+            newHeight = parseInt(heightInput, 10);
+        } else {
+            const widthPercentage = parseFloat(widthInput) / 100;
+            const heightPercentage = parseFloat(heightInput) / 100;
+            newWidth = Math.round(originalWidth * widthPercentage);
+            newHeight = Math.round(originalHeight * heightPercentage);
+        }
+
+        const canvas = document.createElement('canvas');
+        canvas.width = newWidth;
+        canvas.height = newHeight;
+        const ctx = canvas.getContext('2d');
+
+        const img = new Image();
+        img.onload = function() {
+            ctx.drawImage(img, 0, 0, newWidth, newHeight);
+            const downloadLink = document.createElement('a');
+            downloadLink.href = canvas.toDataURL('image/png');
+            downloadLink.download = 'resized_image.png';
+            downloadLink.click();
+        }
+        img.src = imagePreview.src;
     }
 </script>
 {% endblock %}

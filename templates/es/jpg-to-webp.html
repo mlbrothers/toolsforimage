@@ -9,15 +9,13 @@
 {% block content %}
 <h1>Conversor Gratuito Online de JPG a WEBP</h1>
 <p>Convierte fácilmente tus imágenes de formato JPG a WebP. Sube una imagen JPG y la convertiremos a WebP por ti.</p>
-<form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
+<form id="conversion-form" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/jpg" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir Imagen JPG</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Subir desde la Computadora</button>
     <br>
-    <img id="image-preview" class="image-preview" src="#" alt="Vista previa de la imagen" style="display: none;">
+    <img id="image-preview" class="image-preview" src="#" alt="Vista Previa de la Imagen" style="display: none;">
     <br>
-    <input type="hidden" name="input_format" value="jpg">
-    <input type="hidden" name="output_format" value="webp">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convertir a WebP</button>
+    <button type="button" class="convert-button" onclick="convertImage()">Convertir!</button>
 </form>
 
 <div class="info-container">
@@ -142,11 +140,12 @@
     }
 </style>
 
+<script src="https://cdn.jsdelivr.net/gh/WangYuLue/image-conversion/build/conversion.js"></script>
 <script>
     function validateImageSelection() {
         const imageUpload = document.getElementById('image-upload');
         if (!imageUpload.value) {
-            alert('Please select a JPG image to upload.');
+            alert('Please select an image to upload.');
             return false;
         }
         return true;
@@ -162,6 +161,34 @@
                 imagePreview.style.display = 'block';
             }
             reader.readAsDataURL(file);
+        }
+    }
+
+    async function convertImage() {
+        const fileInput = document.getElementById('image-upload');
+        const outputFormat = 'webp';
+
+        if (!fileInput.files || fileInput.files.length === 0) {
+            alert('Please select an image to upload.');
+            return;
+        }
+
+        const file = fileInput.files[0];
+        const mimeType = `image/${outputFormat}`;
+
+        try {
+            const convertedBlob = await imageConversion.compress(file, {
+                type: mimeType,
+                quality: 0.95 // Adjust quality as needed
+            });
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(convertedBlob);
+            downloadLink.download = `converted_image.${outputFormat}`;
+            downloadLink.click();
+        } catch (error) {
+            console.error('Error converting image:', error);
+            alert('An error occurred while converting the image.');
         }
     }
 </script>

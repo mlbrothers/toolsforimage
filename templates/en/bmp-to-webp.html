@@ -11,15 +11,13 @@
 
     <h1>Free Online BMP to webp Converter</h1>
     <p>Easily convert your images from BMP to webp format. Upload a BMP image and we'll convert it to webp for you.</p>
-    <form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
+    <form id="conversion-form" method="post" enctype="multipart/form-data">
         <input type="file" id="image-upload" name="image" accept="image/bmp" style="display: none;" onchange="previewImage(event)">
-        <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload BMP Image</button>
+        <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload from Computer</button>
         <br>
         <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
         <br>
-        <input type="hidden" name="input_format" value="bmp">
-        <input type="hidden" name="output_format" value="webp">
-        <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to webp</button>
+        <button type="button" class="convert-button" onclick="convertImage()">Convert!</button>
     </form>
 
     <div class="info-container">
@@ -85,29 +83,59 @@
 
     
 
-    <script>
-        function validateImageSelection() {
-            const imageUpload = document.getElementById('image-upload');
-            if (!imageUpload.value) {
-                alert('Please select a BMP image to upload.');
-                return false;
+    <script src="https://cdn.jsdelivr.net/gh/WangYuLue/image-conversion/build/conversion.js"></script>
+<script>
+    function validateImageSelection() {
+        const imageUpload = document.getElementById('image-upload');
+        if (!imageUpload.value) {
+            alert('Please select an image to upload.');
+            return false;
+        }
+        return true;
+    }
+
+    function previewImage(event) {
+        const imagePreview = document.getElementById('image-preview');
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = 'block';
             }
-            return true;
+            reader.readAsDataURL(file);
+        }
+    }
+
+    async function convertImage() {
+        const fileInput = document.getElementById('image-upload');
+        const outputFormat = 'webp';
+
+        if (!fileInput.files || fileInput.files.length === 0) {
+            alert('Please select an image to upload.');
+            return;
         }
 
-        function previewImage(event) {
-            const imagePreview = document.getElementById('image-preview');
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    imagePreview.src = e.target.result;
-                    imagePreview.style.display = 'block';
-                }
-                reader.readAsDataURL(file);
-            }
+        const file = fileInput.files[0];
+        const mimeType = `image/${outputFormat}`;
+
+        try {
+            const convertedBlob = await imageConversion.compress(file, {
+                type: mimeType,
+                quality: 0.95 // Adjust quality as needed
+            });
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(convertedBlob);
+            downloadLink.download = `converted_image.${outputFormat}`;
+            downloadLink.click();
+        } catch (error) {
+            console.error('Error converting image:', error);
+            alert('An error occurred while converting the image.');
         }
-    </script>
+    }
+</script>
+
 
 <style>
     h1 {

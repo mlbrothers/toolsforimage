@@ -11,8 +11,8 @@
 
 
 <div class="container">
-    <h1>फ्री ब्लर फेस टूल</h1>
-    <p>अपने चित्रों में विशेष क्षेत्रों को ब्लर करके गोपनीयता की सुरक्षा करें। एक छवि अपलोड करें, ब्लर करने के लिए क्षेत्र का चयन करें, और परिणाम डाउनलोड करें।</p>
+    <h1>ऑनलाइन विशिष्ट क्षेत्रों को ब्लर करें</h1>
+    <p>अपनी छवियों के विशिष्ट क्षेत्रों को ब्लर करने के लिए मुफ्त ऑनलाइन टूल</p>
     <input type="file" id="image-upload" accept="image/*" style="display: none;">
     <button class="upload-button" onclick="document.getElementById('image-upload').click();">छवि अपलोड करें</button>
     <div id="canvas-container">
@@ -24,7 +24,11 @@
             <div class="resize-handle se"></div>
         </div>
     </div>
-    <button id="apply-blur">ब्लर लागू करें</button>
+    <div id="blur-controls" style="display: none;">
+        <label for="blur-intensity">ब्लर की तीव्रता: <span id="blur-value">10px</span></label>
+        <input type="range" id="blur-intensity" min="1" max="50" value="10">
+    </div>
+    <button id="apply-blur" style="display: none;">ब्लर प्रभाव लागू करें</button>
     <div id="error-message"></div>
 </div>
 
@@ -204,9 +208,12 @@
     const blurBox = document.getElementById('blur-box');
     const applyBlurButton = document.getElementById('apply-blur');
     const errorMessage = document.getElementById('error-message');
+    const blurIntensityInput = document.getElementById('blur-intensity');
+    const blurValueDisplay = document.getElementById('blur-value');
     let img;
     let scale = 1;
 
+    // Handle image upload
     document.getElementById('image-upload').addEventListener('change', function (e) {
         const file = e.target.files[0];
         if (file) {
@@ -222,6 +229,7 @@
                 canvas.style.display = 'block';
                 blurBox.style.display = 'block';
                 applyBlurButton.style.display = 'block';
+                document.getElementById('blur-controls').style.display = 'block';
                 errorMessage.style.display = 'none';
                 resetBlurBox();
             }
@@ -229,6 +237,7 @@
         }
     });
 
+    // Dragging and resizing logic
     let isDragging = false;
     let isResizing = false;
     let startX, startY, startLeft, startTop, startWidth, startHeight;
@@ -303,6 +312,7 @@
         isResizing = false;
     });
 
+    // Reset blur box to initial size and position
     function resetBlurBox() {
         const initialSize = Math.min(100, canvas.width / 2, canvas.height / 2);
         blurBox.style.width = `${initialSize}px`;
@@ -311,55 +321,36 @@
         blurBox.style.top = '0px';
     }
 
+    // Update blur intensity display
+    blurIntensityInput.addEventListener('input', function () {
+        blurValueDisplay.textContent = `${this.value}px`;
+    });
+
+    // Apply blur effect to the selected area
     applyBlurButton.addEventListener('click', function () {
-        const blurData = {
-            x: blurBox.offsetLeft / canvas.width,
-            y: blurBox.offsetTop / canvas.height,
-            width: blurBox.offsetWidth / canvas.width,
-            height: blurBox.offsetHeight / canvas.height
-        };
+        const boxRect = blurBox.getBoundingClientRect();
+        const canvasRect = canvas.getBoundingClientRect();
 
-        // Ensure blur region is valid
-        if (blurData.width <= 0 || blurData.height <= 0) {
-            errorMessage.textContent = 'Invalid blur region. Please select a larger area.';
-            errorMessage.style.display = 'block';
-            return;
-        }
+        const x = boxRect.left - canvasRect.left;
+        const y = boxRect.top - canvasRect.top;
+        const width = boxRect.width;
+        const height = boxRect.height;
 
-        // Convert canvas to base64 image
+        // Apply blur effect to the selected area
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(x, y, width, height);
+        ctx.clip();
+        ctx.filter = `blur(${blurIntensityInput.value}px)`;
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        ctx.restore();
+
+        // Download the blurred image
         const imageData = canvas.toDataURL('image/png');
-
-        fetch('/apply-blur', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                image: imageData,
-                ...blurData
-            }),
-        })
-            .then(response => response.blob())
-            .then(blob => {
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.style.display = 'none';
-                a.href = url;
-                a.download = 'blurred_image.png';
-                document.body.appendChild(a);
-                a.click();
-                window.URL.revokeObjectURL(url);
-
-                // Reload the page after download
-                setTimeout(() => {
-                    window.location.reload();
-                }, 100);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                errorMessage.textContent = 'An error occurred while processing the image.';
-                errorMessage.style.display = 'block';
-            });
+        const a = document.createElement('a');
+        a.href = imageData;
+        a.download = 'blurred_image.png';
+        a.click();
     });
 </script>
 {% endblock %}

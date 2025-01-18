@@ -9,16 +9,15 @@
 {% block content %}
 <h1>Free Online JPG to ICO Converter</h1>
 <p>Easily convert your images from JPG to ICO format. Upload a JPG image and we'll convert it to ICO for you.</p>
-<form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
-    <input type="file" id="image-upload" name="image" accept="image/jpeg" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload JPG Image</button>
+<form id="conversion-form" method="post" enctype="multipart/form-data">
+    <input type="file" id="image-upload" name="image" accept="image/JPG" style="display: none;" onchange="previewImage(event)">
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Upload from Computer</button>
     <br>
     <img id="image-preview" class="image-preview" src="#" alt="Image Preview" style="display: none;">
     <br>
-    <input type="hidden" name="input_format" value="jpg">
-    <input type="hidden" name="output_format" value="ico">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convert to ICO</button>
+    <button type="button" class="convert-button" onclick="convertImage()">Convert!</button>
 </form>
+
 
 <div class="info-container">
     <div class="info-section">
@@ -140,11 +139,12 @@
     }
 </style>
 
+<script src="https://cdn.jsdelivr.net/gh/WangYuLue/image-conversion/build/conversion.js"></script>
 <script>
     function validateImageSelection() {
         const imageUpload = document.getElementById('image-upload');
         if (!imageUpload.value) {
-            alert('Please select a JPG image to upload.');
+            alert('Please select an image to upload.');
             return false;
         }
         return true;
@@ -162,5 +162,34 @@
             reader.readAsDataURL(file);
         }
     }
+
+    async function convertImage() {
+        const fileInput = document.getElementById('image-upload');
+        const outputFormat = 'ico';
+
+        if (!fileInput.files || fileInput.files.length === 0) {
+            alert('Please select an image to upload.');
+            return;
+        }
+
+        const file = fileInput.files[0];
+        const mimeType = `image/${outputFormat}`;
+
+        try {
+            const convertedBlob = await imageConversion.compress(file, {
+                type: mimeType,
+                quality: 0.95 // Adjust quality as needed
+            });
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(convertedBlob);
+            downloadLink.download = `converted_image.${outputFormat}`;
+            downloadLink.click();
+        } catch (error) {
+            console.error('Error converting image:', error);
+            alert('An error occurred while converting the image.');
+        }
+    }
 </script>
+
 {% endblock %}

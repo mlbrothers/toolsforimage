@@ -9,17 +9,14 @@
 {% block content %}
 <h1>Outil de Conversion Gratuit JPG en BMP</h1>
 <p>Convertissez facilement vos images JPG au format BMP. Téléchargez une image JPG et nous la convertirons en BMP pour vous.</p>
-<form id="conversion-form" action="/convert-image" method="post" enctype="multipart/form-data">
+<form id="conversion-form" method="post" enctype="multipart/form-data">
     <input type="file" id="image-upload" name="image" accept="image/jpg" style="display: none;" onchange="previewImage(event)">
-    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Télécharger l'image JPG</button>
+    <button type="button" class="upload-button" onclick="document.getElementById('image-upload').click();">Télécharger depuis l'ordinateur</button>
     <br>
     <img id="image-preview" class="image-preview" src="#" alt="Aperçu de l'image" style="display: none;">
     <br>
-    <input type="hidden" name="input_format" value="jpg">
-    <input type="hidden" name="output_format" value="bmp">
-    <button type="submit" class="convert-button" onclick="return validateImageSelection();">Convertir en BMP</button>
+    <button type="button" class="convert-button" onclick="convertImage()">Convertir !</button>
 </form>
-
 <div class="info-container">
     <div class="info-section">
         <h2>Qu'est-ce que la Conversion JPG en BMP ?</h2>
@@ -142,11 +139,12 @@
     }
 </style>
 
+<script src="https://cdn.jsdelivr.net/gh/WangYuLue/image-conversion/build/conversion.js"></script>
 <script>
     function validateImageSelection() {
         const imageUpload = document.getElementById('image-upload');
         if (!imageUpload.value) {
-            alert('Please select a JPG image to upload.');
+            alert('Please select an image to upload.');
             return false;
         }
         return true;
@@ -162,6 +160,34 @@
                 imagePreview.style.display = 'block';
             }
             reader.readAsDataURL(file);
+        }
+    }
+
+    async function convertImage() {
+        const fileInput = document.getElementById('image-upload');
+        const outputFormat = 'bmp';
+
+        if (!fileInput.files || fileInput.files.length === 0) {
+            alert('Please select an image to upload.');
+            return;
+        }
+
+        const file = fileInput.files[0];
+        const mimeType = `image/${outputFormat}`;
+
+        try {
+            const convertedBlob = await imageConversion.compress(file, {
+                type: mimeType,
+                quality: 0.95 // Adjust quality as needed
+            });
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(convertedBlob);
+            downloadLink.download = `converted_image.${outputFormat}`;
+            downloadLink.click();
+        } catch (error) {
+            console.error('Error converting image:', error);
+            alert('An error occurred while converting the image.');
         }
     }
 </script>
