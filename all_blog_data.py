@@ -180,6 +180,54 @@ blogs_list = {
             'description': 'Create the best twitter banner with the optimized tools and important points to keep in mind for the twitter banner',
             'image': 'twitter-banner-blog.svg',
         },
+        {
+            'slug': 'how-to-blur-faces-or-parts-in-your-images',
+            'title': 'How to Blur faces or parts in your images free online',
+            'description': 'Need to blur faces online? Learn how to easily blur faces in photos and videos for privacy or creative effects',
+            'image': 'face_id_blur_blog.svg',
+        },
+        {
+            "slug": "how-to-convert-bmp-images-to-ico",
+            "title": "How to Convert BMP Images to ICO: A Step-by-Step Guide",
+            "description": "Learn how to convert BMP images to ICO format easily. Discover the best tools and methods for creating high-quality icons for applications and websites.",
+            "image": "bmp-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-icons-to-other-image-formats",
+            "title": "How to Convert Icons to Other Image Formats: A Complete Guide",
+            "description": "Explore the process of converting icons to various image formats like PNG, JPEG, and more. Find the best tools and tips for seamless conversions.",
+            "image": "image-format-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-tiff-to-jpeg",
+            "title": "How to Convert TIFF to JPEG: A Simple and Effective Guide",
+            "description": "Discover how to convert TIFF images to JPEG format effortlessly. Learn about the tools and techniques to maintain image quality during conversion.",
+            "image": "webp-to-tiff-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-tiff-to-png",
+            "title": "How to Convert TIFF to PNG: A Comprehensive Guide",
+            "description": "Learn how to convert TIFF images to PNG format while preserving transparency and quality. Find the best tools for seamless conversions.",
+            "image": "webp-to-png-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-webp-to-ico",
+            "title": "How to Convert WEBP to ICO: A Step-by-Step Tutorial",
+            "description": "Convert WEBP images to ICO format with ease. Discover the best tools and methods for creating icons from WEBP files.",
+            "image": "jpg-to-ico-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-images-from-ico-to-png-online-free",
+            "title": "How to Convert ICO to PNG Online for Free: A Complete Guide",
+            "description": "Learn how to convert ICO images to PNG format online for free. Explore tools and tips for preserving transparency and quality.",
+            "image": "webp-to-png-blog.svg"
+        },
+        {
+            "slug": "the-ultimate-guide-to-tiff-png-and-image-compression",
+            "title": "The Ultimate Guide to TIFF, PNG, and Image Compression",
+            "description": "Understand the differences between TIFF and PNG formats, how to convert between them, and compress images effectively. Perfect for designers and developers.",
+            "image": "image-compression.svg"
+        },
     ],
     'hi': [
         {
@@ -362,6 +410,54 @@ blogs_list = {
             'description': 'ट्विटर बैनर के लिए महत्वपूर्ण बिंदुओं और अनुकूलित टूल्स का उपयोग करके सर्वश्रेष्ठ ट्विटर बैनर बनाएं',
             'image': 'twitter-banner-blog.svg',
         },
+        {
+            "slug": "images-mein-chehre-ya-hisse-ko-kaise-dhundhla-karein",
+            "title": "अपनी छवियों में चेहरे या हिस्सों को कैसे धुंधला करें: मुफ्त ऑनलाइन गाइड",
+            "description": "क्या आपको ऑनलाइन चेहरे धुंधला करने की आवश्यकता है? फोटो और वीडियो में चेहरे को आसानी से धुंधला करने का तरीका सीखें, गोपनीयता या रचनात्मक प्रभाव के लिए।",
+            "image": "face_id_blur_blog.svg"
+        },
+        {
+            "slug": "bmp-images-ko-ico-mein-kaise-badlein",
+            "title": "BMP छवियों को ICO में कैसे बदलें: एक चरण-दर-चरण मार्गदर्शिका",
+            "description": "BMP छवियों को ICO प्रारूप में आसानी से बदलना सीखें। एप्लिकेशन और वेबसाइटों के लिए उच्च गुणवत्ता वाले आइकन बनाने के लिए सर्वोत्तम उपकरण और विधियां खोजें।",
+            "image": "bmp-blog.svg"
+        },
+        {
+            "slug": "icons-ko-dusre-image-formats-mein-kaise-badlein",
+            "title": "आइकन को अन्य छवि प्रारूपों में कैसे बदलें: एक संपूर्ण मार्गदर्शिका",
+            "description": "आइकन को PNG, JPEG जैसे विभिन्न छवि प्रारूपों में बदलने की प्रक्रिया जानें। सहज रूपांतरण के लिए सर्वोत्तम उपकरण और सुझाव खोजें।",
+            "image": "image-format-blog.svg"
+        },
+        {
+            "slug": "tiff-images-ko-jpeg-mein-kaise-badlein",
+            "title": "TIFF को JPEG में कैसे बदलें: एक सरल और प्रभावी मार्गदर्शिका",
+            "description": "TIFF छवियों को JPEG प्रारूप में आसानी से बदलना सीखें। रूपांतरण के दौरान छवि गुणवत्ता बनाए रखने के लिए उपकरण और तकनीकें जानें।",
+            "image": "webp-to-tiff-blog.svg"
+        },
+        {
+            "slug": "tiff-images-ko-png-mein-kaise-badlein",
+            "title": "TIFF को PNG में कैसे बदलें: एक व्यापक मार्गदर्शिका",
+            "description": "TIFF छवियों को PNG प्रारूप में बदलना सीखें, पारदर्शिता और गुणवत्ता को बनाए रखते हुए। सहज रूपांतरण के लिए सर्वोत्तम उपकरण खोजें।",
+            "image": "webp-to-png-blog.svg"
+        },
+        {
+            "slug": "webp-images-ko-ico-mein-kaise-badlein",
+            "title": "WEBP को ICO में कैसे बदलें: एक चरण-दर-चरण ट्यूटोरियल",
+            "description": "WEBP छवियों को ICO प्रारूप में आसानी से बदलें। WEBP फ़ाइलों से आइकन बनाने के लिए सर्वोत्तम उपकरण और विधियां खोजें।",
+            "image": "jpg-to-ico-blog.svg"
+        },
+        {
+            "slug": "ico-images-ko-png-mein-online-free-kaise-badlein",
+            "title": "ICO को PNG में ऑनलाइन मुफ्त में कैसे बदलें: एक संपूर्ण मार्गदर्शिका",
+            "description": "ICO छवियों को PNG प्रारूप में ऑनलाइन मुफ्त में बदलना सीखें। पारदर्शिता और गुणवत्ता बनाए रखने के लिए उपकरण और सुझाव खोजें।",
+            "image": "webp-to-png-blog.svg"
+        },
+        {
+            "slug": "tiff-png-aur-image-compression-ki-antim-margdarshika",
+            "title": "TIFF, PNG और छवि संपीड़न की अंतिम मार्गदर्शिका",
+            "description": "TIFF और PNG प्रारूपों के बीच अंतर समझें, उन्हें आपस में कैसे बदलें और छवियों को प्रभावी ढंग से संपीड़ित करें। डिज़ाइनर और डेवलपर्स के लिए बिल्कुल सही।",
+            "image": "image-compression.svg"
+        }
     ],
     'fr': [
         {
@@ -544,6 +640,54 @@ blogs_list = {
             'description': 'Créez la meilleure bannière Twitter avec des outils optimisés et les points importants à garder à l\'esprit pour la bannière Twitter',
             'image': 'twitter-banner-blog.svg',
         },
+        {
+            "slug": "comment-flouter-des-visages-ou-parties-de-vos-images",
+            "title": "Comment flouter des visages ou des parties de vos images gratuitement en ligne",
+            "description": "Besoin de flouter des visages en ligne ? Apprenez à flouter facilement des visages dans des photos et des vidéos pour la confidentialité ou des effets créatifs.",
+            "image": "face_id_blur_blog.svg"
+        },
+        {
+            "slug": "comment-convertir-des-images-bmp-en-ico",
+            "title": "Comment convertir des images BMP en ICO : Un guide étape par étape",
+            "description": "Apprenez à convertir facilement des images BMP au format ICO. Découvrez les meilleurs outils et méthodes pour créer des icônes de haute qualité pour les applications et les sites web.",
+            "image": "bmp-blog.svg"
+        },
+        {
+            "slug": "comment-convertir-des-icones-en-dautres-formats-dimage",
+            "title": "Comment convertir des icônes en d'autres formats d'image : Un guide complet",
+            "description": "Explorez le processus de conversion des icônes en différents formats d'image comme PNG, JPEG, etc. Trouvez les meilleurs outils et astuces pour des conversions fluides.",
+            "image": "image-format-blog.svg"
+        },
+        {
+            "slug": "comment-convertir-une-image-de-tiff-en-jpeg",
+            "title": "Comment convertir TIFF en JPEG : Un guide simple et efficace",
+            "description": "Découvrez comment convertir des images TIFF au format JPEG sans effort. Apprenez les outils et techniques pour maintenir la qualité de l'image lors de la conversion.",
+            "image": "webp-to-tiff-blog.svg"
+        },
+        {
+            "slug": "comment-convertir-une-image-de-tiff-en-png",
+            "title": "Comment convertir TIFF en PNG : Un guide complet",
+            "description": "Apprenez à convertir des images TIFF au format PNG en préservant la transparence et la qualité. Trouvez les meilleurs outils pour des conversions fluides.",
+            "image": "webp-to-png-blog.svg"
+        },
+        {
+            "slug": "comment-convertir-une-image-de-webp-en-ico",
+            "title": "Comment convertir WEBP en ICO : Un tutoriel étape par étape",
+            "description": "Convertissez des images WEBP au format ICO facilement. Découvrez les meilleurs outils et méthodes pour créer des icônes à partir de fichiers WEBP.",
+            "image": "jpg-to-ico-blog.svg"
+        },
+        {
+            "slug": "comment-convertir-des-images-de-ico-en-png-en-ligne-gratuitement",
+            "title": "Comment convertir ICO en PNG en ligne gratuitement : Un guide complet",
+            "description": "Apprenez à convertir des images ICO au format PNG en ligne gratuitement. Explorez des outils et astuces pour préserver la transparence et la qualité.",
+            "image": "webp-to-png-blog.svg"
+        },
+        {
+            "slug": "le-guide-ultime-sur-tiff-png-et-la-compression-dimages",
+            "title": "Le guide ultime sur TIFF, PNG et la compression d'images",
+            "description": "Comprenez les différences entre les formats TIFF et PNG, comment les convertir entre eux et compresser des images efficacement. Parfait pour les designers et développeurs.",
+            "image": "image-compression.svg"
+        }
     ],
     'zh': [
         {
@@ -725,6 +869,54 @@ blogs_list = {
             'title': '如何使用正确的工具创建最佳Twitter横幅',
             'description': '使用优化工具和需要注意的重要事项创建最佳Twitter横幅',
             'image': 'twitter-banner-blog.svg',
+        },
+        {
+            "slug": "how-to-blur-faces-or-parts-in-your-images",
+            "title": "如何在线免费模糊图像中的脸部或部分",
+            "description": "需要在线模糊脸部吗？了解如何轻松模糊照片和视频中的脸部，以保护隐私或实现创意效果。",
+            "image": "face_id_blur_blog.svg"
+        },
+        {
+            "slug": "how-to-convert-bmp-images-to-ico",
+            "title": "如何将BMP图像转换为ICO：分步指南",
+            "description": "学习如何轻松将BMP图像转换为ICO格式。发现创建高质量应用程序和网站图标的最佳工具和方法。",
+            "image": "bmp-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-icons-to-other-image-formats",
+            "title": "如何将图标转换为其他图像格式：完整指南",
+            "description": "探索将图标转换为PNG、JPEG等各种图像格式的过程。找到无缝转换的最佳工具和技巧。",
+            "image": "image-format-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-tiff-to-jpeg",
+            "title": "如何将TIFF转换为JPEG：简单有效的指南",
+            "description": "了解如何轻松将TIFF图像转换为JPEG格式。学习在转换过程中保持图像质量的工具和技术。",
+            "image": "webp-to-tiff-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-tiff-to-png",
+            "title": "如何将TIFF转换为PNG：全面指南",
+            "description": "学习如何将TIFF图像转换为PNG格式，同时保留透明度和质量。找到无缝转换的最佳工具。",
+            "image": "webp-to-png-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-image-from-webp-to-ico",
+            "title": "如何将WEBP转换为ICO：分步教程",
+            "description": "轻松将WEBP图像转换为ICO格式。发现从WEBP文件创建图标的最佳工具和方法。",
+            "image": "jpg-to-ico-blog.svg"
+        },
+        {
+            "slug": "how-to-convert-images-from-ico-to-png-online-free",
+            "title": "如何在线免费将ICO转换为PNG：完整指南",
+            "description": "学习如何在线免费将ICO图像转换为PNG格式。探索保留透明度和质量的工具和技巧。",
+            "image": "webp-to-png-blog.svg"
+        },
+        {
+            "slug": "the-ultimate-guide-to-tiff-png-and-image-compression",
+            "title": "TIFF、PNG和图像压缩的终极指南",
+            "description": "了解TIFF和PNG格式之间的区别，如何在它们之间转换以及有效压缩图像。非常适合设计师和开发人员。",
+            "image": "image-compression.svg"
         }
     ],
     'es': [
@@ -907,6 +1099,54 @@ blogs_list = {
             "title": "Cómo crear el mejor banner de Twitter con las herramientas adecuadas",
             "description": "Crea el mejor banner de Twitter con herramientas optimizadas y puntos importantes a tener en cuenta para el banner de Twitter",
             "image": "twitter-banner-blog.svg"
-        }
+        },
+        {
+            "slug": "como-difuminar-caras-o-partes-en-tus-imagenes",
+            "title": "Cómo difuminar caras o partes en tus imágenes gratis en línea",
+            "description": "¿Necesitas difuminar caras en línea? Aprende cómo difuminar caras en fotos y videos fácilmente para privacidad o efectos creativos.",
+            "image": "face_id_blur_blog.svg"
+        },
+        {
+            "slug": "como-convertir-imagenes-bmp-a-ico",
+            "title": "Cómo convertir imágenes BMP a ICO: Una guía paso a paso",
+            "description": "Aprende cómo convertir imágenes BMP a formato ICO fácilmente. Descubre las mejores herramientas y métodos para crear iconos de alta calidad para aplicaciones y sitios web.",
+            "image": "bmp-blog.svg"
+        },
+        {
+            "slug": "como-convertir-iconos-a-otros-formatos-de-imagen",
+            "title": "Cómo convertir iconos a otros formatos de imagen: Una guía completa",
+            "description": "Explora el proceso de convertir iconos a varios formatos de imagen como PNG, JPEG y más. Encuentra las mejores herramientas y consejos para conversiones sin problemas.",
+            "image": "image-format-blog.svg"
+        },
+        {
+            "slug": "como-convertir-imagen-de-tiff-a-jpeg",
+            "title": "Cómo convertir TIFF a JPEG: Una guía simple y efectiva",
+            "description": "Descubre cómo convertir imágenes TIFF a formato JPEG sin esfuerzo. Aprende sobre las herramientas y técnicas para mantener la calidad de la imagen durante la conversión.",
+            "image": "webp-to-tiff-blog.svg"
+        },
+        {
+            "slug": "como-convertir-imagen-de-tiff-a-png",
+            "title": "Cómo convertir TIFF a PNG: Una guía completa",
+            "description": "Aprende cómo convertir imágenes TIFF a formato PNG preservando la transparencia y la calidad. Encuentra las mejores herramientas para conversiones sin problemas.",
+            "image": "webp-to-png-blog.svg"
+        },
+        {
+            "slug": "como-convertir-imagen-de-webp-a-ico",
+            "title": "Cómo convertir WEBP a ICO: Un tutorial paso a paso",
+            "description": "Convierte imágenes WEBP a formato ICO con facilidad. Descubre las mejores herramientas y métodos para crear iconos a partir de archivos WEBP.",
+            "image": "jpg-to-ico-blog.svg"
+        },
+        {
+            "slug": "como-convertir-imagenes-de-ico-a-png-en-linea-gratis",
+            "title": "Cómo convertir ICO a PNG en línea gratis: Una guía completa",
+            "description": "Aprende cómo convertir imágenes ICO a formato PNG en línea de forma gratuita. Explora herramientas y consejos para preservar la transparencia y la calidad.",
+            "image": "webp-to-png-blog.svg"
+        },
+        {
+            "slug": "la-guia-definitiva-sobre-tiff-png-y-compresion-de-imagenes",
+            "title": "La guía definitiva sobre TIFF, PNG y compresión de imágenes",
+            "description": "Comprende las diferencias entre los formatos TIFF y PNG, cómo convertirlos entre sí y comprimir imágenes de manera efectiva. Perfecto para diseñadores y desarrolladores.",
+            "image": "image-compression.svg"
+        },
     ]
 }
