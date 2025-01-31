@@ -1,14 +1,30 @@
 # Author: Siddharth1India
-import base64
-from flask import Flask, abort, g, jsonify, redirect, render_template, request, send_file, send_from_directory, url_for
-from jinja2 import TemplateNotFound
-from PIL import Image, ImageFilter
-from all_blog_data import blogs_list
+import os
 import io
 import time
+import json
 import uuid
-import os
+import queue
+import threading
+from collections import deque
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from threading import Lock
+from urllib.parse import urljoin, urlparse
+
+import base64
+import requests
+from bs4 import BeautifulSoup
+from PIL import Image, ImageFilter
 from rembg import remove
+from io import BytesIO
+
+from flask import (
+    Flask, abort, g, jsonify, redirect, render_template, request,
+    send_file, send_from_directory, url_for, Response
+)
+from jinja2 import TemplateNotFound
+
+from all_blog_data import blogs_list
 
 
 app = Flask(__name__)
@@ -332,5 +348,457 @@ def robots():
 def page_not_found(e):
     return render_template('en/error.html', error="404 - Page Not Found"), 404
 
+@app.route('/svgs-and-icons')
+def svg_and_icon():
+    svg_folder = os.path.join('static', 'svgicons')
+    svg_categories = {}
+    print(f'hello:{svg_folder}')
+    
+    # Iterate through subdirectories in svgicons
+    for category in os.listdir(svg_folder):
+        category_path = os.path.join(svg_folder, category)
+        
+        if os.path.isdir(category_path):
+            # Find SVG files in the category subdirectory
+            svg_files = [f for f in os.listdir(category_path) if f.endswith('.svg')]
+            
+            # Create names by removing .svg extension and replacing underscores
+            svg_names = [os.path.splitext(f)[0] for f in svg_files]
+            
+            # Store category information
+            svg_categories[category] = list(zip(svg_files, svg_names))
+    
+    return render_template('en/svgs-and-icons.html', 
+                           svg_categories=svg_categories)
+
+@app.route('/api/get-svgs')
+def get_svgs():
+    category = request.args.get('category', '')
+    page = int(request.args.get('page', 1))
+    per_page = int(request.args.get('per_page', 24))
+    search_term = request.args.get('search', '').lower()
+
+    svg_base_folder = os.path.join('static', 'svgicons')
+    
+    # If no category selected, use all categories
+    if not category:
+        svg_files = []
+        for subdir in os.listdir(svg_base_folder):
+            subdir_path = os.path.join(svg_base_folder, subdir)
+            if os.path.isdir(subdir_path):
+                category_files = [
+                    (subdir, f) for f in os.listdir(subdir_path) 
+                    if f.endswith('.svg') and 
+                    (not search_term or search_term in f.lower())
+                ]
+                svg_files.extend(category_files)
+    else:
+        # If a specific category is selected
+        svg_folder = os.path.join(svg_base_folder, category)
+        svg_files = [
+            (category, f) for f in os.listdir(svg_folder) 
+            if f.endswith('.svg') and 
+            (not search_term or search_term in f.lower())
+        ]
+
+    # Pagination
+    start = (page - 1) * per_page
+    end = start + per_page
+    paginated_files = svg_files[start:end]
+
+    # Prepare response
+    svgs_data = []
+    for cat, svg in paginated_files:
+        svgs_data.append({
+            'name': os.path.splitext(svg)[0],
+            'filename': svg,
+            'category': cat  # Add category to the response
+        })
+
+    return jsonify({
+        'svgs': svgs_data,
+        'has_more': end < len(svg_files)
+    })
+
+@app.route('/svgs-and-icons/<string:svg_name>.html')
+def svg_detail(svg_name):
+    # Remove .html extension if present
+    svg_name = svg_name.replace('.html', '')
+    
+    # Find the SVG in all categories
+    svg_base_folder = os.path.join('static', 'svgicons')
+    svg_info = None
+    
+    # Search through all categories to find the SVG
+    for category in os.listdir(svg_base_folder):
+        category_path = os.path.join(svg_base_folder, category)
+        if os.path.isdir(category_path):
+            for svg_file in os.listdir(category_path):
+                if svg_file.startswith(svg_name + '.'):
+                    svg_info = {
+                        'name': svg_name,
+                        'filename': svg_file,
+                        'category': category,
+                        'path': f'/static/svgicons/{category}/{svg_file}'
+                    }
+                    break
+    
+    if svg_info is None:
+        return abort(404)
+        
+    return render_template('en/svg-detail.html', svg=svg_info)
+
+class CrawlProgress:
+    def __init__(self):
+        self.lock = Lock()
+        self.progress = {}
+    
+    def init_session(self, session_id):
+        with self.lock:
+            self.progress[session_id] = {
+                'scanned': 0,
+                'added': 0,
+                'queued': 1,
+                'url_queue': queue.Queue(),
+                'visited_urls': set(),
+                'seen_urls': set(),
+                'sitemap_entries': [],
+                'active_threads': 0,
+                'processing_complete': False
+            }
+    
+    def increment(self, session_id, key, amount=1):
+        with self.lock:
+            if session_id in self.progress:
+                self.progress[session_id][key] += amount
+    
+    def decrement(self, session_id, key, amount=1):
+        with self.lock:
+            if session_id in self.progress:
+                self.progress[session_id][key] -= amount
+    
+    def get_progress(self, session_id):
+        with self.lock:
+            if session_id in self.progress:
+                return {
+                    'scanned': self.progress[session_id]['scanned'],
+                    'added': self.progress[session_id]['added'],
+                    'queued': self.progress[session_id]['queued']
+                }
+            return None
+    
+    def cleanup(self, session_id):
+        with self.lock:
+            if session_id in self.progress:
+                del self.progress[session_id]
+
+crawl_progress = CrawlProgress()
+
+@app.route('/sitemap-progress/<session_id>')
+def sitemap_progress(session_id):
+    def generate():
+        try:
+            while True:
+                progress = crawl_progress.get_progress(session_id)
+                if not progress:
+                    break
+                
+                # Check if crawling is complete and no more URLs are queued
+                session_data = crawl_progress.progress[session_id]
+                if (session_data['processing_complete'] and 
+                    session_data['queued'] == 0 and 
+                    session_data['active_threads'] == 0):
+                    break
+                    
+                yield f"data: {json.dumps(progress)}\n\n"
+                time.sleep(1)
+        except GeneratorExit:
+            crawl_progress.cleanup(session_id)
+    
+    return Response(generate(), mimetype='text/event-stream')
+
+def is_valid_url(url, domain):
+    try:
+        parsed = urlparse(url)
+        return parsed.netloc == domain and parsed.scheme in ("http", "https")
+    except:
+        return False
+
+def assign_priority(url, depth):
+    priorities = {
+        0: 1.0,
+        1: 0.8,
+        2: 0.6,
+        3: 0.4,
+    }
+    return priorities.get(depth, 0.2)
+
+import multiprocessing
+
+# Get the number of available CPU cores
+max_workers = min(8, (multiprocessing.cpu_count() or 1) * 2) 
+print(max_workers)
+
+def process_url(url, depth, session_id, domain):
+    """Worker function to process a single URL"""
+    try:
+        progress = crawl_progress.progress[session_id]
+        
+        with progress['lock']:
+            if url in progress['visited_urls']:
+                crawl_progress.decrement(session_id, 'queued')
+                return []
+            progress['visited_urls'].add(url)
+            progress['active_threads'] += 1
+        
+        crawl_progress.increment(session_id, 'scanned')
+        crawl_progress.decrement(session_id, 'queued')
+        
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        }
+        
+        response = requests.get(url, timeout=10, headers=headers)
+        response.raise_for_status()
+
+        content_type = response.headers.get('content-type', '').lower()
+        
+        # Skip if not HTML
+        if 'text/html' not in content_type:
+            return []
+
+        # Parse the HTML content
+        soup = BeautifulSoup(response.text, "html.parser")
+        new_links = []
+        
+        # Extract URLs from <a> tags
+        for link in soup.find_all("a", href=True):
+            href = link["href"]
+            if href.startswith('#') or href.startswith('javascript:'):
+                continue
+
+            abs_url = clean_url(urljoin(url, href))
+            
+            if abs_url and is_valid_url(abs_url, domain):
+                normalized_url = abs_url.rstrip('/')
+                with progress['lock']:
+                    if normalized_url not in progress['seen_urls']:
+                        progress['seen_urls'].add(normalized_url)
+                        new_links.append((normalized_url, depth + 1))
+                        progress['url_queue'].put((normalized_url, depth + 1))
+                        crawl_progress.increment(session_id, 'queued')
+
+        # Extract URLs from <img> tags (including SVGs)
+        for img in soup.find_all("img", src=True):
+            src = img["src"]
+            abs_url = clean_url(urljoin(url, src))
+            
+            if abs_url and is_valid_url(abs_url, domain):
+                normalized_url = abs_url.rstrip('/')
+                with progress['lock']:
+                    if normalized_url not in progress['seen_urls']:
+                        progress['seen_urls'].add(normalized_url)
+                        # Add SVG or image URL to sitemap entries
+                        priority = 0.5  # Lower priority for images
+                        progress['sitemap_entries'].append((normalized_url, priority))
+                        crawl_progress.increment(session_id, 'added')
+
+        # Extract URLs from <link> tags (e.g., stylesheets, icons)
+        for link in soup.find_all("link", href=True):
+            href = link["href"]
+            abs_url = clean_url(urljoin(url, href))
+            
+            if abs_url and is_valid_url(abs_url, domain):
+                normalized_url = abs_url.rstrip('/')
+                with progress['lock']:
+                    if normalized_url not in progress['seen_urls']:
+                        progress['seen_urls'].add(normalized_url)
+                        # Add link URL to sitemap entries
+                        priority = 0.5  # Lower priority for assets
+                        progress['sitemap_entries'].append((normalized_url, priority))
+                        crawl_progress.increment(session_id, 'added')
+
+        # Extract URLs from <script> tags
+        for script in soup.find_all("script", src=True):
+            src = script["src"]
+            abs_url = clean_url(urljoin(url, src))
+            
+            if abs_url and is_valid_url(abs_url, domain):
+                normalized_url = abs_url.rstrip('/')
+                with progress['lock']:
+                    if normalized_url not in progress['seen_urls']:
+                        progress['seen_urls'].add(normalized_url)
+                        # Add script URL to sitemap entries
+                        priority = 0.5  # Lower priority for scripts
+                        progress['sitemap_entries'].append((normalized_url, priority))
+                        crawl_progress.increment(session_id, 'added')
+
+        return new_links
+
+    except Exception as e:
+        print(f"Error processing {url}: {e}")
+        return []
+    finally:
+        with progress['lock']:
+            progress['active_threads'] -= 1
+            
+@app.route('/generate-sitemap', methods=['GET', 'POST'])
+def sitemap_generator():
+    if request.method == 'GET':
+        return render_template('en/sitemap-generator.html')
+
+    try:
+        data = request.get_json()
+        if not data or 'url' not in data or 'sessionId' not in data:
+            return jsonify({'error': 'Missing required parameters'}), 400
+
+        start_url = clean_url(data['url'])
+        session_id = data['sessionId']
+
+        if not start_url:
+            return jsonify({'error': 'Invalid URL format'}), 400
+
+        domain = urlparse(start_url).netloc.replace('www.', '')
+        
+        # Initialize session
+        crawl_progress.init_session(session_id)
+        progress = crawl_progress.progress[session_id]
+        progress['lock'] = Lock()  # Add a lock for this session's data
+        progress['url_queue'].put((start_url, 0))
+        progress['processing_complete'] = False
+
+        def crawler():
+            try:
+                with ThreadPoolExecutor(max_workers=max_workers) as executor:
+                    futures = set()
+                    max_depth = 10
+                    timeout_counter = 0
+                    max_timeouts = 5  # Maximum number of consecutive timeouts
+                    
+                    while True:
+                        try:
+                            # Clean up completed futures
+                            futures = {f for f in futures if not f.done()}
+                            
+                            # Try to get a new URL from the queue
+                            try:
+                                url, depth = progress['url_queue'].get(timeout=1)
+                                timeout_counter = 0  # Reset timeout counter on successful get
+                                
+                                if depth <= max_depth:
+                                    future = executor.submit(process_url, url, depth, session_id, domain)
+                                    futures.add(future)
+                            except queue.Empty:
+                                timeout_counter += 1
+                                # Only break if we've had multiple consecutive timeouts AND no active futures
+                                if timeout_counter >= max_timeouts and not futures:
+                                    break
+                                continue
+                            
+                            # Process completed futures
+                            done_futures = {f for f in futures if f.done()}
+                            for future in done_futures:
+                                try:
+                                    future.result()  # Get the result to catch any exceptions
+                                except Exception as e:
+                                    print(f"Future error: {e}")
+                                futures.remove(future)
+                            
+                            # If queue is empty and no active futures, wait a bit and check again
+                            if progress['url_queue'].empty() and not futures:
+                                time.sleep(0.5)
+                                if progress['url_queue'].empty():  # Double check after waiting
+                                    timeout_counter += 1
+                                    if timeout_counter >= max_timeouts:
+                                        break
+                            
+                            # Prevent too many concurrent futures
+                            while len(futures) >= 10:
+                                time.sleep(1)
+                                futures = {f for f in futures if not f.done()}
+                                
+                        except Exception as e:
+                            print(f"Crawler loop error: {e}")
+                            continue
+                    
+                    # Wait for remaining futures to complete
+                    for future in as_completed(futures):
+                        try:
+                            future.result()
+                        except Exception as e:
+                            print(f"Final future error: {e}")
+            
+            finally:
+                progress['processing_complete'] = True
+
+        # Start crawler in a separate thread
+        crawler_thread = threading.Thread(target=crawler)
+        crawler_thread.start()
+        
+        # Wait for crawler to complete with a timeout
+        max_wait_time = 300  # 5 minutes maximum wait time
+        wait_interval = 0.5
+        total_waited = 0
+        
+        while not progress['processing_complete'] and total_waited < max_wait_time:
+            time.sleep(wait_interval)
+            total_waited += wait_interval
+            
+            # Check if we have any entries already
+            if progress['sitemap_entries'] and progress['url_queue'].empty():
+                break
+        
+        # Force completion if we've waited too long
+        if total_waited >= max_wait_time:
+            progress['processing_complete'] = True
+        
+        crawler_thread.join(timeout=1)  # Give thread one last second to cleanup
+
+        sitemap_entries = progress['sitemap_entries']
+        if not sitemap_entries:
+            crawl_progress.cleanup(session_id)
+            return jsonify({'error': 'No URLs found'}), 400
+
+        # Generate sitemap file
+        sitemap_file = BytesIO()
+        sitemap_file.write('<?xml version="1.0" encoding="UTF-8"?>\n'.encode('utf-8'))
+        sitemap_file.write('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'.encode('utf-8'))
+
+        for url, priority in sitemap_entries:
+            sitemap_file.write("  <url>\n".encode('utf-8'))
+            sitemap_file.write(f"    <loc>{url}</loc>\n".encode('utf-8'))
+            sitemap_file.write(f"    <lastmod>{time.strftime('%Y-%m-%d')}</lastmod>\n".encode('utf-8'))
+            sitemap_file.write("    <changefreq>daily</changefreq>\n".encode('utf-8'))
+            sitemap_file.write(f"    <priority>{priority:.1f}</priority>\n".encode('utf-8'))
+            sitemap_file.write("  </url>\n".encode('utf-8'))
+
+        sitemap_file.write("</urlset>".encode('utf-8'))
+        sitemap_file.seek(0)
+
+        crawl_progress.cleanup(session_id)
+        
+        return send_file(
+            sitemap_file,
+            mimetype='application/xml',
+            as_attachment=True,
+            download_name='sitemap.xml'
+        )
+
+    except Exception as e:
+        crawl_progress.cleanup(session_id)
+        return jsonify({'error': str(e)}), 500
+
+def clean_url(url):
+    """Cleans and normalizes the URL."""
+    try:
+        parsed_url = urlparse(url)
+        # Ensure we have scheme and netloc
+        if not all([parsed_url.scheme, parsed_url.netloc]):
+            return None
+        # Return normalized URL
+        return parsed_url.scheme + "://" + parsed_url.netloc + parsed_url.path.rstrip('/')
+    except:
+        return None
+    
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Sitemap | ToolsforImage</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='sitemap-generator.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .progress-container {
+            margin: 20px 0;
+            display: none;
+        }
+        .progress-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .stat-box {
+            padding: 15px;
+            border-radius: 8px;
+            background: #f5f5f5;
+            text-align: center;
+        }
+        .stat-box h3 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            color: #333;
+        }
+        .stat-box .count {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background-color: #2563eb;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PR74FHGP0L"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PR74FHGP0L');
+</script>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-logo"><a href="/" style="text-decoration: none; color: inherit;">ToolsForImage</a></div>
+        <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="/image-compression">Compress Image</a></li>
+            <li><a href="/image-resize">Resize Image</a></li>
+            <li><a href="/convert-image-format">Convert Image</a></li>
+            <li><a href="/image-rotate">Rotate Image</a></li>
+            <li class="more-menu">
+                <a href="javascript:void(0)" class="more-menu-button">More</a>
+                <div class="more-menu-content">
+                    <a href="/image-watermarking">Watermark</a>
+                    <a href="/image-effects">Image Effects</a>
+                    <a href="/image-crop">Crop Image</a>
+                    <a href="/blur-face">Blur Face</a>
+                    <a href="/remove-background">Remove Background</a>
+                    <a href="/blur-background">Blur Background</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Sitemap Generator Section -->
+    <div class="container">
+        <h1>Generate Sitemap</h1>
+        <p>Enter your website URL below to generate a sitemap. The sitemap will be saved as <code>sitemap.xml</code>.</p>
+        
+        <!-- URL Input Form -->
+        <div class="form-group" style="margin-bottom: 20px;">
+            <input type="url" id="websiteUrl" 
+                   placeholder="Enter website URL (e.g., https://example.com)" 
+                   class="form-control" 
+                   style="width: 100%; padding: 10px; margin-bottom: 10px;"
+                   required>
+        </div>
+        
+        <!-- Generate Sitemap Button -->
+        <button id="generateSitemapBtn" class="btn">Generate Sitemap</button>
+        
+        <!-- Progress Section -->
+        <div id="progressContainer" class="progress-container">
+            <div class="progress-stats">
+                <div class="stat-box">
+                    <h3>Scanned Pages</h3>
+                    <div id="scannedCount" class="count">0</div>
+                </div>
+                <div class="stat-box">
+                    <h3>Added Pages</h3>
+                    <div id="addedCount" class="count">0</div>
+                </div>
+                <div class="stat-box">
+                    <h3>Queued Pages</h3>
+                    <div id="queuedCount" class="count">0</div>
+                </div>
+            </div>
+            <div class="progress-bar">
+                <div id="progressBar" class="progress-bar-fill"></div>
+            </div>
+        </div>
+
+        <!-- Result Section -->
+        <div id="result" class="result-section" style="display: none;">
+            <p id="statusMessage"></p>
+            <a id="downloadLink" href="#" class="download-link" style="display: none;">Download sitemap.xml</a>
+        </div>
+    </div>
+
+    {% include 'en/navigation_tools.html' %}
+    {% include 'en/footer.html' %}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const generateBtn = document.getElementById('generateSitemapBtn');
+            const statusMessage = document.getElementById('statusMessage');
+            const downloadLink = document.getElementById('downloadLink');
+            const urlInput = document.getElementById('websiteUrl');
+            const progressContainer = document.getElementById('progressContainer');
+            const scannedCount = document.getElementById('scannedCount');
+            const addedCount = document.getElementById('addedCount');
+            const queuedCount = document.getElementById('queuedCount');
+            const progressBar = document.getElementById('progressBar');
+
+            let progressEventSource = null;
+
+            function cleanUrl(url) {
+                // Remove trailing slashes
+                url = url.replace(/\/+$/, '');
+                
+                // Ensure protocol is present
+                if (!/^https?:\/\//i.test(url)) {
+                    url = 'https://' + url;
+                }
+                
+                try {
+                    const urlObj = new URL(url);
+                    // Remove 'www.' if present
+                    urlObj.hostname = urlObj.hostname.replace(/^www\./i, '');
+                    return urlObj.toString();
+                } catch (e) {
+                    return null;
+                }
+            }
+
+            generateBtn.addEventListener('click', async () => {
+                const rawUrl = urlInput.value.trim();
+                const cleanedUrl = cleanUrl(rawUrl);
+                
+                if (!cleanedUrl) {
+                    statusMessage.textContent = 'Please enter a valid URL (e.g., https://example.com)';
+                    statusMessage.style.color = 'red';
+                    return;
+                }
+
+                // Reset and show progress container
+                progressContainer.style.display = 'block';
+                scannedCount.textContent = '0';
+                addedCount.textContent = '0';
+                queuedCount.textContent = '0';
+                progressBar.style.width = '0%';
+
+                // Disable the button and update status
+                generateBtn.disabled = true;
+                generateBtn.textContent = 'Generating...';
+                statusMessage.textContent = 'Generating sitemap... This may take a few minutes.';
+                statusMessage.style.color = 'blue';
+                downloadLink.style.display = 'none';
+
+                // Close existing EventSource if any
+                if (progressEventSource) {
+                    progressEventSource.close();
+                }
+
+                // Create a unique identifier for this crawl session
+                const sessionId = Date.now().toString();
+                
+                // Start SSE connection for progress updates
+                progressEventSource = new EventSource(`/sitemap-progress/${sessionId}?url=${encodeURIComponent(cleanedUrl)}`);
+                
+                progressEventSource.onmessage = (event) => {
+                    try {
+                        const data = JSON.parse(event.data);
+                        scannedCount.textContent = data.scanned;
+                        addedCount.textContent = data.added;
+                        queuedCount.textContent = data.queued;
+                        
+                        // Calculate progress percentage
+                        const total = data.scanned + data.queued;
+                        const progress = total > 0 ? (data.scanned / total * 100) : 0;
+                        progressBar.style.width = `${progress}%`;
+                    } catch (e) {
+                        console.error('Error parsing progress data:', e);
+                    }
+                };
+
+                progressEventSource.onerror = () => {
+                    progressEventSource.close();
+                };
+
+                try {
+                    const response = await fetch('/generate-sitemap', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ 
+                            url: cleanedUrl,
+                            sessionId: sessionId
+                        })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Failed to generate sitemap');
+                    }
+
+                    // Handle success...
+                    // Rest of the success handling code remains the same
+                    const blob = await response.blob();
+                    const downloadUrl = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = downloadUrl;
+                    a.download = 'sitemap.xml';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    window.URL.revokeObjectURL(downloadUrl);
+
+                    statusMessage.textContent = 'Sitemap generated successfully! Click the link below to download.';
+                    statusMessage.style.color = 'green';
+                    downloadLink.href = downloadUrl;
+                    downloadLink.download = 'sitemap.xml';
+                    downloadLink.style.display = 'inline-block';
+
+                } catch (error) {
+                    statusMessage.textContent = 'Error generating sitemap. Please try again.';
+                    statusMessage.style.color = 'red';
+                    console.error('Error:', error);
+                } finally {
+                    if (progressEventSource) {
+                        progressEventSource.close();
+                    }
+                    generateBtn.disabled = false;
+                    generateBtn.textContent = 'Generate Sitemap';
+                }
+            });
+        });
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const moreMenuButton = document.querySelector('.more-menu-button');
+        const moreMenuContent = document.querySelector('.more-menu-content');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        moreMenuButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            moreMenuContent.classList.toggle('show');
+        });
+
+        // Close the menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+            if (!moreMenuContent.contains(e.target) && !moreMenuButton.contains(e.target)) {
+                moreMenuContent.classList.remove('show');
+            }
+        });
+    });
+    </script>
+</body>
+</html>
