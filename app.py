@@ -10,8 +10,6 @@ from collections import deque
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from threading import Lock
 from urllib.parse import urljoin, urlparse
-
-import base64
 import requests
 from bs4 import BeautifulSoup
 from PIL import Image, ImageFilter

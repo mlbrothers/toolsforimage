@@ -4,3 +4,7 @@ uuid
 onnxruntime
 rembg
 gunicorn
+requests
+beautifulsoup4
+concurrent.futures
+jinja2
